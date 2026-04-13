@@ -23,12 +23,12 @@ export default function MainNavigation() {
           
           {/* Logo Section */}
           <Link href="/" className="flex-shrink-0 flex items-center">
-            <div className="relative w-24 h-24">
+            <div className="relative w-44 h-44">
               <Image
                 src="/logo.png"
                 alt="Verifsafe Logo"
                 fill
-                sizes="96px"
+                sizes="110px"
                 priority
                 className="object-contain"
               />

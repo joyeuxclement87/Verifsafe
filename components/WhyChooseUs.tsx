@@ -92,51 +92,6 @@ export default function WhyChooseUs() {
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-16 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center p-8 border-2 border-gray-100 rounded-lg hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300">
-            <div
-              className="text-3xl sm:text-4xl font-black text-[#E50914] mb-2"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
-            >
-              100+
-            </div>
-            <p
-              className="text-gray-700 font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-            >
-              Installations Completed
-            </p>
-          </div>
-          <div className="text-center p-8 border-2 border-gray-100 rounded-lg hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300">
-            <div
-              className="text-3xl sm:text-4xl font-black text-[#E50914] mb-2"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
-            >
-              10+
-            </div>
-            <p
-              className="text-gray-700 font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-            >
-              Years Experience
-            </p>
-          </div>
-          <div className="text-center p-8 border-2 border-gray-100 rounded-lg hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300">
-            <div
-              className="text-3xl sm:text-4xl font-black text-[#E50914] mb-2"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
-            >
-              1000+
-            </div>
-            <p
-              className="text-gray-700 font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-            >
-              Satisfied Clients
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );

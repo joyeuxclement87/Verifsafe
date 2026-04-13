@@ -34,40 +34,35 @@ export default function WhoWeServe() {
           >
             Industries We <span className="text-[#E50914]">Protect</span>
           </h2>
-
-          {/* Subheading */}
-          <p
-            className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-          >
-            We support industries and environments which require reliable fire safety solutions.
-          </p>
         </div>
 
-        {/* Industries Grid - Compact Grid Style */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-16 sm:mb-20">
+        {/* Industries Grid - 3 Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="group relative bg-white border-2 border-gray-100 rounded-lg p-6 sm:p-8 hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
+              className="group relative bg-white border-2 border-gray-100 rounded-lg p-6 hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
-              {/* Icon Container */}
-              <div className="w-16 h-16 flex-shrink-0 bg-gradient-to-br from-[#E50914] to-red-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mx-auto mb-4">
-                <FontAwesomeIcon
-                  icon={industry.icon}
-                  className="w-8 h-8 text-white"
-                />
-              </div>
+              {/* Horizontal Card Layout */}
+              <div className="flex items-center gap-4">
+                {/* Icon Container */}
+                <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#E50914] to-red-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <FontAwesomeIcon
+                    icon={industry.icon}
+                    className="w-6 h-6 text-white"
+                  />
+                </div>
 
-              {/* Content */}
-              <div>
-                {/* Industry Name */}
-                <h3
-                  className="text-base sm:text-lg font-bold text-gray-900"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                >
-                  {industry.name}
-                </h3>
+                {/* Content */}
+                <div className="flex-1 text-left">
+                  {/* Industry Name */}
+                  <h3
+                    className="text-sm sm:text-base font-bold text-gray-900"
+                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  >
+                    {industry.name}
+                  </h3>
+                </div>
               </div>
 
               {/* Bottom Accent Line */}

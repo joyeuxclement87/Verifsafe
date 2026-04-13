@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -18,16 +17,6 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-6">
             <div>
-              <div className="relative w-32 h-32 mb-4">
-                <Image
-                  src="/logo2.png"
-                  alt="Verifsafe Logo"
-                  fill
-                  sizes="128px"
-                  priority
-                  className="object-contain"
-                />
-              </div>
               <p
                 className="text-[#FFC107] text-sm font-semibold"
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
@@ -40,7 +29,7 @@ export default function Footer() {
               className="text-gray-400 text-base leading-relaxed font-normal"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
-              Rwanda's leading fire protection solutions provider. Trusted by businesses and organizations to keep people safe.
+              Rwanda&apos;s leading fire protection solutions provider. Trusted by businesses and organizations to keep people safe.
             </p>
 
             {/* Social Links */}

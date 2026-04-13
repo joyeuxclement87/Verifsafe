@@ -5,32 +5,32 @@ import Image from 'next/image';
 export default function OurEquipment() {
   const equipment = [
     {
-      image: '/equipment-1.svg',
+      image: '/equipment-1.png',
       title: 'Fire Extinguishers',
       description: 'Portable firefighting equipment which helps control small fires.'
     },
     {
-      image: '/equipment-2.svg',
+      image: '/equipment-2.png',
       title: 'Fire Alarm Systems',
       description: 'Detection systems which alert occupants during emergencies.'
     },
     {
-      image: '/equipment-3.svg',
+      image: '/equipment-3.png',
       title: 'Fire Hose Reels',
       description: 'Equipment which provides water supply for firefighting.'
     },
     {
-      image: '/equipment-4.svg',
+      image: '/equipment-4.png',
       title: 'Fire Detection Devices',
       description: 'Smoke and heat detectors which identify fire risks early.'
     },
     {
-      image: '/equipment-5.svg',
+      image: '/equipment-5.png',
       title: 'Emergency Lights & Exit Signs',
       description: 'Lighting systems which guide people to safety.'
     },
     {
-      image: '/equipment-6.svg',
+      image: '/equipment-6.png',
       title: 'Fire Safety Accessories',
       description: 'Additional safety equipment which supports fire protection.'
     }
