@@ -29,7 +29,7 @@ export default function WhoWeServe() {
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Industries We <span className="text-[#E50914]">Protect</span>
@@ -44,27 +44,27 @@ export default function WhoWeServe() {
           </p>
         </div>
 
-        {/* Industries Grid - Landscape Style */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-16 sm:mb-20">
+        {/* Industries Grid - Compact Grid Style */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-16 sm:mb-20">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="group relative bg-white border-2 border-gray-100 rounded-lg p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-6"
+              className="group relative bg-white border-2 border-gray-100 rounded-lg p-6 sm:p-8 hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
             >
               {/* Icon Container */}
-              <div className="w-20 h-20 flex-shrink-0 bg-gradient-to-br from-[#E50914] to-red-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div className="w-16 h-16 flex-shrink-0 bg-gradient-to-br from-[#E50914] to-red-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mx-auto mb-4">
                 <FontAwesomeIcon
                   icon={industry.icon}
-                  className="w-10 h-10 text-white"
+                  className="w-8 h-8 text-white"
                 />
               </div>
 
               {/* Content */}
-              <div className="flex-1">
+              <div>
                 {/* Industry Name */}
                 <h3
-                  className="text-xl sm:text-2xl font-bold text-gray-900"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  className="text-base sm:text-lg font-bold text-gray-900"
+                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 >
                   {industry.name}
                 </h3>

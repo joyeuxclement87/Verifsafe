@@ -22,25 +22,16 @@ export default function MainNavigation() {
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-28 flex items-center justify-between">
           
           {/* Logo Section */}
-          <Link href="/" className="flex-shrink-0 flex items-center gap-3">
-            <div className="relative w-10 h-10">
+          <Link href="/" className="flex-shrink-0 flex items-center">
+            <div className="relative w-24 h-24">
               <Image
                 src="/logo.png"
-                alt="Verifisafe Logo"
-                width={40}
-                height={40}
+                alt="Verifsafe Logo"
+                fill
+                sizes="96px"
                 priority
                 className="object-contain"
               />
-            </div>
-            <div>
-              <h1 className="text-xl font-black" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                <span className="text-[#E50914]">Verifi</span>
-                <span className="text-[#E50914]">safe</span>
-              </h1>
-              <p className="text-xs text-gray-500 font-medium" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
-                Peace of Mind, Verified
-              </p>
             </div>
           </Link>
 
@@ -62,8 +53,8 @@ export default function MainNavigation() {
           <div className="flex items-center gap-4">
             {/* CTA Button - Desktop */}
             <button
-              className="hidden sm:inline-block px-6 py-3 bg-[#E50914] text-white font-bold text-sm transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              className="hidden sm:inline-block px-6 py-3 bg-[#E50914] text-white font-medium text-sm transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               Get a Quote
             </button>
@@ -104,8 +95,8 @@ export default function MainNavigation() {
                 </Link>
               ))}
               <button
-                className="w-full mt-4 px-4 py-3 bg-[#E50914] text-white font-bold text-sm transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg"
-                style={{ fontFamily: 'Oswald, sans-serif' }}
+                className="w-full mt-4 px-4 py-3 bg-[#E50914] text-white font-medium text-sm transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
                 Get a Quote
               </button>

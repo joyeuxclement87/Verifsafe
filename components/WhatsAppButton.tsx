@@ -12,10 +12,15 @@ export default function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-8 right-8 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 active:scale-95"
+      className="fixed bottom-24 right-6 z-50 group flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-[#25D366] to-[#20BA58] rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 active:scale-95"
       title="Chat with us on WhatsApp"
     >
-      <FontAwesomeIcon icon={faWhatsapp} className="w-7 h-7 text-white" />
+      <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full group-hover:scale-110 transition-transform duration-300">
+        <FontAwesomeIcon icon={faWhatsapp} className="w-5 h-5 text-[#25D366]" />
+      </div>
+      <span className="text-white font-medium text-sm whitespace-nowrap group-hover:tracking-wide transition-all duration-300">
+        Chat with us
+      </span>
     </a>
   );
 }

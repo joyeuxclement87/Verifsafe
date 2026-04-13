@@ -41,7 +41,7 @@ export default function AboutCompany() {
             About Verifsafe
           </p>
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Who <span className="text-[#E50914]">We Are</span>
@@ -61,7 +61,7 @@ export default function AboutCompany() {
           <div className="relative group">
             <div className="relative w-full h-96 sm:h-96 lg:h-full overflow-hidden rounded-lg shadow-xl group-hover:shadow-2xl transition-shadow duration-300">
               <Image
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=600&fit=crop"
+                src="/about-company.svg"
                 alt="Fire Protection Equipment"
                 width={600}
                 height={600}
@@ -73,7 +73,7 @@ export default function AboutCompany() {
               {/* Floating Badge */}
               <div className="absolute bottom-8 right-8 bg-white rounded-lg p-6 shadow-lg">
                 <div
-                  className="text-4xl font-black text-[#E50914] mb-1"
+                  className="text-3xl font-black text-[#E50914] mb-1"
                   style={{ fontFamily: 'Oswald, sans-serif' }}
                 >
                   10+
@@ -146,8 +146,8 @@ export default function AboutCompany() {
 
             {/* Call to Action Button */}
             <button
-              className="w-fit px-8 py-4 bg-[#E50914] text-white font-bold transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg inline-flex items-center gap-2 group"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              className="w-fit px-8 py-4 bg-[#E50914] text-white font-medium transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg inline-flex items-center gap-2 group"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               Get Started Today
               <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,7 +161,7 @@ export default function AboutCompany() {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3
-              className="text-3xl sm:text-4xl font-black text-gray-900 mb-3"
+              className="text-2xl sm:text-3xl font-black text-gray-900 mb-3"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               Our Core <span className="text-[#E50914]">Values</span>
@@ -184,7 +184,7 @@ export default function AboutCompany() {
                   <div className="w-14 h-14 bg-gradient-to-br from-[#E50914] to-red-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <FontAwesomeIcon
                       icon={value.icon}
-                      className="w-7 h-7 text-white"
+                      className="w-8 h-8 text-white"
                     />
                   </div>
                 </div>
@@ -216,13 +216,13 @@ export default function AboutCompany() {
             {/* Stat 1 */}
             <div className="text-center">
               <div
-                className="text-5xl sm:text-6xl font-black text-[#E50914] mb-3"
+                className="text-4xl sm:text-5xl font-black text-[#E50914] mb-3"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 100+
               </div>
               <h4
-                className="text-xl sm:text-2xl font-bold text-gray-900 mb-2"
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-2"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 Projects
@@ -238,13 +238,13 @@ export default function AboutCompany() {
             {/* Stat 2 */}
             <div className="text-center">
               <div
-                className="text-5xl sm:text-6xl font-black text-[#E50914] mb-3"
+                className="text-4xl sm:text-5xl font-black text-[#E50914] mb-3"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 1000+
               </div>
               <h4
-                className="text-xl sm:text-2xl font-bold text-gray-900 mb-2"
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-2"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 Clients
@@ -260,13 +260,13 @@ export default function AboutCompany() {
             {/* Stat 3 */}
             <div className="text-center">
               <div
-                className="text-5xl sm:text-6xl font-black text-[#E50914] mb-3"
+                className="text-4xl sm:text-5xl font-black text-[#E50914] mb-3"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 24/7
               </div>
               <h4
-                className="text-xl sm:text-2xl font-bold text-gray-900 mb-2"
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-2"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 Support

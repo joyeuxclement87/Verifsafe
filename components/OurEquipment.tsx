@@ -5,32 +5,32 @@ import Image from 'next/image';
 export default function OurEquipment() {
   const equipment = [
     {
-      image: 'https://images.unsplash.com/photo-1633356715461-ef5166ab0fed?w=500&h=500&fit=crop',
+      image: '/equipment-1.svg',
       title: 'Fire Extinguishers',
       description: 'Portable firefighting equipment which helps control small fires.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500&h=500&fit=crop',
+      image: '/equipment-2.svg',
       title: 'Fire Alarm Systems',
       description: 'Detection systems which alert occupants during emergencies.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=500&fit=crop',
+      image: '/equipment-3.svg',
       title: 'Fire Hose Reels',
       description: 'Equipment which provides water supply for firefighting.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1578926314433-93b2f5e5a18d?w=500&h=500&fit=crop',
+      image: '/equipment-4.svg',
       title: 'Fire Detection Devices',
       description: 'Smoke and heat detectors which identify fire risks early.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1621905167918-48416bd8575a?w=500&h=500&fit=crop',
+      image: '/equipment-5.svg',
       title: 'Emergency Lights & Exit Signs',
       description: 'Lighting systems which guide people to safety.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1581092161562-40038fbbb237?w=500&h=500&fit=crop',
+      image: '/equipment-6.svg',
       title: 'Fire Safety Accessories',
       description: 'Additional safety equipment which supports fire protection.'
     }
@@ -52,7 +52,7 @@ export default function OurEquipment() {
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             What We <span className="text-[#E50914]">Provide</span>
@@ -86,7 +86,7 @@ export default function OurEquipment() {
 
               {/* Title */}
               <h3
-                className="text-xl sm:text-2xl font-bold text-gray-900 mb-3"
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 {item.title}
@@ -109,7 +109,7 @@ export default function OurEquipment() {
         {/* CTA Section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 border-t border-gray-200">
           <button
-            className="px-8 py-4 bg-[#E50914] text-white font-bold rounded-lg text-lg transition-all duration-300 hover:bg-red-700 active:scale-95 shadow-md hover:shadow-lg inline-flex items-center gap-2 group"
+            className="px-8 py-4 bg-[#E50914] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 active:scale-95 shadow-md hover:shadow-lg inline-flex items-center gap-2 group"
             style={{ fontFamily: 'Noto Sans, sans-serif' }}
           >
             View All Equipment

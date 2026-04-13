@@ -6,9 +6,9 @@ export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=900&fit=crop',
-    'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1600&h=900&fit=crop',
-    'https://images.unsplash.com/photo-1584622181563-430f63602d4b?w=1600&h=900&fit=crop',
+    '/hero-1.webp',
+    '/hero-2.webp',
+    '/hero-3.webp',
   ];
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function HeroSection() {
         
         {/* Main Headline */}
         <h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight uppercase tracking-wider"
+          className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight uppercase tracking-wider"
           style={{ fontFamily: 'Oswald, sans-serif' }}
         >
           Rwanda&apos;s Leading{' '}
@@ -55,7 +55,7 @@ export default function HeroSection() {
 
         {/* Subheadline */}
         <p
-          className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-10 sm:mb-12 max-w-2xl leading-relaxed font-normal"
+          className="text-base sm:text-lg lg:text-xl text-gray-100 mb-10 sm:mb-12 max-w-2xl leading-relaxed font-normal"
           style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
         >
           Supplying, installing, and maintaining reliable fire safety equipment for homes and businesses.
@@ -65,16 +65,16 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
           {/* Primary Button */}
           <button
-            className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-[#E50914] text-white font-bold text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-[#E50914] text-white font-medium text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg"
+            style={{ fontFamily: 'Noto Sans, sans-serif' }}
           >
             Get a Quote
           </button>
 
           {/* Secondary Button */}
           <button
-            className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border-2 border-white text-white font-bold text-lg transition-all duration-300 hover:bg-white hover:text-[#E50914] active:scale-95 rounded-lg"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border-2 border-white text-white font-medium text-lg transition-all duration-300 hover:bg-white hover:text-[#E50914] active:scale-95 rounded-lg"
+            style={{ fontFamily: 'Noto Sans, sans-serif' }}
           >
             Explore Equipment
           </button>

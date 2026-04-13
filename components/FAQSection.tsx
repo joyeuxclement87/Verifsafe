@@ -50,7 +50,7 @@ export default function FAQSection() {
             Common Questions
           </p>
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Frequently Asked{' '}

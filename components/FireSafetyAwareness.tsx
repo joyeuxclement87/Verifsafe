@@ -17,7 +17,7 @@ export default function FireSafetyAwareness() {
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Why Fire <span className="text-[#E50914]">Protection</span> Matters
@@ -116,8 +116,8 @@ export default function FireSafetyAwareness() {
         {/* Bottom CTA */}
         <div className="mt-16 sm:mt-20 flex flex-col sm:flex-row items-center justify-center gap-6 pt-12 border-t border-gray-200">
           <button
-            className="px-8 py-4 bg-[#E50914] text-white font-bold rounded-lg text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center gap-2 group"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            className="px-8 py-4 bg-[#E50914] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center gap-2 group"
+            style={{ fontFamily: 'Noto Sans, sans-serif' }}
           >
             Get Fire Safety Consultation
             <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

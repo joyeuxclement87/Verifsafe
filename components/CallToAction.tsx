@@ -18,7 +18,7 @@ export default function CallToAction() {
 
             {/* Main Heading */}
             <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               Take the <span className="text-[#FFC107]">Next Step</span>
@@ -73,7 +73,7 @@ export default function CallToAction() {
 
             {/* Heading */}
             <h3
-              className="text-2xl sm:text-3xl font-black text-white mb-4"
+              className="text-xl sm:text-2xl font-black text-white mb-4"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               Get Your Fire Safety Consultation
@@ -89,8 +89,8 @@ export default function CallToAction() {
 
             {/* CTA Button */}
             <button
-              className="w-full px-8 py-4 bg-white text-[#E50914] font-bold text-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group rounded-lg"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              className="w-full px-8 py-4 bg-white text-[#E50914] font-medium text-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group rounded-lg"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               Request Consultation
               <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ export default function CallToAction() {
               { number: '24/7', label: 'Always Ready', desc: 'Emergency support available anytime' }
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <p className="text-3xl font-black text-[#FFC107] mb-2" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                <p className="text-2xl font-black text-[#FFC107] mb-2" style={{ fontFamily: 'Oswald, sans-serif' }}>
                   {stat.number}
                 </p>
                 <h4 className="text-white font-bold mb-1" style={{ fontFamily: 'Oswald, sans-serif' }}>

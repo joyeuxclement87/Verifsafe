@@ -49,7 +49,7 @@ export default function Contact() {
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             When You Need <span className="text-[#E50914]">Fire Protection</span>
@@ -77,7 +77,7 @@ export default function Contact() {
                   <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E50914] transition-colors duration-300">
                     <FontAwesomeIcon
                       icon={faPhone}
-                      className="w-6 h-6 text-[#E50914] group-hover:text-white transition-colors duration-300"
+                      className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300"
                     />
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export default function Contact() {
                   <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E50914] transition-colors duration-300">
                     <FontAwesomeIcon
                       icon={faEnvelope}
-                      className="w-6 h-6 text-[#E50914] group-hover:text-white transition-colors duration-300"
+                      className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300"
                     />
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export default function Contact() {
                   <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E50914] transition-colors duration-300">
                     <FontAwesomeIcon
                       icon={faMapMarkerAlt}
-                      className="w-6 h-6 text-[#E50914] group-hover:text-white transition-colors duration-300"
+                      className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300"
                     />
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-base font-bold text-gray-900 mb-3"
+                  className="block text-sm font-semibold text-gray-800 mb-2"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 >
                   Name
@@ -180,7 +180,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 focus:border-[#E50914] focus:ring-2 focus:ring-red-100 outline-none transition-all duration-300"
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   placeholder="Your full name"
                 />
@@ -190,7 +190,7 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-base font-bold text-gray-900 mb-3"
+                  className="block text-sm font-semibold text-gray-800 mb-2"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 >
                   Email
@@ -202,7 +202,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 focus:border-[#E50914] focus:ring-2 focus:ring-red-100 outline-none transition-all duration-300"
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   placeholder="your@email.com"
                 />
@@ -212,7 +212,7 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="phone"
-                  className="block text-base font-bold text-gray-900 mb-3"
+                  className="block text-sm font-semibold text-gray-800 mb-2"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 >
                   Phone
@@ -223,7 +223,7 @@ export default function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 focus:border-[#E50914] focus:ring-2 focus:ring-red-100 outline-none transition-all duration-300"
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   placeholder="+250 xxx xxx xxx"
                 />
@@ -233,7 +233,7 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-base font-bold text-gray-900 mb-3"
+                  className="block text-sm font-semibold text-gray-800 mb-2"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 >
                   Message
@@ -245,7 +245,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 focus:border-[#E50914] focus:ring-2 focus:ring-red-100 outline-none transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   placeholder="Tell us about your fire safety needs..."
                 />
@@ -254,8 +254,8 @@ export default function Contact() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-[#E50914] text-white font-bold rounded-lg text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group"
-                style={{ fontFamily: 'Oswald, sans-serif' }}
+                className="w-full px-8 py-4 bg-[#E50914] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
                 Request a Quote
                 <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -270,7 +270,7 @@ export default function Contact() {
                     className="text-green-800 font-semibold text-center"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
-                    ✓ Thank you! We'll be in touch shortly.
+                    ✓ Thank you! We Will be in touch shortly.
                   </p>
                 </div>
               )}

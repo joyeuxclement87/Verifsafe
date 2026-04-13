@@ -44,7 +44,7 @@ export default function WhyChooseUs() {
             Our Advantages
           </p>
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 text-center mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 text-center mb-6 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Why Choose{' '}
@@ -96,7 +96,7 @@ export default function WhyChooseUs() {
         <div className="mt-16 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center p-8 border-2 border-gray-100 rounded-lg hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300">
             <div
-              className="text-4xl sm:text-5xl font-black text-[#E50914] mb-2"
+              className="text-3xl sm:text-4xl font-black text-[#E50914] mb-2"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               100+
@@ -110,7 +110,7 @@ export default function WhyChooseUs() {
           </div>
           <div className="text-center p-8 border-2 border-gray-100 rounded-lg hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300">
             <div
-              className="text-4xl sm:text-5xl font-black text-[#E50914] mb-2"
+              className="text-3xl sm:text-4xl font-black text-[#E50914] mb-2"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               10+
@@ -124,7 +124,7 @@ export default function WhyChooseUs() {
           </div>
           <div className="text-center p-8 border-2 border-gray-100 rounded-lg hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300">
             <div
-              className="text-4xl sm:text-5xl font-black text-[#E50914] mb-2"
+              className="text-3xl sm:text-4xl font-black text-[#E50914] mb-2"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               1000+

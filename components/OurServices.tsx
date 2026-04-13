@@ -5,27 +5,27 @@ import Image from 'next/image';
 export default function OurServices() {
   const services = [
     {
-      image: 'https://images.unsplash.com/photo-1578926314433-93b2f5e5a18d?w=500&h=500&fit=crop',
+      image: '/service-1.svg',
       title: 'Fire Equipment Supply',
       description: 'Providing certified fire safety equipment for reliable protection.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500&h=500&fit=crop',
+      image: '/service-2.svg',
       title: 'Installation Services',
       description: 'Professional installation of fire safety systems and equipment.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=500&fit=crop',
+      image: '/service-3.svg',
       title: 'Inspection & Testing',
       description: 'Ensuring fire protection equipment works properly and safely.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1633356715461-ef5166ab0fed?w=500&h=500&fit=crop',
+      image: '/service-4.svg',
       title: 'Fire Extinguisher Refilling',
       description: 'Refilling and servicing extinguishers to keep them ready for use.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1581092161562-40038fbbb237?w=500&h=500&fit=crop',
+      image: '/service-5.svg',
       title: 'Maintenance Services',
       description: 'Regular maintenance to keep fire protection systems reliable.'
     }
@@ -47,7 +47,7 @@ export default function OurServices() {
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             What We <span className="text-[#E50914]">Do</span>
