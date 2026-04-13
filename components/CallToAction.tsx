@@ -2,7 +2,7 @@
 
 export default function CallToAction() {
   return (
-    <section className="w-full bg-gray-900 py-20 sm:py-24 lg:py-32">
+    <section id="cta" className="w-full bg-gray-900 py-20 sm:py-24 lg:py-32">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           

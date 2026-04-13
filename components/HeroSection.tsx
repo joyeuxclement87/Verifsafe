@@ -19,7 +19,7 @@ export default function HeroSection() {
   }, [slides.length]);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image Slideshow */}
       {slides.map((slide, index) => (
         <div

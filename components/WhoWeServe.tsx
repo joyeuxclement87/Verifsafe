@@ -14,7 +14,7 @@ export default function WhoWeServe() {
   ];
 
   return (
-    <section className="w-full bg-gray-50 py-20 sm:py-24 lg:py-32">
+    <section id="who-we-serve" className="w-full bg-gray-50 py-20 sm:py-24 lg:py-32">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

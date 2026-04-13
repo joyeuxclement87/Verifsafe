@@ -29,7 +29,7 @@ export default function AboutCompany() {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-br from-red-900 via-red-800 to-red-900 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section id="about-company" className="w-full bg-gradient-to-b from-red-900 via-red-800 to-red-900 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

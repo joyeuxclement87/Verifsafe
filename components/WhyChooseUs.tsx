@@ -32,7 +32,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32">
+    <section id="why-choose-us" className="relative w-full bg-white py-20 sm:py-24 lg:py-32">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

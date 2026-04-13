@@ -37,7 +37,7 @@ export default function OurServices() {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-br from-gray-50 via-white to-red-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section id="our-services" className="w-full bg-gradient-to-br from-gray-50 via-red-50 to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
