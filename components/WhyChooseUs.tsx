@@ -1,0 +1,143 @@
+'use client';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faShieldAlt, faClock, faAward } from '@fortawesome/free-solid-svg-icons';
+
+export default function WhyChooseUs() {
+  const features = [
+    {
+      icon: faAward,
+      title: 'Certified Equipment',
+      description: 'Premium, internationally certified fire safety equipment',
+      number: '01'
+    },
+    {
+      icon: faShieldAlt,
+      title: 'Expert Installation',
+      description: 'Professional technicians with years of experience',
+      number: '02'
+    },
+    {
+      icon: faClock,
+      title: '24/7 Support',
+      description: 'Round-the-clock maintenance and emergency services',
+      number: '03'
+    },
+    {
+      icon: faCheckCircle,
+      title: 'Quality Assured',
+      description: 'Regular inspections and compliance verification',
+      number: '04'
+    }
+  ];
+
+  return (
+    <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col items-center mb-16 sm:mb-20">
+          <p
+            className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase mb-4"
+            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+          >
+            Our Advantages
+          </p>
+          <h2
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 text-center mb-6 leading-tight"
+            style={{ fontFamily: 'Oswald, sans-serif' }}
+          >
+            Why Choose{' '}
+            <span className="text-[#E50914]">Verifisafe</span>
+          </h2>
+          <p
+            className="text-center text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed font-normal"
+            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+          >
+            We combine cutting-edge technology with professional expertise to deliver the best fire protection solutions.
+          </p>
+        </div>
+
+        {/* Features Grid - Modern Card Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="relative group bg-white border-2 border-gray-100 rounded-lg p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              {/* Icon Container */}
+              <div className="w-16 h-16 bg-gradient-to-br from-[#E50914] to-red-700 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <FontAwesomeIcon icon={feature.icon} className="w-8 h-8 text-white" />
+              </div>
+
+              {/* Feature Title */}
+              <h3
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3"
+                style={{ fontFamily: 'Oswald, sans-serif' }}
+              >
+                {feature.title}
+              </h3>
+
+              {/* Feature Description */}
+              <p
+                className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal"
+                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+              >
+                {feature.description}
+              </p>
+
+              {/* Bottom Accent Line */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </div>
+          ))}
+        </div>
+
+        {/* Stats Section */}
+        <div className="mt-16 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center p-8 border-2 border-gray-100 rounded-lg hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <div
+              className="text-4xl sm:text-5xl font-black text-[#E50914] mb-2"
+              style={{ fontFamily: 'Oswald, sans-serif' }}
+            >
+              100+
+            </div>
+            <p
+              className="text-gray-700 font-normal"
+              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+            >
+              Installations Completed
+            </p>
+          </div>
+          <div className="text-center p-8 border-2 border-gray-100 rounded-lg hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <div
+              className="text-4xl sm:text-5xl font-black text-[#E50914] mb-2"
+              style={{ fontFamily: 'Oswald, sans-serif' }}
+            >
+              10+
+            </div>
+            <p
+              className="text-gray-700 font-normal"
+              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+            >
+              Years Experience
+            </p>
+          </div>
+          <div className="text-center p-8 border-2 border-gray-100 rounded-lg hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <div
+              className="text-4xl sm:text-5xl font-black text-[#E50914] mb-2"
+              style={{ fontFamily: 'Oswald, sans-serif' }}
+            >
+              1000+
+            </div>
+            <p
+              className="text-gray-700 font-normal"
+              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+            >
+              Satisfied Clients
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
