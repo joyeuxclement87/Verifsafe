@@ -159,8 +159,8 @@ export default function AboutCompany() {
 
             {/* Call to Action Button */}
             <button
-              className="w-fit px-8 py-4 bg-white text-red-600 font-semibold transition-all duration-300 hover:bg-yellow-400 hover:text-red-700 hover:shadow-lg hover:scale-110 active:scale-95 shadow-md rounded-lg inline-flex items-center gap-2 group"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              className="w-fit px-8 py-4 bg-white text-red-600 font-semibold transition-all duration-300 hover:bg-yellow-400 hover:text-red-700 hover:shadow-lg hover:scale-110 active:scale-95 shadow-md rounded-lg inline-flex items-center gap-2 group border border-white"
+              style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
             >
               Get Started Today
               <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,13 +191,14 @@ export default function AboutCompany() {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="group relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 sm:p-10 hover:bg-white/20 hover:border-yellow-400/50 hover:shadow-2xl hover:scale-110 transition-all duration-500 cursor-pointer"
+                className="group relative bg-white/10 backdrop-blur-sm border border-white/30 rounded-xl p-8 sm:p-10 hover:bg-white/20 hover:border-yellow-400/50 hover:shadow-2xl hover:scale-110 transition-all duration-500 cursor-pointer"
+                style={{ borderWidth: '1px', opacity: 0.9 }}
               >
                 <div className="mb-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="w-14 h-14 bg-gradient-to-br from-yellow-400/30 to-yellow-500/30 rounded-lg flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-yellow-400 group-hover:to-yellow-500 transition-all duration-300 shadow-lg transform group-hover:scale-110">
                     <FontAwesomeIcon
                       icon={value.icon}
-                      className="w-8 h-8 text-red-600"
+                      className="w-8 h-8 text-yellow-400 group-hover:text-red-600 transition-colors duration-300"
                     />
                   </div>
                 </div>

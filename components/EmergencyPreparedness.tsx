@@ -1,0 +1,94 @@
+'use client';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationTriangle, faFireExtinguisher, faShoppingCart, faClipboardList } from '@fortawesome/free-solid-svg-icons';
+
+export default function EmergencyPreparedness() {
+  const preparednessItems = [
+    {
+      icon: faExclamationTriangle,
+      title: 'Fire Risk',
+      description: 'Identify hidden structural and electrical vulnerabilities before they ignite.'
+    },
+    {
+      icon: faFireExtinguisher,
+      title: 'Response Time',
+      description: 'Seconds save lives. Our automated systems react instantly to suppress threats.'
+    },
+    {
+      icon: faShoppingCart,
+      title: 'Property Protection',
+      description: 'Protect your capital investment with targeted gaseous suppression systems.'
+    },
+    {
+      icon: faClipboardList,
+      title: 'Safety Compliance',
+      description: 'Stay current with NFPA, OSHA, and local fire authority regulations.'
+    }
+  ];
+
+  return (
+    <section id="emergency-preparedness" className="w-full bg-gradient-to-b from-gray-50 to-white py-20 sm:py-24 lg:py-32">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header */}
+        <div className="text-center mb-16 sm:mb-20">
+          {/* Main Heading */}
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-4 leading-tight"
+            style={{ fontFamily: 'Oswald, sans-serif' }}
+          >
+            Are You Prepared for a{' '}
+            <span className="text-[#E50914]">Fire Emergency</span>?
+          </h2>
+
+          {/* Warning Statistic */}
+          <p
+            className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto font-normal leading-relaxed mt-6"
+            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+          >
+            Statistics show that <span className="font-bold text-[#E50914]">40% of businesses never reopen</span> after a major fire. Don&apos;t let yours be one of them.
+          </p>
+        </div>
+
+        {/* Preparedness Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {preparednessItems.map((item, index) => (
+            <div
+              key={index}
+              className="group relative bg-white border border-gray-300 rounded-lg p-8 sm:p-8 hover:border-[#E50914] hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center text-center"
+              style={{ borderWidth: '1px', opacity: 0.9 }}
+            >
+              {/* Icon Container */}
+              <div className="w-16 h-16 bg-gradient-to-br from-[#E50914]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#E50914] group-hover:to-red-600 transition-all duration-300">
+                <FontAwesomeIcon 
+                  icon={item.icon} 
+                  className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300" 
+                />
+              </div>
+
+              {/* Title */}
+              <h3
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3"
+                style={{ fontFamily: 'Oswald, sans-serif' }}
+              >
+                {item.title}
+              </h3>
+
+              {/* Description */}
+              <p
+                className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal"
+                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+              >
+                {item.description}
+              </p>
+
+              {/* Bottom Accent Line */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

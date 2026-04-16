@@ -69,7 +69,8 @@ export default function FAQSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-gray-50 border rounded-lg border-gray-200 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300"
+              className="bg-gray-50 border border-gray-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300"
+              style={{ borderWidth: '1px', opacity: 0.9 }}
             >
               <button
                 onClick={() => toggleFAQ(index)}

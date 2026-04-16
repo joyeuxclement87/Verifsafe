@@ -72,7 +72,8 @@ export default function OurEquipment() {
           {equipment.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-white border-2 border-gray-100 rounded-lg p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              className="group relative bg-white border border-gray-300 rounded-lg p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              style={{ borderWidth: '1px', opacity: 0.9 }}
             >
               {/* Image Container */}
               <div className="w-full h-48 sm:h-56 bg-gray-200 mb-6 overflow-hidden relative rounded-lg group-hover:shadow-md hover:scale-105 transition-all duration-300">
@@ -109,8 +110,8 @@ export default function OurEquipment() {
         {/* CTA Section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 border-t border-gray-200">
           <button
-            className="px-8 py-4 bg-[#E50914] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 active:scale-95 shadow-md hover:shadow-lg inline-flex items-center gap-2 group"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            className="px-8 py-4 bg-[#E50914] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 active:scale-95 shadow-md hover:shadow-lg inline-flex items-center gap-2 group border border-[#E50914]"
+            style={{ fontFamily: 'Noto Sans, sans-serif', opacity: 0.9 }}
           >
             View All Equipment
             <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -48,9 +48,9 @@ export default function HeroSection() {
           className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight uppercase tracking-wider"
           style={{ fontFamily: 'Oswald, sans-serif' }}
         >
-          Rwanda&apos;s Leading{' '}
+          Absolute{' '}
           <span className="text-yellow-400 drop-shadow-lg">Fire Protection</span>
-          {' '}Solutions
+          {' '}You Can Trust
         </h1>
 
         {/* Subheadline */}
@@ -58,25 +58,25 @@ export default function HeroSection() {
           className="text-base sm:text-lg lg:text-xl text-gray-100 mb-10 sm:mb-12 max-w-2xl leading-relaxed font-normal"
           style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
         >
-          Supplying, installing, and maintaining reliable fire safety equipment for homes and businesses.
+          Precision engineering for industrial-scale safety. We safeguard high-risk environments with state-of-the-art detection and instant suppression technology.
         </p>
 
         {/* Buttons Container */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
           {/* Primary Button */}
           <button
-            className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-[#E50914] text-white font-medium text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-[#E50914] text-white font-medium text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md rounded-lg border border-[#E50914]"
+            style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
           >
-            Get a Quote
+            Request Fire Inspection
           </button>
 
           {/* Secondary Button */}
           <button
-            className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border-2 border-white text-white font-medium text-lg transition-all duration-300 hover:bg-white hover:text-[#E50914] active:scale-95 rounded-lg"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border border-white text-white font-medium text-lg transition-all duration-300 hover:bg-white hover:text-[#E50914] active:scale-95 rounded-lg"
+            style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
           >
-            Explore Equipment
+            Explore Systems
           </button>
         </div>
 

@@ -89,8 +89,8 @@ export default function CallToAction() {
 
             {/* CTA Button */}
             <button
-              className="w-full px-8 py-4 bg-white text-[#E50914] font-medium text-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group rounded-lg"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              className="w-full px-8 py-4 bg-white text-[#E50914] font-medium text-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group rounded-lg border border-white"
+              style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
             >
               Request Consultation
               <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -84,7 +84,8 @@ export default function OurServices() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative bg-white/80 backdrop-blur-sm border-2 border-gray-200/50 rounded-xl p-6 sm:p-8 overflow-hidden hover:border-red-400 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white"
+              className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl p-6 sm:p-8 overflow-hidden hover:border-red-400 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white"
+              style={{ borderWidth: '1px', opacity: 0.9 }}
             >
               {/* Image Container */}
               <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow-md mb-6 group-hover:shadow-lg transition-all duration-300">

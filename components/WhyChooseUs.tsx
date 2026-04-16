@@ -63,11 +63,12 @@ export default function WhyChooseUs() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="relative group bg-white border-2 border-gray-100 rounded-lg p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              className="relative group bg-white border border-gray-300 rounded-lg p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              style={{ borderWidth: '1px', opacity: 0.9 }}
             >
               {/* Icon Container */}
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E50914] to-red-700 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <FontAwesomeIcon icon={feature.icon} className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-gradient-to-br from-[#E50914]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#E50914] group-hover:to-red-600 transition-all duration-300 transform group-hover:scale-110">
+                <FontAwesomeIcon icon={feature.icon} className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300" />
               </div>
 
               {/* Feature Title */}

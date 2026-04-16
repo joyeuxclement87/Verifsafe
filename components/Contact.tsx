@@ -180,8 +180,8 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
                   placeholder="Your full name"
                 />
               </div>
@@ -202,8 +202,8 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
                   placeholder="your@email.com"
                 />
               </div>
@@ -223,8 +223,8 @@ export default function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
                   placeholder="+250 xxx xxx xxx"
                 />
               </div>
@@ -245,8 +245,8 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
                   placeholder="Tell us about your fire safety needs..."
                 />
               </div>
@@ -254,8 +254,8 @@ export default function Contact() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-[#E50914] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                className="w-full px-8 py-4 bg-[#E50914] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group border border-[#E50914]"
+                style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
               >
                 Request a Quote
                 <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

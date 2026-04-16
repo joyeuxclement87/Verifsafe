@@ -1,86 +1,133 @@
 'use client';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faHotel, faWarehouse, faSchool, faHospital, faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { faBuilding, faBriefcase, faShoppingCart, faWarehouse, faHardHat, faFlag } from '@fortawesome/free-solid-svg-icons';
 
 export default function WhoWeServe() {
   const industries = [
-    { name: 'Offices', icon: faBriefcase },
-    { name: 'Hotels', icon: faHotel },
-    { name: 'Warehouses', icon: faWarehouse },
-    { name: 'Schools', icon: faSchool },
-    { name: 'Hospitals', icon: faHospital },
-    { name: 'Residential buildings', icon: faBuilding }
+    { name: 'Residential Buildings', icon: faBuilding },
+    { name: 'Commercial Properties', icon: faShoppingCart },
+    { name: 'Offices & Workspaces', icon: faBriefcase },
+    { name: 'Warehouses & Industrial Sites', icon: faWarehouse },
+    { name: 'Construction Projects', icon: faHardHat },
+    { name: 'Government', icon: faFlag }
   ];
 
   return (
-    <section id="who-we-serve" className="w-full bg-gray-50 py-20 sm:py-24 lg:py-32">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="who-we-serve" className="w-full bg-gradient-to-b from-gray-100 via-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-20 right-0 w-96 h-96 bg-red-100/20 rounded-full blur-3xl opacity-30" />
+      <div className="absolute bottom-0 left-20 w-56 h-56 bg-yellow-100/20 rounded-full blur-3xl opacity-20" />
+
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16 sm:mb-20">
-          {/* Section Label */}
-          <p
-            className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase mb-4"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
-          >
-            Who We Serve
-          </p>
+        <div className="mb-16 sm:mb-20">
+          {/* Section Badge */}
+          <div className="inline-block mb-4">
+            <p
+              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            >
+              ✓ Our Coverage
+            </p>
+          </div>
 
           {/* Main Heading */}
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
-            Industries We <span className="text-[#E50914]">Protect</span>
+            Who We <span className="text-[#E50914]">Serve</span>
           </h2>
+
+          {/* Subheading */}
+          <p
+            className="text-xl sm:text-2xl text-gray-700 font-bold mb-6 leading-snug"
+            style={{ fontFamily: 'Oswald, sans-serif' }}
+          >
+            Solutions for Every Environment
+          </p>
+
+          {/* Description */}
+          <p
+            className="text-lg text-gray-600 max-w-3xl leading-relaxed font-normal"
+            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+          >
+            We work with a wide range of clients, delivering tailored fire safety solutions for different needs.
+          </p>
         </div>
 
-        {/* Industries Grid - 3 Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
+        {/* Industries Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="group relative bg-white border-2 border-gray-100 rounded-lg p-6 hover:border-[#E50914] hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="group relative"
             >
-              {/* Horizontal Card Layout */}
-              <div className="flex items-center gap-4">
+              {/* Card */}
+              <div
+                className="bg-white border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl transition-all duration-300 h-full relative overflow-hidden"
+                style={{ borderWidth: '1px', opacity: 0.95 }}
+              >
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E50914] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
                 {/* Icon Container */}
-                <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#E50914] to-red-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <FontAwesomeIcon
-                    icon={industry.icon}
-                    className="w-6 h-6 text-white"
-                  />
+                <div className="mb-6">
+                  <div className="relative inline-block">
+                    <div className="absolute -inset-3 bg-gradient-to-br from-[#E50914]/20 to-red-600/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300" />
+                    <div className="relative bg-gradient-to-br from-[#E50914]/10 to-red-600/10 p-4 rounded-xl group-hover:from-[#E50914]/20 group-hover:to-red-600/20 transition-all duration-300">
+                      <FontAwesomeIcon
+                        icon={industry.icon}
+                        className="w-7 h-7 text-[#E50914] group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1 text-left">
-                  {/* Industry Name */}
-                  <h3
-                    className="text-sm sm:text-base font-bold text-gray-900"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                  >
-                    {industry.name}
-                  </h3>
-                </div>
+                {/* Industry Name */}
+                <h3
+                  className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-[#E50914] transition-colors duration-300 leading-snug"
+                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                >
+                  {industry.name}
+                </h3>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
-
-              {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>
 
-        {/* Bottom Accent */}
-        <div className="flex items-center justify-center gap-3 pt-12 border-t border-gray-200">
-          <div className="flex-1 h-1 bg-gradient-to-r from-transparent to-[#E50914]" />
-          <p
-            className="text-gray-700 text-sm sm:text-base font-semibold whitespace-nowrap px-4"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+        {/* Closing Statement */}
+        <div className="relative">
+          {/* Background card */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#E50914]/5 to-red-600/5 rounded-2xl" />
+          
+          <div className="relative bg-white border border-gray-200 rounded-2xl p-8 sm:p-12 text-center hover:border-[#E50914] hover:shadow-xl transition-all duration-300"
+            style={{ borderWidth: '1px', opacity: 0.95 }}
           >
-            Safety for Every Sector
-          </p>
-          <div className="flex-1 h-1 bg-gradient-to-l from-transparent to-[#E50914]" />
+            <p
+              className="text-xl sm:text-2xl font-bold text-gray-900"
+              style={{ fontFamily: 'Oswald, sans-serif' }}
+            >
+              No matter the size or type of your space, we ensure the <span className="text-[#E50914]">right level of protection</span>.
+            </p>
+            
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                className="px-8 py-3 bg-[#E50914] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md inline-flex items-center gap-2 group border border-[#E50914]"
+                style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
+              >
+                Get Your Solution
+                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
