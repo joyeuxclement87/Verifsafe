@@ -34,22 +34,29 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="w-full bg-white py-20 sm:py-24 lg:py-32">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="w-full bg-gradient-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16 sm:mb-20">
+        <div className="text-center mb-20">
           {/* Section Label */}
-          <p
-            className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase mb-4"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
-          >
-            Get in touch
-          </p>
+          <div className="inline-block mb-4">
+            <p
+              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            >
+              <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
+              Get in Touch
+            </p>
+          </div>
 
           {/* Main Heading */}
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             When You Need <span className="text-[#E50914]">Fire Protection</span>
@@ -57,7 +64,7 @@ export default function Contact() {
 
           {/* Subheading */}
           <p
-            className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal"
+            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
             Our team is ready to help with fire safety equipment and protection solutions for your property or business.

@@ -1,7 +1,7 @@
 'use client';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClipboardList, faPencilRuler, faHammer, faFlask, faWrench } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardList, faPencilRuler, faHammer, faFlask, faWrench, faTasks } from '@fortawesome/free-solid-svg-icons';
 
 export default function DeploymentWorkflow() {
   const steps = [
@@ -50,10 +50,11 @@ export default function DeploymentWorkflow() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full"
+              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              ✓ Our Process
+              <FontAwesomeIcon icon={faTasks} className="w-4 h-4" />
+              Our Process
             </p>
           </div>
 
@@ -92,9 +93,9 @@ export default function DeploymentWorkflow() {
                 <div key={index} className="flex flex-col items-center lg:items-center relative group">
                   {/* Step Circle */}
                   <div className="relative mb-4 z-20">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-[#E50914] to-red-600 rounded-full blur opacity-0 group-hover:opacity-75 transition duration-500" />
+
                     <div
-                      className="relative w-16 h-16 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center group-hover:border-[#E50914] group-hover:shadow-lg group-hover:scale-110 transition-all duration-300"
+                      className="relative w-16 h-16 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center group-hover:border-[#E50914] group-hover:shadow-lg transition-all duration-300"
                       style={{ borderWidth: '2px' }}
                     >
                       <span
@@ -118,11 +119,10 @@ export default function DeploymentWorkflow() {
                       {/* Icon */}
                       <div className="mb-4 flex justify-center">
                         <div className="relative">
-                          <div className="absolute -inset-2 bg-gradient-to-br from-[#E50914]/20 to-red-600/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-300" />
                           <div className="relative bg-gradient-to-br from-[#E50914]/10 to-red-600/10 p-3 rounded-lg group-hover:from-[#E50914]/20 group-hover:to-red-600/20 transition-all duration-300">
                             <FontAwesomeIcon
                               icon={step.icon}
-                              className="w-6 h-6 text-[#E50914] group-hover:scale-110 transition-transform duration-300"
+                              className="w-6 h-6 text-[#E50914] transition-colors duration-300"
                             />
                           </div>
                         </div>

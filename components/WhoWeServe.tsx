@@ -1,7 +1,7 @@
 'use client';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBuilding, faBriefcase, faShoppingCart, faWarehouse, faHardHat, faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faBuilding, faBriefcase, faShoppingCart, faWarehouse, faHardHat, faFlag, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 export default function WhoWeServe() {
   const industries = [
@@ -22,14 +22,15 @@ export default function WhoWeServe() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="mb-16 sm:mb-20">
-          {/* Section Badge */}
+        <div className="text-center mb-20">
+          {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full"
+              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              ✓ Our Coverage
+              <FontAwesomeIcon icon={faUsers} className="w-4 h-4" />
+              Our Coverage
             </p>
           </div>
 
@@ -43,15 +44,7 @@ export default function WhoWeServe() {
 
           {/* Subheading */}
           <p
-            className="text-xl sm:text-2xl text-gray-700 font-bold mb-6 leading-snug"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
-          >
-            Solutions for Every Environment
-          </p>
-
-          {/* Description */}
-          <p
-            className="text-lg text-gray-600 max-w-3xl leading-relaxed font-normal"
+            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
             We work with a wide range of clients, delivering tailored fire safety solutions for different needs.
@@ -76,11 +69,10 @@ export default function WhoWeServe() {
                 {/* Icon Container */}
                 <div className="mb-6">
                   <div className="relative inline-block">
-                    <div className="absolute -inset-3 bg-gradient-to-br from-[#E50914]/20 to-red-600/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300" />
                     <div className="relative bg-gradient-to-br from-[#E50914]/10 to-red-600/10 p-4 rounded-xl group-hover:from-[#E50914]/20 group-hover:to-red-600/20 transition-all duration-300">
                       <FontAwesomeIcon
                         icon={industry.icon}
-                        className="w-7 h-7 text-[#E50914] group-hover:scale-110 transition-transform duration-300"
+                        className="w-7 h-7 text-[#E50914] transition-colors duration-300"
                       />
                     </div>
                   </div>

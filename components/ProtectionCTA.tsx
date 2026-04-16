@@ -68,11 +68,10 @@ export default function ProtectionCTA() {
                 {/* Icon Container */}
                 <div className="mb-6">
                   <div className="relative inline-block">
-                    <div className="absolute -inset-3 bg-gradient-to-br from-yellow-400/30 to-orange-500/30 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-300" />
                     <div className="relative bg-gradient-to-br from-yellow-400/20 to-orange-500/20 p-4 rounded-lg group-hover:from-yellow-400/30 group-hover:to-orange-500/30 transition-all duration-300">
                       <FontAwesomeIcon
                         icon={feature.icon}
-                        className="w-7 h-7 text-yellow-400 group-hover:scale-110 transition-transform duration-300"
+                        className="w-7 h-7 text-yellow-400 transition-colors duration-300"
                       />
                     </div>
                   </div>

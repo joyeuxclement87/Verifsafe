@@ -135,7 +135,7 @@ export default function Footer() {
               <div className="flex items-start gap-3 group cursor-pointer">
                 <FontAwesomeIcon
                   icon={faPhone}
-                  className="w-5 h-5 text-[#E50914] mt-0.5 group-hover:scale-110 transition-transform"
+                  className="w-5 h-5 text-[#E50914] mt-0.5 transition-colors"
                 />
                 <div>
                   <p
@@ -158,7 +158,7 @@ export default function Footer() {
               <div className="flex items-start gap-3 group cursor-pointer">
                 <FontAwesomeIcon
                   icon={faEnvelope}
-                  className="w-5 h-5 text-[#E50914] mt-0.5 group-hover:scale-110 transition-transform"
+                  className="w-5 h-5 text-[#E50914] mt-0.5 transition-colors"
                 />
                 <div>
                   <p
@@ -181,7 +181,7 @@ export default function Footer() {
               <div className="flex items-start gap-3 group cursor-pointer">
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
-                  className="w-5 h-5 text-[#E50914] mt-0.5 group-hover:scale-110 transition-transform"
+                  className="w-5 h-5 text-[#E50914] mt-0.5 transition-colors"
                 />
                 <div>
                   <p

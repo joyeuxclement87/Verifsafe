@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCertificate, faShieldAlt, faBolt, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faCertificate, faShieldAlt, faBolt, faUsers, faBuilding } from '@fortawesome/free-solid-svg-icons';
 
 export default function AboutCompany() {
   const values = [
@@ -46,21 +46,29 @@ export default function AboutCompany() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16 sm:mb-20">
-          <p
-            className="text-yellow-300 text-sm sm:text-base font-bold tracking-widest uppercase mb-4"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
-          >
-            About Verifsafe
-          </p>
+        <div className="text-center mb-20">
+          {/* Section Label */}
+          <div className="inline-block mb-4">
+            <p
+              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            >
+              <FontAwesomeIcon icon={faBuilding} className="w-4 h-4" />
+              About Verifsafe
+            </p>
+          </div>
+
+          {/* Main Heading */}
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Who <span className="text-yellow-300">We Are</span>
           </h2>
+
+          {/* Subheading */}
           <p
-            className="text-lg sm:text-xl text-red-100 max-w-3xl mx-auto leading-relaxed font-normal"
+            className="text-lg sm:text-xl text-red-100 max-w-2xl mx-auto font-normal leading-relaxed"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
             Rwanda&apos;s leading fire protection company providing premium equipment, professional installation, and comprehensive maintenance services.
@@ -195,7 +203,7 @@ export default function AboutCompany() {
                 style={{ borderWidth: '1px', opacity: 0.9 }}
               >
                 <div className="mb-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-yellow-400/30 to-yellow-500/30 rounded-lg flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-yellow-400 group-hover:to-yellow-500 transition-all duration-300 shadow-lg transform group-hover:scale-110">
+                  <div className="w-14 h-14 bg-gradient-to-br from-yellow-400/30 to-yellow-500/30 rounded-lg flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-yellow-400 group-hover:to-yellow-500 transition-all duration-300 shadow-lg">
                     <FontAwesomeIcon
                       icon={value.icon}
                       className="w-8 h-8 text-yellow-400 group-hover:text-red-600 transition-colors duration-300"

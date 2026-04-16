@@ -1,7 +1,7 @@
 'use client';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFire, faFireExtinguisher, faBolt, faPersonWalking } from '@fortawesome/free-solid-svg-icons';
+import { faFire, faFireExtinguisher, faBolt, faPersonWalking, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
 export default function FireSafetyTraining() {
   const trainingPoints = [
@@ -36,14 +36,15 @@ export default function FireSafetyTraining() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="mb-16 sm:mb-20">
-          {/* Section Badge */}
+        <div className="text-center mb-20">
+          {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full"
+              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              ✓ Education & Training
+              <FontAwesomeIcon icon={faGraduationCap} className="w-4 h-4" />
+              Education & Training
             </p>
           </div>
 
@@ -55,17 +56,9 @@ export default function FireSafetyTraining() {
             Fire Safety <span className="text-[#E50914]">Training</span>
           </h2>
 
-          {/* Tagline */}
+          {/* Subheading */}
           <p
-            className="text-2xl sm:text-3xl text-gray-700 font-bold mb-8 leading-snug"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
-          >
-            Train Today. Act Right Tomorrow.
-          </p>
-
-          {/* Description */}
-          <p
-            className="text-lg text-gray-600 max-w-3xl leading-relaxed font-normal"
+            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
             Our fire safety training programs equip individuals and teams with the knowledge and confidence to respond effectively during emergencies.
@@ -90,11 +83,10 @@ export default function FireSafetyTraining() {
                 {/* Icon Container */}
                 <div className="mb-4">
                   <div className="relative inline-block">
-                    <div className="absolute -inset-2 bg-gradient-to-br from-[#E50914]/20 to-red-600/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-300" />
                     <div className="relative bg-gradient-to-br from-[#E50914]/10 to-red-600/10 p-3 rounded-lg group-hover:from-[#E50914]/20 group-hover:to-red-600/20 transition-all duration-300">
                       <FontAwesomeIcon
                         icon={point.icon}
-                        className="w-6 h-6 text-[#E50914] group-hover:scale-110 transition-transform duration-300"
+                        className="w-6 h-6 text-[#E50914] transition-colors duration-300"
                       />
                     </div>
                   </div>

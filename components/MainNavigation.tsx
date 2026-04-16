@@ -11,7 +11,7 @@ export default function MainNavigation() {
   const navLinks = [
     { href: '#home', label: 'HOME', id: 'home' },
     { href: '#our-services', label: 'SERVICES', id: 'our-services' },
-    { href: '#about-company', label: 'ABOUT', id: 'about-company' },
+    { href: '/about', label: 'ABOUT', id: 'about-company' },
     { href: '#our-equipment', label: 'EQUIPMENT', id: 'our-equipment' },
     { href: '#contact', label: 'CONTACT', id: 'contact' },
   ];
@@ -82,19 +82,34 @@ export default function MainNavigation() {
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`font-bold text-sm tracking-wide transition-all duration-300 pb-2 border-b-2 ${
-                  activeSection === link.id
-                    ? 'text-[#E50914] border-[#E50914]'
-                    : 'text-gray-800 border-transparent hover:text-[#E50914] hover:border-[#E50914]'
-                }`}
-                style={{ fontFamily: 'Oswald, sans-serif' }}
-              >
-                {link.label}
-              </a>
+              link.href.startsWith('/') ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`font-bold text-sm tracking-wide transition-all duration-300 pb-2 border-b-2 ${
+                    activeSection === link.id
+                      ? 'text-[#E50914] border-[#E50914]'
+                      : 'text-gray-800 border-transparent hover:text-[#E50914] hover:border-[#E50914]'
+                  }`}
+                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`font-bold text-sm tracking-wide transition-all duration-300 pb-2 border-b-2 ${
+                    activeSection === link.id
+                      ? 'text-[#E50914] border-[#E50914]'
+                      : 'text-gray-800 border-transparent hover:text-[#E50914] hover:border-[#E50914]'
+                  }`}
+                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </div>
 
@@ -139,19 +154,35 @@ export default function MainNavigation() {
           <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-md">
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-2">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`block px-4 py-3 font-bold text-sm transition-all duration-300 rounded-md ${
-                    activeSection === link.id
-                      ? 'bg-[#E50914]/20 text-[#E50914]'
-                      : 'text-gray-800 hover:bg-red-50 hover:text-[#E50914]'
-                  }`}
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                >
-                  {link.label}
-                </a>
+                link.href.startsWith('/') ? (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`block px-4 py-3 font-bold text-sm transition-all duration-300 rounded-md ${
+                      activeSection === link.id
+                        ? 'bg-[#E50914]/20 text-[#E50914]'
+                        : 'text-gray-800 hover:bg-red-50 hover:text-[#E50914]'
+                    }`}
+                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`block px-4 py-3 font-bold text-sm transition-all duration-300 rounded-md ${
+                      activeSection === link.id
+                        ? 'bg-[#E50914]/20 text-[#E50914]'
+                        : 'text-gray-800 hover:bg-red-50 hover:text-[#E50914]'
+                    }`}
+                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
               <button
                 onClick={() => {

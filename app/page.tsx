@@ -8,7 +8,6 @@ import OurServices from '@/components/OurServices';
 import FireSafetyTraining from '@/components/FireSafetyTraining';
 import DeploymentWorkflow from '@/components/DeploymentWorkflow';
 import WhoWeServe from '@/components/WhoWeServe';
-import CallToAction from '@/components/CallToAction';
 import FAQSection from '@/components/FAQSection';
 import ProtectionCTA from '@/components/ProtectionCTA';
 import Contact from '@/components/Contact';
@@ -27,7 +26,6 @@ export default function Home() {
       <FireSafetyTraining />
       <DeploymentWorkflow />
       <WhoWeServe />
-      <CallToAction />
       <FAQSection />
       <ProtectionCTA />
       <Contact />

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function FAQSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -39,26 +39,38 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="w-full py-16 sm:py-20 lg:py-24 bg-white">
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="w-full py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <p
-            className="text-sm sm:text-base font-bold text-[#E50914] uppercase tracking-widest mb-4"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
-          >
-            Common Questions
-          </p>
+        <div className="text-center mb-20">
+          {/* Section Label */}
+          <div className="inline-block mb-4">
+            <p
+              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            >
+              <FontAwesomeIcon icon={faQuestionCircle} className="w-4 h-4" />
+              Common Questions
+            </p>
+          </div>
+
+          {/* Main Heading */}
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Frequently Asked{' '}
             <span className="text-[#E50914]">Questions</span>
           </h2>
+
+          {/* Subheading */}
           <p
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
+            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
             Find answers to common questions about our fire protection services and products.
           </p>
@@ -69,30 +81,33 @@ export default function FAQSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-gray-50 border border-gray-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300"
-              style={{ borderWidth: '1px', opacity: 0.9 }}
+              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden"
+              style={{ borderWidth: '1px', opacity: 0.95 }}
             >
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E50914] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 sm:px-8 py-5 flex items-center justify-between text-left hover:bg-gray-100 transition-colors duration-300"
+                className="w-full px-6 sm:px-8 py-5 flex items-center justify-between text-left hover:bg-gray-50/50 transition-colors duration-300"
               >
                 <h3
-                  className="text-base sm:text-lg font-bold text-gray-900 flex-1"
+                  className="text-base sm:text-lg font-bold text-gray-900 flex-1 group-hover:text-[#E50914] transition-colors duration-300"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 >
                   {faq.question}
                 </h3>
-                <div className="flex-shrink-0 ml-4 flex items-center justify-center w-6 h-6">
+                <div className="flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 bg-red-50 group-hover:bg-[#E50914] rounded-full transition-colors duration-300">
                   <FontAwesomeIcon
                     icon={expandedIndex === index ? faMinus : faPlus}
-                    className="w-5 h-5 text-[#E50914] transition-all duration-300"
+                    className="w-4 h-4 text-[#E50914] group-hover:text-white transition-colors duration-300"
                   />
                 </div>
               </button>
 
               {/* FAQ Answer */}
               {expandedIndex === index && (
-                <div className="px-6 sm:px-8 pb-5 border-t border-gray-200">
+                <div className="px-6 sm:px-8 pb-5 border-t border-gray-100">
                   <p
                     className="text-base text-gray-700 leading-relaxed"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
@@ -101,6 +116,9 @@ export default function FAQSection() {
                   </p>
                 </div>
               )}
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>

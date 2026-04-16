@@ -1,6 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTools } from '@fortawesome/free-solid-svg-icons';
 
 export default function OurServices() {
   const services = [
@@ -33,6 +35,12 @@ export default function OurServices() {
       title: 'Maintenance Services',
       description: 'Regular maintenance to keep fire protection systems reliable.',
       features: ['Preventive care', 'System updates', 'Emergency repairs', '24/7 support']
+    },
+    {
+      image: '/service-6.png',
+      title: 'Fire Safety Training & Emergency First Aid',
+      description: 'Comprehensive training programs and first aid courses for emergency preparedness.',
+      features: ['Fire safety training', 'Emergency response', 'First aid certification', 'Evacuation procedures']
     }
   ];
 
@@ -53,18 +61,21 @@ export default function OurServices() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16 sm:mb-20">
+        <div className="text-center mb-20">
           {/* Section Label */}
-          <p
-            className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase mb-4"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
-          >
-            Our Services
-          </p>
+          <div className="inline-block mb-4">
+            <p
+              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            >
+              <FontAwesomeIcon icon={faTools} className="w-4 h-4" />
+              Our Services
+            </p>
+          </div>
 
           {/* Main Heading */}
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             What We <span className="text-[#E50914]">Do</span>
@@ -72,7 +83,7 @@ export default function OurServices() {
 
           {/* Subheading */}
           <p
-            className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal"
+            className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal leading-relaxed"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
             We provide fire safety services which ensure that fire protection systems are installed, inspected, and maintained properly.
