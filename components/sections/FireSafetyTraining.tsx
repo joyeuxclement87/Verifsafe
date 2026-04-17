@@ -83,8 +83,8 @@ export default function FireSafetyTraining() {
             >
               {/* Card */}
               <div
-                className="bg-white border border-gray-200 rounded-xl p-8 sm:p-6 hover:border-[#E53935] hover:shadow-2xl transition-all duration-300 h-full relative overflow-hidden"
-                style={{ borderWidth: '1px', opacity: 0.95 }}
+                className="bg-white border border-gray-200 rounded-xl p-8 sm:p-6 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 h-full relative overflow-hidden"
+                style={{ borderWidth: '1px' }}
               >
                 {/* Top accent line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -92,7 +92,7 @@ export default function FireSafetyTraining() {
                 {/* Icon Container */}
                 <div className="mb-4">
                   <div className="relative inline-block">
-                    <div className="relative bg-gradient-to-br from-[#E53935]/10 to-red-600/10 p-3 rounded-lg group-hover:from-[#E53935]/20 group-hover:to-red-600/20 transition-all duration-300">
+                    <div className="relative bg-gradient-to-br from-[#E53935]/10 to-red-600/10 p-3 rounded-lg">
                       {renderIcon(point.iconName)}
                     </div>
                   </div>

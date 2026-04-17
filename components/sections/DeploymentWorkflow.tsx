@@ -110,8 +110,8 @@ export default function DeploymentWorkflow() {
                   {/* Step Content Card */}
                   <div className="w-full lg:w-56 text-center">
                     <div
-                      className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 group-hover:border-[#E53935] group-hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
-                      style={{ borderWidth: '1px', opacity: 0.95 }}
+                      className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 group-hover:border-[#E53935] group-hover:shadow-2xl group-hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                      style={{ borderWidth: '1px' }}
                     >
                       {/* Gradient overlay on hover */}
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -119,7 +119,7 @@ export default function DeploymentWorkflow() {
                       {/* Icon */}
                       <div className="mb-4 flex justify-center">
                         <div className="relative">
-                          <div className="relative bg-gradient-to-br from-[#E53935]/10 to-red-600/10 p-3 rounded-lg group-hover:from-[#E53935]/20 group-hover:to-red-600/20 transition-all duration-300">
+                          <div className="relative bg-gradient-to-br from-[#E53935]/10 to-red-600/10 p-3 rounded-lg">
                             <FontAwesomeIcon
                               icon={step.icon}
                               className="w-6 h-6 text-[#E53935] transition-colors duration-300"

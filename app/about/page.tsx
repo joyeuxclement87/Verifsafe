@@ -133,12 +133,13 @@ export default function AboutPage() {
               <div
                 key={index}
                 className="relative group bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
+                style={{ borderWidth: '1px' }}
               >
                 {/* Top accent line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* Icon Container */}
-                <div className="w-16 h-16 bg-linear-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-linear-to-br group-hover:from-[#E53935] group-hover:to-red-600 transition-all duration-300">
+                <div className="w-16 h-16 bg-linear-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6">
                   {renderIcon(item.iconName)}
                 </div>
 

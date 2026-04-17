@@ -59,8 +59,8 @@ export default function ProtectionCTA() {
             >
               {/* Card */}
               <div
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 sm:p-10 hover:border-yellow-400/50 hover:bg-white/15 hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
-                style={{ borderWidth: '1px', opacity: 0.95 }}
+                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 sm:p-10 hover:border-yellow-400/50 hover:bg-white/15 hover:shadow-2xl hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                style={{ borderWidth: '1px' }}
               >
                 {/* Top accent line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -68,7 +68,7 @@ export default function ProtectionCTA() {
                 {/* Icon Container */}
                 <div className="mb-6">
                   <div className="relative inline-block">
-                    <div className="relative bg-gradient-to-br from-[#FF4D4D]/20 to-[#E53935]/20 p-4 rounded-lg group-hover:from-[#FF4D4D]/30 group-hover:to-[#E53935]/30 transition-all duration-300">
+                    <div className="relative bg-gradient-to-br from-[#FF4D4D]/20 to-[#E53935]/20 p-4 rounded-lg">
                       <FontAwesomeIcon
                         icon={feature.icon}
                         className="w-7 h-7 text-yellow-400 transition-colors duration-300"
