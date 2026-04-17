@@ -24,7 +24,7 @@ export default function ProtectionCTA() {
   ];
 
   return (
-    <section id="protection-cta" className="w-full bg-gradient-to-r from-gray-900 via-red-900 to-gray-900 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section className="w-full bg-gradient-to-r from-gray-900 via-red-900 to-gray-900 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl" />
@@ -68,7 +68,7 @@ export default function ProtectionCTA() {
                 {/* Icon Container */}
                 <div className="mb-6">
                   <div className="relative inline-block">
-                    <div className="relative bg-gradient-to-br from-yellow-400/20 to-orange-500/20 p-4 rounded-lg group-hover:from-yellow-400/30 group-hover:to-orange-500/30 transition-all duration-300">
+                    <div className="relative bg-gradient-to-br from-[#FF4D4D]/20 to-[#E53935]/20 p-4 rounded-lg group-hover:from-[#FF4D4D]/30 group-hover:to-[#E53935]/30 transition-all duration-300">
                       <FontAwesomeIcon
                         icon={feature.icon}
                         className="w-7 h-7 text-yellow-400 transition-colors duration-300"
@@ -94,7 +94,7 @@ export default function ProtectionCTA() {
                 </p>
 
                 {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF4D4D] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             </div>
           ))}
@@ -104,7 +104,7 @@ export default function ProtectionCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
           {/* Primary Button */}
           <button
-            className="px-10 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group"
+            className="px-10 py-4 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group"
             style={{ fontFamily: 'Noto Sans, sans-serif' }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

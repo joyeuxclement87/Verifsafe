@@ -34,7 +34,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="w-full bg-gradient-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-white via-red-50 to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
       <div className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
@@ -46,7 +46,7 @@ export default function Contact() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
@@ -59,7 +59,7 @@ export default function Contact() {
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
-            When You Need <span className="text-[#E50914]">Fire Protection</span>
+            When You Need <span className="text-[#E53935]">Fire Protection</span>
           </h2>
 
           {/* Subheading */}
@@ -81,10 +81,10 @@ export default function Contact() {
               {/* Phone */}
               <div className="flex gap-6 group">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E50914] transition-colors duration-300">
+                  <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E53935] transition-colors duration-300">
                     <FontAwesomeIcon
                       icon={faPhone}
-                      className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300"
+                      className="w-8 h-8 text-[#E53935] group-hover:text-white transition-colors duration-300"
                     />
                   </div>
                 </div>
@@ -107,10 +107,10 @@ export default function Contact() {
               {/* Email */}
               <div className="flex gap-6 group">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E50914] transition-colors duration-300">
+                  <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E53935] transition-colors duration-300">
                     <FontAwesomeIcon
                       icon={faEnvelope}
-                      className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300"
+                      className="w-8 h-8 text-[#E53935] group-hover:text-white transition-colors duration-300"
                     />
                   </div>
                 </div>
@@ -133,10 +133,10 @@ export default function Contact() {
               {/* Location */}
               <div className="flex gap-6 group">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E50914] transition-colors duration-300">
+                  <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E53935] transition-colors duration-300">
                     <FontAwesomeIcon
                       icon={faMapMarkerAlt}
-                      className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300"
+                      className="w-8 h-8 text-[#E53935] group-hover:text-white transition-colors duration-300"
                     />
                   </div>
                 </div>
@@ -187,7 +187,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
                   style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
                   placeholder="Your full name"
                 />
@@ -209,7 +209,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
                   style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
                   placeholder="your@email.com"
                 />
@@ -230,7 +230,7 @@ export default function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
                   style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
                   placeholder="+250 xxx xxx xxx"
                 />
@@ -252,7 +252,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E50914] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none"
                   style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
                   placeholder="Tell us about your fire safety needs..."
                 />
@@ -261,7 +261,7 @@ export default function Contact() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-[#E50914] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group border border-[#E50914]"
+                className="w-full px-8 py-4 bg-[#E53935] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group border border-[#E53935]"
                 style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
               >
                 Request a Quote

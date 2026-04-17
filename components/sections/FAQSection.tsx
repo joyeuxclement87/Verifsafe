@@ -39,7 +39,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="w-full py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
+    <section className="w-full py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden\">
       {/* Background Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
       <div className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
@@ -50,7 +50,7 @@ export default function FAQSection() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FontAwesomeIcon icon={faQuestionCircle} className="w-4 h-4" />
@@ -64,7 +64,7 @@ export default function FAQSection() {
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Frequently Asked{' '}
-            <span className="text-[#E50914]">Questions</span>
+            <span className="text-[#E53935]">Questions</span>
           </h2>
 
           {/* Subheading */}
@@ -85,22 +85,22 @@ export default function FAQSection() {
               style={{ borderWidth: '1px', opacity: 0.95 }}
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E50914] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <button
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 sm:px-8 py-5 flex items-center justify-between text-left hover:bg-gray-50/50 transition-colors duration-300"
               >
                 <h3
-                  className="text-base sm:text-lg font-bold text-gray-900 flex-1 group-hover:text-[#E50914] transition-colors duration-300"
+                  className="text-base sm:text-lg font-bold text-gray-900 flex-1 group-hover:text-[#E53935] transition-colors duration-300"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 >
                   {faq.question}
                 </h3>
-                <div className="flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 bg-red-50 group-hover:bg-[#E50914] rounded-full transition-colors duration-300">
+                <div className="flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 bg-red-50 group-hover:bg-[#E53935] rounded-full transition-colors duration-300">
                   <FontAwesomeIcon
                     icon={expandedIndex === index ? faMinus : faPlus}
-                    className="w-4 h-4 text-[#E50914] group-hover:text-white transition-colors duration-300"
+                    className="w-4 h-4 text-[#E53935] group-hover:text-white transition-colors duration-300"
                   />
                 </div>
               </button>
@@ -118,7 +118,7 @@ export default function FAQSection() {
               )}
 
               {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>

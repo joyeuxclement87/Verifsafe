@@ -39,7 +39,7 @@ export default function OurEquipment() {
   ];
 
   return (
-    <section id="our-equipment" className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
       <div className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
@@ -51,7 +51,7 @@ export default function OurEquipment() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FontAwesomeIcon icon={faCogs} className="w-4 h-4" />
@@ -64,7 +64,7 @@ export default function OurEquipment() {
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
-            What We <span className="text-[#E50914]">Provide</span>
+            What We <span className="text-[#E53935]">Provide</span>
           </h2>
 
           {/* Subheading */}
@@ -81,11 +81,11 @@ export default function OurEquipment() {
           {equipment.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
+              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
               style={{ borderWidth: '1px', opacity: 0.95 }}
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E50914] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               {/* Image Container */}
               <div className="w-full h-48 sm:h-56 bg-gray-200 mb-6 overflow-hidden relative rounded-lg group-hover:shadow-md hover:scale-105 transition-all duration-300">
                 <Image
@@ -98,7 +98,7 @@ export default function OurEquipment() {
 
               {/* Title */}
               <h3
-                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E50914] transition-colors duration-300"
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 {item.title}
@@ -113,7 +113,7 @@ export default function OurEquipment() {
               </p>
 
               {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>
@@ -121,7 +121,7 @@ export default function OurEquipment() {
         {/* CTA Section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 border-t border-gray-200">
           <button
-            className="px-8 py-4 bg-[#E50914] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 active:scale-95 shadow-md hover:shadow-lg inline-flex items-center gap-2 group border border-[#E50914]"
+            className="px-8 py-4 bg-[#E53935] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 active:scale-95 shadow-md hover:shadow-lg inline-flex items-center gap-2 group border border-[#E53935]"
             style={{ fontFamily: 'Noto Sans, sans-serif', opacity: 0.9 }}
           >
             View All Equipment

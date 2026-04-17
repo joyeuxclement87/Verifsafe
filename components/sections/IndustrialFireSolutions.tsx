@@ -35,7 +35,7 @@ export default function IndustrialFireSolutions() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FontAwesomeIcon icon={faIndustry} className="w-4 h-4" />
@@ -49,7 +49,7 @@ export default function IndustrialFireSolutions() {
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Why Our Industrial{' '}
-            <span className="text-[#E50914]">Fire Solutions</span>
+            <span className="text-[#E53935]">Fire Solutions</span>
             {' '}Matter
           </h2>
 
@@ -67,22 +67,22 @@ export default function IndustrialFireSolutions() {
           {solutions.map((solution, index) => (
             <div
               key={index}
-              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden"
+              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden"
               style={{ borderWidth: '1px', opacity: 0.95 }}
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E50914] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               {/* Icon Container */}
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E50914]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#E50914] group-hover:to-red-600 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#E53935] group-hover:to-red-600 transition-all duration-300">
                 <FontAwesomeIcon 
                   icon={solution.icon} 
-                  className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300" 
+                  className="w-8 h-8 text-[#E53935] group-hover:text-white transition-colors duration-300" 
                 />
               </div>
 
               {/* Title */}
               <h3
-                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E50914] transition-colors duration-300"
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 {solution.title}
@@ -97,7 +97,7 @@ export default function IndustrialFireSolutions() {
               </p>
 
               {/* Bottom Accent Line */}
-              <div className="mt-6 absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="mt-6 absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>

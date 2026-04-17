@@ -1,38 +1,47 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faShieldAlt, faClock, faAward, faStar } from '@fortawesome/free-solid-svg-icons';
+import { CircleCheck, Shield, Clock, Award, Star } from 'tabler-icons-react';
 
 export default function WhyChooseUs() {
   const features = [
     {
-      icon: faAward,
+      iconName: 'award',
       title: 'Certified Equipment',
       description: 'Premium, internationally certified fire safety equipment',
       number: '01'
     },
     {
-      icon: faShieldAlt,
+      iconName: 'shield',
       title: 'Expert Installation',
       description: 'Professional technicians with years of experience',
       number: '02'
     },
     {
-      icon: faClock,
+      iconName: 'clock',
       title: '24/7 Support',
       description: 'Round-the-clock maintenance and emergency services',
       number: '03'
     },
     {
-      icon: faCheckCircle,
+      iconName: 'check',
       title: 'Quality Assured',
       description: 'Regular inspections and compliance verification',
       number: '04'
     }
   ];
 
+  const renderIcon = (iconName: string) => {
+    switch(iconName) {
+      case 'award': return <Award size={32} className="text-[#E53935]" />;
+      case 'shield': return <Shield size={32} className="text-[#E53935]" />;
+      case 'clock': return <Clock size={32} className="text-[#E53935]" />;
+      case 'check': return <CircleCheck size={32} className="text-[#E53935]" />;
+      default: return null;
+    }
+  };
+
   return (
-    <section id="why-choose-us" className="relative w-full bg-gradient-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
       <div className="absolute bottom-20 left-20 w-32 h-32 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
@@ -44,10 +53,10 @@ export default function WhyChooseUs() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              <FontAwesomeIcon icon={faStar} className="w-4 h-4" />
+              <Star size={16} />
               Our Advantages
             </p>
           </div>
@@ -58,7 +67,7 @@ export default function WhyChooseUs() {
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Why Choose{' '}
-            <span className="text-[#E50914]">Verifisafe</span>
+            <span className="text-[#E53935]">Verifisafe</span>
           </h2>
 
           {/* Subheading */}
@@ -75,19 +84,19 @@ export default function WhyChooseUs() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="relative group bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
+              className="relative group bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
               style={{ borderWidth: '1px', opacity: 0.95 }}
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E50914] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               {/* Icon Container */}
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E50914]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#E50914] group-hover:to-red-600 transition-all duration-300">
-                <FontAwesomeIcon icon={feature.icon} className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300" />
+              <div className="w-16 h-16 bg-gradient-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#E53935] group-hover:to-red-600 transition-all duration-300">
+                {renderIcon(feature.iconName)}
               </div>
 
               {/* Feature Title */}
               <h3
-                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E50914] transition-colors duration-300"
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 {feature.title}
@@ -102,7 +111,7 @@ export default function WhyChooseUs() {
               </p>
 
               {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>

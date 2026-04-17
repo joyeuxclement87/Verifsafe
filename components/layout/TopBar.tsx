@@ -1,16 +1,14 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { Phone, MapPin, BrandInstagram, BrandFacebook, BrandTwitter, BrandLinkedin } from 'tabler-icons-react';
 
 export default function TopBar() {
   return (
-    <div className="fixed top-0 left-0 right-0 bg-[#E50914] h-12 z-50">
+    <div className="fixed top-0 left-0 right-0 bg-linear-to-r from-[#FF4D4D] to-[#E53935] h-12 z-50">
       <div className="w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Left Side - Location */}
         <div className="text-white text-xs sm:text-sm font-medium flex items-center gap-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
-          <FontAwesomeIcon icon={faMapMarkerAlt} className="w-4 h-4" />
+          <MapPin size={16} />
           Kigali, Kinamba Road
         </div>
 
@@ -20,7 +18,7 @@ export default function TopBar() {
           className="text-white text-xs sm:text-sm font-medium hover:opacity-80 transition-opacity duration-200 flex items-center gap-2"
           style={{ fontFamily: 'Noto Sans, sans-serif' }}
         >
-          <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
+          <Phone size={16} />
           +250 789 000 022
         </a>
 
@@ -33,7 +31,7 @@ export default function TopBar() {
             className="text-white hover:opacity-80 transition-opacity duration-200"
             aria-label="Facebook"
           >
-            <FontAwesomeIcon icon={faFacebook} className="w-4 h-4" />
+            <BrandFacebook size={16} />
           </a>
           <a
             href="https://twitter.com"
@@ -42,7 +40,7 @@ export default function TopBar() {
             className="text-white hover:opacity-80 transition-opacity duration-200"
             aria-label="Twitter"
           >
-            <FontAwesomeIcon icon={faTwitter} className="w-4 h-4" />
+            <BrandTwitter size={16} />
           </a>
           <a
             href="https://instagram.com"
@@ -51,7 +49,7 @@ export default function TopBar() {
             className="text-white hover:opacity-80 transition-opacity duration-200"
             aria-label="Instagram"
           >
-            <FontAwesomeIcon icon={faInstagram} className="w-4 h-4" />
+            <BrandInstagram size={16} />
           </a>
           <a
             href="https://linkedin.com"
@@ -60,7 +58,7 @@ export default function TopBar() {
             className="text-white hover:opacity-80 transition-opacity duration-200"
             aria-label="LinkedIn"
           >
-            <FontAwesomeIcon icon={faLinkedin} className="w-4 h-4" />
+            <BrandLinkedin size={16} />
           </a>
         </div>
       </div>

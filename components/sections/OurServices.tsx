@@ -45,7 +45,7 @@ export default function OurServices() {
   ];
 
   return (
-    <section id="our-services" className="w-full bg-gradient-to-br from-gray-50 via-red-50 to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -65,7 +65,7 @@ export default function OurServices() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FontAwesomeIcon icon={faTools} className="w-4 h-4" />
@@ -78,7 +78,7 @@ export default function OurServices() {
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
-            What We <span className="text-[#E50914]">Do</span>
+            What We <span className="text-[#E53935]">Do</span>
           </h2>
 
           {/* Subheading */}

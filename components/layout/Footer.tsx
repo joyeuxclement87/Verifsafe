@@ -1,14 +1,12 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { Phone, Mail, MapPin, BrandInstagram, BrandFacebook, BrandTwitter, BrandLinkedin } from 'tabler-icons-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-gray-900 text-gray-300">
+    <footer className="w-full bg-[#0F172A] text-gray-300">
       {/* Main Footer Content */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 mb-12">
@@ -35,31 +33,31 @@ export default function Footer() {
             <div className="flex items-center gap-4 pt-4">
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E50914] flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
                 aria-label="Facebook"
               >
-                <FontAwesomeIcon icon={faFacebook} className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                <BrandFacebook size={20} className="text-gray-400 group-hover:text-white transition-colors" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E50914] flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
                 aria-label="Twitter"
               >
-                <FontAwesomeIcon icon={faTwitter} className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                <BrandTwitter size={20} className="text-gray-400 group-hover:text-white transition-colors" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E50914] flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
                 aria-label="Instagram"
               >
-                <FontAwesomeIcon icon={faInstagram} className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                <BrandInstagram size={20} className="text-gray-400 group-hover:text-white transition-colors" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E50914] flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
                 aria-label="LinkedIn"
               >
-                <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                <BrandLinkedin size={20} className="text-gray-400 group-hover:text-white transition-colors" />
               </a>
             </div>
           </div>
@@ -83,7 +81,7 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-[#E50914] transition-colors duration-300 font-normal"
+                    className="text-gray-400 hover:text-[#E53935] transition-colors duration-300 font-normal"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
                     {link.label}
@@ -112,7 +110,7 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     href={service.href}
-                    className="text-gray-400 hover:text-[#E50914] transition-colors duration-300 font-normal"
+                    className="text-gray-400 hover:text-[#E53935] transition-colors duration-300 font-normal"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
                     {service.label}
@@ -133,9 +131,9 @@ export default function Footer() {
             <div className="space-y-4">
               {/* Phone */}
               <div className="flex items-start gap-3 group cursor-pointer">
-                <FontAwesomeIcon
-                  icon={faPhone}
-                  className="w-5 h-5 text-[#E50914] mt-0.5 transition-colors"
+                <Phone
+                  size={20}
+                  className="text-[#E53935] transition-colors"
                 />
                 <div>
                   <p
@@ -146,7 +144,7 @@ export default function Footer() {
                   </p>
                   <a
                     href="tel:+250789000022"
-                    className="text-white group-hover:text-[#E50914] transition-colors font-normal"
+                    className="text-white group-hover:text-[#E53935] transition-colors font-normal"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
                     +250 789 000 022
@@ -156,9 +154,9 @@ export default function Footer() {
 
               {/* Email */}
               <div className="flex items-start gap-3 group cursor-pointer">
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  className="w-5 h-5 text-[#E50914] mt-0.5 transition-colors"
+                <Mail
+                  size={20}
+                  className="text-[#E53935] transition-colors"
                 />
                 <div>
                   <p
@@ -169,7 +167,7 @@ export default function Footer() {
                   </p>
                   <a
                     href="mailto:info@verifsafe.com"
-                    className="text-white group-hover:text-[#E50914] transition-colors font-normal"
+                    className="text-white group-hover:text-[#E53935] transition-colors font-normal"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
                     info@verifsafe.com
@@ -179,9 +177,9 @@ export default function Footer() {
 
               {/* Location */}
               <div className="flex items-start gap-3 group cursor-pointer">
-                <FontAwesomeIcon
-                  icon={faMapMarkerAlt}
-                  className="w-5 h-5 text-[#E50914] mt-0.5 transition-colors"
+                <MapPin
+                  size={20}
+                  className="text-[#E53935] transition-colors"
                 />
                 <div>
                   <p
@@ -225,7 +223,7 @@ export default function Footer() {
               <a
                 key={index}
                 href={link.href}
-                className="text-gray-500 hover:text-[#E50914] text-sm transition-colors duration-300 font-normal"
+                className="text-gray-500 hover:text-[#E53935] text-sm transition-colors duration-300 font-normal"
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
                 {link.label}
@@ -236,7 +234,7 @@ export default function Footer() {
       </div>
 
       {/* Top Border Accent */}
-      <div className="h-1 bg-gradient-to-r from-[#E50914] via-red-600 to-[#E50914]" />
+      <div className="h-1 bg-gradient-to-r from-[#E53935] via-red-600 to-[#E53935]" />
     </footer>
   );
 }

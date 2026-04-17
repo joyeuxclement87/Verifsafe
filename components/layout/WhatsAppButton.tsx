@@ -1,7 +1,6 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { BrandWhatsapp } from 'tabler-icons-react';
 
 export default function WhatsAppButton() {
   const phoneNumber = '+250788123456'; // Replace with your WhatsApp number
@@ -16,7 +15,7 @@ export default function WhatsAppButton() {
       title="Chat with us on WhatsApp"
     >
       <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full transition-colors duration-300">
-        <FontAwesomeIcon icon={faWhatsapp} className="w-5 h-5 text-[#25D366]" />
+        <BrandWhatsapp size={20} className="text-[#25D366]" />
       </div>
       <span className="text-white font-medium text-sm whitespace-nowrap group-hover:tracking-wide transition-all duration-300">
         Chat with us

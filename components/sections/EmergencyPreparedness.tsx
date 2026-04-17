@@ -1,31 +1,40 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExclamationTriangle, faFireExtinguisher, faShoppingCart, faClipboardList, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+import { AlertTriangle, Alarm, ShoppingCart, ClipboardList, Shield } from 'tabler-icons-react';
 
 export default function EmergencyPreparedness() {
   const preparednessItems = [
     {
-      icon: faExclamationTriangle,
+      iconName: 'alert',
       title: 'Fire Risk',
       description: 'Identify hidden structural and electrical vulnerabilities before they ignite.'
     },
     {
-      icon: faFireExtinguisher,
+      iconName: 'extinguisher',
       title: 'Response Time',
       description: 'Seconds save lives. Our automated systems react instantly to suppress threats.'
     },
     {
-      icon: faShoppingCart,
+      iconName: 'cart',
       title: 'Property Protection',
       description: 'Protect your capital investment with targeted gaseous suppression systems.'
     },
     {
-      icon: faClipboardList,
+      iconName: 'clipboard',
       title: 'Safety Compliance',
       description: 'Stay current with NFPA, OSHA, and local fire authority regulations.'
     }
   ];
+
+  const renderIcon = (iconName: string) => {
+    switch(iconName) {
+      case 'alert': return <AlertTriangle size={32} className="text-[#E53935]" />;
+      case 'extinguisher': return <Alarm size={32} className="text-[#E53935]" />;
+      case 'cart': return <ShoppingCart size={32} className="text-[#E53935]" />;
+      case 'clipboard': return <ClipboardList size={32} className="text-[#E53935]" />;
+      default: return null;
+    }
+  };
 
   return (
     <section id="emergency-preparedness" className="w-full bg-gradient-to-b from-gray-50 to-white py-20 sm:py-24 lg:py-32 relative overflow-hidden">
@@ -40,10 +49,10 @@ export default function EmergencyPreparedness() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              <FontAwesomeIcon icon={faShieldAlt} className="w-4 h-4" />
+              <Shield size={16} />
               Emergency Preparedness
             </p>
           </div>
@@ -54,7 +63,7 @@ export default function EmergencyPreparedness() {
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Are You Prepared for a{' '}
-            <span className="text-[#E50914]">Fire Emergency</span>?
+            <span className="text-[#E53935]">Fire Emergency</span>?
           </h2>
 
           {/* Subheading */}
@@ -62,7 +71,7 @@ export default function EmergencyPreparedness() {
             className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
-            Statistics show that <span className="font-bold text-[#E50914]">40% of businesses never reopen</span> after a major fire. Don&apos;t let yours be one of them.
+            Statistics show that <span className="font-bold text-[#E53935]">40% of businesses never reopen</span> after a major fire. Don&apos;t let yours be one of them.
           </p>
         </div>
 
@@ -71,22 +80,19 @@ export default function EmergencyPreparedness() {
           {preparednessItems.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-8 hover:border-[#E50914] hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
-              style={{ borderWidth: '1px', opacity: 0.95 }}
+              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-8 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
+              style={{ borderWidth: '1px' }}
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E50914] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               {/* Icon Container */}
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E50914]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#E50914] group-hover:to-red-600 transition-all duration-300">
-                <FontAwesomeIcon 
-                  icon={item.icon} 
-                  className="w-8 h-8 text-[#E50914] group-hover:text-white transition-colors duration-300" 
-                />
+              <div className="w-16 h-16 bg-gradient-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 transition-all duration-300">
+                {renderIcon(item.iconName)}
               </div>
 
               {/* Title */}
               <h3
-                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E50914] transition-colors duration-300"
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 {item.title}
@@ -101,7 +107,7 @@ export default function EmergencyPreparedness() {
               </p>
 
               {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>

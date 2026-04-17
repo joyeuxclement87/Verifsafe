@@ -1,17 +1,17 @@
-import HeroSection from '@/components/HeroSection';
-import EmergencyPreparedness from '@/components/EmergencyPreparedness';
-import IndustrialFireSolutions from '@/components/IndustrialFireSolutions';
-import WhyChooseUs from '@/components/WhyChooseUs';
-import AboutCompany from '@/components/AboutCompany';
-import OurEquipment from '@/components/OurEquipment';
-import OurServices from '@/components/OurServices';
-import FireSafetyTraining from '@/components/FireSafetyTraining';
-import DeploymentWorkflow from '@/components/DeploymentWorkflow';
-import WhoWeServe from '@/components/WhoWeServe';
-import FAQSection from '@/components/FAQSection';
-import ProtectionCTA from '@/components/ProtectionCTA';
-import Contact from '@/components/Contact';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import HeroSection from '@/components/sections/HeroSection';
+import EmergencyPreparedness from '@/components/sections/EmergencyPreparedness';
+import IndustrialFireSolutions from '@/components/sections/IndustrialFireSolutions';
+import WhyChooseUs from '@/components/sections/WhyChooseUs';
+import AboutCompany from '@/components/sections/AboutCompany';
+import OurEquipment from '@/components/sections/OurEquipment';
+import OurServices from '@/components/sections/OurServices';
+import FireSafetyTraining from '@/components/sections/FireSafetyTraining';
+import DeploymentWorkflow from '@/components/sections/DeploymentWorkflow';
+import WhoWeServe from '@/components/sections/WhoWeServe';
+import FAQSection from '@/components/sections/FAQSection';
+import ProtectionCTA from '@/components/sections/ProtectionCTA';
+import Contact from '@/components/sections/Contact';
+import WhatsAppButton from '@/components/layout/WhatsAppButton';
 
 export default function Home() {
   return (

@@ -50,7 +50,7 @@ export default function DeploymentWorkflow() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FontAwesomeIcon icon={faTasks} className="w-4 h-4" />
@@ -63,13 +63,13 @@ export default function DeploymentWorkflow() {
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
-            Our <span className="text-[#E50914]">Deployment</span>
+            Our <span className="text-[#E53935]">Deployment</span>
           </h2>
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
-            <span className="text-[#E50914]">Workflow</span>
+            <span className="text-[#E53935]">Workflow</span>
           </h2>
 
           {/* Subheading */}
@@ -85,7 +85,7 @@ export default function DeploymentWorkflow() {
         <div className="mb-16 sm:mb-24">
           <div className="flex items-center justify-between relative">
             {/* Background connecting line */}
-            <div className="absolute top-8 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] via-yellow-400 to-[#E50914] hidden lg:block" />
+            <div className="absolute top-8 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] via-yellow-400 to-[#E53935] hidden lg:block" />
 
             {/* Steps */}
             <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-0">
@@ -95,11 +95,11 @@ export default function DeploymentWorkflow() {
                   <div className="relative mb-4 z-20">
 
                     <div
-                      className="relative w-16 h-16 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center group-hover:border-[#E50914] group-hover:shadow-lg transition-all duration-300"
+                      className="relative w-16 h-16 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center group-hover:border-[#E53935] group-hover:shadow-lg transition-all duration-300"
                       style={{ borderWidth: '2px' }}
                     >
                       <span
-                        className="text-lg font-black text-gray-400 group-hover:text-[#E50914] transition-colors duration-300"
+                        className="text-lg font-black text-gray-400 group-hover:text-[#E53935] transition-colors duration-300"
                         style={{ fontFamily: 'Oswald, sans-serif' }}
                       >
                         {step.number}
@@ -110,19 +110,19 @@ export default function DeploymentWorkflow() {
                   {/* Step Content Card */}
                   <div className="w-full lg:w-56 text-center">
                     <div
-                      className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 group-hover:border-[#E50914] group-hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
+                      className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 group-hover:border-[#E53935] group-hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
                       style={{ borderWidth: '1px', opacity: 0.95 }}
                     >
                       {/* Gradient overlay on hover */}
-                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E50914] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                       {/* Icon */}
                       <div className="mb-4 flex justify-center">
                         <div className="relative">
-                          <div className="relative bg-gradient-to-br from-[#E50914]/10 to-red-600/10 p-3 rounded-lg group-hover:from-[#E50914]/20 group-hover:to-red-600/20 transition-all duration-300">
+                          <div className="relative bg-gradient-to-br from-[#E53935]/10 to-red-600/10 p-3 rounded-lg group-hover:from-[#E53935]/20 group-hover:to-red-600/20 transition-all duration-300">
                             <FontAwesomeIcon
                               icon={step.icon}
-                              className="w-6 h-6 text-[#E50914] transition-colors duration-300"
+                              className="w-6 h-6 text-[#E53935] transition-colors duration-300"
                             />
                           </div>
                         </div>
@@ -130,7 +130,7 @@ export default function DeploymentWorkflow() {
 
                       {/* Title */}
                       <h3
-                        className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#E50914] transition-colors duration-300"
+                        className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
                         style={{ fontFamily: 'Oswald, sans-serif' }}
                       >
                         {step.title}
@@ -145,7 +145,7 @@ export default function DeploymentWorkflow() {
                       </p>
 
                       {/* Bottom accent line */}
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E50914] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                     </div>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export default function DeploymentWorkflow() {
         {/* Bottom CTA */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 pt-12 border-t border-gray-200">
           <button
-            className="px-8 py-4 bg-gradient-to-r from-[#E50914] to-red-600 text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group border border-[#E50914]"
+            className="px-8 py-4 bg-gradient-to-r from-[#E53935] to-red-600 text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group border border-[#E53935]"
             style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

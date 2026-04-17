@@ -1,35 +1,44 @@
 'use client';
 
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCertificate, faShieldAlt, faBolt, faUsers, faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { Trophy, Shield, Bolt, Users, Building } from 'tabler-icons-react';
 
 export default function AboutCompany() {
   const values = [
     {
-      icon: faCertificate,
+      iconName: 'trophy',
       title: 'Certified Excellence',
       description: 'Professional certified technicians with international qualifications'
     },
     {
-      icon: faShieldAlt,
+      iconName: 'shield',
       title: 'Safety Standards',
       description: 'All work meets international safety and quality standards'
     },
     {
-      icon: faBolt,
+      iconName: 'bolt',
       title: 'Fast Response',
       description: 'Quick emergency response and 24/7 support available'
     },
     {
-      icon: faUsers,
+      iconName: 'users',
       title: 'Client Focused',
       description: 'Dedicated to understanding and meeting customer needs'
     }
   ];
 
+  const renderIcon = (iconName: string) => {
+    switch(iconName) {
+      case 'trophy': return <Trophy size={32} className="text-yellow-400" />;
+      case 'shield': return <Shield size={32} className="text-yellow-400" />;
+      case 'bolt': return <Bolt size={32} className="text-yellow-400" />;
+      case 'users': return <Users size={32} className="text-yellow-400" />;
+      default: return null;
+    }
+  };
+
   return (
-    <section id="about-company" className="w-full bg-gradient-to-b from-red-900 via-red-800 to-red-900 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-red-900 via-red-800 to-red-900 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -50,10 +59,10 @@ export default function AboutCompany() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E50914] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              <FontAwesomeIcon icon={faBuilding} className="w-4 h-4" />
+              <Building size={16} />
               About Verifsafe
             </p>
           </div>
@@ -89,7 +98,7 @@ export default function AboutCompany() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               {/* Overlay Accent */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#FF4D4D]/30 to-transparent" />
               
               {/* Floating Badge */}
               <div className="absolute bottom-8 right-8 bg-white rounded-xl p-6 shadow-2xl backdrop-blur-sm border border-white/20 group-hover:scale-110 transition-transform duration-300">
@@ -203,11 +212,8 @@ export default function AboutCompany() {
                 style={{ borderWidth: '1px', opacity: 0.9 }}
               >
                 <div className="mb-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-yellow-400/30 to-yellow-500/30 rounded-lg flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-yellow-400 group-hover:to-yellow-500 transition-all duration-300 shadow-lg">
-                    <FontAwesomeIcon
-                      icon={value.icon}
-                      className="w-8 h-8 text-yellow-400 group-hover:text-red-600 transition-colors duration-300"
-                    />
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#FF4D4D]/30 to-[#E53935]/30 rounded-lg flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-[#FF4D4D] group-hover:to-[#E53935] transition-all duration-300 shadow-lg">
+                    {renderIcon(value.iconName)}
                   </div>
                 </div>
 
@@ -226,7 +232,7 @@ export default function AboutCompany() {
                 </p>
 
                 {/* Bottom Accent Line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-transparent rounded-b-xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF4D4D] to-transparent rounded-b-xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             ))}
           </div>

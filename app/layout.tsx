@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import TopBar from "@/components/TopBar";
-import MainNavigation from "@/components/MainNavigation";
-import Footer from "@/components/Footer";
+import TopBar from "@/components/layout/TopBar";
+import MainNavigation from "@/components/layout/MainNavigation";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {

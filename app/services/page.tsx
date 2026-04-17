@@ -1,37 +1,47 @@
 'use client';
 
-import { Target, Eye, HeartHandshake, CircleCheck, Bulb, Settings, Star } from 'tabler-icons-react';
+import Image from 'next/image';
+import { Tools, Shield, Phone, Star } from 'tabler-icons-react';
 
-export default function AboutPage() {
-  const missionVisionValues = [
+export default function ServicesPage() {
+  const services = [
     {
-      iconName: 'target',
-      title: 'Mission',
-      subtitle: 'Protect lives and critical assets',
-      description: 'Deliver dependable safety solutions that reduce incidents, support compliance, and strengthen emergency readiness.'
+      image: '/service-1.png',
+      title: 'Fire Equipment Supply',
+      description: 'Providing certified fire safety equipment for reliable protection.',
+      features: ['Extinguishers', 'Fire hoses', 'Safety signs', 'Emergency lighting']
     },
     {
-      iconName: 'eye',
-      title: 'Vision',
-      subtitle: 'Set the benchmark in industrial safety',
-      description: 'Be the preferred partner for organizations seeking high-performance risk management and resilient operations.'
+      image: '/service-2.png',
+      title: 'Installation Services',
+      description: 'Professional installation of fire safety systems and equipment.',
+      features: ['System setup', 'Safety testing', 'Compliance check', 'Documentation']
     },
     {
-      iconName: 'handshake',
-      title: 'Values',
-      subtitle: 'Integrity, precision, accountability',
-      description: 'We operate transparently, execute with discipline, and take ownership from planning through implementation.'
+      image: '/service-3.png',
+      title: 'Inspection & Testing',
+      description: 'Ensuring fire protection equipment works properly and safely.',
+      features: ['Regular inspections', 'Performance testing', 'Safety audits', 'Reports']
+    },
+    {
+      image: '/service-4.png',
+      title: 'Fire Extinguisher Refilling',
+      description: 'Refilling and servicing extinguishers to keep them ready for use.',
+      features: ['Pressure testing', 'Agent refilling', 'Seal replacement', 'Certification']
+    },
+    {
+      image: '/service-5.png',
+      title: 'Maintenance Services',
+      description: 'Regular maintenance to keep fire protection systems reliable.',
+      features: ['Preventive care', 'System updates', 'Emergency repairs', '24/7 support']
+    },
+    {
+      image: '/service-6.png',
+      title: 'Fire Safety Training & Emergency First Aid',
+      description: 'Comprehensive training programs and first aid courses for emergency preparedness.',
+      features: ['Fire safety training', 'Emergency response', 'First aid certification', 'Evacuation procedures']
     }
   ];
-
-  const renderIcon = (iconName: string) => {
-    switch(iconName) {
-      case 'target': return <Target size={32} className="text-[#E53935]" />;
-      case 'eye': return <Eye size={32} className="text-[#E53935]" />;
-      case 'handshake': return <HeartHandshake size={32} className="text-[#E53935]" />;
-      default: return null;
-    }
-  };
 
   return (
     <main className="w-full">
@@ -58,7 +68,7 @@ export default function AboutPage() {
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
                 <Star size={16} />
-                About VerifSafe
+                Our Services
               </p>
             </div>
 
@@ -67,7 +77,7 @@ export default function AboutPage() {
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
-              Who <span className="text-yellow-300">We Are</span>
+              Complete Fire Safety <span className="text-yellow-300">Solutions</span>
             </h1>
 
             {/* Subheading */}
@@ -75,7 +85,7 @@ export default function AboutPage() {
               className="text-lg sm:text-xl text-red-100 max-w-2xl mx-auto font-normal leading-relaxed mb-8"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
-              Protecting lives and property through reliable fire safety solutions.
+              Complete fire safety solutions designed to protect lives, property, and operations.
             </p>
 
             {/* Description */}
@@ -83,13 +93,13 @@ export default function AboutPage() {
               className="text-base sm:text-lg text-red-100 max-w-3xl mx-auto leading-relaxed font-normal"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
-              VerifSafe is a Rwanda-based fire safety company dedicated to delivering high-quality equipment, professional services, and practical training to help individuals and organizations stay prepared and protected.
+              At VerifSafe, we provide a full range of fire protection services—from supplying certified equipment to installation, maintenance, and training—ensuring you stay prepared at all times.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Mission, Vision, Values Section */}
+      {/* Services Grid Section */}
       <section className="relative w-full bg-linear-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
@@ -105,8 +115,8 @@ export default function AboutPage() {
                 className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
-                <Settings size={16} />
-                Core Pillars
+                <Tools size={16} />
+                What We Do
               </p>
             </div>
 
@@ -115,7 +125,7 @@ export default function AboutPage() {
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
-              Our <span className="text-[#E53935]">Foundation</span>
+              Our <span className="text-[#E53935]">Services</span>
             </h2>
 
             {/* Subheading */}
@@ -123,58 +133,66 @@ export default function AboutPage() {
               className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
-              Built on principles that guide every decision and action we take
+              We provide fire safety services which ensure that fire protection systems are installed, inspected, and maintained properly.
             </p>
           </div>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {missionVisionValues.map((item, index) => (
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+            {services.map((service, index) => (
               <div
                 key={index}
-                className="relative group bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
+                className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl p-6 sm:p-8 overflow-hidden hover:border-red-400 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white"
               >
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Icon Container */}
-                <div className="w-16 h-16 bg-linear-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-linear-to-br group-hover:from-[#E53935] group-hover:to-red-600 transition-all duration-300">
-                  {renderIcon(item.iconName)}
+                {/* Image Container */}
+                <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow-md mb-6 group-hover:shadow-lg transition-all duration-300">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
                 {/* Title */}
                 <h3
-                  className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
+                  className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300"
                   style={{ fontFamily: 'Oswald, sans-serif' }}
                 >
-                  {item.title}
+                  {service.title}
                 </h3>
-
-                {/* Subtitle */}
-                <p
-                  className="text-base sm:text-lg font-semibold text-[#E53935] mb-4"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                >
-                  {item.subtitle}
-                </p>
 
                 {/* Description */}
                 <p
-                  className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal"
+                  className="text-gray-700 text-base font-normal leading-relaxed mb-4"
                   style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
                 >
-                  {item.description}
+                  {service.description}
                 </p>
 
+                {/* Features List */}
+                <div className="space-y-2">
+                  {service.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" />
+                      <span className="text-sm text-gray-600 font-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
                 {/* Bottom Accent Line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-red-500 to-red-600 rounded-b-xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Approach Section */}
+      {/* Why Our Services Matter Section */}
       <section className="relative w-full bg-linear-to-b from-gray-50 to-white py-20 sm:py-24 lg:py-32 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
@@ -183,15 +201,15 @@ export default function AboutPage() {
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Section Header */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-16 sm:mb-20">
             {/* Section Label */}
             <div className="inline-block mb-4">
               <p
                 className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
-                <Bulb size={16} />
-                Our Process
+                <Shield size={16} />
+                Why It Matters
               </p>
             </div>
 
@@ -200,21 +218,21 @@ export default function AboutPage() {
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
-              How We <span className="text-[#E53935]">Work</span>
+              Why Our Services <span className="text-[#E53935]">Matter</span>
             </h2>
 
             {/* Subheading */}
             <p
-              className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
+              className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed mt-6"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
-              Simple, structured, and highly effective approach to fire safety
+              Safety Is Not Optional
             </p>
           </div>
 
           {/* Content Card */}
           <div className="max-w-4xl mx-auto">
-            <div className="relative group bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-12 hover:border-[#E53935] hover:shadow-2xl transition-all duration-300 overflow-hidden">
+            <div className="relative group bg-white border border-gray-200 rounded-xl p-8 sm:p-12 hover:border-[#E53935] hover:shadow-2xl transition-all duration-300 overflow-hidden">
               
               {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -225,18 +243,15 @@ export default function AboutPage() {
                   className="text-lg sm:text-xl text-gray-700 leading-relaxed font-normal"
                   style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
                 >
-                  We start by understanding your environment, identifying risks, and recommending the right solutions. From there, we handle supply, installation, and ongoing maintenance to ensure continuous protection.
+                  Fire incidents can happen at any time, and without proper preparation, the consequences can be severe.
                 </p>
                 
-                <div className="flex items-start gap-4 pt-4 border-t border-gray-200">
-                  <CircleCheck size={24} className="text-[#E53935] shrink-0" />
-                  <p
-                    className="text-lg sm:text-xl font-bold text-gray-900"
-                    style={{ fontFamily: 'Oswald, sans-serif' }}
-                  >
-                    Our goal is to make fire safety clear, practical, and reliable for every client.
-                  </p>
-                </div>
+                <p
+                  className="text-lg sm:text-xl text-gray-700 leading-relaxed font-normal"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                >
+                  Our services are designed not just to meet requirements, but to provide real protection—helping you prevent risks, respond effectively, and minimize damage.
+                </p>
               </div>
 
               {/* Bottom Accent Line */}
@@ -246,7 +261,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Work With Us Section */}
+      {/* CTA Section */}
       <section className="w-full bg-linear-to-r from-gray-900 via-red-900 to-gray-900 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
@@ -256,12 +271,23 @@ export default function AboutPage() {
           
           {/* Header */}
           <div className="text-center mb-16 sm:mb-20">
+            {/* Section Label */}
+            <div className="inline-block mb-4">
+              <p
+                className="text-yellow-400 text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-yellow-500/20 rounded-full flex items-center gap-2 justify-center mx-auto"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              >
+                <Phone size={16} />
+                Call To Action
+              </p>
+            </div>
+
             {/* Main Heading */}
             <h2
               className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
-              Ready to <span className="text-yellow-400">Collaborate?</span>
+              Get Started <span className="text-yellow-400">Today</span>
             </h2>
 
             {/* Description */}
@@ -269,14 +295,14 @@ export default function AboutPage() {
               className="text-lg sm:text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed font-normal mb-8"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
-              Whether you need fire safety equipment, professional installation, or training, VerifSafe is ready to support you.
+              Whether you need equipment, installation, or training, VerifSafe is ready to support your fire safety needs.
             </p>
 
             <p
               className="text-xl sm:text-2xl text-yellow-400 font-bold max-w-3xl mx-auto leading-relaxed"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
-              Let&apos;s help you create a safer environment today.
+              Take the first step toward a safer environment.
             </p>
           </div>
 
@@ -296,7 +322,7 @@ export default function AboutPage() {
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              Contact Us
+              Request a Service
               <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -314,9 +340,9 @@ export default function AboutPage() {
               style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              Request a Quote
+              Contact Our Team
               <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -329,7 +355,7 @@ export default function AboutPage() {
               className="text-gray-300 text-sm"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              Response within 2 hours • 24/7 Emergency Support Available
+              24/7 Support • Expert Consultation • Customized Solutions
             </p>
           </div>
         </div>
