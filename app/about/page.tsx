@@ -1,6 +1,7 @@
 'use client';
 
-import { Target, Eye, HeartHandshake, CircleCheck, Settings, Star, Users, Package, Award, Tool, Clock } from 'tabler-icons-react';
+import { Target, Eye, HeartHandshake, CircleCheck, Settings, Star, Users, Package, Award, Tool, Clock, Shield } from 'tabler-icons-react';
+import Image from 'next/image';
 
 export default function AboutPage() {
   const impactMetrics = [
@@ -36,12 +37,6 @@ export default function AboutPage() {
       title: 'Vision',
       subtitle: 'Set the benchmark in industrial safety',
       description: 'Be the preferred partner for organizations seeking high-performance risk management and resilient operations.'
-    },
-    {
-      iconName: 'handshake',
-      title: 'Values',
-      subtitle: 'Integrity, precision, accountability',
-      description: 'We operate transparently, execute with discipline, and take ownership from planning through implementation.'
     }
   ];
 
@@ -118,7 +113,7 @@ export default function AboutPage() {
               className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
-              Who <span className="text-[#E53935]">We Are</span>
+              Rwanda's Trusted <span className="text-[#E53935]">Fire Protection Partner</span>
             </h1>
 
             {/* Subheading */}
@@ -126,7 +121,7 @@ export default function AboutPage() {
               className="text-sm sm:text-base lg:text-base text-gray-200 mb-5 sm:mb-7 max-w-2xl leading-relaxed font-normal"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
-              Protecting lives and property through reliable fire safety solutions.
+              We are committed to delivering reliable fire safety solutions that protect people, property, and businesses across Rwanda.
             </p>
 
             {/* Description */}
@@ -136,6 +131,290 @@ export default function AboutPage() {
             >
               VerifSafe is a Rwanda-based fire safety company dedicated to delivering high-quality equipment, professional services, and practical training to help individuals and organizations stay prepared and protected.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="relative w-full bg-slate-50 py-12 sm:py-14 lg:py-16 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-20 left-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div>
+              {/* Section Label */}
+              <div className="inline-block mb-4">
+                <p
+                  className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
+                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                >
+                  <Star size={16} />
+                  Our Story
+                </p>
+              </div>
+
+              {/* Main Heading */}
+              <h2
+                className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
+                style={{ fontFamily: 'Oswald, sans-serif' }}
+              >
+                What <span className="text-[#E53935]">Drives Us</span>
+              </h2>
+
+              {/* Description */}
+              <p
+                className="text-lg sm:text-xl text-gray-700 leading-relaxed font-normal"
+                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+              >
+                VERIFSAFE was established to provide fire protection solutions which help prevent risks and improve safety in everyday environments. We focus on delivering reliable equipment and services that support businesses and homes when safety matters most.
+              </p>
+            </div>
+
+            {/* Right - Image */}
+            <div className="relative">
+              <div className="relative w-full aspect-square overflow-hidden rounded-2xl shadow-2xl">
+                <Image
+                  src="/about-story.jpg"
+                  alt="VERIFSAFE Team and Operations"
+                  fill
+                  className="object-cover"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Foundation Section */}
+      <section className="relative w-full bg-linear-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-20 left-20 w-32 h-32 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            {/* Section Label */}
+            <div className="inline-block mb-4">
+              <p
+                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              >
+                <Settings size={16} />
+                Core Pillars
+              </p>
+            </div>
+
+            {/* Main Heading */}
+            <h2
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
+              style={{ fontFamily: 'Oswald, sans-serif' }}
+            >
+              Our <span className="text-[#E53935]">Foundation</span>
+            </h2>
+
+            {/* Subheading */}
+            <p
+              className="text-sm sm:text-base lg:text-base text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
+              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+            >
+              Built on principles that guide every decision and action we take
+            </p>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            {missionVisionValues.map((item, index) => (
+              <div
+                key={index}
+                className="relative group bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-10 sm:p-12 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
+                style={{ borderWidth: '1px' }}
+              >
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Icon Container */}
+                <div className="w-20 h-20 bg-linear-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-5">
+                  {renderIcon(item.iconName)}
+                </div>
+
+                {/* Title */}
+                <h3
+                  className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
+                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                >
+                  {item.title}
+                </h3>
+
+                {/* Subtitle */}
+                <p
+                  className="text-sm sm:text-base font-semibold text-[#E53935] mb-3"
+                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                >
+                  {item.subtitle}
+                </p>
+
+                {/* Description */}
+                <p
+                  className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                >
+                  {item.description}
+                </p>
+
+                {/* Bottom Accent Line */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values Section */}
+      <section className="relative w-full bg-white py-12 sm:py-14 lg:py-16 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-20 left-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          {/* Header */}
+          <div className="text-center mb-10 sm:mb-12">
+            {/* Section Label */}
+            <div className="inline-block mb-3">
+              <p
+                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              >
+                <Star size={16} />
+                Our Values
+              </p>
+            </div>
+
+            {/* Main Heading */}
+            <h2
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
+              style={{ fontFamily: 'Oswald, sans-serif' }}
+            >
+              What We <span className="text-[#E53935]">Believe</span>
+            </h2>
+
+            {/* Subheading */}
+            <p
+              className="text-sm sm:text-base lg:text-base text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
+              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+            >
+              The principles that guide our commitment to excellence and safety
+            </p>
+          </div>
+
+          {/* Values Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {/* Safety comes first */}
+            <div
+              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden"
+              style={{ borderWidth: '1px' }}
+            >
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Icon Container */}
+              <div className="w-14 h-14 bg-gradient-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-5">
+                <Shield size={32} className="text-[#E53935]" />
+              </div>
+
+              {/* Title */}
+              <h3
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
+                style={{ fontFamily: 'Oswald, sans-serif' }}
+              >
+                Safety comes first
+              </h3>
+
+              {/* Bottom Accent Line */}
+              <div className="mt-6 absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </div>
+
+            {/* Reliability in every solution */}
+            <div
+              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden"
+              style={{ borderWidth: '1px' }}
+            >
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Icon Container */}
+              <div className="w-14 h-14 bg-gradient-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-5">
+                <CircleCheck size={32} className="text-[#E53935]" />
+              </div>
+
+              {/* Title */}
+              <h3
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
+                style={{ fontFamily: 'Oswald, sans-serif' }}
+              >
+                Reliability in every solution
+              </h3>
+
+              {/* Bottom Accent Line */}
+              <div className="mt-6 absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </div>
+
+            {/* Professional service delivery */}
+            <div
+              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden"
+              style={{ borderWidth: '1px' }}
+            >
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Icon Container */}
+              <div className="w-14 h-14 bg-gradient-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-5">
+                <Tool size={32} className="text-[#E53935]" />
+              </div>
+
+              {/* Title */}
+              <h3
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
+                style={{ fontFamily: 'Oswald, sans-serif' }}
+              >
+                Professional service delivery
+              </h3>
+
+              {/* Bottom Accent Line */}
+              <div className="mt-6 absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </div>
+
+            {/* Long-term client trust */}
+            <div
+              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden"
+              style={{ borderWidth: '1px' }}
+            >
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Icon Container */}
+              <div className="w-14 h-14 bg-gradient-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-5">
+                <HeartHandshake size={32} className="text-[#E53935]" />
+              </div>
+
+              {/* Title */}
+              <h3
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
+                style={{ fontFamily: 'Oswald, sans-serif' }}
+              >
+                Long-term client trust
+              </h3>
+
+              {/* Bottom Accent Line */}
+              <div className="mt-6 absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </div>
           </div>
         </div>
       </section>
@@ -293,91 +572,6 @@ export default function AboutPage() {
 
                 {/* Bottom Accent Line */}
                 <div className="mt-6 absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative w-full bg-linear-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-        <div className="absolute bottom-20 left-20 w-32 h-32 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
-
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            {/* Section Label */}
-            <div className="inline-block mb-4">
-              <p
-                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
-              >
-                <Settings size={16} />
-                Core Pillars
-              </p>
-            </div>
-
-            {/* Main Heading */}
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
-            >
-              Our <span className="text-[#E53935]">Foundation</span>
-            </h2>
-
-            {/* Subheading */}
-            <p
-              className="text-sm sm:text-base lg:text-base text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-            >
-              Built on principles that guide every decision and action we take
-            </p>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-            {missionVisionValues.map((item, index) => (
-              <div
-                key={index}
-                className="relative group bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-10 sm:p-12 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
-                style={{ borderWidth: '1px' }}
-              >
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Icon Container */}
-                <div className="w-20 h-20 bg-linear-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-5">
-                  {renderIcon(item.iconName)}
-                </div>
-
-                {/* Title */}
-                <h3
-                  className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
-                >
-                  {item.title}
-                </h3>
-
-                {/* Subtitle */}
-                <p
-                  className="text-sm sm:text-base font-semibold text-[#E53935] mb-3"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                >
-                  {item.subtitle}
-                </p>
-
-                {/* Description */}
-                <p
-                  className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                >
-                  {item.description}
-                </p>
-
-                {/* Bottom Accent Line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             ))}
           </div>

@@ -137,7 +137,7 @@ export default function AboutCompany() {
             <div className="flex gap-4">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 px-7 py-3 bg-[#E53935] text-white font-bold rounded-lg hover:bg-red-700 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md group"
+                className="inline-flex items-center gap-2 px-7 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
                 Learn More

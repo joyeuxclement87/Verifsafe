@@ -54,7 +54,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
             {/* Primary Button */}
             <Link
-              href="/contact"
+              href="/services#project-form"
               className="inline-flex items-center gap-2 px-5 sm:px-7 py-2 sm:py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-sm transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg rounded-lg uppercase tracking-wide"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >

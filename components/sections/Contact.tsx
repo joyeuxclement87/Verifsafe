@@ -261,7 +261,7 @@ export default function Contact() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-7 py-3 bg-[#E53935] text-white font-medium rounded-lg text-base transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group border border-[#E53935]"
+                className="w-full px-7 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium rounded-lg text-base transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center justify-center gap-2 group"
                 style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
               >
                 Request a Quote

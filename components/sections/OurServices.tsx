@@ -124,7 +124,7 @@ export default function OurServices() {
         <div className="flex justify-center">
           <Link href="/services">
             <button
-              className="px-8 sm:px-12 py-4 bg-[#E53935] hover:bg-red-700 text-white font-bold text-lg rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 inline-flex items-center gap-3"
+              className="px-8 sm:px-12 py-4 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               Explore All Services
