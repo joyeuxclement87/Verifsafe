@@ -34,15 +34,15 @@ export default function Contact() {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-white via-red-50 to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section className="w-full bg-white py-18 sm:py-21 lg:py-28 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-18">
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
@@ -56,7 +56,7 @@ export default function Contact() {
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             When You Need <span className="text-[#E53935]">Fire Protection</span>
@@ -261,7 +261,7 @@ export default function Contact() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-[#E53935] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group border border-[#E53935]"
+                className="w-full px-7 py-3 bg-[#E53935] text-white font-medium rounded-lg text-base transition-all duration-300 hover:bg-red-700 hover:shadow-lg active:scale-95 shadow-md inline-flex items-center justify-center gap-2 group border border-[#E53935]"
                 style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
               >
                 Request a Quote

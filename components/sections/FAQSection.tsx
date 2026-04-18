@@ -39,14 +39,14 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden\">
+    <section className="w-full py-14 sm:py-18 lg:py-21 bg-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
 
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-18">
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
@@ -60,7 +60,7 @@ export default function FAQSection() {
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Frequently Asked{' '}

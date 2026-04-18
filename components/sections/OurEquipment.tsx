@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCogs } from '@fortawesome/free-solid-svg-icons';
@@ -9,17 +10,20 @@ export default function OurEquipment() {
     {
       image: '/equipment-1.png',
       title: 'Fire Extinguishers',
-      description: 'Portable firefighting equipment which helps control small fires.'
+      description: 'Portable firefighting equipment which helps control small fires.',
+      link: '/equipments/fire-extinguishers'
     },
     {
       image: '/equipment-2.png',
       title: 'Fire Alarm Systems',
-      description: 'Detection systems which alert occupants during emergencies.'
+      description: 'Detection systems which alert occupants during emergencies.',
+      link: '/equipments/fire-alarm-systems'
     },
     {
       image: '/equipment-3.png',
       title: 'Fire Hose Reels',
-      description: 'Equipment which provides water supply for firefighting.'
+      description: 'Equipment which provides water supply for firefighting.',
+      link: '/equipments/fire-hose-reels'
     },
     {
       image: '/equipment-4.png',
@@ -39,19 +43,19 @@ export default function OurEquipment() {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section className="w-full bg-white py-18 sm:py-21 lg:py-28 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-18">
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FontAwesomeIcon icon={faCogs} className="w-4 h-4" />
@@ -61,7 +65,7 @@ export default function OurEquipment() {
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             What We <span className="text-[#E53935]">Provide</span>
@@ -77,17 +81,18 @@ export default function OurEquipment() {
         </div>
 
         {/* Equipment Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 mb-16 sm:mb-20">
-          {equipment.map((item, index) => (
-            <div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-9 mb-14 sm:mb-18">
+          {equipment.slice(0, 3).map((item, index) => (
+            <Link
               key={index}
+              href={item.link || '#'}
               className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
               style={{ borderWidth: '1px', opacity: 0.95 }}
             >
               {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               {/* Image Container */}
-              <div className="w-full h-48 sm:h-56 bg-gray-200 mb-6 overflow-hidden relative rounded-lg group-hover:shadow-md hover:scale-105 transition-all duration-300">
+              <div className="w-full h-48 sm:h-56 bg-gray-200 mb-6 overflow-hidden relative rounded-lg group-hover:shadow-md transition-all duration-300">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -106,29 +111,35 @@ export default function OurEquipment() {
 
               {/* Description */}
               <p
-                className="text-gray-700 text-sm sm:text-base leading-relaxed font-normal"
+                className="text-gray-700 text-sm sm:text-base leading-relaxed font-normal mb-4"
                 style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
               >
                 {item.description}
               </p>
 
+              {/* View Details */}
+              <span className="inline-block text-[#E53935] font-semibold text-sm group-hover:gap-2 transition-all">
+                View Details →
+              </span>
+
               {/* Bottom Accent Line */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-            </div>
+            </Link>
           ))}
         </div>
 
         {/* CTA Section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 border-t border-gray-200">
-          <button
-            className="px-8 py-4 bg-[#E53935] text-white font-medium rounded-lg text-lg transition-all duration-300 hover:bg-red-700 active:scale-95 shadow-md hover:shadow-lg inline-flex items-center gap-2 group border border-[#E53935]"
-            style={{ fontFamily: 'Noto Sans, sans-serif', opacity: 0.9 }}
+          <Link
+            href="/equipments"
+            className="px-7 py-3 bg-[#E53935] text-white font-medium rounded-lg text-base transition-all duration-300 hover:bg-red-700 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg inline-flex items-center gap-2 group border border-[#E53935]"
+            style={{ fontFamily: 'Noto Sans, sans-serif' }}
           >
             View All Equipment
-            <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </button>
+          </Link>
 
           {/* Accent Text */}
           <span

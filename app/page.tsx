@@ -5,12 +5,9 @@ import WhyChooseUs from '@/components/sections/WhyChooseUs';
 import AboutCompany from '@/components/sections/AboutCompany';
 import OurEquipment from '@/components/sections/OurEquipment';
 import OurServices from '@/components/sections/OurServices';
-import FireSafetyTraining from '@/components/sections/FireSafetyTraining';
-import DeploymentWorkflow from '@/components/sections/DeploymentWorkflow';
-import WhoWeServe from '@/components/sections/WhoWeServe';
 import FAQSection from '@/components/sections/FAQSection';
 import ProtectionCTA from '@/components/sections/ProtectionCTA';
-import Contact from '@/components/sections/Contact';
+import QuickInfo from '@/components/sections/QuickInfo';
 import WhatsAppButton from '@/components/layout/WhatsAppButton';
 
 export default function Home() {
@@ -18,17 +15,15 @@ export default function Home() {
     <main className="w-full">
       <HeroSection />
       <EmergencyPreparedness />
-      <IndustrialFireSolutions />
-      <WhyChooseUs />
       <AboutCompany />
+      <IndustrialFireSolutions />
+     
       <OurEquipment />
       <OurServices />
-      <FireSafetyTraining />
-      <DeploymentWorkflow />
-      <WhoWeServe />
+      <WhyChooseUs />
       <FAQSection />
       <ProtectionCTA />
-      <Contact />
+      <QuickInfo />
       <WhatsAppButton />
     </main>
   );

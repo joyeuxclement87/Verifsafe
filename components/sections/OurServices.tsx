@@ -1,51 +1,36 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTools } from '@fortawesome/free-solid-svg-icons';
+import { faTools, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function OurServices() {
   const services = [
     {
       image: '/service-1.png',
-      title: 'Fire Equipment Supply',
-      description: 'Providing certified fire safety equipment for reliable protection.',
-      features: ['Extinguishers', 'Fire hoses', 'Safety signs', 'Emergency lighting']
+      title: 'Equipment Supply',
+      description: 'Certified fire safety equipment for immediate protection.'
     },
     {
       image: '/service-2.png',
       title: 'Installation Services',
-      description: 'Professional installation of fire safety systems and equipment.',
-      features: ['System setup', 'Safety testing', 'Compliance check', 'Documentation']
+      description: 'Professional system setup with full compliance verification.'
     },
     {
       image: '/service-3.png',
       title: 'Inspection & Testing',
-      description: 'Ensuring fire protection equipment works properly and safely.',
-      features: ['Regular inspections', 'Performance testing', 'Safety audits', 'Reports']
-    },
-    {
-      image: '/service-4.png',
-      title: 'Fire Extinguisher Refilling',
-      description: 'Refilling and servicing extinguishers to keep them ready for use.',
-      features: ['Pressure testing', 'Agent refilling', 'Seal replacement', 'Certification']
+      description: 'Regular maintenance checks to ensure peak performance.'
     },
     {
       image: '/service-5.png',
-      title: 'Maintenance Services',
-      description: 'Regular maintenance to keep fire protection systems reliable.',
-      features: ['Preventive care', 'System updates', 'Emergency repairs', '24/7 support']
-    },
-    {
-      image: '/service-6.png',
-      title: 'Fire Safety Training & Emergency First Aid',
-      description: 'Comprehensive training programs and first aid courses for emergency preparedness.',
-      features: ['Fire safety training', 'Emergency response', 'First aid certification', 'Evacuation procedures']
+      title: 'Fire Safety Training',
+      description: 'Expert-led courses for emergency preparedness.'
     }
   ];
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+    <section className="w-full bg-slate-50 py-18 sm:py-21 lg:py-28 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -56,12 +41,12 @@ export default function OurServices() {
 
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 w-16 h-16 bg-red-100 rounded-full blur-xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-24 h-24 bg-yellow-100 rounded-full blur-lg animate-bounce" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-20 right-20 w-24 h-24 bg-gray-400/5 rounded-full blur-lg animate-bounce" style={{ animationDelay: '1s' }} />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-18">
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
@@ -75,7 +60,7 @@ export default function OurServices() {
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             What We <span className="text-[#E53935]">Do</span>
@@ -91,15 +76,18 @@ export default function OurServices() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 sm:gap-9 mb-12">
           {services.map((service, index) => (
             <div
               key={index}
               className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl p-6 sm:p-8 overflow-hidden hover:border-red-400 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white"
-              style={{ borderWidth: '1px', opacity: 0.9 }}
+              style={{ borderWidth: '1px' }}
             >
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
               {/* Image Container */}
-              <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow-md mb-6 group-hover:shadow-lg transition-all duration-300">
+              <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow-md mb-5 group-hover:shadow-lg transition-all duration-300">
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -112,7 +100,7 @@ export default function OurServices() {
 
               {/* Title */}
               <h3
-                className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300"
+                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 {service.title}
@@ -120,42 +108,29 @@ export default function OurServices() {
 
               {/* Description */}
               <p
-                className="text-gray-700 text-base font-normal leading-relaxed mb-4"
+                className="text-sm sm:text-base text-gray-600 font-normal leading-relaxed"
                 style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
               >
                 {service.description}
               </p>
 
-              {/* Features List */}
-              <div className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-red-500 rounded-full flex-shrink-0" />
-                    <span className="text-sm text-gray-600 font-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
               {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-red-600 rounded-b-xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>
 
-        {/* Bottom Accent */}
-        <div className="flex items-center justify-center gap-3 mt-16 sm:mt-20 pt-12 border-t border-red-200/50">
-          <div className="flex-1 h-1 bg-gradient-to-r from-transparent to-red-400" />
-          <div className="bg-red-100 px-6 py-2 rounded-full">
-            <p
-              className="text-red-700 text-sm sm:text-base font-semibold whitespace-nowrap"
+        {/* CTA Button */}
+        <div className="flex justify-center">
+          <Link href="/services">
+            <button
+              className="px-8 sm:px-12 py-4 bg-[#E53935] hover:bg-red-700 text-white font-bold text-lg rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 inline-flex items-center gap-3"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              🔥 Comprehensive Fire Safety Solutions
-            </p>
-          </div>
-          <div className="flex-1 h-1 bg-gradient-to-l from-transparent to-red-400" />
+              Explore All Services
+              <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

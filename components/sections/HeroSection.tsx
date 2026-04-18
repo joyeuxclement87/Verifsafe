@@ -5,7 +5,7 @@ import { FileText, ArrowRight, Shield } from 'tabler-icons-react';
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-screen flex items-start justify-center overflow-hidden pt-37 sm:pt-26">
+    <section className="relative w-full h-screen flex items-start justify-center overflow-hidden pt-50 sm:pt-40">
       {/* Background Image - Single Static Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -16,7 +16,7 @@ export default function HeroSection() {
       />
       
       {/* Dark Overlay with Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/85 to-[#0F172A]/95" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/90 to-black/95" />
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +35,7 @@ export default function HeroSection() {
 
           {/* Main Headline */}
           <h1
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight uppercase tracking-wider"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Absolute <span className="text-[#E53935]">Fire Protection</span><br />
@@ -44,7 +44,7 @@ export default function HeroSection() {
 
           {/* Subheadline */}
           <p
-            className="text-base sm:text-lg lg:text-lg text-gray-200 mb-8 sm:mb-10 max-w-2xl leading-relaxed font-normal"
+            className="text-sm sm:text-base lg:text-base text-gray-200 mb-7 sm:mb-9 max-w-2xl leading-relaxed font-normal"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
             State-of-the-art detection and suppression technology for industrial-scale safety. We safeguard high-risk environments with precision engineering.
@@ -55,7 +55,7 @@ export default function HeroSection() {
             {/* Primary Button */}
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base transition-all duration-300 hover:shadow-2xl active:scale-95 shadow-lg rounded-lg uppercase tracking-wide"
+              className="inline-flex items-center gap-2 px-5 sm:px-7 py-2 sm:py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-sm transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg rounded-lg uppercase tracking-wide"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FileText size={16} strokeWidth={1} />
@@ -65,7 +65,7 @@ export default function HeroSection() {
             {/* Secondary Button */}
             <Link
               href="/equipments"
-              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border border-white/30 text-white font-bold text-base transition-all duration-300 hover:bg-white/20 active:scale-95 rounded-lg bg-white/20 backdrop-blur-sm uppercase tracking-wide"
+              className="inline-flex items-center gap-2 px-5 sm:px-7 py-2 sm:py-3 border border-white/30 text-white font-bold text-sm transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-lg bg-white/20 backdrop-blur-sm uppercase tracking-wide"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               Explore Systems

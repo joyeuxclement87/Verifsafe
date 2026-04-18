@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import { Tools, Shield, Phone, Star } from 'tabler-icons-react';
+import DeploymentWorkflow from '@/components/sections/DeploymentWorkflow';
+import WhoWeServe from '@/components/sections/WhoWeServe';
 
 export default function ServicesPage() {
   const services = [
@@ -68,7 +70,7 @@ export default function ServicesPage() {
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
                 <Star size={16} />
-                Our Services
+                What we offer
               </p>
             </div>
 
@@ -77,23 +79,15 @@ export default function ServicesPage() {
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
-              Complete Fire Safety <span className="text-yellow-300">Solutions</span>
+              Professional Fire Protection <span className="text-yellow-300">Services</span>
             </h1>
-
-            {/* Subheading */}
-            <p
-              className="text-lg sm:text-xl text-red-100 max-w-2xl mx-auto font-normal leading-relaxed mb-8"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-            >
-              Complete fire safety solutions designed to protect lives, property, and operations.
-            </p>
 
             {/* Description */}
             <p
-              className="text-base sm:text-lg text-red-100 max-w-3xl mx-auto leading-relaxed font-normal"
+              className="text-lg sm:text-xl text-red-100 max-w-3xl mx-auto font-normal leading-relaxed"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
-              At VerifSafe, we provide a full range of fire protection services—from supplying certified equipment to installation, maintenance, and training—ensuring you stay prepared at all times.
+              We provide fire safety services which ensure equipment and systems are installed, maintained, and ready when needed.
             </p>
           </div>
         </div>
@@ -116,7 +110,7 @@ export default function ServicesPage() {
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
                 <Tools size={16} />
-                What We Do
+                Our expertise
               </p>
             </div>
 
@@ -125,7 +119,7 @@ export default function ServicesPage() {
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
-              Our <span className="text-[#E53935]">Services</span>
+              What We <span className="text-[#E53935]">Do</span>
             </h2>
 
             {/* Subheading */}
@@ -133,7 +127,7 @@ export default function ServicesPage() {
               className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
-              We provide fire safety services which ensure that fire protection systems are installed, inspected, and maintained properly.
+              We deliver fire protection services which support businesses, institutions, and homes with reliable safety systems. From supply to maintenance, our services are designed to ensure continuous protection.
             </p>
           </div>
 
@@ -260,6 +254,10 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <DeploymentWorkflow />
+
+      <WhoWeServe />
 
       {/* CTA Section */}
       <section className="w-full bg-linear-to-r from-gray-900 via-red-900 to-gray-900 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
