@@ -32,7 +32,7 @@ export default function MainNavigation() {
   const navLinks = [
     { href: '/', label: 'HOME' },
     { href: '/about', label: 'ABOUT' },
-    { href: '/services', label: 'SERVICES', hasDropdown: true },
+    { href: '/services', label: 'SERVICES', hasDropdown: false },
     { href: '/equipments', label: 'EQUIPMENTS', hasDropdown: true },
     { href: '/gallery', label: 'GALLERY' },
     { href: '/contact', label: 'CONTACT' },
@@ -125,7 +125,7 @@ export default function MainNavigation() {
           <div className="flex items-center gap-4">
             {/* CTA Button - Desktop */}
             <Link
-              href="/contact"
+              href="/services#project-form"
               className="hidden sm:inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-sm transition-all duration-300 hover:shadow-lg active:scale-95 shadow-md rounded-lg uppercase tracking-wide"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
@@ -230,7 +230,7 @@ export default function MainNavigation() {
                 </div>
               ))}
               <Link
-                href="/contact"
+                href="/services#project-form"
                 className="flex items-center justify-center gap-2 w-full mt-4 px-4 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-sm transition-all duration-300 hover:shadow-lg active:scale-95 shadow-md rounded-lg uppercase tracking-wide"
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 onClick={() => setIsOpen(false)}

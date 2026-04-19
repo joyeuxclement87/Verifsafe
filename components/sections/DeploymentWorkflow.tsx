@@ -1,7 +1,6 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTasks } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function DeploymentWorkflow() {
   const steps = [

@@ -140,8 +140,8 @@ export default function FireSafetyTraining() {
         {/* CTA Button */}
         <div className="flex justify-center">
           <button
-            className="px-10 py-4 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group border border-[#E53935]"
-            style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
+            className="px-10 py-4 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group"
+            style={{ fontFamily: 'Noto Sans, sans-serif' }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m0 0h6m-6-6h6m-6 6h6" />
