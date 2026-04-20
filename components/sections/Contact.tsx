@@ -9,6 +9,7 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
+    service: '',
     message: ''
   });
 
@@ -28,145 +29,113 @@ export default function Contact() {
     console.log('Form submitted:', formData);
     setSubmitted(true);
     setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
       setSubmitted(false);
     }, 3000);
   };
 
   return (
-    <section className="w-full bg-white py-18 sm:py-21 lg:py-28 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+    <section className="w-full bg-gray-50 py-14 sm:py-18 lg:py-24 relative overflow-hidden">
+      <div className="absolute top-10 left-10 w-32 h-32 bg-red-50/40 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-gray-200/30 rounded-full blur-3xl" />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center mb-18">
-          {/* Section Label */}
+
+        {/* Section Header */}
+        <div className="text-center mb-14">
           <div className="inline-block mb-4">
             <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
-              Get in Touch
+              Contact Form
             </p>
           </div>
-
-          {/* Main Heading */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
-            When You Need <span className="text-[#E53935]">Fire Protection</span>
+            Send Us a <span className="text-[#E53935]">Message</span>
           </h2>
-
-          {/* Subheading */}
+          <div className="w-12 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
           <p
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
+            className="text-lg text-gray-500 max-w-xl mx-auto font-normal leading-relaxed"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
-            Our team is ready to help with fire safety equipment and protection solutions for your property or business.
+            Fill in the form below and our team will get back to you within 2 business hours.
           </p>
         </div>
+
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
           
-          {/* Left: Contact Info */}
-          <div className="space-y-10">
-            {/* Contact Methods */}
-            <div className="space-y-8">
+          {/* Left: Direct Contact Info */}
+          <div className="flex flex-col gap-8">
+
+            {/* Label */}
+            <div>
+              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                Direct Contact
+              </p>
+              <h3 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                Quick Reach
+              </h3>
+            </div>
+
+            {/* Contact Cards */}
+            <div className="space-y-4">
+
               {/* Phone */}
-              <div className="flex gap-6 group">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E53935] transition-colors duration-300">
-                    <FontAwesomeIcon
-                      icon={faPhone}
-                      className="w-8 h-8 text-[#E53935] group-hover:text-white transition-colors duration-300"
-                    />
-                  </div>
+              <a href="tel:+250XXX000000" className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 bg-gray-50 transition-all duration-300">
+                <div className="w-11 h-11 rounded-full bg-[#E53935]/10 flex items-center justify-center shrink-0">
+                  <FontAwesomeIcon icon={faPhone} className="w-5 h-5 text-[#E53935]" />
                 </div>
                 <div>
-                  <h3
-                    className="text-lg font-bold text-gray-900 mb-1"
-                    style={{ fontFamily: 'Oswald, sans-serif' }}
-                  >
-                    Phone
-                  </h3>
-                  <p
-                    className="text-gray-700 text-base font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                  >
-                    +250 789 000 022
-                  </p>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Phone</p>
+                  <p className="text-gray-900 font-semibold text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>+250 XXX XXX XXX</p>
                 </div>
-              </div>
+              </a>
 
               {/* Email */}
-              <div className="flex gap-6 group">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E53935] transition-colors duration-300">
-                    <FontAwesomeIcon
-                      icon={faEnvelope}
-                      className="w-8 h-8 text-[#E53935] group-hover:text-white transition-colors duration-300"
-                    />
-                  </div>
+              <a href="mailto:info@verifsafe.com" className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 bg-gray-50">
+                <div className="w-11 h-11 rounded-full bg-[#E53935]/10 flex items-center justify-center shrink-0">
+                  <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 text-[#E53935]" />
                 </div>
                 <div>
-                  <h3
-                    className="text-lg font-bold text-gray-900 mb-1"
-                    style={{ fontFamily: 'Oswald, sans-serif' }}
-                  >
-                    Email
-                  </h3>
-                  <p
-                    className="text-gray-700 text-base font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                  >
-                    info@verifsafe.com
-                  </p>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Email</p>
+                  <p className="text-gray-900 font-semibold text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>info@verifsafe.com</p>
                 </div>
-              </div>
+              </a>
 
-              {/* Location */}
-              <div className="flex gap-6 group">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-14 w-14 rounded-full bg-red-50 group-hover:bg-[#E53935] transition-colors duration-300">
-                    <FontAwesomeIcon
-                      icon={faMapMarkerAlt}
-                      className="w-8 h-8 text-[#E53935] group-hover:text-white transition-colors duration-300"
-                    />
-                  </div>
+              {/* Hours */}
+              <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 bg-gray-50 group">
+                <div className="w-11 h-11 rounded-full bg-[#E53935]/10 flex items-center justify-center shrink-0">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="w-5 h-5 text-[#E53935]" />
                 </div>
                 <div>
-                  <h3
-                    className="text-lg font-bold text-gray-900 mb-1"
-                    style={{ fontFamily: 'Oswald, sans-serif' }}
-                  >
-                    Location
-                  </h3>
-                  <p
-                    className="text-gray-700 text-base font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                  >
-                    Kigali, Rwanda
-                  </p>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Working Hours</p>
+                  <p className="text-gray-900 font-semibold text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Mon – Sat &nbsp;|&nbsp; 8:00 AM – 6:00 PM</p>
                 </div>
               </div>
             </div>
 
-            {/* Accent Divider */}
-            <div className="pt-8 border-t border-gray-200">
-              <p
-                className="text-gray-600 text-base font-normal"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-              >
-                We respond to inquiries within 2 business hours during working hours, and maintain emergency support 24/7.
-              </p>
+            {/* Live Map */}
+            <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-md flex-1 min-h-[240px]">
+              <iframe
+                title="Verifsafe Location – Kigali, Rwanda"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63799.41861375086!2d30.04800!3d-1.94995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca4258ed8e797%3A0xf32b36a5411d0bc8!2sKigali%2C%20Rwanda!5e0!3m2!1sen!2s!4v1713600000000!5m2!1sen!2s"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '240px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
+
 
           {/* Right: Contact Form */}
           <div>
@@ -215,6 +184,36 @@ export default function Contact() {
                 />
               </div>
 
+              {/* Service Type */}
+              <div>
+                <label
+                  htmlFor="service"
+                  className="block text-sm font-semibold text-gray-800 mb-2"
+                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                >
+                  Service Type
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange as any}
+                  required
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 text-gray-900"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
+                >
+                  <option value="" disabled>Select a service type</option>
+                  <option value="Fire Equipment Supply">Fire Equipment Supply</option>
+                  <option value="Installation Services">Installation Services</option>
+                  <option value="Inspection & Testing">Inspection &amp; Testing</option>
+                  <option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option>
+                  <option value="Maintenance Services">Maintenance Services</option>
+                  <option value="Fire Safety Awareness Training">Fire Safety Awareness Training</option>
+                  <option value="First Aid Training">First Aid Training</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
               {/* Phone Input */}
               <div>
                 <label
@@ -254,18 +253,18 @@ export default function Contact() {
                   rows={5}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none"
                   style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
-                  placeholder="Tell us about your fire safety needs..."
+                  placeholder="Describe your request, project, or requirements"
                 />
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-7 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium rounded-lg text-base transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center justify-center gap-2 group"
+                className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center justify-center gap-2 group"
                 style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
               >
-                Request a Quote
-                <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                Send Message
+                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </button>

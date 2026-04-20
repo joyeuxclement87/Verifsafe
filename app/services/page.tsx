@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { Tools, Shield, Star, Send, FileText, Check } from 'tabler-icons-react';
+import { Tools, Shield, Phone, Star, Send, FileText, Check } from 'tabler-icons-react';
 import DeploymentWorkflow from '@/components/sections/DeploymentWorkflow';
 import WhoWeServe from '@/components/sections/WhoWeServe';
 
@@ -833,7 +833,7 @@ export default function ServicesPage() {
                 <div className="text-center pt-2">
                   <button
                     type="submit"
-                    className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-2 group"
+                    className="px-8 py-3 bg-[#E53935] hover:bg-[#D32F2F] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95 inline-flex items-center gap-2 group"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
                     <Send size={18} />

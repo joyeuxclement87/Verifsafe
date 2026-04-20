@@ -6,9 +6,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#0F172A] text-gray-300">
+    <footer className="w-full bg-[#0F172A] text-gray-300 relative overflow-hidden">
+      {/* Background Glow Effects */}
+      <div className="absolute top-1/2 -translate-y-1/2 -left-48 w-96 h-96 bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 -translate-y-1/2 -right-48 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none" />
+
       {/* Main Footer Content */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 mb-12">
           
           {/* Brand Section */}
@@ -62,29 +66,30 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Equipments */}
           <div>
             <h4
               className="text-white text-lg font-bold mb-6"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              Quick Links
+              Equipments
             </h4>
             <ul className="space-y-3">
               {[
-                { label: 'Home', href: '#' },
-                { label: 'Products', href: '#' },
-                { label: 'Services', href: '#' },
-                { label: 'About Us', href: '#' },
-                { label: 'Contact', href: '#' }
-              ].map((link, index) => (
+                { label: 'Fire Extinguishers', href: '/equipments/fire-extinguishers' },
+                { label: 'Fire Alarm Systems', href: '/equipments/fire-alarm-systems' },
+                { label: 'Fire Hose Reels', href: '/equipments/fire-hose-reels' },
+                { label: 'Fire Detection Devices', href: '/equipments/fire-detection-devices' },
+                { label: 'Emergency Lights & Exit Signs', href: '/equipments/emergency-lights' },
+                { label: 'Fire Safety Accessories', href: '/equipments/fire-safety-accessories' }
+              ].map((equipment, index) => (
                 <li key={index}>
                   <a
-                    href={link.href}
+                    href={equipment.href}
                     className="text-gray-400 hover:text-[#E53935] transition-colors duration-300 font-normal"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
-                    {link.label}
+                    {equipment.label}
                   </a>
                 </li>
               ))}
@@ -97,15 +102,15 @@ export default function Footer() {
               className="text-white text-lg font-bold mb-6"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              Our Services
+              What We Do
             </h4>
             <ul className="space-y-3">
               {[
-                { label: 'Equipment Supply', href: '#' },
-                { label: 'Installation', href: '#' },
-                { label: 'Inspection & Testing', href: '#' },
-                { label: 'Maintenance', href: '#' },
-                { label: 'Emergency Support', href: '#' }
+                { label: 'Fire Equipment Supply', href: '/services' },
+                { label: 'Installation Services', href: '/services' },
+                { label: 'Inspection & Testing', href: '/services' },
+                { label: 'Maintenance Services', href: '/services' },
+                { label: 'Fire Safety Training', href: '/services' }
               ].map((service, index) => (
                 <li key={index}>
                   <a

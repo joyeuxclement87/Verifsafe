@@ -49,7 +49,7 @@ export default function OurEquipment() {
       <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center mb-18">
           {/* Section Label */}
@@ -65,11 +65,14 @@ export default function OurEquipment() {
 
           {/* Main Heading */}
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             What We <span className="text-[#E53935]">Provide</span>
           </h2>
+
+          {/* Decorative Divider */}
+          <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
           {/* Subheading */}
           <p
@@ -86,24 +89,25 @@ export default function OurEquipment() {
             <Link
               key={index}
               href={item.link || '#'}
-              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
-              style={{ borderWidth: '1px', opacity: 0.95 }}
+              className="group relative bg-white border border-gray-100 rounded-2xl p-8 hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
+              style={{ borderWidth: '1px' }}
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
               {/* Image Container */}
-              <div className="w-full h-48 sm:h-56 bg-gray-200 mb-6 overflow-hidden relative rounded-lg group-hover:shadow-md transition-all duration-300">
+              <div className="w-full h-48 sm:h-56 bg-gray-50 mb-6 overflow-hidden relative rounded-xl group-hover:shadow-md transition-all duration-300 border border-gray-100">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
 
               {/* Title */}
               <h3
-                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
+                className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 {item.title}
@@ -111,19 +115,19 @@ export default function OurEquipment() {
 
               {/* Description */}
               <p
-                className="text-gray-700 text-sm sm:text-base leading-relaxed font-normal mb-4"
+                className="text-base text-gray-600 leading-relaxed font-normal mb-4"
                 style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
               >
                 {item.description}
               </p>
 
               {/* View Details */}
-              <span className="inline-block text-[#E53935] font-semibold text-sm group-hover:gap-2 transition-all">
+              <span className="inline-block text-[#E53935] font-semibold text-sm group-hover:gap-2 transition-all mt-auto">
                 View Details →
               </span>
 
               {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
           ))}
         </div>
@@ -132,7 +136,7 @@ export default function OurEquipment() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 border-t border-gray-200">
           <Link
             href="/equipments"
-            className="px-7 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold rounded-lg text-base transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-2 group"
+            className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-2 group"
             style={{ fontFamily: 'Noto Sans, sans-serif' }}
           >
             View All Equipment

@@ -11,13 +11,17 @@ export default function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-24 right-6 z-50 group flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-[#25D366] to-[#20BA58] rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 active:scale-95"
+      className="fixed bottom-25 right-25 z-50 group flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 active:scale-95"
       title="Chat with us on WhatsApp"
     >
-      <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full transition-colors duration-300">
-        <BrandWhatsapp size={20} className="text-[#25D366]" />
-      </div>
-      <span className="text-white font-medium text-sm whitespace-nowrap group-hover:tracking-wide transition-all duration-300">
+      {/* Ripple ping animation */}
+      <span className="absolute inline-flex w-full h-full rounded-full bg-[#25D366] opacity-60 animate-ping" />
+
+      {/* Icon */}
+      <BrandWhatsapp size={28} className="text-white relative z-10" strokeWidth={1.5} />
+
+      {/* Tooltip on hover */}
+      <span className="absolute right-full mr-3 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-md">
         Chat with us
       </span>
     </a>

@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import TopBar from "@/components/layout/TopBar";
-import MainNavigation from "@/components/layout/MainNavigation";
-import Footer from "@/components/layout/Footer";
+import ConditionalLayout from "@/components/layout/ConditionalLayout";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,20 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
-        {/* Top Info Bar */}
-        <TopBar />
-        
-        {/* Main Navigation Bar */}
-        <MainNavigation />
-        
-        {/* Main content with top padding to account for fixed bars */}
-        {/* Top bar: 48px (h-12), Navbar: 112px (h-28) */}
-        <div className="pt-40 flex-1">
+        <ConditionalLayout>
           {children}
-        </div>
-
-        {/* Footer */}
-        <Footer />
+        </ConditionalLayout>
       </body>
     </html>
   );

@@ -23,9 +23,9 @@ export default function IndustrialFireSolutions() {
 
   const renderIcon = (iconName: string) => {
     switch(iconName) {
-      case 'heart': return <Heart size={32} className="text-[#E53935]" />;
-      case 'gavel': return <Gavel size={32} className="text-[#E53935]" />;
-      case 'shield': return <Shield size={32} className="text-[#E53935]" />;
+      case 'heart': return <Heart size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'gavel': return <Gavel size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'shield': return <Shield size={44} className="text-[#E53935]" strokeWidth={1} />;
       default: return null;
     }
   };
@@ -53,13 +53,16 @@ export default function IndustrialFireSolutions() {
 
           {/* Main Heading */}
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Why Our Industrial{' '}
             <span className="text-[#E53935]">Fire Solutions</span>
             {' '}Matter
           </h2>
+
+          {/* Decorative Divider */}
+          <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
           {/* Subheading */}
           <p
@@ -75,20 +78,20 @@ export default function IndustrialFireSolutions() {
           {solutions.map((solution, index) => (
             <div
               key={index}
-              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-8 sm:p-10 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden flex flex-col"
-              style={{ borderWidth: '1px', opacity: 0.95 }}
+              className="group relative bg-white border border-gray-100 rounded-2xl p-8 hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
+              style={{ borderWidth: '1px' }}
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               {/* Icon Container */}
-              <div className="w-14 h-14 bg-gradient-to-br from-[#E53935]/20 to-red-600/20 rounded-lg flex items-center justify-center mb-6">
+              <div className="mb-6 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 {renderIcon(solution.iconName)}
               </div>
 
               {/* Title */}
               <h3
-                className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
+                className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
                 style={{ fontFamily: 'Oswald, sans-serif' }}
               >
                 {solution.title}
@@ -96,14 +99,14 @@ export default function IndustrialFireSolutions() {
 
               {/* Description */}
               <p
-                className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal flex-grow"
+                className="text-base text-gray-600 leading-relaxed font-normal flex-grow"
                 style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
               >
                 {solution.description}
               </p>
 
               {/* Bottom Accent Line */}
-              <div className="mt-6 absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent rounded-b-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="mt-6 absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>

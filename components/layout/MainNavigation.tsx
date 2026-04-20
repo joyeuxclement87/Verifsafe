@@ -126,7 +126,7 @@ export default function MainNavigation() {
             {/* CTA Button - Desktop */}
             <Link
               href="/services#project-form"
-              className="hidden sm:inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-sm transition-all duration-300 hover:shadow-lg active:scale-95 shadow-md rounded-lg uppercase tracking-wide"
+              className="hidden sm:inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md rounded-lg"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FileText size={16} strokeWidth={1} />
@@ -136,7 +136,7 @@ export default function MainNavigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:bg-gray-100 transition-colors"
+              className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-[#E53935] hover:bg-[#E53935]/10 transition-colors"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
@@ -161,58 +161,71 @@ export default function MainNavigation() {
                 <div key={link.href}>
                   {link.hasDropdown ? (
                     <>
-                      <button
-                        onClick={() => setActiveDropdown(activeDropdown === link.label ? null : link.label)}
-                        className={`w-full text-left px-4 py-3 font-bold text-sm transition-all duration-300 rounded-md flex items-center justify-between ${
-                          activeDropdown === link.label
-                            ? 'bg-[#E53935]/20 text-[#E53935]'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-[#E53935]'
+                    {/* Row: Link to page + separate chevron button for dropdown */}
+                    <div className={`flex items-center rounded-md overflow-hidden ${
+                      activeDropdown === link.label ? 'bg-[#E53935]/20' : ''
+                    }`}>
+                      <Link
+                        href={link.href}
+                        className={`flex-1 px-4 py-3 font-bold text-sm transition-all duration-300 ${
+                          isActive(link.href)
+                            ? 'text-[#E53935]'
+                            : 'text-gray-300 hover:text-[#E53935]'
                         }`}
                         style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                        onClick={() => setIsOpen(false)}
                       >
                         {link.label}
+                      </Link>
+                      <button
+                        onClick={() => setActiveDropdown(activeDropdown === link.label ? null : link.label)}
+                        className={`px-3 py-3 transition-all duration-300 hover:text-[#E53935] ${
+                          activeDropdown === link.label ? 'text-[#E53935]' : 'text-gray-300'
+                        }`}
+                      >
                         <ChevronDown 
-                          size={12}
-                          strokeWidth={1}
+                          size={14}
+                          strokeWidth={1.5}
                           className={`transition-transform duration-300 ${activeDropdown === link.label ? 'rotate-180' : ''}`}
                         />
                       </button>
-                      {activeDropdown === link.label && (
-                        <div className="bg-[#0F172A] rounded-lg ml-2 mt-2 p-1 border border-gray-700">
-                          <div className="grid grid-cols-2 gap-1">
-                            {link.label === 'SERVICES' ? (
-                              services.map((service, idx) => (
-                                <Link
-                                  key={idx}
-                                  href="/services"
-                                  onClick={() => {
-                                    setIsOpen(false);
-                                    setActiveDropdown(null);
-                                  }}
-                                  className="px-4 py-3 text-gray-300 hover:text-[#E53935] hover:bg-gray-700 rounded-lg transition-all duration-200 text-xs font-semibold cursor-pointer block"
-                                >
-                                  {service.title}
-                                </Link>
-                              ))
-                            ) : (
-                              equipments.map((equipment, idx) => (
-                                <Link
-                                  key={idx}
-                                  href={equipment.link}
-                                  onClick={() => {
-                                    setIsOpen(false);
-                                    setActiveDropdown(null);
-                                  }}
-                                  className="px-4 py-3 text-gray-300 hover:text-[#E53935] hover:bg-gray-700 rounded-lg transition-all duration-200 text-xs font-semibold cursor-pointer block"
-                                >
-                                  {equipment.title}
-                                </Link>
-                              ))
-                            )}
-                          </div>
+                    </div>
+                    {activeDropdown === link.label && (
+                      <div className="bg-[#0F172A] rounded-lg ml-2 mt-2 p-1 border border-gray-700">
+                        <div className="grid grid-cols-2 gap-1">
+                          {link.label === 'SERVICES' ? (
+                            services.map((service, idx) => (
+                              <Link
+                                key={idx}
+                                href="/services"
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  setActiveDropdown(null);
+                                }}
+                                className="px-4 py-3 text-gray-300 hover:text-[#E53935] hover:bg-gray-700 rounded-lg transition-all duration-200 text-xs font-semibold cursor-pointer block"
+                              >
+                                {service.title}
+                              </Link>
+                            ))
+                          ) : (
+                            equipments.map((equipment, idx) => (
+                              <Link
+                                key={idx}
+                                href={equipment.link}
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  setActiveDropdown(null);
+                                }}
+                                className="px-4 py-3 text-gray-300 hover:text-[#E53935] hover:bg-gray-700 rounded-lg transition-all duration-200 text-xs font-semibold cursor-pointer block"
+                              >
+                                {equipment.title}
+                              </Link>
+                            ))
+                          )}
                         </div>
-                      )}
-                    </>
+                      </div>
+                    )}
+                  </>
                   ) : (
                     <Link
                       href={link.href}
@@ -231,7 +244,7 @@ export default function MainNavigation() {
               ))}
               <Link
                 href="/services#project-form"
-                className="flex items-center justify-center gap-2 w-full mt-4 px-4 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-sm transition-all duration-300 hover:shadow-lg active:scale-95 shadow-md rounded-lg uppercase tracking-wide"
+                className="flex items-center justify-center gap-2 w-full mt-4 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md rounded-lg"
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 onClick={() => setIsOpen(false)}
               >

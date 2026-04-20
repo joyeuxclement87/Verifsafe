@@ -16,7 +16,11 @@ export default function HeroSection() {
       />
       
       {/* Dark Overlay with Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/90 to-black/95" />
+      <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+
+      {/* Background Glow Effects */}
+      <div className="absolute top-1/2 -translate-y-1/2 -left-48 w-96 h-96 bg-red-600/10 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 -translate-y-1/2 -right-48 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,7 +59,7 @@ export default function HeroSection() {
             {/* Primary Button */}
             <Link
               href="/services#project-form"
-              className="inline-flex items-center gap-2 px-5 sm:px-7 py-2 sm:py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-sm transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg rounded-lg uppercase tracking-wide"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg rounded-lg uppercase tracking-wide"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               <FileText size={16} strokeWidth={1} />
@@ -65,7 +69,7 @@ export default function HeroSection() {
             {/* Secondary Button */}
             <Link
               href="/equipments"
-              className="inline-flex items-center gap-2 px-5 sm:px-7 py-2 sm:py-3 border border-white/30 text-white font-bold text-sm transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-lg bg-white/20 backdrop-blur-sm uppercase tracking-wide"
+              className="inline-flex items-center gap-2 px-8 py-3 border border-white/30 text-white font-medium text-base transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-lg bg-white/20 backdrop-blur-sm uppercase tracking-wide"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
               Explore Systems

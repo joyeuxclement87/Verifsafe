@@ -39,7 +39,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full py-14 sm:py-18 lg:py-21 bg-white relative overflow-hidden">
+    <section className="w-full py-20 sm:py-24 lg:py-32 bg-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
       <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
@@ -60,12 +60,15 @@ export default function FAQSection() {
 
           {/* Main Heading */}
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
             Frequently Asked{' '}
             <span className="text-[#E53935]">Questions</span>
           </h2>
+
+          {/* Decorative Divider */}
+          <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
           {/* Subheading */}
           <p
@@ -81,11 +84,11 @@ export default function FAQSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden"
-              style={{ borderWidth: '1px', opacity: 0.95 }}
+              className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-pointer"
+              style={{ borderWidth: '1px' }}
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <button
                 onClick={() => toggleFAQ(index)}
@@ -118,7 +121,7 @@ export default function FAQSection() {
               )}
 
               {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>

@@ -1,199 +1,565 @@
 'use client';
 
-import { FileText, Package, Shield, CircleCheck, Building } from 'tabler-icons-react';
+import {
+  FileText,
+  Package,
+  Shield,
+  CircleCheck,
+  Building,
+  Settings,
+  Box,
+  Flame,
+  AlertTriangle,
+  Bell,
+  Helmet,
+  BuildingSkyscraper,
+  BuildingFactory,
+  BuildingWarehouse,
+  BuildingCommunity,
+  Home,
+  ShieldCheck,
+  Bolt,
+  Tool,
+  ClipboardCheck
+} from 'tabler-icons-react';
 import Link from 'next/link';
 
 export default function FireSafetyAccessoriesPage() {
-  const accessories = [
-    'Fire blankets',
-    'Safety gloves',
-    'Alarm accessories',
-    'Mounting brackets'
-  ];
 
-  const applications = [
-    'Used alongside main fire safety equipment for complete protection'
-  ];
 
   return (
     <main className="w-full">
       {/* Hero Section */}
-      <section className="w-full h-96 bg-linear-to-r from-[#E53935] to-[#B71C1C] relative overflow-hidden pt-40 flex items-center justify-center">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
+      <section className="relative w-full h-96 sm:h-125 lg:h-150 flex items-center justify-center overflow-hidden mt-0">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url("/hero-1.webp")`,
+            backgroundAttachment: 'fixed',
+          }}
+        />
 
-        <div className="relative z-10 text-center">
-          <div className="mb-6 flex justify-center">
-            <Package size={64} className="text-white" strokeWidth={1.5} />
-          </div>
-          <h1 className="text-5xl font-bold text-white mb-4" style={{ fontFamily: 'Oswald, sans-serif' }}>
-            Fire Safety Accessories
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto px-4">
-            Additional tools that support fire protection systems.
-          </p>
-        </div>
-      </section>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-linear-to-b from-black/85 via-black/90 to-black/95" />
 
-      {/* Overview Section */}
-      <section className="w-full py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-8">
-            <div className="shrink-0">
-              <div className="flex items-center justify-center h-16 w-16 rounded-lg bg-[#E53935]/10">
-                <Shield size={32} className="text-[#E53935]" strokeWidth={1.5} />
-              </div>
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                🛡️ Overview
-              </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Additional tools that support fire protection systems.
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center text-center">
+            <div className="inline-block mb-4">
+              <p
+                className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              >
+                <Package size={16} />
+                Supporting safety equipment
               </p>
             </div>
+
+            <h1
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
+              style={{ fontFamily: 'Oswald, sans-serif' }}
+            >
+              Fire Safety Accessories
+            </h1>
+
+            <p
+              className="text-sm sm:text-base lg:text-base text-gray-200 mb-5 sm:mb-7 max-w-2xl leading-relaxed font-normal"
+              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+            >
+              Essential tools and components that support fire protection systems and improve overall safety and response readiness.
+            </p>
+
+
           </div>
         </div>
       </section>
 
-      {/* Includes */}
-      <section className="w-full py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Oswald, sans-serif' }}>
-              ⚙️ Includes
+      {/* Intro Section */}
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
+        <div className="absolute top-20 left-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-10">
+            <div className="inline-block mb-4">
+              <p
+                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              >
+                <Shield size={16} />
+                What they do
+              </p>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+              Supporting Complete <span className="text-[#E53935]">Protection</span>
             </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {accessories.map((item, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 border-l-4 border-[#E53935] shadow-md hover:shadow-lg transition-shadow">
-                <div className="flex items-start gap-3">
-                  <CircleCheck size={20} className="text-[#E53935] mt-1 shrink-0" strokeWidth={1.5} />
-                  <p className="text-gray-900 font-semibold">{item}</p>
-                </div>
-              </div>
-            ))}
+            <div className="w-12 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
+            <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+              Fire safety accessories enhance the effectiveness of fire protection systems by ensuring equipment is properly installed, visible, and easy to use during emergencies.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Use Cases */}
-      <section className="w-full py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-8 mb-12">
-            <div className="shrink-0">
-              <div className="flex items-center justify-center h-16 w-16 rounded-lg bg-[#E53935]/10">
-                <Building size={32} className="text-[#E53935]" strokeWidth={1.5} />
+      {/* Available options */}
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-gray-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-[0_8px_40px_rgb(0,0,0,0.07)] relative overflow-hidden">
+            {/* Background Accent */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-[#E53935]/5 rounded-full blur-3xl -mr-24 -mt-24 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-60 h-60 bg-red-50 rounded-full blur-3xl -ml-16 -mb-16 pointer-events-none" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 xl:gap-16 relative z-10 items-center">
+              {/* Left Column: Headers */}
+              <div className="lg:col-span-1 lg:sticky lg:top-8">
+                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+                  <Settings size={16} className="text-[#E53935]" />
+                  <p
+                    className="text-[#E53935] text-xs font-bold tracking-widest uppercase flex items-center gap-2"
+                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  >
+                    Available options
+                  </p>
+                </div>
+                <h2
+                  className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight"
+                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                >
+                  Supporting Equipment
+                </h2>
+                <div className="w-12 h-1 bg-[#E53935] rounded-full mb-5" />
+                <p
+                  className="text-base text-gray-500 leading-relaxed"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                >
+                  These accessories play an important role in maintaining safety and ensuring fire equipment functions properly.
+                </p>
+              </div>
+
+              {/* Right Column: Content List */}
+              <div className="lg:col-span-2 flex flex-col">
+                {/* Fire Extinguisher Stands & Cabinets */}
+                <div className="flex flex-col sm:flex-row gap-4 p-5 sm:p-6 bg-red-50 rounded-2xl border border-red-100 mb-4 last:mb-0">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#E53935] shrink-0">
+                    <Box size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Fire Extinguisher Stands & Cabinets</h3>
+                    <p className="text-sm text-gray-600 mt-1 mb-3" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Protect and store extinguishers while keeping them visible and accessible.</p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mr-1 self-center">Best For:</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Offices</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Commercial buildings</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Public areas</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Fire Blankets */}
+                <div className="flex flex-col sm:flex-row gap-4 p-5 sm:p-6 bg-red-50 rounded-2xl border border-red-100 mb-4 last:mb-0">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#E53935] shrink-0">
+                    <Flame size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Fire Blankets</h3>
+                    <p className="text-sm text-gray-600 mt-1 mb-3" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Used to smother small fires, especially in kitchens.</p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mr-1 self-center">Best For:</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Kitchens</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Restaurants</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Homes</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Safety Signage */}
+                <div className="flex flex-col sm:flex-row gap-4 p-5 sm:p-6 bg-red-50 rounded-2xl border border-red-100 mb-4 last:mb-0">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#E53935] shrink-0">
+                    <AlertTriangle size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Safety Signage</h3>
+                    <p className="text-sm text-gray-600 mt-1 mb-3" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Indicates fire equipment locations and emergency exits.</p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mr-1 self-center">Best For:</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">All buildings</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Public and commercial spaces</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Alarm Accessories */}
+                <div className="flex flex-col sm:flex-row gap-4 p-5 sm:p-6 bg-red-50 rounded-2xl border border-red-100 mb-4 last:mb-0">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#E53935] shrink-0">
+                    <Bell size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Alarm Accessories</h3>
+                    <p className="text-sm text-gray-600 mt-1 mb-3" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Additional components for fire alarm systems such as call points and mounting parts.</p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mr-1 self-center">Best For:</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Fire alarm installations</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">System upgrades</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Protective Equipment */}
+                <div className="flex flex-col sm:flex-row gap-4 p-5 sm:p-6 bg-red-50 rounded-2xl border border-red-100 mb-4 last:mb-0">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#E53935] shrink-0">
+                    <Helmet size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Protective Equipment</h3>
+                    <p className="text-sm text-gray-600 mt-1 mb-3" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Basic safety gear used during fire response.</p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mr-1 self-center">Best For:</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Industrial environments</span>
+                      <span className="text-xs font-medium bg-white text-gray-600 px-2 py-1 rounded-md">Maintenance teams</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                🏢 Use Cases
-              </h2>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg p-6 border-l-4 border-[#E53935] shadow-md">
-            <p className="text-gray-900 font-semibold text-center text-lg">{applications[0]}</p>
           </div>
         </div>
       </section>
 
-      {/* Key Benefits */}
-      <section className="w-full py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-8 mb-12">
-            <div className="shrink-0">
-              <div className="flex items-center justify-center h-16 w-16 rounded-lg bg-[#E53935]/10">
-                <CircleCheck size={32} className="text-[#E53935]" strokeWidth={1.5} />
-              </div>
+      {/* KEY COMPONENTS */}
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-10">
+            <div className="inline-block mb-4">
+              <p
+                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              >
+                <Settings size={16} />
+                What’s included
+              </p>
             </div>
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                ✅ Key Benefits
-              </h2>
-            </div>
+            <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+              Supporting System Elements
+            </h2>
+            <div className="w-12 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+              Fire safety accessories include various components that improve system performance and usability.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              'Complete fire safety solution',
-              'Regulatory compliance support',
-              'High-quality materials',
-              'Wide selection to choose from',
-              'Professional-grade products',
-              'Easy to implement'
-            ].map((benefit, index) => (
-              <div key={index} className="flex items-start gap-4">
-                <div className="shrink-0">
-                  <CircleCheck size={24} className="text-[#E53935] mt-1" strokeWidth={1.5} />
-                </div>
-                <p className="text-lg text-gray-700">{benefit}</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4 relative mt-12">
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden lg:block absolute top-5 left-[10%] w-[80%] h-0.5 bg-gray-200 z-0" style={{ transform: 'translateY(-50%)' }} />
+
+            {/* Mounting brackets */}
+            <div className="relative z-10 flex flex-col items-center text-center group">
+              <div className="w-10 h-10 rounded-full bg-red-50 border border-red-100 flex items-center justify-center mb-4 group-hover:bg-[#E53935] group-hover:text-white group-hover:border-[#E53935] transition-all duration-300 shrink-0 text-[#E53935] font-bold text-lg" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                1
               </div>
-            ))}
+              <h3 className="text-lg font-bold text-gray-900 leading-tight px-2" style={{ fontFamily: 'Oswald, sans-serif' }}>Mounting<br/>Brackets</h3>
+            </div>
+            
+            {/* Protective cabinets */}
+            <div className="relative z-10 flex flex-col items-center text-center group">
+              <div className="w-10 h-10 rounded-full bg-red-50 border border-red-100 flex items-center justify-center mb-4 group-hover:bg-[#E53935] group-hover:text-white group-hover:border-[#E53935] transition-all duration-300 shrink-0 text-[#E53935] font-bold text-lg" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                2
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 leading-tight px-2" style={{ fontFamily: 'Oswald, sans-serif' }}>Protective<br/>Cabinets</h3>
+            </div>
+
+            {/* Signage and labels */}
+            <div className="relative z-10 flex flex-col items-center text-center group">
+              <div className="w-10 h-10 rounded-full bg-red-50 border border-red-100 flex items-center justify-center mb-4 group-hover:bg-[#E53935] group-hover:text-white group-hover:border-[#E53935] transition-all duration-300 shrink-0 text-[#E53935] font-bold text-lg" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                3
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 leading-tight px-2" style={{ fontFamily: 'Oswald, sans-serif' }}>Signage &<br/>Labels</h3>
+            </div>
+
+            {/* Fire blankets */}
+            <div className="relative z-10 flex flex-col items-center text-center group">
+              <div className="w-10 h-10 rounded-full bg-red-50 border border-red-100 flex items-center justify-center mb-4 group-hover:bg-[#E53935] group-hover:text-white group-hover:border-[#E53935] transition-all duration-300 shrink-0 text-[#E53935] font-bold text-lg" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                4
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 leading-tight px-2" style={{ fontFamily: 'Oswald, sans-serif' }}>Fire<br/>Blankets</h3>
+            </div>
+
+            {/* Protective gear */}
+            <div className="relative z-10 flex flex-col items-center text-center group">
+              <div className="w-10 h-10 rounded-full bg-red-50 border border-red-100 flex items-center justify-center mb-4 group-hover:bg-[#E53935] group-hover:text-white group-hover:border-[#E53935] transition-all duration-300 shrink-0 text-[#E53935] font-bold text-lg" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                5
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 leading-tight px-2" style={{ fontFamily: 'Oswald, sans-serif' }}>Protective<br/>Gear</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* USE CASES */}
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-gray-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-[0_8px_40px_rgb(0,0,0,0.07)] relative overflow-hidden">
+            {/* Background Accent */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-[#E53935]/5 rounded-full blur-3xl -mr-24 -mt-24 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-60 h-60 bg-red-50 rounded-full blur-3xl -ml-16 -mb-16 pointer-events-none" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 xl:gap-16 relative z-10 items-center">
+              {/* Left Column: Headers */}
+              <div className="lg:col-span-1 lg:sticky lg:top-8">
+                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+                  <Building size={16} className="text-[#E53935]" />
+                  <p
+                    className="text-[#E53935] text-xs font-bold tracking-widest uppercase flex items-center gap-2"
+                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  >
+                    Where they are used
+                  </p>
+                </div>
+                <h2
+                  className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight"
+                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                >
+                  Suitable Environments
+                </h2>
+                <div className="w-12 h-1 bg-[#E53935] rounded-full mb-5" />
+                <p
+                  className="text-base text-gray-500 leading-relaxed"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                >
+                  Fire safety accessories are essential in:
+                </p>
+              </div>
+
+              {/* Right Column: Content List */}
+              <div className="lg:col-span-2 flex flex-col">
+                {/* Offices and commercial buildings */}
+                <div className="flex items-center gap-4 py-4 border-b border-gray-100 last:border-b-0">
+                  <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-[#E53935] shrink-0">
+                    <BuildingSkyscraper size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-medium text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Offices and commercial buildings</h3>
+                  </div>
+                </div>
+
+                {/* Industrial facilities */}
+                <div className="flex items-center gap-4 py-4 border-b border-gray-100 last:border-b-0">
+                  <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-[#E53935] shrink-0">
+                    <BuildingFactory size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-medium text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Industrial facilities</h3>
+                  </div>
+                </div>
+
+                {/* Warehouses */}
+                <div className="flex items-center gap-4 py-4 border-b border-gray-100 last:border-b-0">
+                  <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-[#E53935] shrink-0">
+                    <BuildingWarehouse size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-medium text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Warehouses</h3>
+                  </div>
+                </div>
+
+                {/* Hotels and public spaces */}
+                <div className="flex items-center gap-4 py-4 border-b border-gray-100 last:border-b-0">
+                  <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-[#E53935] shrink-0">
+                    <BuildingCommunity size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-medium text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Hotels and public spaces</h3>
+                  </div>
+                </div>
+
+                {/* Residential properties */}
+                <div className="flex items-center gap-4 py-4 border-b border-gray-100 last:border-b-0">
+                  <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-[#E53935] shrink-0">
+                    <Home size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-medium text-gray-900" style={{ fontFamily: 'Oswald, sans-serif' }}>Residential properties</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why It Matters */}
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
+        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-20 left-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-10">
+            <div className="inline-block mb-4">
+              <p
+                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              >
+                <ShieldCheck size={16} />
+                Safety importance
+              </p>
+            </div>
+            <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+              Complete Fire Protection
+            </h2>
+            <div className="w-12 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+              Accessories help ensure:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {/* Equipment is easy to locate and use */}
+            <div className="flex items-center gap-4 bg-gray-50 p-5 rounded-xl border border-gray-100 hover:border-[#E53935]/30 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#E53935] shrink-0 shadow-sm">
+                <CircleCheck size={20} strokeWidth={2} />
+              </div>
+              <p className="text-gray-900 font-medium" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Equipment is easy to locate and use</p>
+            </div>
+
+            {/* Better organization of fire safety tools */}
+            <div className="flex items-center gap-4 bg-gray-50 p-5 rounded-xl border border-gray-100 hover:border-[#E53935]/30 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#E53935] shrink-0 shadow-sm">
+                <CircleCheck size={20} strokeWidth={2} />
+              </div>
+              <p className="text-gray-900 font-medium" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Better organization of fire safety tools</p>
+            </div>
+
+            {/* Improved response during emergencies */}
+            <div className="flex items-center gap-4 bg-gray-50 p-5 rounded-xl border border-gray-100 hover:border-[#E53935]/30 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#E53935] shrink-0 shadow-sm">
+                <CircleCheck size={20} strokeWidth={2} />
+              </div>
+              <p className="text-gray-900 font-medium" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Improved response during emergencies</p>
+            </div>
+
+            {/* Enhanced overall safety compliance */}
+            <div className="flex items-center gap-4 bg-gray-50 p-5 rounded-xl border border-gray-100 hover:border-[#E53935]/30 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#E53935] shrink-0 shadow-sm">
+                <CircleCheck size={20} strokeWidth={2} />
+              </div>
+              <p className="text-gray-900 font-medium" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Enhanced overall safety compliance</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="w-full py-20 bg-linear-to-r from-[#FF4D4D] to-[#E53935] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
+      <section className="w-full py-20 bg-gray-950 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#E53935]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Oswald, sans-serif' }}>
-            📞 Complete Your Fire Safety System
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block mb-4">
+            <p
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full flex items-center gap-2 justify-center"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            >
+              <Bolt size={16} />
+              Take the next step
+            </p>
+          </div>
+          <h2
+            className="text-4xl sm:text-5xl font-black text-white mb-6 leading-tight"
+            style={{ fontFamily: 'Oswald, sans-serif' }}
+          >
+            Complete Your Fire Safety Setup
           </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Get the accessories you need for comprehensive fire protection.
+          <p
+            className="text-lg sm:text-xl text-gray-100 mb-10 max-w-2xl mx-auto font-normal"
+            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+          >
+            Enhance your fire protection system with the right accessories.
           </p>
 
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#E53935] font-bold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
+            style={{ fontFamily: 'Noto Sans, sans-serif' }}
           >
-            <FileText size={18} strokeWidth={1} />
-            Request Quote
+            <FileText size={18} />
+            Request a Quote
+            <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </Link>
         </div>
       </section>
 
-      {/* Related Products Section */}
-      <section className="w-full py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12" style={{ fontFamily: 'Oswald, sans-serif' }}>
-            Related Fire Safety Products
-          </h2>
+      {/* Our Support Section */}
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-linear-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden border-t border-gray-100">
+        <div className="absolute top-20 left-10 w-40 h-40 bg-red-100/15 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Link 
-              href="/equipments/fire-extinguishers"
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow border-t-4 border-[#E53935]"
-            >
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 text-center mb-2">Fire Extinguishers</h3>
-                <p className="text-gray-600 text-center">Portable firefighting equipment for quick response</p>
-              </div>
-            </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-10">
+            <div className="inline-block mb-4">
+              <p
+                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
+                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+              >
+                <Tool size={16} />
+                Our support
+              </p>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+              Supply & <span className="text-[#E53935]">Installation</span>
+            </h2>
+            <div className="w-12 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
+            <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+              We provide the right accessories and ensure proper installation to support your fire protection systems.
+            </p>
+          </div>
 
-            <Link 
-              href="/equipments"
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow border-t-4 border-[#E53935]"
-            >
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 text-center mb-2">All Equipment</h3>
-                <p className="text-gray-600 text-center">View complete range of fire safety solutions</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+            {/* Supply */}
+            <div className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl p-5 overflow-hidden hover:border-red-400 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="w-10 h-10 rounded-lg bg-[#E53935]/10 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935] group-hover:text-white transition-all duration-300 shrink-0 mb-4">
+                <Package size={20} strokeWidth={1.5} />
               </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: 'Oswald, sans-serif' }}>Comprehensive Supply</h3>
+              <p className="text-sm text-gray-600 leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Access a wide range of high-quality accessories tailored to match your specific safety requirements.</p>
+            </div>
+
+            {/* Installation */}
+            <div className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl p-5 overflow-hidden hover:border-red-400 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="w-10 h-10 rounded-lg bg-[#E53935]/10 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935] group-hover:text-white transition-all duration-300 shrink-0 mb-4">
+                <Tool size={20} strokeWidth={1.5} />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: 'Oswald, sans-serif' }}>Professional Installation</h3>
+              <p className="text-sm text-gray-600 leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Expert setup ensuring brackets, signage, and cabinets are placed for maximum visibility and accessibility.</p>
+            </div>
+
+            {/* Verification */}
+            <div className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl p-5 overflow-hidden hover:border-red-400 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="w-10 h-10 rounded-lg bg-[#E53935]/10 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935] group-hover:text-white transition-all duration-300 shrink-0 mb-4">
+                <ClipboardCheck size={20} strokeWidth={1.5} />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: 'Oswald, sans-serif' }}>Verification</h3>
+              <p className="text-sm text-gray-600 leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Post-installation checks to confirm all accessories meet strict regulatory compliance and safety standards.</p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#E53935] hover:bg-[#D32F2F] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            >
+              Request Service
+              <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
             </Link>
           </div>
         </div>

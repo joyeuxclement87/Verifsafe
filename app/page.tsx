@@ -7,7 +7,6 @@ import OurEquipment from '@/components/sections/OurEquipment';
 import OurServices from '@/components/sections/OurServices';
 import FAQSection from '@/components/sections/FAQSection';
 import ProtectionCTA from '@/components/sections/ProtectionCTA';
-import QuickInfo from '@/components/sections/QuickInfo';
 import WhatsAppButton from '@/components/layout/WhatsAppButton';
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
       <WhyChooseUs />
       <FAQSection />
       <ProtectionCTA />
-      <QuickInfo />
       <WhatsAppButton />
     </main>
   );

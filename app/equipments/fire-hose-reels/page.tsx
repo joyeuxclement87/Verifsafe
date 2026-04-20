@@ -74,18 +74,7 @@ export default function FireHoseReelsPage() {
               Reliable firefighting equipment designed to provide a continuous water supply for controlling fires in buildings and large spaces.
             </p>
 
-            <div className="flex justify-center">
-              <Link
-                href="/services#project-form"
-                className="px-8 py-4 bg-[#E53935] hover:bg-[#D32F2F] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
-              >
-                Request Quote
-                <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-            </div>
+
           </div>
         </div>
       </section>
