@@ -1,7 +1,8 @@
 'use client';
 
-import Contact from '@/components/sections/Contact';
+import Contact from '@/components/sections/forms/Contact';
 import { Phone, Flame, ShieldCheck, Clock } from 'tabler-icons-react';
+import { motion } from 'framer-motion';
 
 export default function ContactPage() {
   return (
@@ -9,17 +10,19 @@ export default function ContactPage() {
 
       {/* ─── HERO SECTION ─────────────────────────────────────── */}
       <section className="relative w-full h-96 sm:h-125 lg:h-150 flex items-center justify-center overflow-hidden mt-0">
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url("/hero-3.webp")` }}
         />
-
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-linear-to-b from-black/85 via-black/90 to-black/95" />
+        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center text-center"
+          >
             <div className="inline-block mb-4">
               <p
                 className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
@@ -43,19 +46,22 @@ export default function ContactPage() {
             >
               Reach out to our team for inquiries, quotations, or support on fire protection solutions.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ─── INTRO / HOW WE CAN HELP ──────────────────────────── */}
       <section className="w-full bg-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
-        {/* Subtle decorative elements */}
         <div className="absolute top-10 right-10 w-48 h-48 bg-red-50/60 rounded-full blur-3xl" />
         <div className="absolute bottom-10 left-10 w-40 h-40 bg-gray-100/80 rounded-full blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Section header */}
-          <div className="text-center mb-14">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 rounded-full mb-5">
               <Flame size={15} className="text-[#E53935]" />
               <span className="text-[#E53935] text-sm font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
@@ -75,9 +81,8 @@ export default function ContactPage() {
             >
               Whether you need equipment, installation, or consultation, our team is ready to guide you with the right fire safety solution.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Feature cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {[
               {
@@ -96,9 +101,13 @@ export default function ContactPage() {
                 desc: 'We respond to all inquiries within 2 business hours and offer 24/7 emergency support when needed.',
               },
             ].map((item, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="flex items-start gap-4 bg-gray-50 border border-gray-200 rounded-2xl p-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="flex items-start gap-4 bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="w-11 h-11 rounded-xl bg-[#E53935]/10 text-[#E53935] flex items-center justify-center shrink-0">
                   {item.icon}
@@ -111,7 +120,7 @@ export default function ContactPage() {
                     {item.desc}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

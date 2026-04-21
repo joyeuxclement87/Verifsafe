@@ -8,6 +8,7 @@ import TopBar from './TopBar';
 import MainNavigation from './MainNavigation';
 import Footer from './Footer';
 import PageLoader from './PageLoader';
+import WhatsAppButton from './WhatsAppButton';
 
 export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -102,6 +103,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
       <div className="pt-40 flex-1">
         {children}
       </div>
+      <WhatsAppButton />
       <Footer />
     </>
   );

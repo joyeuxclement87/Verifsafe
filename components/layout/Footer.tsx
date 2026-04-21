@@ -36,30 +36,38 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex items-center gap-4 pt-4">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61577821846154"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
                 aria-label="Facebook"
               >
                 <BrandFacebook size={20} className="text-gray-400 group-hover:text-white transition-colors" />
               </a>
               <a
-                href="#"
+                href="https://x.com/verifsafe_rw"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
                 aria-label="Twitter"
               >
                 <BrandTwitter size={20} className="text-gray-400 group-hover:text-white transition-colors" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/verifsafe_rw"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
                 aria-label="Instagram"
               >
                 <BrandInstagram size={20} className="text-gray-400 group-hover:text-white transition-colors" />
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@verifsafe"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
-                aria-label="LinkedIn"
+                aria-label="TikTok"
               >
                 <BrandLinkedin size={20} className="text-gray-400 group-hover:text-white transition-colors" />
               </a>
@@ -148,11 +156,11 @@ export default function Footer() {
                     Phone
                   </p>
                   <a
-                    href="tel:+250789000022"
+                    href="tel:+250790478265"
                     className="text-white group-hover:text-[#E53935] transition-colors font-normal"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
-                    +250 789 000 022
+                    +250 790 478 265
                   </a>
                 </div>
               </div>
