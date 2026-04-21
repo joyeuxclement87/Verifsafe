@@ -106,7 +106,7 @@ export default function EquipmentsPage() {
 
       {/* Intro Section */}
       <section className="w-full py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -295,6 +295,22 @@ export default function EquipmentsPage() {
           >
             Contact our specialists today to determine the best equipment configuration for your property.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-8"
+          >
+            <Link
+              href="#project-form"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
+              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+            >
+              Request Quote
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
