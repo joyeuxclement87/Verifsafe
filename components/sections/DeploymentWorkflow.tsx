@@ -1,7 +1,5 @@
 'use client';
 
-
-
 export default function DeploymentWorkflow() {
   const steps = [
     {
@@ -37,10 +35,17 @@ export default function DeploymentWorkflow() {
   ];
 
   return (
-    <section id="deployment-workflow" className="w-full bg-linear-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-      <div className="absolute bottom-20 left-20 w-32 h-32 bg-blue-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+    <section id="deployment-workflow" className="relative w-full py-20 sm:py-24 lg:py-32 overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url("/hero-3.webp")`,
+          backgroundAttachment: 'fixed',
+        }}
+      />
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -49,46 +54,51 @@ export default function DeploymentWorkflow() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full"
+              className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
               Our Process
             </p>
           </div>
 
           {/* Main Heading */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
-            Our <span className="text-[#E53935]">Deployment</span> Workflow
+            How We <span className="text-[#E53935]">Work</span>
           </h2>
+
+          {/* Decorative Divider */}
+          <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
           {/* Subheading */}
           <p
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
+            className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto font-normal leading-relaxed"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
             A meticulous 5-step process ensuring total structural protection and compliance.
           </p>
         </div>
 
-        {/* Process Timeline */}
-        <div className="relative">
-          {/* Connecting Line */}
-          <div className="hidden lg:block absolute top-20 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] via-gray-300 to-[#E53935]" />
+        {/* Steps */}
+        <div className="space-y-0">
+          {steps.map((step, index) => (
+            <div key={index} className="group relative">
+              {/* Connector line */}
+              {index < steps.length - 1 && (
+                <div className="absolute left-6 sm:left-8 top-16 bottom-0 w-px bg-gray-800 group-hover:bg-[#E53935]/30 transition-colors duration-500" />
+              )}
 
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
-            {steps.map((step, index) => (
-              <div key={index} className="relative group flex flex-col items-center">
-
-                {/* Step Number Container */}
-                <div className="relative mb-6">
-                  {/* Step Circle */}
-                  <div className="w-20 h-20 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center group-hover:border-[#E53935] group-hover:shadow-lg transition-all duration-300 relative z-10">
+              <div className="flex gap-6 sm:gap-10 py-8 sm:py-10">
+                {/* Number */}
+                <div className="shrink-0 relative">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gray-900 border border-gray-800 group-hover:border-[#E53935]/50 group-hover:bg-[#E53935]/10 flex items-center justify-center transition-all duration-300 relative z-10">
                     <span
-                      className="text-lg font-black text-gray-400 group-hover:text-[#E53935] transition-colors duration-300"
+                      className="text-lg sm:text-xl font-black text-gray-600 group-hover:text-[#E53935] transition-colors duration-300"
                       style={{ fontFamily: 'Oswald, sans-serif' }}
                     >
                       {step.number}
@@ -96,80 +106,47 @@ export default function DeploymentWorkflow() {
                   </div>
                 </div>
 
-                {/* Step Card */}
-                <div className="bg-white border border-gray-200 rounded-xl p-6 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 group/card relative overflow-hidden w-full max-w-sm">
+                {/* Content */}
+                <div className="flex-1 pb-2">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12">
+                    {/* Title & Description */}
+                    <div className="flex-1 mb-4 lg:mb-0">
+                      <h3
+                        className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-[#E53935] transition-colors duration-300"
+                        style={{ fontFamily: 'Oswald, sans-serif' }}
+                      >
+                        {step.title}
+                      </h3>
+                      <p
+                        className="text-gray-400 text-base leading-relaxed max-w-lg font-normal"
+                        style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                      >
+                        {step.description}
+                      </p>
+                    </div>
 
-                  {/* Top accent line */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  {/* Title */}
-                  <h3
-                    className="text-xl font-bold text-gray-900 mb-3 group-hover/card:text-[#E53935] transition-colors duration-300"
-                    style={{ fontFamily: 'Oswald, sans-serif' }}
-                  >
-                    {step.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p
-                    className="text-gray-600 text-sm leading-relaxed mb-4 font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                  >
-                    {step.description}
-                  </p>
-
-                  {/* Details List */}
-                  <div className="space-y-2">
-                    {step.details.map((detail, detailIndex) => (
-                      <div key={detailIndex} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-[#E53935] rounded-full shrink-0" />
-                        <span className="text-xs text-gray-500" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                    {/* Details */}
+                    <div className="flex flex-wrap gap-2 lg:pt-1">
+                      {step.details.map((detail, detailIndex) => (
+                        <span
+                          key={detailIndex}
+                          className="text-xs text-gray-500 group-hover:text-gray-300 border border-gray-800 group-hover:border-[#E53935]/30 px-3 py-1.5 rounded-full transition-all duration-300"
+                          style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                        >
                           {detail}
                         </span>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Bottom accent line */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  {/* Divider line */}
+                  {index < steps.length - 1 && (
+                    <div className="mt-8 sm:mt-10 h-px bg-gray-800/50 group-hover:bg-[#E53935]/20 transition-colors duration-300" />
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Process Summary */}
-        <div className="mt-16 sm:mt-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="relative group bg-white border border-gray-200 rounded-2xl p-8 hover:border-[#E53935] hover:shadow-2xl transition-all duration-300 overflow-hidden">
-
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{
-                  backgroundImage: `radial-gradient(circle at 2px 2px, rgba(229, 57, 53, 0.3) 1px, transparent 0)`,
-                  backgroundSize: '30px 30px'
-                }} />
-              </div>
-
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-[#E53935]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-[#E53935]" style={{ fontFamily: 'Oswald, sans-serif' }}>✓</span>
-                </div>
-
-                <h3 className="text-2xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                  End-to-End Solutions
-                </h3>
-
-                <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
-                  From initial assessment to ongoing maintenance, our comprehensive process ensures your fire safety systems are professionally installed, thoroughly tested, and continuously maintained for optimal performance.
-                </p>
-              </div>
-
-              {/* Accent Lines */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

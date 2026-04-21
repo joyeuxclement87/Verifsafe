@@ -651,10 +651,18 @@ export default function AboutPage() {
       </section>
 
       {/* Work With Us Section */}
-      <section className="w-full bg-gray-950 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#E53935]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl" />
+      <section className="relative w-full py-20 sm:py-24 lg:py-32 overflow-hidden">
+        {/* Background Image - Static */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url("/hero-3.webp")`,
+            backgroundAttachment: 'fixed',
+          }}
+        />
+        
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* 12-Column Grid Container */}
@@ -702,12 +710,12 @@ export default function AboutPage() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="px-10 py-4 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg rounded-lg uppercase tracking-wide group"
               style={{ fontFamily: 'Noto Sans, sans-serif' }}
             >
-              <Phone className="w-6 h-6" />
+              <Phone size={16} strokeWidth={1} />
               Contact Us
-              <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
             </button>
 
             {/* Secondary Button */}
@@ -718,12 +726,12 @@ export default function AboutPage() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="px-10 py-4 bg-white/10 backdrop-blur-sm text-white font-bold text-lg rounded-lg border border-white/30 transition-all duration-300 hover:border-[#E53935] hover:bg-white/15 hover:shadow-xl active:scale-95 inline-flex items-center gap-3 group"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 backdrop-blur-sm text-white font-medium text-base rounded-lg border border-white/30 transition-all duration-300 hover:border-[#E53935] hover:bg-white/15 hover:shadow-xl active:scale-95 uppercase tracking-wide group"
               style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
             >
-              <FileText className="w-6 h-6" />
+              <FileText size={16} strokeWidth={1} />
               Request a Quote
-              <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
             </button>
           </div>
 

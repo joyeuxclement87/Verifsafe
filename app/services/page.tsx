@@ -1,83 +1,87 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
-import { Tools, Shield, Phone, Star, Send, FileText, Check } from 'tabler-icons-react';
+
+import { Tools, Shield, Phone, Star, Send, FileText, Check, ArrowRight, Package, Eye, HeartHandshake, CircleCheck, Settings, Users, Award, Tool, Clock, Target } from 'tabler-icons-react';
 import DeploymentWorkflow from '@/components/sections/DeploymentWorkflow';
 import WhoWeServe from '@/components/sections/WhoWeServe';
 
+
 export default function ServicesPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    service: '',
-    message: ''
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add form submission logic here
-  };
 
   const services = [
     {
+      iconName: 'package',
       image: '/service-1.png',
       title: 'Fire Equipment Supply',
       description: 'Providing certified fire safety equipment for reliable protection in different environments.',
       features: ['Extinguishers', 'Alarms', 'Hose reels', 'Safety accessories']
     },
     {
+      iconName: 'tool',
       image: '/service-2.png',
       title: 'Installation Services',
       description: 'Professional installation of fire protection systems to ensure proper setup and performance.',
       features: ['Fire alarm systems', 'Detection devices', 'Safety equipment']
     },
     {
+      iconName: 'check',
       image: '/service-3.png',
       title: 'Inspection & Testing',
       description: 'Routine inspection and testing to ensure fire safety systems function correctly and meet required standards.',
       features: ['Businesses', 'Offices', 'Compliance checks']
     },
     {
+      iconName: 'shield',
       image: '/service-4.png',
       title: 'Fire Extinguisher Refilling',
       description: 'Refilling and servicing extinguishers to keep them ready and effective for emergency use.',
       features: ['Quick service', 'Reliable', 'Essential for safety']
     },
     {
+      iconName: 'settings',
       image: '/service-5.png',
       title: 'Maintenance Services',
       description: 'Ongoing maintenance to ensure fire protection systems remain reliable over time.',
       features: ['Prevents failure', 'Regular servicing', 'System reliability']
     },
     {
-      image: '/service-6.png',
+      iconName: 'users',
+      image: '/service-3.png',
       title: 'Fire Safety Awareness Training',
       description: 'Training programs which educate individuals and teams on fire prevention, emergency response, and proper use of fire safety equipment.',
       features: ['Staff training', 'Organizations', 'Workplaces']
     },
     {
-      image: '/service-7.png',
+      iconName: 'handshake',
+      image: '/service-5.png',
       title: 'First Aid Training',
       description: 'Basic first aid training which equips individuals with the skills to respond quickly and effectively during emergencies.',
       features: ['Emergency response', 'Workplace safety', 'Life-saving skills']
     }
   ];
 
+  const renderIcon = (iconName: string) => {
+    switch(iconName) {
+      case 'target': return <Target size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'eye': return <Eye size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'handshake': return <HeartHandshake size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'award': return <Award size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'tool': return <Tool size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'clock': return <Clock size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'check': return <CircleCheck size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'users': return <Users size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'package': return <Package size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'shield': return <Shield size={44} className="text-[#E53935]" strokeWidth={1} />;
+      case 'settings': return <Settings size={44} className="text-[#E53935]" strokeWidth={1} />;
+      default: return null;
+    }
+  };
+
   return (
     <main className="w-full">
       {/* Hero Section */}
-      <section className="relative w-full h-96 sm:h-125 lg:h-150 flex items-center justify-center overflow-hidden mt-0">
+      <section className="relative w-full h-96 sm:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden mt-0">
         {/* Background Image - Static */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -88,7 +92,7 @@ export default function ServicesPage() {
         />
         
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-linear-to-b from-black/85 via-black/90 to-black/95" />
+        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
 
         {/* Content Container */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,8 +100,8 @@ export default function ServicesPage() {
             {/* Section Label */}
             <div className="inline-block mb-4">
               <p
-                className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                className="text-white text-xs sm:text-sm font-bold tracking-widest px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
+                style={{ fontFamily: 'Noto Sans, sans-serif', fontVariant: 'small-caps' }}
               >
                 <Star size={16} />
                 What we offer
@@ -114,30 +118,12 @@ export default function ServicesPage() {
 
             {/* Subheading */}
             <p
-              className="text-sm sm:text-base lg:text-base text-gray-200 mb-5 sm:mb-7 max-w-2xl leading-relaxed font-normal"
+              className="text-lg sm:text-xl text-gray-200 mb-7 sm:mb-9 max-w-2xl leading-relaxed font-normal"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
               We provide fire safety services which ensure equipment and systems are installed, maintained, and ready when needed.
             </p>
 
-            {/* CTA Button */}
-            <div className="flex justify-center">
-              <button
-                onClick={() => {
-                  const element = document.getElementById('project-form');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="px-8 py-4 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
-              >
-                Request a Quote
-                <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
       </section>
@@ -165,11 +151,14 @@ export default function ServicesPage() {
 
             {/* Main Heading */}
             <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               Supply, Installation & <span className="text-[#E53935]">Maintenance</span>
             </h2>
+
+            {/* Decorative Divider */}
+            <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
             {/* Subheading */}
             <p
@@ -185,93 +174,90 @@ export default function ServicesPage() {
             {services.slice(0, 5).map((service, index) => (
               <div
                 key={index}
-                className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl p-6 sm:p-8 overflow-hidden hover:border-red-400 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white"
+                className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
+                style={{ borderWidth: '1px' }}
               >
-                {/* Image Container */}
-                <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow-md mb-6 group-hover:shadow-lg transition-all duration-300">
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+
+                {/* Image Banner */}
+                <div className="relative w-full h-44 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
                 </div>
 
-                {/* Title */}
-                <h3
-                  className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
-                >
-                  {service.title}
-                </h3>
+                {/* Content */}
+                <div className="p-6 pt-5 flex flex-col flex-grow w-full">
+                  {/* Title */}
+                  <h3
+                    className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
+                    style={{ fontFamily: 'Oswald, sans-serif' }}
+                  >
+                    {service.title}
+                  </h3>
 
-                {/* Description */}
-                <p
-                  className="text-gray-700 text-base font-normal leading-relaxed mb-4"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                >
-                  {service.description}
-                </p>
+                  {/* Description */}
+                  <p
+                    className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5"
+                    style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                  >
+                    {service.description}
+                  </p>
 
-                {/* Features List */}
-                <div className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" />
-                      <span className="text-sm text-gray-600 font-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
-                        {feature}
-                      </span>
-                    </div>
-                  ))}
+                  {/* Features List */}
+                  <div className="space-y-2 mb-5 w-full">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-[#E53935] rounded-full shrink-0" />
+                        <span className="text-sm text-gray-600 font-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="mt-auto w-full">
+                    {service.title === 'Fire Equipment Supply' ? (
+                      <button
+                        onClick={() => {
+                          const element = document.getElementById('equipment');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                        className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group"
+                        style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                      >
+                        View Equipments
+                        <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          const element = document.getElementById('project-form');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                        className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group"
+                        style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                      >
+                        Request a Quote
+                        <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
+                      </button>
+                    )}
+                  </div>
                 </div>
 
-                {/* View Catalog Button - Only for Fire Equipment Supply */}
-                {service.title === 'Fire Equipment Supply' && (
-                  <div className="mt-6">
-                    <button
-                      onClick={() => {
-                        // Scroll to equipment section or open catalog
-                        const element = document.getElementById('equipment');
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
-                      className="w-full px-6 py-3 bg-transparent text-[#E53935] hover:text-[#D32F2F] font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group"
-                      style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                    >
-                      View Equipments
-                      <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </button>
-                  </div>
-                )}
-
-                {/* Request a Quote Button - For all services except Fire Equipment Supply */}
-                {service.title !== 'Fire Equipment Supply' && (
-                  <div className="mt-6">
-                    <button
-                      onClick={() => {
-                        const element = document.getElementById('project-form');
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
-                      className="w-full px-6 py-3 bg-transparent text-[#E53935] hover:text-[#D32F2F] font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group"
-                      style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                    >
-                      Request a Quote
-                      <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </button>
-                  </div>
-                )}
-
-                {/* Bottom Accent Line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-red-500 to-red-600 rounded-b-xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             ))}
           </div>
@@ -301,11 +287,14 @@ export default function ServicesPage() {
 
             {/* Main Heading */}
             <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               Fire Awareness & <span className="text-[#E53935]">First Aid Training</span>
             </h2>
+
+            {/* Decorative Divider */}
+            <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
             {/* Subheading */}
             <p
@@ -321,69 +310,74 @@ export default function ServicesPage() {
             {services.slice(5, 7).map((service, index) => (
               <div
                 key={index + 5}
-                className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl p-6 sm:p-8 overflow-hidden hover:border-red-400 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white"
+                className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
+                style={{ borderWidth: '1px' }}
               >
-                {/* Image Container */}
-                <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow-md mb-6 group-hover:shadow-lg transition-all duration-300">
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+
+                {/* Image Banner */}
+                <div className="relative w-full h-44 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
                 </div>
 
-                {/* Title */}
-                <h3
-                  className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
-                >
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p
-                  className="text-gray-700 text-base font-normal leading-relaxed mb-4"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                >
-                  {service.description}
-                </p>
-
-                {/* Features List */}
-                <div className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" />
-                      <span className="text-sm text-gray-600 font-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
-                        {feature}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Request a Quote Button - For training services */}
-                <div className="mt-6">
-                  <button
-                    onClick={() => {
-                      const element = document.getElementById('project-form');
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    className="w-full px-6 py-3 bg-transparent text-[#E53935] hover:text-[#D32F2F] font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                {/* Content */}
+                <div className="p-6 pt-5 flex flex-col flex-grow w-full">
+                  {/* Title */}
+                  <h3
+                    className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
+                    style={{ fontFamily: 'Oswald, sans-serif' }}
                   >
-                    Request a Quote
-                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </button>
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p
+                    className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5"
+                    style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                  >
+                    {service.description}
+                  </p>
+
+                  {/* Features List */}
+                  <div className="space-y-2 mb-5 w-full">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-[#E53935] rounded-full shrink-0" />
+                        <span className="text-sm text-gray-600 font-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Request a Quote Button */}
+                  <div className="mt-auto w-full">
+                    <button
+                      onClick={() => {
+                        const element = document.getElementById('project-form');
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                      className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group"
+                      style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                    >
+                      Request a Quote
+                      <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
+                    </button>
+                  </div>
                 </div>
 
-                {/* Bottom Accent Line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-red-500 to-red-600 rounded-b-xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             ))}
           </div>
@@ -413,11 +407,14 @@ export default function ServicesPage() {
 
             {/* Main Heading */}
             <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               Why Our Services <span className="text-[#E53935]">Matter</span>
             </h2>
+
+            {/* Decorative Divider */}
+            <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
             {/* Subheading */}
             <p
@@ -547,17 +544,21 @@ export default function ServicesPage() {
       <WhoWeServe />
 
       {/* CTA Section */}
-      <section className="w-full bg-gray-950 py-8 sm:py-10 lg:py-12 relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#E53935]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl" />
+      <section className="relative w-full py-14 sm:py-16 lg:py-20 overflow-hidden">
+        {/* Background Image - Static */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url("/hero-3.webp")`,
+            backgroundAttachment: 'fixed',
+          }}
+        />
+        
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* 12-Column Grid Container */}
-          <div className="grid grid-cols-12 gap-4 sm:gap-6 lg:gap-8">
-
-          {/* Header - Spans full width */}
-          <div className="col-span-12 text-center mb-6 sm:mb-8">
+          <div className="text-center">
             {/* Section Label */}
             <div className="inline-block mb-3">
               <p
@@ -573,79 +574,37 @@ export default function ServicesPage() {
 
             {/* Main Heading */}
             <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-2 leading-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 leading-tight"
               style={{ fontFamily: 'Oswald, sans-serif' }}
             >
               Take <span className="text-[#E53935]">the next step</span>
             </h2>
 
-            {/* Subtitle */}
-            <h3
-              className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
-            >
-              Get Professional Fire Protection Services
-            </h3>
-
             {/* Description */}
             <p
-              className="text-base sm:text-lg text-gray-100 max-w-2xl mx-auto leading-relaxed font-normal mb-4"
+              className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal"
               style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
             >
               Ensure your property is protected with reliable fire safety systems and expert support.
             </p>
           </div>
-
-          {/* CTA Button - Spans full width */}
-          <div className="col-span-12 flex items-center justify-center mb-4">
-            <button
-              onClick={() => {
-                const element = document.getElementById('project-form');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-2 group"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Request a Quote
-              <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Bottom Text - Spans full width */}
-          <div className="col-span-12 text-center">
-            <p
-              className="text-gray-300 text-xs"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
-            >
-              Response within 2 hours • 24/7 Emergency Support Available
-            </p>
-          </div>
-          </div>
         </div>
       </section>
 
       {/* Project Enquiry Section */}
-      <section className="w-full bg-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-20 right-10 w-32 h-32 bg-red-100/10 rounded-full blur-2xl" />
-        <div className="absolute bottom-20 left-20 w-24 h-24 bg-blue-100/10 rounded-full blur-2xl" />
+      <section id="project-form" className="w-full bg-gray-50 py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-red-50/40 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-gray-200/30 rounded-full blur-3xl" />
 
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
 
-          {/* Header Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 sm:mb-16 items-stretch">
-            <div className="space-y-6 text-center lg:text-left lg:pr-6">
+            {/* Left: Project Enquiry Info */}
+            <div className="flex flex-col gap-6">
               {/* Section Label */}
-              <div className="inline-block mb-4">
+              <div className="inline-block">
                 <p
-                  className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+                  className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2"
                   style={{ fontFamily: 'Noto Sans, sans-serif' }}
                 >
                   <FileText size={16} />
@@ -663,7 +622,7 @@ export default function ServicesPage() {
 
               {/* Helper Micro-text */}
               <p
-                className="text-sm text-gray-500 max-w-xl mx-auto"
+                className="text-sm text-gray-500"
                 style={{ fontFamily: 'Noto Sans, sans-serif' }}
               >
                 We respond within 24 hours with a full proposal.
@@ -671,46 +630,49 @@ export default function ServicesPage() {
 
               {/* Description */}
               <p
-                className="text-base sm:text-lg text-gray-600 max-w-xl font-normal leading-relaxed"
+                className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed"
                 style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
               >
-                Share your fire safety needs and we’ll recommend the right solution and send you a tailored quote.
+                Share your fire safety needs and we'll recommend the right solution and send you a tailored quote.
               </p>
 
               {/* Small Header */}
-              <p
-                className="text-sm text-[#E53935] uppercase tracking-[0.18em] font-bold"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
-              >
-                Request a Quote
-              </p>
-              <p
-                className="text-base text-gray-600 max-w-xl leading-relaxed"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-              >
-                Get a clear and professional fire safety proposal based on your requirements.
-              </p>
+              <div>
+                <p
+                  className="text-sm text-[#E53935] uppercase tracking-[0.18em] font-bold mb-2"
+                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                >
+                  Request a Quote
+                </p>
+                <p
+                  className="text-base text-gray-600 leading-relaxed"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                >
+                  Get a clear and professional fire safety proposal based on your requirements.
+                </p>
+              </div>
 
-              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-5 mt-6 text-left">
+              {/* What happens next */}
+              <div className="bg-white border border-gray-200 rounded-2xl p-5">
                 <h4 className="text-sm font-bold text-gray-900 mb-3" style={{ fontFamily: 'Oswald, sans-serif' }}>
                   What happens next?
                 </h4>
                 <ul className="space-y-3 text-gray-600 text-sm" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935]">
-                      <Check size={14} />
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0">
+                      <Check size={13} />
                     </span>
                     We review your request
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935]">
-                      <Check size={14} />
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0">
+                      <Check size={13} />
                     </span>
                     We analyze your safety needs
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935]">
-                      <Check size={14} />
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0">
+                      <Check size={13} />
                     </span>
                     We send a tailored quotation
                   </li>
@@ -718,131 +680,128 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            {/* Form Section */}
-            <div id="project-form" className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-lg h-full">
-              <form onSubmit={handleSubmit} className="space-y-6 h-full">
-
-                {/* Two Column Grid for Name and Phone */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Name Field */}
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-bold text-gray-900 mb-2"
-                      style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Your full name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E53935] focus:border-[#E53935] transition-all duration-300 text-gray-900 placeholder-gray-500"
-                      style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                      required
-                    />
-                  </div>
-
-                  {/* Phone Field */}
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-bold text-gray-900 mb-2"
-                      style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                    >
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="+250 000 000 000"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E53935] focus:border-[#E53935] transition-all duration-300 text-gray-900 placeholder-gray-500"
-                      style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                      required
-                    />
-                  </div>
-                </div>
-
-                {/* Service Type Field */}
+            {/* Right: Contact Form (exact same design as Contact component) */}
+            <div>
+              <form onSubmit={(e) => { e.preventDefault(); console.log('Form submitted'); }} className="space-y-6">
+                {/* Name Input */}
                 <div>
                   <label
-                    htmlFor="service"
-                    className="block text-sm font-bold text-gray-900 mb-2"
+                    htmlFor="svc-name"
+                    className="block text-sm font-semibold text-gray-800 mb-2"
+                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="svc-name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
+                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                {/* Email Input */}
+                <div>
+                  <label
+                    htmlFor="svc-email"
+                    className="block text-sm font-semibold text-gray-800 mb-2"
+                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="svc-email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
+                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                {/* Service Type */}
+                <div>
+                  <label
+                    htmlFor="svc-service"
+                    className="block text-sm font-semibold text-gray-800 mb-2"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
                     Service Type
                   </label>
                   <select
-                    id="service"
+                    id="svc-service"
                     name="service"
-                    value={formData.service}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E53935] focus:border-[#E53935] transition-all duration-300 text-gray-900"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
                     required
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 text-gray-900"
+                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
+                    defaultValue=""
                   >
-                    <option value="" disabled>
-                      Select a service type
-                    </option>
+                    <option value="" disabled>Select a service type</option>
                     <option value="Fire Equipment Supply">Fire Equipment Supply</option>
                     <option value="Installation Services">Installation Services</option>
-                    <option value="Inspection & Testing">Inspection & Testing</option>
-                    <option value="Maintenance">Maintenance</option>
-                    <option value="Fire Safety Training">Fire Safety Training</option>
+                    <option value="Inspection & Testing">Inspection &amp; Testing</option>
+                    <option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option>
+                    <option value="Maintenance Services">Maintenance Services</option>
+                    <option value="Fire Safety Awareness Training">Fire Safety Awareness Training</option>
                     <option value="First Aid Training">First Aid Training</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 
-                {/* Project Details Field */}
+                {/* Phone Input */}
                 <div>
                   <label
-                    htmlFor="message"
-                    className="block text-sm font-bold text-gray-900 mb-2"
+                    htmlFor="svc-phone"
+                    className="block text-sm font-semibold text-gray-800 mb-2"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
-                    Project Details
+                    Phone
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E53935] focus:border-[#E53935] transition-all duration-300 text-gray-900 placeholder-gray-500 resize-vertical"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                    placeholder="Briefly describe your site, needs, and timeline"
-                    required
+                  <input
+                    type="tel"
+                    id="svc-phone"
+                    name="phone"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
+                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
+                    placeholder="+250 xxx xxx xxx"
                   />
                 </div>
 
-                    {/* Trust Line */}
-                <p
-                  className="text-xs text-gray-500 text-left"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                >
-                  Your information is confidential and used only for project evaluation.
-                </p>
-
-                {/* Submit Button */}
-                <div className="text-center pt-2">
-                  <button
-                    type="submit"
-                    className="px-8 py-3 bg-[#E53935] hover:bg-[#D32F2F] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95 inline-flex items-center gap-2 group"
+                {/* Message Input */}
+                <div>
+                  <label
+                    htmlFor="svc-message"
+                    className="block text-sm font-semibold text-gray-800 mb-2"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
-                    <Send size={18} />
-                    Submit Enquiry
-                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </button>
+                    Message
+                  </label>
+                  <textarea
+                    id="svc-message"
+                    name="message"
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none"
+                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
+                    placeholder="Describe your request, project, or requirements"
+                  />
                 </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center justify-center gap-2 group"
+                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
+                >
+                  Send Message
+                  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </button>
               </form>
             </div>
           </div>
