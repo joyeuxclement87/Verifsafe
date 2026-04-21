@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Tool, Star, ArrowRight, FileText, ShieldCheck, Hammer, MapPin, Flame, Check } from 'tabler-icons-react';
+import { Tool, Star, ArrowRight, FileText, ShieldCheck, Hammer, MapPin, Flame, Check, Bulb, Bell, Droplet, Radar, Package } from 'tabler-icons-react';
 import Link from 'next/link';
 import WhoWeServe from '@/components/sections/WhoWeServe';
 
@@ -10,52 +10,57 @@ const equipmentDetails = [
     id: 1,
     image: '/equipment-1.png',
     title: 'Fire Extinguishers',
-    description: 'Portable firefighting equipment which helps control small fires.',
-    link: '/equipments/fire-extinguishers'
+    description: 'Certified portable equipment designed to suppress specific classes of fire before they spread.',
+    link: '/equipments/fire-extinguishers',
+    icon: <Flame size={20} />
   },
   {
     id: 2,
     image: '/equipment-2.png',
     title: 'Fire Alarm Systems',
-    description: 'Detection systems which alert occupants during emergencies.',
-    link: '/equipments/fire-alarm-systems'
+    description: 'Intelligent network sensors and control panels that provide early warning and evacuation alerts.',
+    link: '/equipments/fire-alarm-systems',
+    icon: <Bell size={20} />
   },
   {
     id: 3,
     image: '/equipment-3.png',
     title: 'Fire Hose Reels',
-    description: 'Equipment which provides water supply for firefighting.',
-    link: '/equipments/fire-hose-reels'
+    description: 'High-pressure water delivery systems for continuous firefighting in commercial and industrial sites.',
+    link: '/equipments/fire-hose-reels',
+    icon: <Droplet size={20} />
   },
   {
     id: 4,
     image: '/equipment-4.png',
-    title: 'Fire Detection Devices',
-    description: 'Smoke and heat detectors which identify fire risks early.',
-    link: '/equipments/fire-detection-devices'
+    title: 'Detection Devices',
+    description: 'Precision smoke, heat, and flame sensors that identify fire risks at the earliest possible stage.',
+    link: '/equipments/fire-detection-devices',
+    icon: <Radar size={20} />
   },
   {
     id: 5,
     image: '/equipment-5.png',
-    title: 'Emergency Lights & Exit Signs',
-    description: 'Lighting systems which guide people to safety.',
-    link: '/equipments/emergency-lights'
+    title: 'Emergency Lights',
+    description: 'Reliable backup illumination and exit signage to guide occupants safely during power failures.',
+    link: '/equipments/emergency-lights',
+    icon: <Bulb size={20} />
   },
   {
     id: 6,
     image: '/equipment-6.png',
-    title: 'Fire Safety Accessories',
-    description: 'Additional safety equipment which supports fire protection.',
-    link: '/equipments/fire-safety-accessories'
+    title: 'Safety Accessories',
+    description: 'Essential hardware including cabinets, blankets, and signage to support your safety infrastructure.',
+    link: '/equipments/fire-safety-accessories',
+    icon: <Package size={20} />
   }
 ];
 
 export default function EquipmentsPage() {
   return (
-    <main className="w-full">
+    <main className="w-full bg-white overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative w-full h-96 sm:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden mt-0">
-        {/* Background Image */}
+      <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden mt-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -63,156 +68,103 @@ export default function EquipmentsPage() {
             backgroundAttachment: 'fixed',
           }}
         />
-        
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/70 to-black/85" />
 
-        {/* Content Container */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center text-center">
-            {/* Section Label */}
-            <div className="inline-block mb-4">
-              <p
-                className="text-white text-xs sm:text-sm font-bold tracking-widest px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontVariant: 'small-caps' }}
-              >
-                <Star size={16} />
-                Our Products
-              </p>
-            </div>
-
-            {/* Main Heading */}
-            <h1
-              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
-            >
-              Fire Safety <span className="text-[#E53935]">Equipment</span>
-            </h1>
-
-            {/* Subheading */}
-            <p
-              className="text-lg sm:text-xl text-gray-200 mb-7 sm:mb-9 max-w-2xl leading-relaxed font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-            >
-              Certified fire protection equipment designed to safeguard people and property across all environments.
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-20">
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+            <Star size={16} className="text-[#E53935]" />
+            <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              Product Catalog
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* Intro Section */}
-      <section className="w-full bg-white py-14 sm:py-16 lg:py-20">
-        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2
-            className="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight"
+          <h1
+            className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tight"
             style={{ fontFamily: 'Oswald, sans-serif' }}
           >
-            Built for Safety. Ready When It <span className="text-[#E53935]">Matters</span>.
-          </h2>
-          <div className="w-16 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
+            Fire Safety <span className="text-[#E53935]">Equipment</span>
+          </h1>
           <p
-            className="text-base sm:text-lg text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto"
+            className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-normal"
             style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
           >
-            The right equipment can stop a small fire from becoming a major disaster.
-            Our products are carefully selected to meet safety standards and perform when you need them most.
+            Certified, high-performance fire protection hardware designed to safeguard people and property in any environment.
           </p>
         </div>
       </section>
 
-      {/* Equipment Grid Section */}
-      <section className="relative w-full bg-linear-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-        <div className="absolute bottom-20 left-20 w-32 h-32 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
-
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-block mb-4">
-              <p
-                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
-              >
-                <Tool size={16} />
-                Equipment Catalog
-              </p>
+      {/* Intro Section */}
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Quality Standards</p>
             </div>
-
-            <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
-            >
-              Our <span className="text-[#E53935]">Products</span>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: 'Oswald, sans-serif' }}>
+              Built for <span className="text-[#E53935]">Safety</span>
             </h2>
-
-            {/* Decorative Divider */}
-            <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
-
-            <p
-              className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-            >
-              Click on any equipment below to learn more about features and applications.
+            <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
+            <p className="text-lg text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+              The right equipment can stop a small fire from becoming a major disaster. Our products are selected for real-world reliability.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Equipment Grid */}
+      {/* Equipment Grid Section */}
+      <section className="relative w-full bg-gray-50 py-20 overflow-hidden">
+        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
+        
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
             {equipmentDetails.map((equipment) => (
               <Link
                 key={equipment.id}
                 href={equipment.link}
-                className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden"
-                style={{ borderWidth: '1px' }}
+                className="group relative bg-white border border-gray-200 rounded-3xl hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden"
               >
-                {/* Top accent line */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
-                {/* Image Banner */}
-                <div className="relative w-full h-48 overflow-hidden">
+                <div className="relative w-full h-56 overflow-hidden">
                   <Image
                     src={equipment.image}
                     alt={equipment.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  
+                  <div className="absolute bottom-4 left-6 z-20 flex items-center gap-2">
+                    <div className="w-10 h-10 rounded-xl bg-[#E53935] flex items-center justify-center text-white shadow-lg">
+                      {equipment.icon}
+                    </div>
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6 pt-5 flex flex-col flex-grow">
-                  {/* Title */}
+                <div className="p-8 flex flex-col flex-grow">
                   <h3
-                    className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
+                    className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300 uppercase tracking-tight"
                     style={{ fontFamily: 'Oswald, sans-serif' }}
                   >
                     {equipment.title}
                   </h3>
-
-                  {/* Description */}
                   <p
-                    className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5"
+                    className="text-sm text-gray-500 leading-relaxed font-normal flex-grow mb-6"
                     style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
                   >
                     {equipment.description}
                   </p>
-
-                  {/* View Details Link */}
-                  <div className="mt-auto">
+                  <div className="mt-auto flex items-center justify-between">
                     <span
-                      className="inline-flex items-center gap-2 text-[#E53935] font-bold text-sm group-hover:gap-3 transition-all duration-300"
+                      className="inline-flex items-center gap-2 text-[#E53935] font-bold text-xs uppercase tracking-widest group-hover:gap-3 transition-all duration-300"
                       style={{ fontFamily: 'Noto Sans, sans-serif' }}
                     >
-                      View Details
-                      <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
+                      View Solutions
+                      <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                     </span>
                   </div>
                 </div>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
             ))}
           </div>
@@ -220,72 +172,53 @@ export default function EquipmentsPage() {
       </section>
 
       {/* Why Our Equipment Section */}
-      <section className="w-full bg-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-red-50/30 rounded-full blur-3xl" />
-
-        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <div className="inline-block mb-4">
-              <p
-                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
-              >
-                <Star size={16} />
-                Why Our Equipment
-              </p>
-            </div>
-
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
-            >
-              Simple. Reliable. <span className="text-[#E53935]">Effective</span>.
-            </h2>
-
-            <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
-          </div>
-
-          {/* Benefits Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-3xl mx-auto">
-            {[
-              { text: 'Certified and safety-compliant', icon: <ShieldCheck size={24} /> },
-              { text: 'Durable and easy to use', icon: <Hammer size={24} /> },
-              { text: 'Suitable for different environments', icon: <MapPin size={24} /> },
-              { text: 'Selected for real emergency performance', icon: <Flame size={24} /> },
-            ].map((benefit, index) => (
-              <div
-                key={index}
-                className="group flex items-center gap-4 bg-gray-50 border border-gray-100 rounded-2xl p-5 hover:border-[#E53935]/30 hover:bg-white hover:shadow-lg transition-all duration-300 relative overflow-hidden"
-              >
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Icon Container */}
-                <span className="shrink-0 w-11 h-11 rounded-xl bg-[#E53935]/10 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935]/15 group-hover:scale-110 transition-all duration-300">
-                  {benefit.icon}
-                </span>
-
-                {/* Text */}
-                <span
-                  className="text-base font-semibold text-gray-800 group-hover:text-gray-900 transition-colors duration-300"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                >
-                  {benefit.text}
-                </span>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+      <section className="w-full bg-white py-20 relative overflow-hidden">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-[0_8px_40px_rgb(0,0,0,0.07)] relative overflow-hidden">
+             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20 relative z-10 items-start">
+              <div className="lg:col-span-1 lg:sticky lg:top-8">
+                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+                  <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Core Value</p>
+                </div>
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                  Reliable <span className="text-[#E53935]">Performance</span>
+                </h2>
+                <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
+                <p className="text-lg text-gray-600 leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+                  We don&apos;t just sell equipment; we provide certified life-safety systems.
+                </p>
               </div>
-            ))}
+
+              <div className="lg:col-span-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10">
+                  {[
+                    { title: 'Certified Compliance', detail: 'All products meet Rwanda & International safety standards.', icon: <ShieldCheck size={24} /> },
+                    { title: 'Durable Design', detail: 'Industrial-grade materials for long-term operational life.', icon: <Hammer size={24} /> },
+                    { title: 'Wide Application', detail: 'Solutions tailored for residential, commercial, and industrial sites.', icon: <MapPin size={24} /> },
+                    { title: 'Ready for Action', detail: 'Selected for immediate effectiveness in real emergencies.', icon: <Flame size={24} /> },
+                  ].map((benefit, index) => (
+                    <div key={index} className="group flex items-start gap-6 pb-6 border-b border-gray-100 hover:border-[#E53935]/40 transition-all duration-300">
+                      <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] group-hover:scale-110 transition-all duration-500 shrink-0 mt-1">
+                        {benefit.icon}
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: 'Oswald, sans-serif' }}>{benefit.title}</span>
+                        <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">{benefit.detail}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <WhoWeServe />
 
-      {/* CTA Section */}
+      {/* CTA Parallax Section */}
       <section className="relative w-full py-14 sm:py-16 lg:py-20 overflow-hidden">
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -293,52 +226,21 @@ export default function EquipmentsPage() {
             backgroundAttachment: 'fixed',
           }}
         />
-        
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/70 to-black/85" />
 
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            {/* Section Label */}
-            <div className="inline-block mb-3">
-              <p
-                className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                Get Started
-              </p>
-            </div>
-
-            {/* Main Heading */}
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 leading-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
-            >
-              Need the Right <span className="text-[#E53935]">Equipment</span>?
-            </h2>
-
-            {/* Description */}
-            <p
-              className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal mb-8"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-            >
-              Contact us today to find the perfect fire safety equipment for your needs.
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="inline-block mb-3">
+            <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <Star size={16} />
+              Upgrade Your Site
             </p>
-
-            {/* CTA Button */}
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg rounded-lg uppercase tracking-wide group"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
-            >
-              <FileText size={16} strokeWidth={1} />
-              Request a Quote
-              <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
-            </Link>
           </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            Ready to <span className="text-[#E53935]">get started</span>?
+          </h2>
+          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+            Contact our specialists today to determine the best equipment configuration for your property.
+          </p>
         </div>
       </section>
 
@@ -349,216 +251,72 @@ export default function EquipmentsPage() {
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
-
-            {/* Left: Project Enquiry Info */}
             <div className="flex flex-col gap-6">
-              {/* Section Label */}
               <div className="inline-block">
-                <p
-                  className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                >
+                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
                   <FileText size={16} />
-                  Project Enquiry
+                  Enquire Now
                 </p>
               </div>
-
-              {/* Main Heading */}
-              <h2
-                className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-                style={{ fontFamily: 'Oswald, sans-serif' }}
-              >
-                Tell us about your project
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                Tell us about <span className="text-[#E53935]">your project</span>
               </h2>
-
-              {/* Helper Micro-text */}
-              <p
-                className="text-sm text-gray-500"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
-              >
-                We respond within 24 hours with a full proposal.
+              <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+                Share your fire safety needs and we&apos;ll recommend the right equipment and send you a tailored quote within 24 hours.
               </p>
-
-              {/* Description */}
-              <p
-                className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-              >
-                Share your fire safety needs and we'll recommend the right solution and send you a tailored quote.
-              </p>
-
-              {/* Small Header */}
-              <div>
-                <p
-                  className="text-sm text-[#E53935] uppercase tracking-[0.18em] font-bold mb-2"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                >
-                  Request a Quote
-                </p>
-                <p
-                  className="text-base text-gray-600 leading-relaxed"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                >
-                  Get a clear and professional fire safety proposal based on your requirements.
-                </p>
-              </div>
-
-              {/* What happens next */}
-              <div className="bg-white border border-gray-200 rounded-2xl p-5">
-                <h4 className="text-sm font-bold text-gray-900 mb-3" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                  What happens next?
-                </h4>
-                <ul className="space-y-3 text-gray-600 text-sm" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0">
-                      <Check size={13} />
-                    </span>
-                    We review your request
+              <div className="bg-white border border-gray-200 rounded-2xl p-6">
+                <h4 className="text-sm font-bold text-gray-900 mb-4" style={{ fontFamily: 'Oswald, sans-serif' }}>Our Commitment</h4>
+                <ul className="space-y-4 text-gray-600 text-sm" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                   <li className="flex items-start gap-3">
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0"><Check size={13} /></span>
+                    Expert Product Selection
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0">
-                      <Check size={13} />
-                    </span>
-                    We analyze your safety needs
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0"><Check size={13} /></span>
+                    Competitive Bulk Pricing
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0">
-                      <Check size={13} />
-                    </span>
-                    We send a tailored quotation
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0"><Check size={13} /></span>
+                    Professional Setup Guidance
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Right: Contact Form */}
             <div>
-              <form onSubmit={(e) => { e.preventDefault(); console.log('Form submitted'); }} className="space-y-6">
-                {/* Name Input */}
-                <div>
-                  <label
-                    htmlFor="svc-name"
-                    className="block text-sm font-semibold text-gray-800 mb-2"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="svc-name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
-                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
-                    placeholder="Your full name"
-                  />
+              <form onSubmit={(e) => { e.preventDefault(); }} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Name</label>
+                    <input type="text" required className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Email</label>
+                    <input type="email" required className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} placeholder="your@email.com" />
+                  </div>
                 </div>
-
-                {/* Email Input */}
                 <div>
-                  <label
-                    htmlFor="svc-email"
-                    className="block text-sm font-semibold text-gray-800 mb-2"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="svc-email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
-                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                {/* Service Type */}
-                <div>
-                  <label
-                    htmlFor="svc-service"
-                    className="block text-sm font-semibold text-gray-800 mb-2"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                  >
-                    Service Type
-                  </label>
-                  <select
-                    id="svc-service"
-                    name="service"
-                    required
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 text-gray-900"
-                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
-                    defaultValue=""
-                  >
-                    <option value="" disabled>Select a service type</option>
-                    <option value="Fire Equipment Supply">Fire Equipment Supply</option>
-                    <option value="Installation Services">Installation Services</option>
-                    <option value="Inspection & Testing">Inspection &amp; Testing</option>
-                    <option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option>
-                    <option value="Maintenance Services">Maintenance Services</option>
-                    <option value="Fire Safety Awareness Training">Fire Safety Awareness Training</option>
-                    <option value="First Aid Training">First Aid Training</option>
-                    <option value="Other">Other</option>
+                  <label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Primary Interest</label>
+                  <select className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} defaultValue="EquipmentSupply">
+                    <option value="EquipmentSupply">Bulk Equipment Supply</option>
+                    <option value="Installation">Installation Project</option>
+                    <option value="Maintenance">System Maintenance</option>
+                    <option value="Audit">Safety Site Audit</option>
                   </select>
                 </div>
-
-                {/* Phone Input */}
                 <div>
-                  <label
-                    htmlFor="svc-phone"
-                    className="block text-sm font-semibold text-gray-800 mb-2"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                  >
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    id="svc-phone"
-                    name="phone"
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
-                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
-                    placeholder="+250 xxx xxx xxx"
-                  />
+                  <label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Message</label>
+                  <textarea rows={4} className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900 resize-none" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} placeholder="Describe your safety requirements..." />
                 </div>
-
-                {/* Message Input */}
-                <div>
-                  <label
-                    htmlFor="svc-message"
-                    className="block text-sm font-semibold text-gray-800 mb-2"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="svc-message"
-                    name="message"
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none"
-                    style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
-                    placeholder="Describe your request, project, or requirements"
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center justify-center gap-2 group"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px', opacity: 0.9 }}
-                >
-                  Send Message
-                  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
+                <button type="submit" className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2 group">
+                  Send Enquiry
+                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </button>
               </form>
             </div>
           </div>
         </div>
       </section>
-
     </main>
   );
 }
