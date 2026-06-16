@@ -126,7 +126,7 @@ export default function PageLoader() {
           <div className="h-7 mt-5 flex items-center">
             {showSecured && (
               <span
-                className="text-[11px] tracking-[0.2em] uppercase text-[#E53935] flex items-center gap-2"
+                className="text-[11px] tracking-[0.2em] capitalize text-[#E53935] flex items-center gap-2"
                 style={{ animation: 'fade-up 0.4s ease-out forwards' }}
               >
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">

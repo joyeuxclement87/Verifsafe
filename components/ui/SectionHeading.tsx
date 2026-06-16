@@ -35,7 +35,7 @@ export default function SectionHeading({
         </p>
       </div>
       
-      <h2 className={`text-section-heading text-4xl sm:text-5xl ${dark ? 'text-white' : 'text-gray-900'} mb-6 uppercase`}>
+      <h2 className={`text-section-heading text-4xl sm:text-5xl ${dark ? 'text-white' : 'text-gray-900'} mb-6 capitalize`}>
         {title} {highlight && <span className="text-[#E53935]">{highlight}</span>}
       </h2>
       

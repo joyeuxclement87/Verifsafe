@@ -73,12 +73,12 @@ export default function FireAlarmSystemsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
               <Bell size={16} className="text-[#E53935]" />
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase">
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize">
                 Advanced Detection
               </p>
             </div>
             <h1
-              className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight capitalize tracking-tight"
              
             >
               Fire Alarm <span className="text-[#E53935]">Systems</span>
@@ -105,9 +105,9 @@ export default function FireAlarmSystemsPage() {
             >
               <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                 <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">The Safety Chain</p>
+                <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">The Safety Chain</p>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight uppercase">
+              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight capitalize">
                 How Systems <span className="text-[#E53935]">Protect You</span>
               </h2>
               <div className="w-20 h-1 bg-[#E53935] rounded-full mb-8" />
@@ -158,7 +158,7 @@ export default function FireAlarmSystemsPage() {
                 className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 z-20"
               >
                 <p className="text-3xl font-black text-[#E53935]">24/7</p>
-                <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Active Monitoring</p>
+                <p className="text-xs text-gray-500 font-bold capitalize tracking-widest mt-1">Active Monitoring</p>
               </motion.div>
             </motion.div>
           </div>
@@ -176,9 +176,9 @@ export default function FireAlarmSystemsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
               <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">System Architectures</p>
+              <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">System Architectures</p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
               Standard <span className="text-[#E53935]">Configurations</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -210,7 +210,7 @@ export default function FireAlarmSystemsPage() {
 
                 <div className="mt-auto bg-gray-50 p-5 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 group-hover:border-[#E53935]/10 transition-all duration-300">
                   <p className="text-xs text-gray-500 leading-relaxed">
-                    <span className="font-bold block text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors uppercase tracking-widest">Best for</span>
+                    <span className="font-bold block text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors capitalize tracking-widest">Best for</span>
                     {type.bestFor}
                   </p>
                 </div>
@@ -229,7 +229,7 @@ export default function FireAlarmSystemsPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
               Key <span className="text-[#E53935]">Components</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -272,9 +272,9 @@ export default function FireAlarmSystemsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Expert Advice</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Expert Advice</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
                   Simple <span className="text-[#E53935]">Buyer&apos;s Guide</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -323,9 +323,9 @@ export default function FireAlarmSystemsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Use Cases</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Use Cases</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
                   Ideal <span className="text-[#E53935]">Applications</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -359,7 +359,7 @@ export default function FireAlarmSystemsPage() {
                   <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
                     <Plus size={16} />
                   </div>
-                  <p className="text-sm font-bold uppercase tracking-widest">And many more options available...</p>
+                  <p className="text-sm font-bold capitalize tracking-widest">And many more options available...</p>
                 </div>
               </div>
             </div>
@@ -434,7 +434,7 @@ export default function FireAlarmSystemsPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-block mb-3">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <Star size={16} />
                 Secure Your Facility
               </p>

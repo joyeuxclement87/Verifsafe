@@ -79,7 +79,7 @@ export default function EquipmentsPage() {
             className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
           >
             <Star size={16} className="text-[#E53935]" />
-            <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase">
+            <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize">
               Product Catalog
             </p>
           </motion.div>
@@ -87,7 +87,7 @@ export default function EquipmentsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tight"
+            className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight capitalize tracking-tight"
            
           >
             Fire Safety <span className="text-[#E53935]">Equipment</span>
@@ -115,9 +115,9 @@ export default function EquipmentsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
               <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Quality Standards</p>
+              <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Quality Standards</p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
               Built for <span className="text-[#E53935]">Safety</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -167,7 +167,7 @@ export default function EquipmentsPage() {
 
                   <div className="p-8 flex flex-col flex-grow">
                     <h3
-                      className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300 uppercase tracking-tight"
+                      className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300 capitalize tracking-tight"
                      
                     >
                       {equipment.title}
@@ -180,7 +180,7 @@ export default function EquipmentsPage() {
                     </p>
                     <div className="mt-auto flex items-center justify-between">
                       <span
-                        className="inline-flex items-center gap-2 text-[#E53935] font-bold text-xs uppercase tracking-widest group-hover:gap-3 transition-all duration-300"
+                        className="inline-flex items-center gap-2 text-[#E53935] font-bold text-xs capitalize tracking-widest group-hover:gap-3 transition-all duration-300"
                        
                       >
                         View Solutions
@@ -209,9 +209,9 @@ export default function EquipmentsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Core Value</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Core Value</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
                   Reliable <span className="text-[#E53935]">Performance</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -272,7 +272,7 @@ export default function EquipmentsPage() {
             viewport={{ once: true }}
             className="inline-block mb-3"
           >
-            <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
+            <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
               <Star size={16} />
               Upgrade Your Site
             </p>
@@ -328,7 +328,7 @@ export default function EquipmentsPage() {
               className="flex flex-col gap-6"
             >
               <div className="inline-block">
-                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2">
+                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2">
                   <FileText size={16} />
                   Enquire Now
                 </p>

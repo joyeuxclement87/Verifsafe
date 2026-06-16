@@ -107,7 +107,7 @@ export default function AboutPage() {
             </div>
 
             <h1
-              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight capitalize tracking-wider"
              
             >
               Rwanda&apos;s Trusted <span className="text-[#E53935]">Fire Protection Partner</span>
@@ -145,7 +145,7 @@ export default function AboutPage() {
             >
               <div className="inline-block mb-4">
                 <p
-                  className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
+                  className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
                  
                 >
                   <Star size={16} />
@@ -549,7 +549,7 @@ export default function AboutPage() {
           <div className="col-span-12 text-center mb-10 sm:mb-12">
             <div className="inline-block mb-4">
               <p
-                className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
+                className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
                
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -582,7 +582,7 @@ export default function AboutPage() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 shadow-lg rounded-lg uppercase tracking-wide group"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 shadow-lg rounded-lg capitalize tracking-wide group"
              
             >
               <Phone size={16} strokeWidth={1} />
@@ -599,7 +599,7 @@ export default function AboutPage() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 backdrop-blur-sm text-white font-medium text-base rounded-lg border border-white/30 transition-all duration-300 hover:border-[#E53935] hover:bg-white/15 hover:shadow-xl uppercase tracking-wide group"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 backdrop-blur-sm text-white font-medium text-base rounded-lg border border-white/30 transition-all duration-300 hover:border-[#E53935] hover:bg-white/15 hover:shadow-xl capitalize tracking-wide group"
               style={{ borderWidth: '1px' }}
             >
               <FileText size={16} strokeWidth={1} />

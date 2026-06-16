@@ -29,7 +29,7 @@ export default function ContactPage() {
           >
             <div className="inline-block mb-4">
               <p
-                className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
+                className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
                
               >
                 <Phone size={16} />
@@ -38,7 +38,7 @@ export default function ContactPage() {
             </div>
 
             <h1
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight uppercase tracking-wider"
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight capitalize tracking-wider"
              
             >
               Let's Talk Fire Safety
@@ -68,7 +68,7 @@ export default function ContactPage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 rounded-full mb-5">
               <Flame size={15} className="text-[#E53935]" />
-              <span className="text-[#E53935] text-sm font-bold tracking-widest uppercase">
+              <span className="text-[#E53935] text-sm font-bold tracking-widest capitalize">
                 How We Can Help
               </span>
             </div>

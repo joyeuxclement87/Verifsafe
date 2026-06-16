@@ -73,12 +73,12 @@ export default function FireHoseReelsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
               <Droplet size={16} className="text-[#E53935]" />
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase">
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize">
                 High-Flow Suppression
               </p>
             </div>
             <h1
-              className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight capitalize tracking-tight"
              
             >
               Fire Hose <span className="text-[#E53935]">Reels</span>
@@ -105,9 +105,9 @@ export default function FireHoseReelsPage() {
             >
               <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                 <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Operational Guide</p>
+                <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Operational Guide</p>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight uppercase">
+              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight capitalize">
                 Effective <span className="text-[#E53935]">Fire Response</span>
               </h2>
               <div className="w-20 h-1 bg-[#E53935] rounded-full mb-8" />
@@ -157,7 +157,7 @@ export default function FireHoseReelsPage() {
                 className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 z-20"
               >
                 <p className="text-3xl font-black text-[#E53935]">30M</p>
-                <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Maximum Coverage</p>
+                <p className="text-xs text-gray-500 font-bold capitalize tracking-widest mt-1">Maximum Coverage</p>
               </motion.div>
             </motion.div>
           </div>
@@ -175,9 +175,9 @@ export default function FireHoseReelsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
               <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">System Options</p>
+              <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">System Options</p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
               Choose the <span className="text-[#E53935]">Right Type</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -209,7 +209,7 @@ export default function FireHoseReelsPage() {
 
                 <div className="mt-auto bg-gray-50 p-5 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 group-hover:border-[#E53935]/10 transition-all duration-300">
                   <p className="text-xs text-gray-500 leading-relaxed">
-                    <span className="font-bold block text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors uppercase tracking-widest">Best for</span>
+                    <span className="font-bold block text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors capitalize tracking-widest">Best for</span>
                     {type.bestFor}
                   </p>
                 </div>
@@ -228,7 +228,7 @@ export default function FireHoseReelsPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
               What Makes a <span className="text-[#E53935]">Hose Reel</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -271,9 +271,9 @@ export default function FireHoseReelsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Expert Advice</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Expert Advice</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
                   Simple <span className="text-[#E53935]">Buyer&apos;s Guide</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -322,9 +322,9 @@ export default function FireHoseReelsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Use Cases</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Use Cases</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
                   Ideal <span className="text-[#E53935]">Applications</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -358,7 +358,7 @@ export default function FireHoseReelsPage() {
                   <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
                     <Plus size={16} />
                   </div>
-                  <p className="text-sm font-bold uppercase tracking-widest">And many more options available...</p>
+                  <p className="text-sm font-bold capitalize tracking-widest">And many more options available...</p>
                 </div>
               </div>
             </div>
@@ -433,7 +433,7 @@ export default function FireHoseReelsPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-block mb-3">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <Star size={16} />
                 Upgrade Your Protection
               </p>

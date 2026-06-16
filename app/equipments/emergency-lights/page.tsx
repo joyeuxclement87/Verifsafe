@@ -96,12 +96,12 @@ export default function EmergencyLightsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
               <Bulb size={16} className="text-[#E53935]" />
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase">
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize">
                 Safety Lighting
               </p>
             </div>
             <h1
-              className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight capitalize tracking-tight"
              
             >
               Emergency <span className="text-[#E53935]">Lights</span>
@@ -128,9 +128,9 @@ export default function EmergencyLightsPage() {
             >
               <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                 <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Critical Support</p>
+                <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Critical Support</p>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight uppercase">
+              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight capitalize">
                 Safe <span className="text-[#E53935]">Evacuation</span>
               </h2>
               <div className="w-20 h-1 bg-[#E53935] rounded-full mb-8" />
@@ -180,7 +180,7 @@ export default function EmergencyLightsPage() {
                 className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 z-20"
               >
                 <p className="text-3xl font-black text-[#E53935]">3HR</p>
-                <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Minimum Runtime</p>
+                <p className="text-xs text-gray-500 font-bold capitalize tracking-widest mt-1">Minimum Runtime</p>
               </motion.div>
             </motion.div>
           </div>
@@ -198,9 +198,9 @@ export default function EmergencyLightsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
               <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">System Architectures</p>
+              <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">System Architectures</p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
               Lighting <span className="text-[#E53935]">Solutions</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -232,7 +232,7 @@ export default function EmergencyLightsPage() {
 
                 <div className="mt-auto bg-gray-50 p-5 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 group-hover:border-[#E53935]/10 transition-all duration-300">
                   <p className="text-xs text-gray-500 leading-relaxed">
-                    <span className="font-bold block text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors uppercase tracking-widest">Best for</span>
+                    <span className="font-bold block text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors capitalize tracking-widest">Best for</span>
                     {type.bestFor}
                   </p>
                 </div>
@@ -251,7 +251,7 @@ export default function EmergencyLightsPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
               System <span className="text-[#E53935]">Components</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -294,9 +294,9 @@ export default function EmergencyLightsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Expert Advice</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Expert Advice</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
                   Simple <span className="text-[#E53935]">Buyer&apos;s Guide</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -345,9 +345,9 @@ export default function EmergencyLightsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Use Cases</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Use Cases</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">
                   Ideal <span className="text-[#E53935]">Applications</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -381,7 +381,7 @@ export default function EmergencyLightsPage() {
                   <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
                     <Plus size={16} />
                   </div>
-                  <p className="text-sm font-bold uppercase tracking-widest">And many more options available...</p>
+                  <p className="text-sm font-bold capitalize tracking-widest">And many more options available...</p>
                 </div>
               </div>
             </div>
@@ -446,7 +446,7 @@ export default function EmergencyLightsPage() {
             backgroundAttachment: 'fixed',
           }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950/90 via-gray-950/85 to-gray-950/85" />
+        <div className="absolute inset-0 bg-linear-to-r from-gray-950/80 via-gray-950/70 to-gray-950/75" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div 
@@ -456,7 +456,7 @@ export default function EmergencyLightsPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-block mb-3">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <Star size={16} />
                 Enhance Exit Visibility
               </p>

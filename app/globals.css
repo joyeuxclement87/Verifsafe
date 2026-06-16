@@ -120,7 +120,7 @@ body {
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 /* Section / card heading  (h2, h3) */
@@ -138,13 +138,13 @@ body {
   line-height: 1.3;
 }
 
-/* Small uppercase label / badge text */
+/* Small capitalize label / badge text */
 .text-label {
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 /* Lead / sub-heading paragraph below a section title */

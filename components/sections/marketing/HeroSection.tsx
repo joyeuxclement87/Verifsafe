@@ -94,7 +94,7 @@ export default function HeroSection() {
             {/* Primary Button */}
             <Link
               href="/services#project-form"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg rounded-lg uppercase tracking-wide"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg rounded-lg capitalize tracking-wide"
              
             >
               <FileText size={16} strokeWidth={1} />
@@ -104,7 +104,7 @@ export default function HeroSection() {
             {/* Secondary Button */}
             <Link
               href="/equipments"
-              className="inline-flex items-center gap-2 px-8 py-3 border border-white/30 text-white font-medium text-base transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-lg bg-white/20 backdrop-blur-sm uppercase tracking-wide"
+              className="inline-flex items-center gap-2 px-8 py-3 border border-white/30 text-white font-medium text-base transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-lg bg-white/20 backdrop-blur-sm capitalize tracking-wide"
              
             >
               Explore Systems
@@ -121,7 +121,7 @@ export default function HeroSection() {
             className="mt-8 sm:mt-10 flex items-center gap-4 text-white/80"
           >
             <div className="h-1 w-8 bg-gradient-to-r from-[#E53935] to-transparent" />
-            <span className="text-xs sm:text-sm font-bold tracking-widest uppercase">
+            <span className="text-xs sm:text-sm font-bold tracking-widest capitalize">
               Certified & Trusted
             </span>
             <div className="h-1 w-8 bg-gradient-to-l from-[#E53935] to-transparent" />

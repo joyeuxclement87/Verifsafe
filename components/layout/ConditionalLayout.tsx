@@ -40,10 +40,10 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
             <div className="h-8 w-px bg-white/20 hidden sm:block" />
             <div className="flex items-center gap-2.5 opacity-90">
               <ShieldCheck size={22} className="text-[#ff6b6b]" />
-              <span className="font-bold tracking-widest uppercase text-sm sm:text-base">
+              <span className="font-bold tracking-widest capitalize text-sm sm:text-base">
                 Content Management
               </span>
-              <span className="hidden lg:inline-block px-2.5 py-1 bg-black/40 rounded text-[11px] uppercase tracking-wider font-bold text-[#ff6b6b] border border-[#ff6b6b]/20">
+              <span className="hidden lg:inline-block px-2.5 py-1 bg-black/40 rounded text-[11px] capitalize tracking-wider font-bold text-[#ff6b6b] border border-[#ff6b6b]/20">
                 Admin Dashboard
               </span>
             </div>
@@ -62,7 +62,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
                 <AlertTriangle size={18} className="text-amber-400" />
               </div>
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 min-w-0">
-                <span className="text-amber-300 font-bold text-xs uppercase tracking-widest shrink-0">
+                <span className="text-amber-300 font-bold text-xs capitalize tracking-widest shrink-0">
                   ⚠ Authorized Personnel Only
                 </span>
                 <span className="hidden sm:block w-px h-4 bg-amber-500/30 shrink-0" />

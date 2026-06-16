@@ -53,7 +53,7 @@ export default function Contact() {
           {/* Wrapper for the contact section highlighted badge */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
              
             >
               <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
@@ -93,7 +93,7 @@ export default function Contact() {
 
             {/* Sub-header for the direct contact information grouping */}
             <div>
-              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase mb-2">
+              <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize mb-2">
                 Direct Contact
               </p>
               <h3 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">
@@ -114,7 +114,7 @@ export default function Contact() {
                   <FontAwesomeIcon icon={faPhone} className="w-5 h-5 text-[#E53935]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Phone</p>
+                  <p className="text-xs font-bold text-gray-400 capitalize tracking-widest mb-0.5">Phone</p>
                   <p className="text-gray-900 font-semibold text-base">+250 788 632 620</p>
                 </div>
               </motion.a>
@@ -129,7 +129,7 @@ export default function Contact() {
                   <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 text-[#E53935]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Email</p>
+                  <p className="text-xs font-bold text-gray-400 capitalize tracking-widest mb-0.5">Email</p>
                   <p className="text-gray-900 font-semibold text-base">info@verifsafe.com</p>
                 </div>
               </motion.a>
@@ -143,7 +143,7 @@ export default function Contact() {
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="w-5 h-5 text-[#E53935]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Working Hours</p>
+                  <p className="text-xs font-bold text-gray-400 capitalize tracking-widest mb-0.5">Working Hours</p>
                   <p className="text-gray-900 font-semibold text-base">Mon – Sat &nbsp;|&nbsp; 8:00 AM – 6:00 PM</p>
                 </div>
               </motion.div>

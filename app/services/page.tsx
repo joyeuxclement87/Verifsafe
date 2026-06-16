@@ -88,7 +88,7 @@ export default function ServicesPage() {
             </div>
 
             <h1
-              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight capitalize tracking-wider"
              
             >
               Professional Fire Protection <span className="text-[#E53935]">Services</span>
@@ -118,7 +118,7 @@ export default function ServicesPage() {
           >
             <div className="inline-block mb-4">
               <p
-                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
                
               >
                 <Tools size={16} />
@@ -195,7 +195,7 @@ export default function ServicesPage() {
           >
             <div className="inline-block mb-4">
               <p
-                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
                
               >
                 <Shield size={16} />
@@ -259,7 +259,7 @@ export default function ServicesPage() {
           >
             <div className="inline-block mb-4">
               <p
-                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
                
               >
                 <Shield size={16} />
@@ -368,7 +368,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-block mb-3">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 Get Started
               </p>
@@ -391,7 +391,7 @@ export default function ServicesPage() {
               className="flex flex-col gap-6"
             >
               <div className="inline-block">
-                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2"><FileText size={16} />Project Enquiry</p>
+                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2"><FileText size={16} />Project Enquiry</p>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">Tell us about your project</h2>
               <p className="text-sm text-gray-500">We respond within 24 hours with a full proposal.</p>

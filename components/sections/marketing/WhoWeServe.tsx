@@ -56,7 +56,7 @@ export default function WhoWeServe() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
+              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
              
             >
               <Building size={16} />

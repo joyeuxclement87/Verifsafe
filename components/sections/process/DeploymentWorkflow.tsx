@@ -62,7 +62,7 @@ export default function DeploymentWorkflow() {
           {/* Section Label */}
           <div className="inline-block mb-4">
             <p
-              className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
+              className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
              
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

@@ -149,12 +149,12 @@ export default function FireExtinguishersPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-block mb-4">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <Flame size={16} />
                 Equipment Guide
               </p>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight uppercase tracking-wider">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight capitalize tracking-wider">
               Fire <span className="text-[#E53935]">Extinguishers</span>
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed font-normal">
@@ -176,9 +176,9 @@ export default function FireExtinguishersPage() {
             >
               <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                 <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Operational Guide</p>
+                <p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Operational Guide</p>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight uppercase">
+              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight capitalize">
                 First Line <span className="text-[#E53935]">of Defense</span>
               </h2>
               <div className="w-20 h-1 bg-[#E53935] rounded-full mb-8" />
@@ -228,7 +228,7 @@ export default function FireExtinguishersPage() {
                 className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 z-20"
               >
                 <p className="text-3xl font-black text-[#E53935]">6KG</p>
-                <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Standard Unit</p>
+                <p className="text-xs text-gray-500 font-bold capitalize tracking-widest mt-1">Standard Unit</p>
               </motion.div>
             </motion.div>
           </div>
@@ -270,12 +270,12 @@ export default function FireExtinguishersPage() {
                   <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0"><type.icon size={24} /></div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors">{type.title}</h3>
-                    <p className="text-xs font-bold text-[#E53935] uppercase tracking-wider mt-1">Classes: {type.classes}</p>
+                    <p className="text-xs font-bold text-[#E53935] capitalize tracking-wider mt-1">Classes: {type.classes}</p>
                   </div>
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed mb-6">{type.desc}</p>
                 <div className="mt-auto bg-gray-50 p-4 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 transition-all duration-300">
-                  <p className="text-xs text-gray-500"><span className="font-bold block text-gray-900 mb-1 group-hover:text-[#E53935] transition-colors uppercase tracking-widest">Best for</span>{type.bestFor}</p>
+                  <p className="text-xs text-gray-500"><span className="font-bold block text-gray-900 mb-1 group-hover:text-[#E53935] transition-colors capitalize tracking-widest">Best for</span>{type.bestFor}</p>
                 </div>
               </motion.div>
             ))}
@@ -293,8 +293,8 @@ export default function FireExtinguishersPage() {
               viewport={{ once: true }}
               className="lg:col-span-1 lg:sticky lg:top-8"
             >
-              <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full"><span className="w-2 h-2 rounded-full bg-[#E53935]" /><p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Quick Guide</p></div>
-              <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">Fire <span className="text-[#E53935]">Classes</span></h2>
+              <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full"><span className="w-2 h-2 rounded-full bg-[#E53935]" /><p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Quick Guide</p></div>
+              <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">Fire <span className="text-[#E53935]">Classes</span></h2>
               <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
               <p className="text-lg text-gray-600 leading-relaxed font-normal">Understanding fire classes is essential for choosing the right extinguishing agent.</p>
             </motion.div>
@@ -335,7 +335,7 @@ export default function FireExtinguishersPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">Available <span className="text-[#E53935]">Sizes</span></h2>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">Available <span className="text-[#E53935]">Sizes</span></h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
             <p className="text-lg text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto">Fire extinguishers come in various sizes measured by weight (kg).</p>
           </motion.div>
@@ -353,14 +353,14 @@ export default function FireExtinguishersPage() {
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0"><BuildingWarehouse size={24} /></div>
-                  <div><h3 className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors">{sizeCategory.category}</h3><p className="text-xs text-gray-400 font-medium uppercase tracking-wider mt-1">{sizeCategory.description}</p></div>
+                  <div><h3 className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors">{sizeCategory.category}</h3><p className="text-xs text-gray-400 font-medium capitalize tracking-wider mt-1">{sizeCategory.description}</p></div>
                 </div>
                 <div className="flex-1 space-y-3 mb-6">
                   {sizeCategory.sizes.map((size, i) => (
                     <div key={i} className="flex items-center gap-3"><div className="w-2 h-2 rounded-full bg-[#E53935]/20 group-hover:bg-[#E53935] transition-colors duration-300" /><span className="text-base text-gray-700 font-medium">{size}</span></div>
                   ))}
                 </div>
-                <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 transition-all duration-300"><p className="text-xs text-gray-500"><span className="font-bold block text-gray-900 mb-1 group-hover:text-[#E53935] transition-colors uppercase tracking-widest">Recommended for</span>{sizeCategory.bestFor}</p></div>
+                <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 transition-all duration-300"><p className="text-xs text-gray-500"><span className="font-bold block text-gray-900 mb-1 group-hover:text-[#E53935] transition-colors capitalize tracking-widest">Recommended for</span>{sizeCategory.bestFor}</p></div>
               </motion.div>
             ))}
           </div>
@@ -380,8 +380,8 @@ export default function FireExtinguishersPage() {
             <div className="absolute top-0 right-0 w-80 h-80 bg-[#E53935]/5 rounded-full blur-3xl -mr-24 -mt-24 pointer-events-none" />
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20 relative z-10 items-start">
               <div className="lg:col-span-1 lg:sticky lg:top-8">
-                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full"><span className="w-2 h-2 rounded-full bg-[#E53935]" /><p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Quick Reference</p></div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">Simple <span className="text-[#E53935]">Buyer&apos;s Guide</span></h2>
+                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full"><span className="w-2 h-2 rounded-full bg-[#E53935]" /><p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Quick Reference</p></div>
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">Simple <span className="text-[#E53935]">Buyer&apos;s Guide</span></h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
                 <p className="text-lg text-gray-600 leading-relaxed font-normal">Need a quick recommendation?</p>
               </div>
@@ -397,7 +397,7 @@ export default function FireExtinguishersPage() {
                       className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#E53935]/40 transition-all duration-300"
                     >
                       <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0">{getRenderIcon(guide.iconName)}</div>
-                      <div className="flex flex-col"><h3 className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors truncate">{guide.scenario}</h3><p className="text-sm font-black text-[#E53935] uppercase tracking-wider mt-1">Use: {guide.recommendation}</p></div>
+                      <div className="flex flex-col"><h3 className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors truncate">{guide.scenario}</h3><p className="text-sm font-black text-[#E53935] capitalize tracking-wider mt-1">Use: {guide.recommendation}</p></div>
                     </motion.div>
                   ))}
                 </div>
@@ -418,8 +418,8 @@ export default function FireExtinguishersPage() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20 relative z-10 items-start">
               <div className="lg:col-span-1 lg:sticky lg:top-8">
-                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full"><span className="w-2 h-2 rounded-full bg-[#E53935]" /><p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Use Cases</p></div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">Ideal <span className="text-[#E53935]">Applications</span></h2>
+                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full"><span className="w-2 h-2 rounded-full bg-[#E53935]" /><p className="text-[#E53935] text-xs font-bold tracking-widest capitalize">Use Cases</p></div>
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight capitalize">Ideal <span className="text-[#E53935]">Applications</span></h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
                 <p className="text-lg text-gray-600 leading-relaxed font-normal">Strategically placed fire extinguishers are the first line of defense.</p>
               </div>
@@ -491,7 +491,7 @@ export default function FireExtinguishersPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-block mb-3"><p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"><Star size={16} />Get Started</p></div>
+            <div className="inline-block mb-3"><p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"><Star size={16} />Get Started</p></div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">Ensure your <span className="text-[#E53935]">safety today</span></h2>
             <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal mb-8">Contact our experts for the right recommendation and installation.</p>
             <Link

@@ -136,19 +136,27 @@ export default function MainNavigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-[#E53935] hover:bg-[#E53935]/10 transition-colors"
+              className="lg:hidden relative w-10 h-10 flex flex-col justify-center items-center rounded-lg text-[#E53935] hover:bg-[#E53935]/10 transition-all focus:outline-none"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
+              <div className="relative w-6 h-4">
+                <span 
+                  className={`absolute left-0 right-0 h-0.5 bg-[#E53935] rounded-full transition-all duration-300 ease-in-out ${
+                    isOpen ? 'top-[7px] rotate-45' : 'top-0'
+                  }`} 
+                />
+                <span 
+                  className={`absolute left-0 right-0 h-0.5 bg-[#E53935] rounded-full transition-all duration-300 ease-in-out ${
+                    isOpen ? 'opacity-0 scale-x-0' : 'top-[7px] w-4'
+                  }`} 
+                />
+                <span 
+                  className={`absolute left-0 right-0 h-0.5 bg-[#E53935] rounded-full transition-all duration-300 ease-in-out ${
+                    isOpen ? 'top-[7px] -rotate-45' : 'top-[14px]'
+                  }`} 
+                />
+              </div>
             </button>
           </div>
         </div>
