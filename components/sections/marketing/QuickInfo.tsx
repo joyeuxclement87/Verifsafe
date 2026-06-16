@@ -8,8 +8,8 @@ export default function QuickInfo() {
     {
       iconName: 'phone',
       label: 'Phone',
-      value: '+250 790 478 265',
-      link: 'tel:+250790478265'
+      value: '+250 788 632 620',
+      link: 'tel:+250788632620'
     },
     {
       iconName: 'mail',
@@ -20,7 +20,7 @@ export default function QuickInfo() {
     {
       iconName: 'location',
       label: 'Location',
-      value: 'Kigali, Kinamba Road',
+      value: 'Kigali, Kinamba',
       link: 'https://maps.google.com/?q=Kinamba+Road,+Kigali,+Rwanda'
     }
   ];

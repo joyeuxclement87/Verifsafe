@@ -32,7 +32,7 @@ export default function ServicesPage() {
     },
     {
       iconName: 'shield',
-      image: '/service-4.png',
+      image: '/refile.jpeg',
       title: 'Fire Extinguisher Refilling',
       description: 'Refilling and servicing extinguishers to keep them ready and effective for emergency use.',
       features: ['Quick service', 'Reliable', 'Essential for safety']
@@ -67,7 +67,7 @@ export default function ServicesPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url("/hero-3.webp")`,
+            backgroundImage: `url("/hero2.jpg")`,
             backgroundAttachment: 'fixed',
           }}
         />

@@ -107,7 +107,7 @@ export default function Contact() {
               {/* Individual interactive card for phone contact */}
               <motion.a 
                 whileHover={{ x: 10 }}
-                href="tel:+250XXX000000" 
+                href="tel:+250788632620" 
                 className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 bg-gray-50 transition-all duration-300 shadow-sm"
               >
                 <div className="w-11 h-11 rounded-full bg-[#E53935]/10 flex items-center justify-center shrink-0">
@@ -115,7 +115,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Phone</p>
-                  <p className="text-gray-900 font-semibold text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>+250 XXX XXX XXX</p>
+                  <p className="text-gray-900 font-semibold text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>+250 788 632 620</p>
                 </div>
               </motion.a>
 

@@ -30,13 +30,13 @@ export default function HeroSection() {
       <motion.div
         className="absolute -inset-x-0 -top-[10%] -bottom-[10%] bg-cover bg-center"
         style={{
-          backgroundImage: `url("/hero-3.webp")`,
+          backgroundImage: `url("/hero2.jpg")`,
           y
         }}
       />
       
       {/* Dark Overlay with Gradient */}
-      <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+      <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/80 to-gray-950/60" />
 
       {/* Background Glow Effects */}
       <div className="absolute top-1/2 -translate-y-1/2 -left-48 w-96 h-96 bg-red-600/10 rounded-full blur-[120px] pointer-events-none z-0" />

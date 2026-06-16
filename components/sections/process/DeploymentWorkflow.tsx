@@ -42,7 +42,7 @@ export default function DeploymentWorkflow() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url("/hero-3.webp")`,
+          backgroundImage: `url("/verif.png")`,
           backgroundAttachment: 'fixed',
         }}
       />

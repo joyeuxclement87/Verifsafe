@@ -32,7 +32,7 @@ export default function AboutCompany() {
           />
         </motion.div>
         {/* Gradient Overlay for text readability */}
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/70 to-gray-950/70" />
+        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/50 to-gray-950/50" />
       </div>
 
       {/* Main outer container that maintains page alignment and responsive padding */}
@@ -120,7 +120,7 @@ export default function AboutCompany() {
               {/* Individual highlight card for certifications */}
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex items-start gap-4 overflow-hidden"
+                className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4 overflow-hidden"
               >
                 <div className="shrink-0">
                   <Certificate size={28} className="text-[#E53935]" strokeWidth={1.5} />

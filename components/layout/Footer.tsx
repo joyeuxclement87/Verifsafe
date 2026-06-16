@@ -156,11 +156,11 @@ export default function Footer() {
                     Phone
                   </p>
                   <a
-                    href="tel:+250790478265"
+                    href="tel:+250 788 632 620"
                     className="text-white group-hover:text-[#E53935] transition-colors font-normal"
                     style={{ fontFamily: 'Noto Sans, sans-serif' }}
                   >
-                    +250 790 478 265
+                    +250 788 632 620
                   </a>
                 </div>
               </div>

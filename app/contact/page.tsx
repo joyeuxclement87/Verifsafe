@@ -12,9 +12,13 @@ export default function ContactPage() {
       <section className="relative w-full h-96 sm:h-125 lg:h-150 flex items-center justify-center overflow-hidden mt-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url("/hero-3.webp")` }}
+          style={{ 
+            backgroundImage: `url("/cont.jpeg")`,
+            backgroundAttachment: 'fixed' ,
+
+          }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-r from-gray-950/90 via-gray-950/90 to-gray-950/80" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 

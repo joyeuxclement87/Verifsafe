@@ -14,12 +14,12 @@ export default function TopBar() {
 
         {/* Center - Phone */}
         <a
-          href="tel:+250790478265"
+          href="tel:+250 788 632 620"
           className="text-white text-xs sm:text-sm font-medium hover:opacity-80 transition-opacity duration-200 flex items-center gap-2"
           style={{ fontFamily: 'Noto Sans, sans-serif' }}
         >
           <Phone size={16} />
-          +250 790 478 265
+          +250 788 632 620
         </a>
 
         {/* Right Side - Social Icons */}

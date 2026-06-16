@@ -25,7 +25,7 @@ export default function ProtectionCTA() {
           y
         }}
       />
-      <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+      <div className="absolute inset-0 bg-linear-to-r from-gray-950/90 via-gray-950/80 to-gray-950/70" />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

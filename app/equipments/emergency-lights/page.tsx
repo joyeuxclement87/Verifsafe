@@ -82,11 +82,11 @@ export default function EmergencyLightsPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url("/hero-3.webp")`,
+            backgroundImage: `url("/em.jpeg")`,
             backgroundAttachment: 'fixed',
           }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-r from-gray-950/90 via-gray-950/85 to-gray-950/85" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-20">
           <motion.div
@@ -442,11 +442,11 @@ export default function EmergencyLightsPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url("/hero-3.webp")`,
+            backgroundImage: `url("/em.jpeg")`,
             backgroundAttachment: 'fixed',
           }}
         />
-        <div className="aabsolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-r from-gray-950/90 via-gray-950/85 to-gray-950/85" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div 
