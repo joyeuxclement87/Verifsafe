@@ -37,7 +37,7 @@ export default function SectionHeading({
       
       <h2 
         className={`text-4xl sm:text-5xl font-black ${dark ? 'text-white' : 'text-gray-900'} mb-6 leading-tight uppercase`} 
-        style={{ fontFamily: 'Oswald, sans-serif' }}
+        style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
       >
         {title} {highlight && <span className="text-[#E53935]">{highlight}</span>}
       </h2>

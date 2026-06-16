@@ -60,7 +60,7 @@ export default function FireSafetyTraining() {
           {/* Main Heading */}
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
           >
             Fire Safety <span className="text-[#E53935]">Training</span>
           </h2>
@@ -101,7 +101,7 @@ export default function FireSafetyTraining() {
                 {/* Title */}
                 <h3
                   className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300 mb-2 leading-snug"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
                 >
                   {point.title}
                 </h3>
@@ -130,7 +130,7 @@ export default function FireSafetyTraining() {
           >
             <p
               className="text-xl sm:text-2xl font-bold text-gray-900 leading-relaxed"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
             >
               Training is <span className="text-[#E53935]">practical, easy to understand</span>, and designed for <span className="text-[#E53935]">real-life situations</span>.
             </p>

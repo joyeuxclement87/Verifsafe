@@ -104,7 +104,7 @@ export default function FireSafetyAccessoriesPage() {
             </div>
             <h1
               className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               Safety <span className="text-[#E53935]">Accessories</span>
             </h1>
@@ -132,7 +132,7 @@ export default function FireSafetyAccessoriesPage() {
                 <span className="w-2 h-2 rounded-full bg-[#E53935]" />
                 <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Support Network</p>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight uppercase" style={{ fontFamily: 'Oswald, sans-serif' }}>
+              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
                 Total <span className="text-[#E53935]">Preparedness</span>
               </h2>
               <div className="w-20 h-1 bg-[#E53935] rounded-full mb-8" />
@@ -150,9 +150,9 @@ export default function FireSafetyAccessoriesPage() {
                     transition={{ delay: i * 0.1 }}
                     className="flex gap-6"
                   >
-                    <span className="text-4xl font-black text-gray-100" style={{ fontFamily: 'Oswald, sans-serif' }}>{item.step}</span>
+                    <span className="text-4xl font-black text-gray-100" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.step}</span>
                     <div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Oswald, sans-serif' }}>{item.title}</h4>
+                      <h4 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.title}</h4>
                       <p className="text-gray-600 leading-relaxed text-sm sm:text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{item.text}</p>
                     </div>
                   </motion.div>
@@ -181,7 +181,7 @@ export default function FireSafetyAccessoriesPage() {
                 transition={{ delay: 0.5 }}
                 className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 z-20"
               >
-                <p className="text-3xl font-black text-[#E53935]" style={{ fontFamily: 'Oswald, sans-serif' }}>ISO</p>
+                <p className="text-3xl font-black text-[#E53935]" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>ISO</p>
                 <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Certified Hardware</p>
               </motion.div>
             </motion.div>
@@ -202,7 +202,7 @@ export default function FireSafetyAccessoriesPage() {
               <span className="w-2 h-2 rounded-full bg-[#E53935]" />
               <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase ml-2 inline-block" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Essential Catalog</p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
               System <span className="text-[#E53935]">Enhancements</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -227,7 +227,7 @@ export default function FireSafetyAccessoriesPage() {
                 <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0 mb-6">
                   {type.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors" style={{ fontFamily: 'Oswald, sans-serif' }}>{type.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{type.title}</h3>
                 <p className="text-base text-gray-600 leading-relaxed mb-8" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
                   {type.description}
                 </p>
@@ -253,7 +253,7 @@ export default function FireSafetyAccessoriesPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
               Included <span className="text-[#E53935]">Elements</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -274,7 +274,7 @@ export default function FireSafetyAccessoriesPage() {
                 <div className="w-10 h-10 rounded-lg bg-[#E53935]/10 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935] group-hover:text-white transition-all duration-300 shrink-0 mb-4">
                   {item.icon}
                 </div>
-                <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#E53935] transition-colors mb-2" style={{ fontFamily: 'Oswald, sans-serif' }}>{item.title}</h4>
+                <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#E53935] transition-colors mb-2" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.title}</h4>
                 <p className="text-[10px] text-gray-500 leading-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{item.description}</p>
               </motion.div>
             ))}
@@ -298,7 +298,7 @@ export default function FireSafetyAccessoriesPage() {
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
                   <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Expert Advice</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
                   Simple <span className="text-[#E53935]">Buyer&apos;s Guide</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -322,7 +322,7 @@ export default function FireSafetyAccessoriesPage() {
                         <Check size={20} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: 'Oswald, sans-serif' }}>{item.title}</span>
+                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.title}</span>
                         <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">{item.detail}</span>
                       </div>
                     </motion.div>
@@ -349,7 +349,7 @@ export default function FireSafetyAccessoriesPage() {
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
                   <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Use Cases</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
                   Ideal <span className="text-[#E53935]">Applications</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -373,7 +373,7 @@ export default function FireSafetyAccessoriesPage() {
                         <Building size={24} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: 'Oswald, sans-serif' }}>{app}</span>
+                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{app}</span>
                         <span className="text-sm text-gray-400 group-hover:text-gray-600 transition-colors duration-300">Supporting Safety</span>
                       </div>
                     </motion.div>
@@ -383,7 +383,7 @@ export default function FireSafetyAccessoriesPage() {
                   <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
                     <Plus size={16} />
                   </div>
-                  <p className="text-sm font-bold uppercase tracking-widest" style={{ fontFamily: 'Oswald, sans-serif' }}>And many more options available...</p>
+                  <p className="text-sm font-bold uppercase tracking-widest" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>And many more options available...</p>
                 </div>
               </div>
             </div>
@@ -400,7 +400,7 @@ export default function FireSafetyAccessoriesPage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
               Features & <span className="text-[#E53935]">Benefits</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
@@ -463,7 +463,7 @@ export default function FireSafetyAccessoriesPage() {
                 Complete Your Site Setup
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
               Ensure your <span className="text-[#E53935]">safety today</span>
             </h2>
             <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal mb-8" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>

@@ -68,7 +68,7 @@ export default function FAQSection() {
           {/* Main Heading */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Frequently Asked{' '}
             <span className="text-[#E53935]">Questions</span>

@@ -94,7 +94,7 @@ export default function OurEquipment() {
           {/* Main heading for the equipment showcase */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             What We <span className="text-[#E53935]">Provide</span>
           </h2>
@@ -147,7 +147,7 @@ export default function OurEquipment() {
                 {/* Title of the specific equipment item */}
                 <h3
                   className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                 >
                   {item.title}
                 </h3>

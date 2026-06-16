@@ -87,7 +87,7 @@ export default function EmergencyPreparedness() {
           {/* Main Heading */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Are You Prepared for a{' '}
             <span className="text-[#E53935]">Fire Emergency</span>?
@@ -131,7 +131,7 @@ export default function EmergencyPreparedness() {
               {/* Title */}
               <h3
                 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
-                style={{ fontFamily: 'Oswald, sans-serif' }}
+                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
               >
                 {item.title}
               </h3>

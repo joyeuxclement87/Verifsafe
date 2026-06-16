@@ -70,7 +70,7 @@ export default function HeroSection() {
             animate="visible"
             variants={fadeIn}
             className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Absolute <span className="text-[#E53935]">Fire Protection</span><br />
             You Can Trust

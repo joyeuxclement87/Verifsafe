@@ -75,7 +75,7 @@ export default function DeploymentWorkflow() {
           {/* Main Heading */}
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             How We <span className="text-[#E53935]">Work</span>
           </h2>
@@ -114,7 +114,7 @@ export default function DeploymentWorkflow() {
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gray-900 border border-gray-800 group-hover:border-[#E53935]/50 group-hover:bg-[#E53935]/10 flex items-center justify-center transition-all duration-300 relative z-10">
                     <span
                       className="text-lg sm:text-xl font-black text-gray-600 group-hover:text-[#E53935] transition-colors duration-300"
-                      style={{ fontFamily: 'Oswald, sans-serif' }}
+                      style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                     >
                       {step.number}
                     </span>
@@ -128,7 +128,7 @@ export default function DeploymentWorkflow() {
                     <div className="flex-1 mb-4 lg:mb-0">
                       <h3
                         className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-[#E53935] transition-colors duration-300"
-                        style={{ fontFamily: 'Oswald, sans-serif' }}
+                        style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                       >
                         {step.title}
                       </h3>

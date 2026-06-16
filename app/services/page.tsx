@@ -92,7 +92,7 @@ export default function ServicesPage() {
 
             <h1
               className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               Professional Fire Protection <span className="text-[#E53935]">Services</span>
             </h1>
@@ -131,7 +131,7 @@ export default function ServicesPage() {
 
             <h2
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               Supply, Installation & <span className="text-[#E53935]">Maintenance</span>
             </h2>
@@ -163,7 +163,7 @@ export default function ServicesPage() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="p-6 pt-5 flex flex-col flex-grow w-full">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: 'Oswald, sans-serif' }}>{service.title}</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{service.title}</h3>
                   <p className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>{service.description}</p>
                   <div className="space-y-2 mb-5 w-full">
                     {service.features.map((feature, featureIndex) => (
@@ -205,7 +205,7 @@ export default function ServicesPage() {
                 Training & Safety
               </p>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>Fire Awareness & <span className="text-[#E53935]">First Aid Training</span></h2>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Fire Awareness & <span className="text-[#E53935]">First Aid Training</span></h2>
             <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>Comprehensive training programs designed to educate and equip individuals with essential fire safety and emergency response skills.</p>
           </motion.div>
@@ -227,7 +227,7 @@ export default function ServicesPage() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="p-6 pt-5 flex flex-col flex-grow w-full">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: 'Oswald, sans-serif' }}>{service.title}</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{service.title}</h3>
                   <p className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>{service.description}</p>
                   <div className="space-y-2 mb-5 w-full">
                     {service.features.map((feature, featureIndex) => (
@@ -269,7 +269,7 @@ export default function ServicesPage() {
                 Why It Matters
               </p>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>Why Our Services <span className="text-[#E53935]">Matter</span></h2>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Why Our Services <span className="text-[#E53935]">Matter</span></h2>
             <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>Safety Is Not Optional</p>
           </motion.div>
@@ -302,7 +302,7 @@ export default function ServicesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Oswald, sans-serif' }}>{item.title}</h3>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.title}</h3>
                       <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{item.desc}</p>
                     </div>
                   </motion.div>
@@ -326,16 +326,16 @@ export default function ServicesPage() {
                     <Shield size={32} className="text-[#E53935]" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Oswald, sans-serif' }}>Your Safety Partner</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Your Safety Partner</h3>
                     <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>From equipment supply to training, we ensure your fire safety systems are always ready and reliable.</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100">
                     <div className="text-center">
-                      <div className="text-2xl font-black text-[#E53935]" style={{ fontFamily: 'Oswald, sans-serif' }}>24/7</div>
+                      <div className="text-2xl font-black text-[#E53935]" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>24/7</div>
                       <div className="text-sm text-gray-500" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Support</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-black text-[#E53935]" style={{ fontFamily: 'Oswald, sans-serif' }}>100%</div>
+                      <div className="text-2xl font-black text-[#E53935]" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>100%</div>
                       <div className="text-sm text-gray-500" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Reliable</div>
                     </div>
                   </div>
@@ -376,7 +376,7 @@ export default function ServicesPage() {
                 Get Started
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>Take <span className="text-[#E53935]">the next step</span></h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Take <span className="text-[#E53935]">the next step</span></h2>
             <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>Ensure your property is protected with reliable fire safety systems and expert support.</p>
           </motion.div>
         </div>
@@ -396,11 +396,11 @@ export default function ServicesPage() {
               <div className="inline-block">
                 <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}><FileText size={16} />Project Enquiry</p>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>Tell us about your project</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Tell us about your project</h2>
               <p className="text-sm text-gray-500" style={{ fontFamily: 'Noto Sans, sans-serif' }}>We respond within 24 hours with a full proposal.</p>
               <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>Share your fire safety needs and we'll recommend the right solution and send you a tailored quote.</p>
               <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
-                <h4 className="text-sm font-bold text-gray-900 mb-3" style={{ fontFamily: 'Oswald, sans-serif' }}>What happens next?</h4>
+                <h4 className="text-sm font-bold text-gray-900 mb-3" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>What happens next?</h4>
                 <ul className="space-y-3 text-gray-600 text-sm" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
                   {['We review your request', 'We analyze your safety needs', 'We send a tailored quotation'].map((text, i) => (
                     <li key={i} className="flex items-start gap-3">

@@ -61,7 +61,7 @@ export default function QuickInfo() {
           {/* Core heading for the quick info section */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Quick <span className="text-[#E53935]">Info</span>
           </h2>

@@ -89,7 +89,7 @@ export default function WhyChooseUs() {
           {/* Core heading for the "Why Choose Us" section */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Why Choose{' '}
             <span className="text-[#E53935]">Verifsafe</span>
@@ -131,7 +131,7 @@ export default function WhyChooseUs() {
                 {/* Large decorative index number in the background of the card */}
                 <span
                   className="text-6xl font-black text-gray-200 group-hover:text-[#E53935]/40 transition-colors duration-300 leading-none"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                 >
                   {feature.number}
                 </span>
@@ -144,7 +144,7 @@ export default function WhyChooseUs() {
               {/* Specific advantage title heading */}
               <h3
                 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#E53935] transition-colors duration-300"
-                style={{ fontFamily: 'Oswald, sans-serif' }}
+                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
               >
                 {feature.label}
               </h3>

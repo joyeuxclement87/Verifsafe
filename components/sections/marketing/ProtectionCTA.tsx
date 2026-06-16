@@ -40,7 +40,7 @@ export default function ProtectionCTA() {
           {/* Main Heading */}
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Do Not Wait For The <span className="text-[#E53935]">Smoke.</span>
           </h2>

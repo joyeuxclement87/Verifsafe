@@ -89,7 +89,7 @@ export default function OurServices() {
           {/* Core heading of the services section */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             What We <span className="text-[#E53935]">Do</span>
           </h2>
@@ -141,7 +141,7 @@ export default function OurServices() {
                 {/* Specific service title heading */}
                 <h3
                   className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                 >
                   {service.title}
                 </h3>

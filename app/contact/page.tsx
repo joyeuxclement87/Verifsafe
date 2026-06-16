@@ -39,7 +39,7 @@ export default function ContactPage() {
 
             <h1
               className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight uppercase tracking-wider"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               Let's Talk Fire Safety
             </h1>
@@ -74,7 +74,7 @@ export default function ContactPage() {
             </div>
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight mb-4"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               We're Here to <span className="text-[#E53935]">Assist</span>
             </h2>
@@ -117,7 +117,7 @@ export default function ContactPage() {
                   {item.icon}
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-gray-900 mb-1" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                  <h3 className="text-base font-bold text-gray-900 mb-1" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
                     {item.title}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>

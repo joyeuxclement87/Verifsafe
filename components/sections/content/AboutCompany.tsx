@@ -66,7 +66,7 @@ export default function AboutCompany() {
               {/* Primary section title */}
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
-                style={{ fontFamily: 'Oswald, sans-serif' }}
+                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
               >
                 Who <span className="text-[#E53935]">We Are</span>
               </h2>

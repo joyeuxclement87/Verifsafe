@@ -67,7 +67,7 @@ export default function WhoWeServe() {
           {/* Main Heading */}
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Who We <span className="text-[#E53935]">Serve</span>
           </h2>
@@ -107,7 +107,7 @@ export default function WhoWeServe() {
               <div className="flex-1 min-w-0">
                 <h3
                   className="text-base font-bold text-gray-900 mb-1 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                 >
                   {industry.name}
                 </h3>

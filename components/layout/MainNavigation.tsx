@@ -78,8 +78,8 @@ export default function MainNavigation() {
                     isActive(link.href)
                       ? 'text-[#E53935] border-[#E53935]'
                       : 'text-gray-300 border-transparent hover:text-[#E53935] hover:border-[#E53935]'
-                  }`}
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                    }`}
+                    style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
                 >
                   {link.label}
                   {link.hasDropdown && (

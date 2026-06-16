@@ -127,7 +127,7 @@ export default function GalleryPage() {
                 Our work
               </p>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight uppercase tracking-wider" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight uppercase tracking-wider" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>
               Project Gallery
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
@@ -155,7 +155,7 @@ export default function GalleryPage() {
                 What you’ll see
               </p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>
               Real Work. Real Protection.
             </h2>
             <div className="w-12 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
@@ -183,7 +183,7 @@ export default function GalleryPage() {
                 Browse by category
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>
               View by Type
             </h2>
           </motion.div>
@@ -263,7 +263,7 @@ export default function GalleryPage() {
                           <Photo size={14} />
                           {item.label}
                         </div>
-                        <h3 className="text-xl font-bold text-white leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>{item.title}</h3>
+                        <h3 className="text-xl font-bold text-white leading-tight" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>{item.title}</h3>
                       </div>
                     </div>
                   </motion.div>
@@ -302,7 +302,7 @@ export default function GalleryPage() {
               <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative w-full h-[60vh] sm:h-[80vh] pointer-events-auto shadow-2xl">
                 <Image src={filteredItems[currentImageIndex].image} alt={filteredItems[currentImageIndex].title} fill className="object-contain" sizes="100vw" priority />
                 <div className="absolute bottom-0 inset-x-0 p-6 bg-linear-to-t from-black/90 to-transparent text-center">
-                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-wide" style={{ fontFamily: 'Oswald, sans-serif' }}>{filteredItems[currentImageIndex].title}</h3>
+                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-wide" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>{filteredItems[currentImageIndex].title}</h3>
                    <p className="text-gray-300 text-sm sm:text-base font-medium uppercase tracking-wider" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{filteredItems[currentImageIndex].label}</p>
                 </div>
               </motion.div>

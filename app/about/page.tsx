@@ -111,7 +111,7 @@ export default function AboutPage() {
 
             <h1
               className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               Rwanda&apos;s Trusted <span className="text-[#E53935]">Fire Protection Partner</span>
             </h1>
@@ -158,7 +158,7 @@ export default function AboutPage() {
 
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-                style={{ fontFamily: 'Oswald, sans-serif' }}
+                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
               >
                 What <span className="text-[#E53935]">Drives Us</span>
               </h2>
@@ -247,7 +247,7 @@ export default function AboutPage() {
 
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               Our <span className="text-[#E53935]">Foundation</span>
             </h2>
@@ -279,7 +279,7 @@ export default function AboutPage() {
                 </div>
                 <h3
                   className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                 >
                   {item.title}
                 </h3>
@@ -325,7 +325,7 @@ export default function AboutPage() {
             </div>
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               What We <span className="text-[#E53935]">Believe</span>
             </h2>
@@ -358,7 +358,7 @@ export default function AboutPage() {
                 <div className="w-full flex justify-between items-start mb-6">
                   <span
                     className="text-5xl lg:text-6xl font-black text-gray-200 group-hover:text-[#E53935]/40 transition-colors duration-300 leading-none"
-                    style={{ fontFamily: 'Oswald, sans-serif' }}
+                    style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                   >
                     {value.id}
                   </span>
@@ -368,7 +368,7 @@ export default function AboutPage() {
                 </div>
                 <h3
                   className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                 >
                   {value.title}
                 </h3>
@@ -401,7 +401,7 @@ export default function AboutPage() {
 
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-                style={{ fontFamily: 'Oswald, sans-serif' }}
+                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
               >
                 We are committed to delivering <span className="text-[#E53935]">fire protection</span> solutions
               </h2>
@@ -439,7 +439,7 @@ export default function AboutPage() {
                   <div>
                     <p
                       className="text-base font-semibold text-gray-900"
-                      style={{ fontFamily: 'Oswald, sans-serif' }}
+                      style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                     >
                       {feature.label}
                     </p>
@@ -477,7 +477,7 @@ export default function AboutPage() {
             </div>
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               Proven <span className="text-[#E53935]">Results</span>
             </h2>
@@ -507,13 +507,13 @@ export default function AboutPage() {
                 </div>
                 <h3
                   className="text-3xl sm:text-4xl font-black text-[#E53935] mb-2 group-hover:scale-110 transition-transform duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                 >
                   {metric.number}
                 </h3>
                 <h4
                   className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                 >
                   {metric.label}
                 </h4>
@@ -563,7 +563,7 @@ export default function AboutPage() {
             </div>
             <h2
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-3 leading-tight"
-              style={{ fontFamily: 'Oswald, sans-serif' }}
+              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
             >
               Take <span className="text-[#E53935]">Action</span> - Work With <span className="text-[#E53935]">VERIFSAFE</span>
             </h2>

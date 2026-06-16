@@ -63,7 +63,7 @@ export default function Contact() {
           {/* Main section heading for the contact form */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Send Us a <span className="text-[#E53935]">Message</span>
           </h2>
@@ -96,7 +96,7 @@ export default function Contact() {
               <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
                 Direct Contact
               </p>
-              <h3 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+              <h3 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
                 Quick Reach
               </h3>
             </div>

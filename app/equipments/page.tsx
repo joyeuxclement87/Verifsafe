@@ -88,7 +88,7 @@ export default function EquipmentsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tight"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
+            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Fire Safety <span className="text-[#E53935]">Equipment</span>
           </motion.h1>
@@ -117,7 +117,7 @@ export default function EquipmentsPage() {
               <span className="w-2 h-2 rounded-full bg-[#E53935]" />
               <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Quality Standards</p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
               Built for <span className="text-[#E53935]">Safety</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -168,7 +168,7 @@ export default function EquipmentsPage() {
                   <div className="p-8 flex flex-col flex-grow">
                     <h3
                       className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300 uppercase tracking-tight"
-                      style={{ fontFamily: 'Oswald, sans-serif' }}
+                      style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
                     >
                       {equipment.title}
                     </h3>
@@ -211,7 +211,7 @@ export default function EquipmentsPage() {
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
                   <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Core Value</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
                   Reliable <span className="text-[#E53935]">Performance</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
@@ -240,7 +240,7 @@ export default function EquipmentsPage() {
                         {benefit.icon}
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: 'Oswald, sans-serif' }}>{benefit.title}</span>
+                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{benefit.title}</span>
                         <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">{benefit.detail}</span>
                       </div>
                     </motion.div>
@@ -282,7 +282,7 @@ export default function EquipmentsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
           >
             Ready to <span className="text-[#E53935]">get started</span>?
           </motion.h2>
@@ -333,14 +333,14 @@ export default function EquipmentsPage() {
                   Enquire Now
                 </p>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oswald, sans-serif' }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
                 Tell us about <span className="text-[#E53935]">your project</span>
               </h2>
               <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
                 Share your fire safety needs and we&apos;ll recommend the right equipment and send you a tailored quote within 24 hours.
               </p>
               <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-                <h4 className="text-sm font-bold text-gray-900 mb-4" style={{ fontFamily: 'Oswald, sans-serif' }}>Our Commitment</h4>
+                <h4 className="text-sm font-bold text-gray-900 mb-4" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Our Commitment</h4>
                 <ul className="space-y-4 text-gray-600 text-sm" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
                    <li className="flex items-start gap-3">
                     <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0"><Check size={13} /></span>
