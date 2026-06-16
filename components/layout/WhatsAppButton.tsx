@@ -3,7 +3,7 @@
 import { BrandWhatsapp } from 'tabler-icons-react';
 
 export default function WhatsAppButton() {
-  const phoneNumber = '+250 790 478 265'; // Updated to official number
+  const phoneNumber = '+250 788 632 620'; // Updated to official number
   const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=Hello%20Verifisafe%2C%20I%20would%20like%20to%20inquire%20about%20your%20fire%20protection%20services.`;
 
   return (
