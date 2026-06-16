@@ -57,7 +57,7 @@ export default function WhoWeServe() {
           <div className="inline-block mb-4">
             <p
               className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <Building size={16} />
               Industries
@@ -67,7 +67,7 @@ export default function WhoWeServe() {
           {/* Main Heading */}
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+           
           >
             Who We <span className="text-[#E53935]">Serve</span>
           </h2>
@@ -78,7 +78,7 @@ export default function WhoWeServe() {
           {/* Subheading */}
           <p
             className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+           
           >
             Tailored fire safety solutions across diverse industries and sectors.
           </p>
@@ -107,13 +107,13 @@ export default function WhoWeServe() {
               <div className="flex-1 min-w-0">
                 <h3
                   className="text-base font-bold text-gray-900 mb-1 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                 
                 >
                   {industry.name}
                 </h3>
                 <p
                   className="text-sm text-gray-500 leading-relaxed font-normal"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                 
                 >
                   {industry.description}
                 </p>

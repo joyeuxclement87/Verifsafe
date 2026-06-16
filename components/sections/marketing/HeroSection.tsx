@@ -54,10 +54,7 @@ export default function HeroSection() {
             variants={fadeIn}
             className="inline-block mb-4"
           >
-            <div
-              className="text-white text-xs sm:text-sm font-bold tracking-widest px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontVariant: 'small-caps' }}
-            >
+            <div className="text-label text-white px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2">
               <Shield size={16} strokeWidth={1.5} />
               Premium fire safety solutions
             </div>
@@ -69,8 +66,7 @@ export default function HeroSection() {
             initial="hidden"
             animate="visible"
             variants={fadeIn}
-            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+            className="text-section-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white mb-3 sm:mb-5 tracking-wider"
           >
             Absolute <span className="text-[#E53935]">Fire Protection</span><br />
             You Can Trust
@@ -82,8 +78,7 @@ export default function HeroSection() {
             initial="hidden"
             animate="visible"
             variants={fadeIn}
-            className="text-sm sm:text-base lg:text-base text-gray-200 mb-7 sm:mb-9 max-w-2xl leading-relaxed font-normal"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+            className="text-subheading text-gray-200 mb-7 sm:mb-9 max-w-2xl"
           >
             State-of-the-art detection and suppression technology for industrial-scale safety. We safeguard high-risk environments with precision engineering.
           </motion.p>
@@ -100,7 +95,7 @@ export default function HeroSection() {
             <Link
               href="/services#project-form"
               className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg rounded-lg uppercase tracking-wide"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <FileText size={16} strokeWidth={1} />
               Request Inspection
@@ -110,7 +105,7 @@ export default function HeroSection() {
             <Link
               href="/equipments"
               className="inline-flex items-center gap-2 px-8 py-3 border border-white/30 text-white font-medium text-base transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-lg bg-white/20 backdrop-blur-sm uppercase tracking-wide"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               Explore Systems
               <ArrowRight size={16} strokeWidth={1.5} />

@@ -75,20 +75,14 @@ export default function EmergencyPreparedness() {
         >
           {/* Section Label */}
           <div className="inline-block mb-4">
-            <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest  px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
-            >
+            <p className="text-label text-[#E53935] px-4 py-2 bg-red-50 rounded-full flex items-center gap-2">
               <Shield size={16} />
               Emergency Preparedness
             </p>
           </div>
 
           {/* Main Heading */}
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-          >
+          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900">
             Are You Prepared for a{' '}
             <span className="text-[#E53935]">Fire Emergency</span>?
           </h2>
@@ -97,10 +91,7 @@ export default function EmergencyPreparedness() {
           <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
           {/* Subheading */}
-          <p
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-          >
+          <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
             Statistics show that <span className="font-bold text-[#E53935]">40% of businesses never reopen</span> after a major fire. Don&apos;t let yours be one of them.
           </p>
         </motion.div>
@@ -129,18 +120,12 @@ export default function EmergencyPreparedness() {
               </div>
 
               {/* Title */}
-              <h3
-                className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
-                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-              >
+              <h3 className="text-card-title text-xl text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300">
                 {item.title}
               </h3>
 
               {/* Description */}
-              <p
-                className="text-base text-gray-600 leading-relaxed font-normal"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-              >
+              <p className="text-body text-gray-600">
                 {item.description}
               </p>
 

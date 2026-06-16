@@ -56,20 +56,14 @@ export default function FAQSection() {
         >
           {/* Section Label */}
           <div className="inline-block mb-4">
-            <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
-            >
+            <p className="text-label text-[#E53935] px-4 py-2 bg-red-50 rounded-full flex items-center gap-2">
               <FontAwesomeIcon icon={faQuestionCircle} className="w-4 h-4" />
               Common Questions
             </p>
           </div>
 
           {/* Main Heading */}
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-          >
+          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900">
             Frequently Asked{' '}
             <span className="text-[#E53935]">Questions</span>
           </h2>
@@ -78,10 +72,7 @@ export default function FAQSection() {
           <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
           {/* Subheading */}
-          <p
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-          >
+          <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
             Find answers to common questions about our fire protection services and products.
           </p>
         </motion.div>
@@ -105,10 +96,7 @@ export default function FAQSection() {
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 sm:px-8 py-5 flex items-center justify-between text-left hover:bg-gray-50/50 transition-colors duration-300"
               >
-                <h3
-                  className="text-base sm:text-lg font-bold text-gray-900 flex-1 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                >
+                <h3 className="text-card-title text-base sm:text-lg text-gray-900 flex-1 group-hover:text-[#E53935] transition-colors duration-300">
                   {faq.question}
                 </h3>
                 <div className="flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 bg-red-50 group-hover:bg-[#E53935] rounded-full transition-colors duration-300">
@@ -129,10 +117,7 @@ export default function FAQSection() {
                     transition={{ duration: 0.3 }}
                     className="px-6 sm:px-8 pb-5 border-t border-gray-100 overflow-hidden"
                   >
-                    <p
-                      className="text-base text-gray-700 leading-relaxed py-4"
-                      style={{ fontFamily: 'Noto Sans, sans-serif' }}
-                    >
+                    <p className="text-body text-gray-700 py-4">
                       {faq.answer}
                     </p>
                   </motion.div>

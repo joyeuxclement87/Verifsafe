@@ -81,10 +81,7 @@ export default function ServicesPage() {
             className="flex flex-col items-center text-center"
           >
             <div className="inline-block mb-4">
-              <p
-                className="text-white text-xs sm:text-sm font-bold tracking-widest px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontVariant: 'small-caps' }}
-              >
+              <p className="text-label text-white px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <Star size={16} />
                 What we offer
               </p>
@@ -92,14 +89,14 @@ export default function ServicesPage() {
 
             <h1
               className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               Professional Fire Protection <span className="text-[#E53935]">Services</span>
             </h1>
 
             <p
               className="text-lg sm:text-xl text-gray-200 mb-7 sm:mb-9 max-w-2xl leading-relaxed font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               We provide fire safety services which ensure equipment and systems are installed, maintained, and ready when needed.
             </p>
@@ -122,7 +119,7 @@ export default function ServicesPage() {
             <div className="inline-block mb-4">
               <p
                 className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 <Tools size={16} />
                 Equipment & Systems
@@ -131,7 +128,7 @@ export default function ServicesPage() {
 
             <h2
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               Supply, Installation & <span className="text-[#E53935]">Maintenance</span>
             </h2>
@@ -140,7 +137,7 @@ export default function ServicesPage() {
 
             <p
               className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               We deliver fire protection services which support businesses, institutions, and homes with reliable safety systems. From supply to maintenance, our services are designed to ensure continuous protection.
             </p>
@@ -163,18 +160,18 @@ export default function ServicesPage() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="p-6 pt-5 flex flex-col flex-grow w-full">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{service.title}</h3>
-                  <p className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>{service.description}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">{service.title}</h3>
+                  <p className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5">{service.description}</p>
                   <div className="space-y-2 mb-5 w-full">
                     {service.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 bg-[#E53935] rounded-full shrink-0" />
-                        <span className="text-sm text-gray-600 font-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{feature}</span>
+                        <span className="text-sm text-gray-600 font-normal">{feature}</span>
                       </div>
                     ))}
                   </div>
                   <div className="mt-auto w-full">
-                    <button onClick={() => { const el = document.getElementById(service.title === 'Fire Equipment Supply' ? 'equipment' : 'project-form'); el?.scrollIntoView({ behavior: 'smooth' }); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                    <button onClick={() => { const el = document.getElementById(service.title === 'Fire Equipment Supply' ? 'equipment' : 'project-form'); el?.scrollIntoView({ behavior: 'smooth' }); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group">
                       {service.title === 'Fire Equipment Supply' ? 'View Equipments' : 'Request a Quote'}
                       <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
                     </button>
@@ -199,15 +196,15 @@ export default function ServicesPage() {
             <div className="inline-block mb-4">
               <p
                 className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 <Shield size={16} />
                 Training & Safety
               </p>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Fire Awareness & <span className="text-[#E53935]">First Aid Training</span></h2>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">Fire Awareness & <span className="text-[#E53935]">First Aid Training</span></h2>
             <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>Comprehensive training programs designed to educate and equip individuals with essential fire safety and emergency response skills.</p>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">Comprehensive training programs designed to educate and equip individuals with essential fire safety and emergency response skills.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 max-w-4xl mx-auto">
@@ -227,18 +224,18 @@ export default function ServicesPage() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="p-6 pt-5 flex flex-col flex-grow w-full">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{service.title}</h3>
-                  <p className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>{service.description}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">{service.title}</h3>
+                  <p className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5">{service.description}</p>
                   <div className="space-y-2 mb-5 w-full">
                     {service.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 bg-[#E53935] rounded-full shrink-0" />
-                        <span className="text-sm text-gray-600 font-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{feature}</span>
+                        <span className="text-sm text-gray-600 font-normal">{feature}</span>
                       </div>
                     ))}
                   </div>
                   <div className="mt-auto w-full">
-                    <button onClick={() => { document.getElementById('project-form')?.scrollIntoView({ behavior: 'smooth' }); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                    <button onClick={() => { document.getElementById('project-form')?.scrollIntoView({ behavior: 'smooth' }); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group">
                       Request a Quote
                       <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
                     </button>
@@ -263,15 +260,15 @@ export default function ServicesPage() {
             <div className="inline-block mb-4">
               <p
                 className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 <Shield size={16} />
                 Why It Matters
               </p>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Why Our Services <span className="text-[#E53935]">Matter</span></h2>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">Why Our Services <span className="text-[#E53935]">Matter</span></h2>
             <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>Safety Is Not Optional</p>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">Safety Is Not Optional</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -302,8 +299,8 @@ export default function ServicesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.title}</h3>
-                      <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{item.desc}</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -326,17 +323,17 @@ export default function ServicesPage() {
                     <Shield size={32} className="text-[#E53935]" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Your Safety Partner</h3>
-                    <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>From equipment supply to training, we ensure your fire safety systems are always ready and reliable.</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Your Safety Partner</h3>
+                    <p className="text-gray-600 leading-relaxed">From equipment supply to training, we ensure your fire safety systems are always ready and reliable.</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100">
                     <div className="text-center">
-                      <div className="text-2xl font-black text-[#E53935]" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>24/7</div>
-                      <div className="text-sm text-gray-500" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Support</div>
+                      <div className="text-2xl font-black text-[#E53935]">24/7</div>
+                      <div className="text-sm text-gray-500">Support</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-black text-[#E53935]" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>100%</div>
-                      <div className="text-sm text-gray-500" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Reliable</div>
+                      <div className="text-2xl font-black text-[#E53935]">100%</div>
+                      <div className="text-sm text-gray-500">Reliable</div>
                     </div>
                   </div>
                 </div>
@@ -371,13 +368,13 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-block mb-3">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 Get Started
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Take <span className="text-[#E53935]">the next step</span></h2>
-            <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>Ensure your property is protected with reliable fire safety systems and expert support.</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 leading-tight">Take <span className="text-[#E53935]">the next step</span></h2>
+            <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal">Ensure your property is protected with reliable fire safety systems and expert support.</p>
           </motion.div>
         </div>
       </section>
@@ -394,14 +391,14 @@ export default function ServicesPage() {
               className="flex flex-col gap-6"
             >
               <div className="inline-block">
-                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}><FileText size={16} />Project Enquiry</p>
+                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2"><FileText size={16} />Project Enquiry</p>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Tell us about your project</h2>
-              <p className="text-sm text-gray-500" style={{ fontFamily: 'Noto Sans, sans-serif' }}>We respond within 24 hours with a full proposal.</p>
-              <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>Share your fire safety needs and we'll recommend the right solution and send you a tailored quote.</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">Tell us about your project</h2>
+              <p className="text-sm text-gray-500">We respond within 24 hours with a full proposal.</p>
+              <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed">Share your fire safety needs and we'll recommend the right solution and send you a tailored quote.</p>
               <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
-                <h4 className="text-sm font-bold text-gray-900 mb-3" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>What happens next?</h4>
-                <ul className="space-y-3 text-gray-600 text-sm" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                <h4 className="text-sm font-bold text-gray-900 mb-3">What happens next?</h4>
+                <ul className="space-y-3 text-gray-600 text-sm">
                   {['We review your request', 'We analyze your safety needs', 'We send a tailored quotation'].map((text, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0"><Check size={13} /></span>
@@ -419,14 +416,14 @@ export default function ServicesPage() {
               transition={{ duration: 0.8 }}
             >
               <form onSubmit={(e) => { e.preventDefault(); }} className="space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl">
-                <div><label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Name</label>
-                <input type="text" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} placeholder="Your name" /></div>
-                <div><label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Email</label>
-                <input type="email" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} placeholder="your@email.com" /></div>
-                <div><label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Service Type</label>
-                <select required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} defaultValue=""><option value="" disabled>Select a service type</option><option value="Fire Equipment Supply">Fire Equipment Supply</option><option value="Installation Services">Installation Services</option><option value="Inspection & Testing">Inspection &amp; Testing</option><option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option><option value="Maintenance Services">Maintenance Services</option><option value="Fire Safety Awareness Training">Fire Safety Awareness Training</option><option value="First Aid Training">First Aid Training</option><option value="Other">Other</option></select></div>
-                <div><label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Message</label>
-                <textarea required rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900 resize-none" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} placeholder="Describe your request..."></textarea></div>
+                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Name</label>
+                <input type="text" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="Your name" /></div>
+                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Email</label>
+                <input type="email" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="your@email.com" /></div>
+                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Service Type</label>
+                <select required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} defaultValue=""><option value="" disabled>Select a service type</option><option value="Fire Equipment Supply">Fire Equipment Supply</option><option value="Installation Services">Installation Services</option><option value="Inspection & Testing">Inspection &amp; Testing</option><option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option><option value="Maintenance Services">Maintenance Services</option><option value="Fire Safety Awareness Training">Fire Safety Awareness Training</option><option value="First Aid Training">First Aid Training</option><option value="Other">Other</option></select></div>
+                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
+                <textarea required rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900 resize-none" style={{ borderWidth: '1px' }} placeholder="Describe your request..."></textarea></div>
                 <button type="submit" className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2 group">Send Message <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" /></button>
               </form>
             </motion.div>

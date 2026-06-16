@@ -54,7 +54,7 @@ export default function Contact() {
           <div className="inline-block mb-4">
             <p
               className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
               Contact Form
@@ -63,7 +63,7 @@ export default function Contact() {
           {/* Main section heading for the contact form */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+           
           >
             Send Us a <span className="text-[#E53935]">Message</span>
           </h2>
@@ -72,7 +72,7 @@ export default function Contact() {
           {/* Supportive text guiding the user on form submission expectations */}
           <p
             className="text-lg text-gray-500 max-w-xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+           
           >
             Fill in the form below and our team will get back to you within 2 business hours.
           </p>
@@ -93,10 +93,10 @@ export default function Contact() {
 
             {/* Sub-header for the direct contact information grouping */}
             <div>
-              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase mb-2">
                 Direct Contact
               </p>
-              <h3 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+              <h3 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">
                 Quick Reach
               </h3>
             </div>
@@ -114,8 +114,8 @@ export default function Contact() {
                   <FontAwesomeIcon icon={faPhone} className="w-5 h-5 text-[#E53935]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Phone</p>
-                  <p className="text-gray-900 font-semibold text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>+250 788 632 620</p>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Phone</p>
+                  <p className="text-gray-900 font-semibold text-base">+250 788 632 620</p>
                 </div>
               </motion.a>
 
@@ -129,8 +129,8 @@ export default function Contact() {
                   <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 text-[#E53935]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Email</p>
-                  <p className="text-gray-900 font-semibold text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>info@verifsafe.com</p>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Email</p>
+                  <p className="text-gray-900 font-semibold text-base">info@verifsafe.com</p>
                 </div>
               </motion.a>
 
@@ -143,8 +143,8 @@ export default function Contact() {
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="w-5 h-5 text-[#E53935]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Working Hours</p>
-                  <p className="text-gray-900 font-semibold text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Mon – Sat &nbsp;|&nbsp; 8:00 AM – 6:00 PM</p>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Working Hours</p>
+                  <p className="text-gray-900 font-semibold text-base">Mon – Sat &nbsp;|&nbsp; 8:00 AM – 6:00 PM</p>
                 </div>
               </motion.div>
             </div>
@@ -179,7 +179,7 @@ export default function Contact() {
                 <label
                   htmlFor="name"
                   className="block text-sm font-semibold text-gray-800 mb-2"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   Name
                 </label>
@@ -191,7 +191,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
+                  style={{ borderWidth: '1px' }}
                   placeholder="Your full name"
                 />
               </div>
@@ -201,7 +201,7 @@ export default function Contact() {
                 <label
                   htmlFor="email"
                   className="block text-sm font-semibold text-gray-800 mb-2"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   Email
                 </label>
@@ -213,7 +213,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
+                  style={{ borderWidth: '1px' }}
                   placeholder="your@email.com"
                 />
               </div>
@@ -223,7 +223,7 @@ export default function Contact() {
                 <label
                   htmlFor="service"
                   className="block text-sm font-semibold text-gray-800 mb-2"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   Service Type
                 </label>
@@ -234,7 +234,7 @@ export default function Contact() {
                   onChange={handleChange as any}
                   required
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 text-gray-900"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
+                  style={{ borderWidth: '1px' }}
                 >
                   <option value="" disabled>Select a service type</option>
                   <option value="Fire Equipment Supply">Fire Equipment Supply</option>
@@ -253,7 +253,7 @@ export default function Contact() {
                 <label
                   htmlFor="phone"
                   className="block text-sm font-semibold text-gray-800 mb-2"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   Phone
                 </label>
@@ -264,7 +264,7 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
+                  style={{ borderWidth: '1px' }}
                   placeholder="+250 xxx xxx xxx"
                 />
               </div>
@@ -274,7 +274,7 @@ export default function Contact() {
                 <label
                   htmlFor="message"
                   className="block text-sm font-semibold text-gray-800 mb-2"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   Message
                 </label>
@@ -286,7 +286,7 @@ export default function Contact() {
                   required
                   rows={4}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
+                  style={{ borderWidth: '1px' }}
                   placeholder="Describe your request..."
                 />
               </div>
@@ -297,7 +297,7 @@ export default function Contact() {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 shadow-lg inline-flex items-center justify-center gap-2 group"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 Send Message
                 <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -314,7 +314,7 @@ export default function Contact() {
                 >
                   <p
                     className="text-green-800 font-semibold text-center"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                   
                   >
                     ✓ Thank you! We will be in touch shortly.
                   </p>

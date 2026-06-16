@@ -30,25 +30,19 @@ export default function SectionHeading({
     >
       <div className={`inline-flex items-center gap-2 mb-5 px-4 py-2 ${dark ? 'bg-white/10 border border-white/20' : 'bg-red-50'} rounded-full`}>
         <span className={`w-2 h-2 rounded-full ${dark ? 'bg-red-400' : 'bg-[#E53935]'}`} />
-        <p className={`${dark ? 'text-white' : 'text-[#E53935]'} text-xs font-bold tracking-widest uppercase`} style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+        <p className={`text-label ${dark ? 'text-white' : 'text-[#E53935]'}`}>
           {label}
         </p>
       </div>
       
-      <h2 
-        className={`text-4xl sm:text-5xl font-black ${dark ? 'text-white' : 'text-gray-900'} mb-6 leading-tight uppercase`} 
-        style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
-      >
+      <h2 className={`text-section-heading text-4xl sm:text-5xl ${dark ? 'text-white' : 'text-gray-900'} mb-6 uppercase`}>
         {title} {highlight && <span className="text-[#E53935]">{highlight}</span>}
       </h2>
       
       <div className={`w-20 h-1 bg-[#E53935] rounded-full ${centered ? 'mx-auto' : ''} mb-6`} />
       
       {description && (
-        <p 
-          className={`text-lg ${dark ? 'text-gray-300' : 'text-gray-600'} leading-relaxed font-normal max-w-2xl ${centered ? 'mx-auto' : ''}`}
-          style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-        >
+        <p className={`text-subheading ${dark ? 'text-gray-300' : 'text-gray-600'} max-w-2xl ${centered ? 'mx-auto' : ''}`}>
           {description}
         </p>
       )}

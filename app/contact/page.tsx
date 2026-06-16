@@ -30,7 +30,7 @@ export default function ContactPage() {
             <div className="inline-block mb-4">
               <p
                 className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 <Phone size={16} />
                 Get in Touch
@@ -39,14 +39,14 @@ export default function ContactPage() {
 
             <h1
               className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight uppercase tracking-wider"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               Let's Talk Fire Safety
             </h1>
 
             <p
               className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl leading-relaxed font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               Reach out to our team for inquiries, quotations, or support on fire protection solutions.
             </p>
@@ -68,20 +68,20 @@ export default function ContactPage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 rounded-full mb-5">
               <Flame size={15} className="text-[#E53935]" />
-              <span className="text-[#E53935] text-sm font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <span className="text-[#E53935] text-sm font-bold tracking-widest uppercase">
                 How We Can Help
               </span>
             </div>
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight mb-4"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               We're Here to <span className="text-[#E53935]">Assist</span>
             </h2>
             <div className="w-12 h-1 bg-[#E53935] rounded-full mx-auto mb-5" />
             <p
               className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               Whether you need equipment, installation, or consultation, our team is ready to guide you with the right fire safety solution.
             </p>
@@ -117,10 +117,10 @@ export default function ContactPage() {
                   {item.icon}
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-gray-900 mb-1" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+                  <h3 className="text-base font-bold text-gray-900 mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                  <p className="text-gray-500 text-sm leading-relaxed">
                     {item.desc}
                   </p>
                 </div>

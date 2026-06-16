@@ -56,7 +56,7 @@ export default function AboutCompany() {
               <div className="inline-block mb-4">
                 <p
                   className="text-white text-sm sm:text-base font-bold tracking-widest px-4 py-2 bg-[#E53935]/20 border border-[#E53935]/30 rounded-full flex items-center gap-2"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   <InfoCircle size={16} />
                   About Verifsafe
@@ -66,7 +66,7 @@ export default function AboutCompany() {
               {/* Primary section title */}
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
-                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+               
               >
                 Who <span className="text-[#E53935]">We Are</span>
               </h2>
@@ -77,7 +77,7 @@ export default function AboutCompany() {
               {/* Secondary heading or high-level summary paragraph */}
               <p
                 className="text-lg sm:text-xl text-gray-200 font-normal leading-relaxed"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+               
               >
                 Rwanda&apos;s leading fire protection company dedicated to protecting lives and property through professional fire safety solutions.
               </p>
@@ -86,7 +86,7 @@ export default function AboutCompany() {
             {/* Detailed company history and service philosophy description */}
             <p
               className="text-sm sm:text-base text-gray-300 leading-relaxed font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               VERIFSAFE is dedicated to providing professional fire safety equipment and comprehensive services across Rwanda. We supply, install, and maintain fire protection systems that keep buildings and people safe when emergencies occur.
             </p>
@@ -112,7 +112,7 @@ export default function AboutCompany() {
                 <div className="shrink-0">
                   <Tool size={28} className="text-[#E53935]" strokeWidth={1.5} />
                 </div>
-                <span className="text-base text-white font-normal mt-0.5" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+                <span className="text-base text-white font-normal mt-0.5">
                   100+ successful installations across Rwanda
                 </span>
               </motion.div>
@@ -125,7 +125,7 @@ export default function AboutCompany() {
                 <div className="shrink-0">
                   <Certificate size={28} className="text-[#E53935]" strokeWidth={1.5} />
                 </div>
-                <span className="text-base text-white font-normal mt-0.5" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+                <span className="text-base text-white font-normal mt-0.5">
                   Certified technicians with international standards
                 </span>
               </motion.div>
@@ -138,7 +138,7 @@ export default function AboutCompany() {
                 <div className="shrink-0">
                   <PhoneCall size={28} className="text-[#E53935]" strokeWidth={1.5} />
                 </div>
-                <span className="text-base text-white font-normal mt-0.5" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+                <span className="text-base text-white font-normal mt-0.5">
                   24/7 emergency support always available
                 </span>
               </motion.div>
@@ -149,7 +149,7 @@ export default function AboutCompany() {
               <Link
                 href="/about"
                 className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 Learn More
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

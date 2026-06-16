@@ -103,7 +103,6 @@ export default function PageLoader() {
                 <span
                   className="text-sm transition-all duration-400"
                   style={{
-                    fontFamily: 'Noto Sans, sans-serif',
                     color:   scanPass > i ? '#D1D5DB' : '#374151',
                     opacity: scanPass > i ? 1 : 0.4,
                     animation: scanPass > i ? 'fade-up 0.35s ease-out forwards' : 'none',
@@ -128,7 +127,7 @@ export default function PageLoader() {
             {showSecured && (
               <span
                 className="text-[11px] tracking-[0.2em] uppercase text-[#E53935] flex items-center gap-2"
-                style={{ fontFamily: 'Noto Sans, sans-serif', animation: 'fade-up 0.4s ease-out forwards' }}
+                style={{ animation: 'fade-up 0.4s ease-out forwards' }}
               >
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                   <path d="M1.5 5L4 7.5L8.5 2.5" stroke="#E53935" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

@@ -73,19 +73,19 @@ export default function FireHoseReelsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
               <Droplet size={16} className="text-[#E53935]" />
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase">
                 High-Flow Suppression
               </p>
             </div>
             <h1
               className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tight"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               Fire Hose <span className="text-[#E53935]">Reels</span>
             </h1>
             <p
               className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               Continuous water supply systems designed for long-duration firefighting in large commercial and industrial environments.
             </p>
@@ -105,9 +105,9 @@ export default function FireHoseReelsPage() {
             >
               <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                 <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Operational Guide</p>
+                <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Operational Guide</p>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight uppercase">
                 Effective <span className="text-[#E53935]">Fire Response</span>
               </h2>
               <div className="w-20 h-1 bg-[#E53935] rounded-full mb-8" />
@@ -125,10 +125,10 @@ export default function FireHoseReelsPage() {
                     transition={{ delay: i * 0.1 }}
                     className="flex gap-6"
                   >
-                    <span className="text-4xl font-black text-gray-100" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.step}</span>
+                    <span className="text-4xl font-black text-gray-100">{item.step}</span>
                     <div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.title}</h4>
-                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{item.text}</p>
+                      <h4 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h4>
+                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{item.text}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -156,7 +156,7 @@ export default function FireHoseReelsPage() {
                 transition={{ delay: 0.5 }}
                 className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 z-20"
               >
-                <p className="text-3xl font-black text-[#E53935]" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>30M</p>
+                <p className="text-3xl font-black text-[#E53935]">30M</p>
                 <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Maximum Coverage</p>
               </motion.div>
             </motion.div>
@@ -175,13 +175,13 @@ export default function FireHoseReelsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
               <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>System Options</p>
+              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">System Options</p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
               Choose the <span className="text-[#E53935]">Right Type</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
-            <p className="text-lg text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+            <p className="text-lg text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto">
               Tailored installations for diverse architectural requirements and building codes.
             </p>
           </motion.div>
@@ -202,13 +202,13 @@ export default function FireHoseReelsPage() {
                 <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0 mb-6">
                   {type.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{type.title}</h3>
-                <p className="text-base text-gray-600 leading-relaxed mb-8" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors">{type.title}</h3>
+                <p className="text-base text-gray-600 leading-relaxed mb-8">
                   {type.description}
                 </p>
 
                 <div className="mt-auto bg-gray-50 p-5 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 group-hover:border-[#E53935]/10 transition-all duration-300">
-                  <p className="text-xs text-gray-500 leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                  <p className="text-xs text-gray-500 leading-relaxed">
                     <span className="font-bold block text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors uppercase tracking-widest">Best for</span>
                     {type.bestFor}
                   </p>
@@ -228,7 +228,7 @@ export default function FireHoseReelsPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
               What Makes a <span className="text-[#E53935]">Hose Reel</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
@@ -249,8 +249,8 @@ export default function FireHoseReelsPage() {
                 <div className="w-10 h-10 rounded-lg bg-[#E53935]/10 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935] group-hover:text-white transition-all duration-300 shrink-0 mb-4">
                   {item.icon}
                 </div>
-                <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#E53935] transition-colors mb-2" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.title}</h4>
-                <p className="text-[10px] text-gray-500 leading-normal" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{item.description}</p>
+                <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#E53935] transition-colors mb-2">{item.title}</h4>
+                <p className="text-[10px] text-gray-500 leading-normal">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -271,13 +271,13 @@ export default function FireHoseReelsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Expert Advice</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Expert Advice</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
                   Simple <span className="text-[#E53935]">Buyer&apos;s Guide</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
-                <p className="text-lg text-gray-600 leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+                <p className="text-lg text-gray-600 leading-relaxed font-normal">
                   Consider these technical factors before selecting hose reels for your facility.
                 </p>
               </div>
@@ -297,7 +297,7 @@ export default function FireHoseReelsPage() {
                         <Check size={20} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{item.title}</span>
+                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300">{item.title}</span>
                         <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">{item.detail}</span>
                       </div>
                     </motion.div>
@@ -322,13 +322,13 @@ export default function FireHoseReelsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Use Cases</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Use Cases</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
                   Ideal <span className="text-[#E53935]">Applications</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
-                <p className="text-lg text-gray-600 leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+                <p className="text-lg text-gray-600 leading-relaxed font-normal">
                   Reliable protection for high-occupancy and high-risk environments.
                 </p>
               </div>
@@ -348,7 +348,7 @@ export default function FireHoseReelsPage() {
                         <Building size={24} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{app}</span>
+                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300">{app}</span>
                         <span className="text-sm text-gray-400 group-hover:text-gray-600 transition-colors duration-300">High-Flow Coverage</span>
                       </div>
                     </motion.div>
@@ -358,7 +358,7 @@ export default function FireHoseReelsPage() {
                   <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
                     <Plus size={16} />
                   </div>
-                  <p className="text-sm font-bold uppercase tracking-widest" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>And many more options available...</p>
+                  <p className="text-sm font-bold uppercase tracking-widest">And many more options available...</p>
                 </div>
               </div>
             </div>
@@ -375,7 +375,7 @@ export default function FireHoseReelsPage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight">
               Features & <span className="text-[#E53935]">Benefits</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
@@ -403,7 +403,7 @@ export default function FireHoseReelsPage() {
                 <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935]/10 transition-all shrink-0">
                   <Star size={20} strokeWidth={1.5} />
                 </div>
-                <p className="text-sm font-bold text-gray-900 leading-relaxed group-hover:text-[#E53935] transition-colors mt-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                <p className="text-sm font-bold text-gray-900 leading-relaxed group-hover:text-[#E53935] transition-colors mt-2">
                   {feature}
                 </p>
               </motion.div>
@@ -433,21 +433,21 @@ export default function FireHoseReelsPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-block mb-3">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <Star size={16} />
                 Upgrade Your Protection
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
               Ensure your <span className="text-[#E53935]">safety today</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal mb-8" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+            <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal mb-8">
               Contact our experts for the right fire hose reel configuration and professional installation.
             </p>
             <Link
               href="/services#project-form"
               className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               Request Quote
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />

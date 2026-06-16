@@ -40,15 +40,15 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
             <div className="h-8 w-px bg-white/20 hidden sm:block" />
             <div className="flex items-center gap-2.5 opacity-90">
               <ShieldCheck size={22} className="text-[#ff6b6b]" />
-              <span className="font-bold tracking-widest uppercase text-sm sm:text-base" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>
+              <span className="font-bold tracking-widest uppercase text-sm sm:text-base">
                 Content Management
               </span>
-              <span className="hidden lg:inline-block px-2.5 py-1 bg-black/40 rounded text-[11px] uppercase tracking-wider font-bold text-[#ff6b6b] border border-[#ff6b6b]/20" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <span className="hidden lg:inline-block px-2.5 py-1 bg-black/40 rounded text-[11px] uppercase tracking-wider font-bold text-[#ff6b6b] border border-[#ff6b6b]/20">
                 Admin Dashboard
               </span>
             </div>
           </div>
-          <a href="/" className="text-xs sm:text-sm font-semibold bg-white/10 hover:bg-white/20 px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 flex items-center gap-2 border border-white/5 hover:border-white/20 hover:shadow-lg" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+          <a href="/" className="text-xs sm:text-sm font-semibold bg-white/10 hover:bg-white/20 px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 flex items-center gap-2 border border-white/5 hover:border-white/20 hover:shadow-lg">
             <ArrowLeft size={16} />
             Back to Live Site
           </a>
@@ -62,17 +62,17 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
                 <AlertTriangle size={18} className="text-amber-400" />
               </div>
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 min-w-0">
-                <span className="text-amber-300 font-bold text-xs uppercase tracking-widest shrink-0" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>
+                <span className="text-amber-300 font-bold text-xs uppercase tracking-widest shrink-0">
                   ⚠ Authorized Personnel Only
                 </span>
                 <span className="hidden sm:block w-px h-4 bg-amber-500/30 shrink-0" />
-                <p className="text-amber-200/80 text-xs leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                <p className="text-amber-200/80 text-xs leading-relaxed">
                   Any changes made here will be <strong className="text-amber-300 font-semibold">immediately reflected on the live Verifsafe website</strong>. Please review all edits carefully before publishing. Unpublished drafts are safe.
                 </p>
               </div>
               <div className="hidden lg:flex items-center gap-1.5 shrink-0 bg-amber-900/50 border border-amber-500/20 rounded-full px-3 py-1">
                 <InfoCircle size={13} className="text-amber-400" />
-                <span className="text-amber-300 text-[11px] font-medium" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                <span className="text-amber-300 text-[11px] font-medium">
                   Double-check before publishing
                 </span>
               </div>

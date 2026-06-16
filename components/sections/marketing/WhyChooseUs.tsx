@@ -77,20 +77,14 @@ export default function WhyChooseUs() {
         >
           {/* Wrapper for the advantage/USP highlighted badge */}
           <div className="inline-block mb-4">
-            <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 uppercase"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
-            >
+            <p className="text-label text-[#E53935] px-4 py-2 bg-red-50 rounded-full flex items-center gap-2">
               <Star size={16} />
               Our Advantages
             </p>
           </div>
 
           {/* Core heading for the "Why Choose Us" section */}
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-          >
+          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900">
             Why Choose{' '}
             <span className="text-[#E53935]">Verifsafe</span>
           </h2>
@@ -99,10 +93,7 @@ export default function WhyChooseUs() {
           <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
           {/* Paragraph detailing the value proposition summary */}
-          <p
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-          >
+          <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
             Trusted protection backed by uncompromising quality, expert service, and strict international compliance.
           </p>
         </motion.div>
@@ -129,11 +120,8 @@ export default function WhyChooseUs() {
               {/* Sub-container for the numerical index and illustrative icon */}
               <div className="w-full flex justify-between items-start mb-6">
                 {/* Large decorative index number in the background of the card */}
-                <span
-                  className="text-6xl font-black text-gray-200 group-hover:text-[#E53935]/40 transition-colors duration-300 leading-none"
-                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-                >
-                  {feature.number}
+                <span className="text-6xl font-black text-gray-200 group-hover:text-[#E53935]/40 transition-colors duration-300 leading-none">
+                   {feature.number}
                 </span>
                 {/* Wrapper for the feature's primary illustrative icon */}
                 <div className="transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
@@ -142,18 +130,12 @@ export default function WhyChooseUs() {
               </div>
 
               {/* Specific advantage title heading */}
-              <h3
-                className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#E53935] transition-colors duration-300"
-                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-              >
+              <h3 className="text-card-title text-xl text-gray-900 mb-4 group-hover:text-[#E53935] transition-colors duration-300">
                 {feature.label}
               </h3>
 
               {/* Paragraph detailing the specific advantage scope and benefit */}
-              <p
-                className="text-base text-gray-600 font-normal leading-relaxed"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-              >
+              <p className="text-body text-gray-600">
                 {feature.description}
               </p>
 

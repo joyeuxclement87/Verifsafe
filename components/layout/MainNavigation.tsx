@@ -79,7 +79,7 @@ export default function MainNavigation() {
                       ? 'text-[#E53935] border-[#E53935]'
                       : 'text-gray-300 border-transparent hover:text-[#E53935] hover:border-[#E53935]'
                     }`}
-                    style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
+                   
                 >
                   {link.label}
                   {link.hasDropdown && (
@@ -127,7 +127,7 @@ export default function MainNavigation() {
             <Link
               href="/services#project-form"
               className="hidden sm:inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md rounded-lg"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <FileText size={16} strokeWidth={1} />
               Get a Quote
@@ -172,7 +172,7 @@ export default function MainNavigation() {
                             ? 'text-[#E53935]'
                             : 'text-gray-300 hover:text-[#E53935]'
                         }`}
-                        style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                       
                         onClick={() => setIsOpen(false)}
                       >
                         {link.label}
@@ -234,7 +234,7 @@ export default function MainNavigation() {
                           ? 'bg-[#E53935]/20 text-[#E53935]'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-[#E53935]'
                       }`}
-                      style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                     
                       onClick={() => setIsOpen(false)}
                     >
                       {link.label}
@@ -245,7 +245,7 @@ export default function MainNavigation() {
               <Link
                 href="/services#project-form"
                 className="flex items-center justify-center gap-2 w-full mt-4 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md rounded-lg"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
                 onClick={() => setIsOpen(false)}
               >
                 <FileText size={16} strokeWidth={1} />

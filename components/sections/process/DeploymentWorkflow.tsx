@@ -63,7 +63,7 @@ export default function DeploymentWorkflow() {
           <div className="inline-block mb-4">
             <p
               className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -75,7 +75,7 @@ export default function DeploymentWorkflow() {
           {/* Main Heading */}
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+           
           >
             How We <span className="text-[#E53935]">Work</span>
           </h2>
@@ -86,7 +86,7 @@ export default function DeploymentWorkflow() {
           {/* Subheading */}
           <p
             className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+           
           >
             A meticulous 5-step process ensuring total structural protection and compliance.
           </p>
@@ -114,7 +114,7 @@ export default function DeploymentWorkflow() {
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gray-900 border border-gray-800 group-hover:border-[#E53935]/50 group-hover:bg-[#E53935]/10 flex items-center justify-center transition-all duration-300 relative z-10">
                     <span
                       className="text-lg sm:text-xl font-black text-gray-600 group-hover:text-[#E53935] transition-colors duration-300"
-                      style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                     
                     >
                       {step.number}
                     </span>
@@ -128,13 +128,13 @@ export default function DeploymentWorkflow() {
                     <div className="flex-1 mb-4 lg:mb-0">
                       <h3
                         className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-[#E53935] transition-colors duration-300"
-                        style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                       
                       >
                         {step.title}
                       </h3>
                       <p
                         className="text-gray-400 text-base leading-relaxed max-w-lg font-normal"
-                        style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                       
                       >
                         {step.description}
                       </p>
@@ -146,7 +146,7 @@ export default function DeploymentWorkflow() {
                         <span
                           key={detailIndex}
                           className="text-xs text-gray-500 group-hover:text-gray-300 border border-gray-800 group-hover:border-[#E53935]/30 px-3 py-1.5 rounded-full transition-all duration-300"
-                          style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                         
                         >
                           {detail}
                         </span>

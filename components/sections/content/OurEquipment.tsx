@@ -82,20 +82,14 @@ export default function OurEquipment() {
         >
           {/* Wrapper for the equipment category highlighted label */}
           <div className="inline-block mb-4">
-            <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
-            >
+            <p className="text-label text-[#E53935] px-4 py-2 bg-red-50 rounded-full flex items-center gap-2">
               <FontAwesomeIcon icon={faCogs} className="w-4 h-4" />
               Our Equipment
             </p>
           </div>
 
           {/* Main heading for the equipment showcase */}
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-          >
+          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900">
             What We <span className="text-[#E53935]">Provide</span>
           </h2>
 
@@ -103,10 +97,7 @@ export default function OurEquipment() {
           <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
           {/* Descriptive subheading explaining the equipment focus */}
-          <p
-            className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-          >
+          <p className="text-subheading text-gray-700 max-w-2xl mx-auto">
             We supply fire safety equipment which helps detect, control, and respond to fire emergencies in different environments.
           </p>
         </motion.div>
@@ -145,18 +136,12 @@ export default function OurEquipment() {
                 </div>
 
                 {/* Title of the specific equipment item */}
-                <h3
-                  className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-                >
+                <h3 className="text-card-title text-xl text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300">
                   {item.title}
                 </h3>
 
                 {/* Short description of the equipment's purpose */}
-                <p
-                  className="text-base text-gray-600 leading-relaxed font-normal mb-4"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                >
+                <p className="text-body text-gray-600 mb-4">
                   {item.description}
                 </p>
 
@@ -184,7 +169,7 @@ export default function OurEquipment() {
           <Link
             href="/equipments"
             className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-2 group"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+           
           >
             View All Equipment
             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,7 +180,7 @@ export default function OurEquipment() {
           {/* Supportive text next to the CTA button */}
           <span
             className="text-gray-600 text-sm"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+           
           >
             Comprehensive fire safety solutions for every need
           </span>

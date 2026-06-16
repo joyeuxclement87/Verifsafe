@@ -51,7 +51,7 @@ export default function QuickInfo() {
           <div className="inline-block mb-4">
             <p
               className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <Star size={16} />
               Contact Us
@@ -61,7 +61,7 @@ export default function QuickInfo() {
           {/* Core heading for the quick info section */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+           
           >
             Quick <span className="text-[#E53935]">Info</span>
           </h2>
@@ -69,7 +69,7 @@ export default function QuickInfo() {
           {/* Descriptive subheading explaining the section's intent */}
           <p
             className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto font-medium leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+           
           >
             Easy access to our contact information
           </p>
@@ -98,14 +98,14 @@ export default function QuickInfo() {
                 {/* Specific contact method label (e.g., Phone, Email) */}
                 <div
                   className="text-sm sm:text-base font-semibold text-gray-900 group-hover:text-[#E53935] transition-colors"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   {item.label}
                 </div>
                 {/* The actual contact detail or value (e.g., phone number, address) */}
                 <div
                   className="text-xs sm:text-sm text-gray-600 transition-colors duration-300"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   {item.value}
                 </div>

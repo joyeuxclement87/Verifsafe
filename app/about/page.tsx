@@ -100,10 +100,7 @@ export default function AboutPage() {
             className="flex flex-col items-center text-center"
           >
             <div className="inline-block mb-4">
-              <p
-                className="text-white text-xs sm:text-sm font-bold tracking-widest px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontVariant: 'small-caps' }}
-              >
+              <p className="text-label text-white px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <Star size={16} />
                 About VerifSafe
               </p>
@@ -111,21 +108,21 @@ export default function AboutPage() {
 
             <h1
               className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight uppercase tracking-wider"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               Rwanda&apos;s Trusted <span className="text-[#E53935]">Fire Protection Partner</span>
             </h1>
 
             <p
               className="text-lg sm:text-xl text-gray-200 mb-7 sm:mb-9 max-w-2xl leading-relaxed font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               We are committed to delivering reliable fire safety solutions that protect people, property, and businesses across Rwanda.
             </p>
 
             <p
               className="text-xs sm:text-sm lg:text-sm text-gray-300 max-w-3xl leading-relaxed font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               VerifSafe is a Rwanda-based fire safety company dedicated to delivering high-quality equipment, professional services, and practical training to help individuals and organizations stay prepared and protected.
             </p>
@@ -149,7 +146,7 @@ export default function AboutPage() {
               <div className="inline-block mb-4">
                 <p
                   className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   <Star size={16} />
                   Our Story
@@ -158,7 +155,7 @@ export default function AboutPage() {
 
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+               
               >
                 What <span className="text-[#E53935]">Drives Us</span>
               </h2>
@@ -168,13 +165,13 @@ export default function AboutPage() {
               <div className="space-y-4">
                 <p
                   className="text-lg sm:text-xl text-gray-700 leading-relaxed font-normal"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                 
                 >
                   <strong className="text-gray-900 font-bold">VERIFSAFE</strong> was established to provide fire protection solutions which help prevent risks and improve safety in everyday environments.
                 </p>
                 <p
                   className="text-base sm:text-lg text-gray-600 leading-relaxed font-normal"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                 
                 >
                   We focus on delivering reliable equipment and services that support businesses and homes when safety matters most. Our dedicated team ensures that your environments are protected by top-tier systems, installed and maintained to the highest standards.
                 </p>
@@ -195,7 +192,7 @@ export default function AboutPage() {
                     className="flex items-center gap-3"
                   >
                     <CircleCheck size={20} className="text-[#E53935]" />
-                    <span className="text-gray-700 font-medium" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{item}</span>
+                    <span className="text-gray-700 font-medium">{item}</span>
                   </motion.div>
                 ))}
               </div>
@@ -238,7 +235,7 @@ export default function AboutPage() {
             <div className="inline-block mb-4">
               <p
                 className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 <Settings size={16} />
                 Core Pillars
@@ -247,7 +244,7 @@ export default function AboutPage() {
 
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               Our <span className="text-[#E53935]">Foundation</span>
             </h2>
@@ -256,7 +253,7 @@ export default function AboutPage() {
 
             <p
               className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               Built on principles that guide every decision and action we take
             </p>
@@ -279,19 +276,19 @@ export default function AboutPage() {
                 </div>
                 <h3
                   className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                 
                 >
                   {item.title}
                 </h3>
                 <p
                   className="text-base font-semibold text-[#E53935] mb-3"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   {item.subtitle}
                 </p>
                 <p
                   className="text-base text-gray-600 leading-relaxed font-normal"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                 
                 >
                   {item.description}
                 </p>
@@ -317,7 +314,7 @@ export default function AboutPage() {
             <div className="inline-block mb-4">
               <p
                 className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 <Star size={16} />
                 Our Values
@@ -325,14 +322,14 @@ export default function AboutPage() {
             </div>
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               What We <span className="text-[#E53935]">Believe</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
             <p
               className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               The principles that guide our commitment to excellence and safety
             </p>
@@ -358,7 +355,7 @@ export default function AboutPage() {
                 <div className="w-full flex justify-between items-start mb-6">
                   <span
                     className="text-5xl lg:text-6xl font-black text-gray-200 group-hover:text-[#E53935]/40 transition-colors duration-300 leading-none"
-                    style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                   
                   >
                     {value.id}
                   </span>
@@ -368,7 +365,7 @@ export default function AboutPage() {
                 </div>
                 <h3
                   className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                 
                 >
                   {value.title}
                 </h3>
@@ -392,7 +389,7 @@ export default function AboutPage() {
               <div className="inline-block mb-4">
                 <p
                   className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2"
-                  style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                 
                 >
                   <Star size={16} />
                   Why Choose Us
@@ -401,7 +398,7 @@ export default function AboutPage() {
 
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+               
               >
                 We are committed to delivering <span className="text-[#E53935]">fire protection</span> solutions
               </h2>
@@ -410,14 +407,14 @@ export default function AboutPage() {
 
               <p
                 className="text-lg sm:text-xl text-gray-500 mb-4 font-medium"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 <span className="text-gray-900">Trusted protection</span> backed by quality, service, and long-term performance.
               </p>
 
               <p
                 className="text-base text-gray-700 leading-relaxed font-normal"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+               
               >
                 that focus on reliability, safety, and long-term performance.
               </p>
@@ -439,13 +436,13 @@ export default function AboutPage() {
                   <div>
                     <p
                       className="text-base font-semibold text-gray-900"
-                      style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                     
                     >
                       {feature.label}
                     </p>
                     <p
                       className="text-base text-gray-500 mt-1"
-                      style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                     
                     >
                       {feature.caption}
                     </p>
@@ -469,7 +466,7 @@ export default function AboutPage() {
             <div className="inline-block mb-4">
               <p
                 className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 <Star size={16} />
                 Our Impact
@@ -477,14 +474,14 @@ export default function AboutPage() {
             </div>
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               Proven <span className="text-[#E53935]">Results</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
             <p
               className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               Our commitment to fire safety has delivered measurable impact across Rwanda.
             </p>
@@ -507,19 +504,19 @@ export default function AboutPage() {
                 </div>
                 <h3
                   className="text-3xl sm:text-4xl font-black text-[#E53935] mb-2 group-hover:scale-110 transition-transform duration-300"
-                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                 
                 >
                   {metric.number}
                 </h3>
                 <h4
                   className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                 
                 >
                   {metric.label}
                 </h4>
                 <p
                   className="text-base text-gray-600 leading-relaxed font-normal flex-grow"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                 
                 >
                   {metric.description}
                 </p>
@@ -553,7 +550,7 @@ export default function AboutPage() {
             <div className="inline-block mb-4">
               <p
                 className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -563,13 +560,13 @@ export default function AboutPage() {
             </div>
             <h2
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-3 leading-tight"
-              style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+             
             >
               Take <span className="text-[#E53935]">Action</span> - Work With <span className="text-[#E53935]">VERIFSAFE</span>
             </h2>
             <p
               className="text-lg sm:text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed font-normal mb-6"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               When safety is a priority, choosing the right fire protection partner matters. Let us help you build a safer environment with reliable equipment and professional services.
             </p>
@@ -586,7 +583,7 @@ export default function AboutPage() {
                 }
               }}
               className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 shadow-lg rounded-lg uppercase tracking-wide group"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <Phone size={16} strokeWidth={1} />
               Contact Us
@@ -603,7 +600,7 @@ export default function AboutPage() {
                 }
               }}
               className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 backdrop-blur-sm text-white font-medium text-base rounded-lg border border-white/30 transition-all duration-300 hover:border-[#E53935] hover:bg-white/15 hover:shadow-xl uppercase tracking-wide group"
-              style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
+              style={{ borderWidth: '1px' }}
             >
               <FileText size={16} strokeWidth={1} />
               Request a Quote
@@ -614,7 +611,7 @@ export default function AboutPage() {
           <div className="col-span-12 text-center">
             <p
               className="text-gray-300 text-sm"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               Response within 2 hours • 24/7 Emergency Support Available
             </p>

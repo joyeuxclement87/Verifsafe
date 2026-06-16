@@ -77,20 +77,14 @@ export default function OurServices() {
         >
           {/* Container for the "Our Services" highlighted label */}
           <div className="inline-block mb-4">
-            <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
-            >
+            <p className="text-label text-[#E53935] px-4 py-2 bg-red-50 rounded-full flex items-center gap-2">
               <FontAwesomeIcon icon={faTools} className="w-4 h-4" />
               Our Services
             </p>
           </div>
 
           {/* Core heading of the services section */}
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-          >
+          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900">
             What We <span className="text-[#E53935]">Do</span>
           </h2>
 
@@ -98,10 +92,7 @@ export default function OurServices() {
           <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
 
           {/* Descriptive summary paragraph for service overview */}
-          <p
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-          >
+          <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
             We provide fire safety services which ensure that fire protection systems are installed, inspected, and maintained properly.
           </p>
         </motion.div>
@@ -139,18 +130,12 @@ export default function OurServices() {
               {/* Sub-container for service title and descriptive text */}
               <div className="flex flex-col justify-center py-2 flex-1 pr-4">
                 {/* Specific service title heading */}
-                <h3
-                  className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
-                  style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
-                >
+                <h3 className="text-card-title text-xl text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300">
                   {service.title}
                 </h3>
 
                 {/* Paragraph detailing the specific service scope */}
-                <p
-                  className="text-base text-gray-600 font-normal leading-relaxed mb-6"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
-                >
+                <p className="text-body text-gray-600 mb-6">
                   {service.description}
                 </p>
               </div>
@@ -172,7 +157,7 @@ export default function OurServices() {
           <Link href="/services">
             <button
               className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               Explore All Services
               <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />

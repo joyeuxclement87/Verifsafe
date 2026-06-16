@@ -40,7 +40,7 @@ export default function ProtectionCTA() {
           {/* Main Heading */}
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+           
           >
             Do Not Wait For The <span className="text-[#E53935]">Smoke.</span>
           </h2>
@@ -48,7 +48,7 @@ export default function ProtectionCTA() {
           {/* Description */}
           <p
             className="text-lg sm:text-xl text-gray-200 leading-relaxed font-normal mb-10"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+           
           >
             Protect your people and your assets with the authority in industrial fire safety. Schedule your professional audit today.
           </p>
@@ -59,7 +59,7 @@ export default function ProtectionCTA() {
             <Link
               href="/services#project-form"
               className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 shadow-lg group hover:scale-105 active:scale-95"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <FileText size={20} strokeWidth={1} />
               Request Quote
@@ -79,7 +79,7 @@ export default function ProtectionCTA() {
                 }
               }}
               className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-white/5 backdrop-blur-md text-white font-medium text-base rounded-lg border border-[#E53935] hover:bg-[#E53935]/20 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/20 group"
-              style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }}
+              style={{ borderWidth: '1px' }}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -101,7 +101,7 @@ export default function ProtectionCTA() {
           >
             <p
               className="text-gray-300 text-sm"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               Response within 2 hours • 24/7 Emergency Support Available
             </p>

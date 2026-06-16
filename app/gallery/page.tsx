@@ -122,15 +122,15 @@ export default function GalleryPage() {
             className="flex flex-col items-center text-center"
           >
             <div className="inline-block mb-4">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
                 <Camera size={16} />
                 Our work
               </p>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight uppercase tracking-wider" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight uppercase tracking-wider">
               Project Gallery
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl leading-relaxed font-normal">
               Explore our fire safety equipment installations, systems, and projects across different environments.
             </p>
           </motion.div>
@@ -150,16 +150,16 @@ export default function GalleryPage() {
             className="text-center mb-10"
           >
             <div className="inline-block mb-4">
-              <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center">
                 <Eye size={16} />
                 What you’ll see
               </p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight">
               Real Work. Real Protection.
             </h2>
             <div className="w-12 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
-            <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+            <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal">
               A collection of our completed installations and equipment setups, showcasing the quality and reliability of our fire safety solutions.
             </p>
           </motion.div>
@@ -178,12 +178,12 @@ export default function GalleryPage() {
             className="text-center mb-10"
           >
             <div className="inline-block mb-4">
-              <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center">
                 <Filter size={16} />
                 Browse by category
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
               View by Type
             </h2>
           </motion.div>
@@ -193,7 +193,7 @@ export default function GalleryPage() {
             <button
               onClick={() => setIsFilterOpen(!isFilterOpen)}
               className="flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 rounded-full shadow-sm text-gray-700 font-semibold hover:border-[#E53935] hover:text-[#E53935] transition-all active:scale-95"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <ArrowsSort size={18} />
               {activeCategory}
@@ -220,7 +220,7 @@ export default function GalleryPage() {
                     ? 'bg-[#E53935] text-white border-[#E53935] shadow-md shadow-red-500/20 md:scale-105'
                     : 'bg-white text-gray-600 border-gray-200 hover:border-[#E53935] hover:text-[#E53935]'
                 }`}
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 {category}
               </button>
@@ -231,7 +231,7 @@ export default function GalleryPage() {
           {isLoading ? (
             <div className="w-full py-20 flex flex-col items-center justify-center">
               <div className="w-12 h-12 border-4 border-[#E53935]/20 border-t-[#E53935] rounded-full animate-spin mb-4" />
-              <p className="text-gray-500 text-lg" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <p className="text-gray-500 text-lg">
                 Loading projects...
               </p>
             </div>
@@ -259,11 +259,11 @@ export default function GalleryPage() {
                       <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="absolute inset-x-0 bottom-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E53935] text-white text-xs font-bold uppercase tracking-wider rounded-full mb-3" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E53935] text-white text-xs font-bold uppercase tracking-wider rounded-full mb-3">
                           <Photo size={14} />
                           {item.label}
                         </div>
-                        <h3 className="text-xl font-bold text-white leading-tight" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>{item.title}</h3>
+                        <h3 className="text-xl font-bold text-white leading-tight">{item.title}</h3>
                       </div>
                     </div>
                   </motion.div>
@@ -274,7 +274,7 @@ export default function GalleryPage() {
 
           {!isLoading && filteredItems.length === 0 && (
             <div className="w-full py-20 text-center">
-              <p className="text-gray-500 text-lg" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+              <p className="text-gray-500 text-lg">
                 No projects found for this category.
               </p>
             </div>
@@ -302,8 +302,8 @@ export default function GalleryPage() {
               <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative w-full h-[60vh] sm:h-[80vh] pointer-events-auto shadow-2xl">
                 <Image src={filteredItems[currentImageIndex].image} alt={filteredItems[currentImageIndex].title} fill className="object-contain" sizes="100vw" priority />
                 <div className="absolute bottom-0 inset-x-0 p-6 bg-linear-to-t from-black/90 to-transparent text-center">
-                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-wide" style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}>{filteredItems[currentImageIndex].title}</h3>
-                   <p className="text-gray-300 text-sm sm:text-base font-medium uppercase tracking-wider" style={{ fontFamily: 'Noto Sans, sans-serif' }}>{filteredItems[currentImageIndex].label}</p>
+                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-wide">{filteredItems[currentImageIndex].title}</h3>
+                   <p className="text-gray-300 text-sm sm:text-base font-medium uppercase tracking-wider">{filteredItems[currentImageIndex].label}</p>
                 </div>
               </motion.div>
             </div>

@@ -108,6 +108,77 @@ body {
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
 }
 
+/* ─── Typography System ──────────────────────────────────────────────────────
+   Use these semantic classes throughout the site instead of ad-hoc inline
+   fontFamily style props. All weights come from Oakes Grotesk local files.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Page / section hero headline  (h1) */
+.text-hero-heading {
+  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* Section / card heading  (h2, h3) */
+.text-section-heading {
+  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* Sub-section or card title  (h3, h4) */
+.text-card-title {
+  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Small uppercase label / badge text */
+.text-label {
+  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Lead / sub-heading paragraph below a section title */
+.text-subheading {
+  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* Standard body copy */
+.text-body {
+  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+/* Small body / helper / caption text */
+.text-body-sm {
+  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+/* Button / CTA text */
+.text-btn {
+  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

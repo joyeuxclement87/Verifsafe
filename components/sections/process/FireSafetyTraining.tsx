@@ -50,7 +50,7 @@ export default function FireSafetyTraining() {
           <div className="inline-block mb-4">
             <p
               className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <School size={16} />
               Education & Training
@@ -60,7 +60,7 @@ export default function FireSafetyTraining() {
           {/* Main Heading */}
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
-            style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
+           
           >
             Fire Safety <span className="text-[#E53935]">Training</span>
           </h2>
@@ -68,7 +68,7 @@ export default function FireSafetyTraining() {
           {/* Subheading */}
           <p
             className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+           
           >
             Our fire safety training programs equip individuals and teams with the knowledge and confidence to respond effectively during emergencies.
           </p>
@@ -101,7 +101,7 @@ export default function FireSafetyTraining() {
                 {/* Title */}
                 <h3
                   className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300 mb-2 leading-snug"
-                  style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
+                 
                 >
                   {point.title}
                 </h3>
@@ -109,7 +109,7 @@ export default function FireSafetyTraining() {
                 {/* Description */}
                 <p
                   className="text-sm text-gray-600 leading-relaxed font-normal"
-                  style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                 
                 >
                   {point.description}
                 </p>
@@ -130,7 +130,7 @@ export default function FireSafetyTraining() {
           >
             <p
               className="text-xl sm:text-2xl font-bold text-gray-900 leading-relaxed"
-              style={{ fontFamily: 'Oakes Grotesk, sans-serif' }}
+             
             >
               Training is <span className="text-[#E53935]">practical, easy to understand</span>, and designed for <span className="text-[#E53935]">real-life situations</span>.
             </p>
@@ -141,7 +141,7 @@ export default function FireSafetyTraining() {
         <div className="flex justify-center">
           <button
             className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+           
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m0 0h6m-6-6h6m-6 6h6" />

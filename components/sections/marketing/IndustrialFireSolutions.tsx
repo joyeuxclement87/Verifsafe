@@ -72,7 +72,7 @@ export default function IndustrialFireSolutions() {
           <div className="inline-block mb-4">
             <p
               className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest  px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               <Building size={16} />
               Industrial Solutions
@@ -82,7 +82,7 @@ export default function IndustrialFireSolutions() {
           {/* Main Heading */}
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+           
           >
             Why Our Industrial{' '}
             <span className="text-[#E53935]">Fire Solutions</span>
@@ -95,7 +95,7 @@ export default function IndustrialFireSolutions() {
           {/* Subheading */}
           <p
             className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+           
           >
             Precision engineering and proven reliability for high-risk industrial environments.
           </p>
@@ -127,7 +127,7 @@ export default function IndustrialFireSolutions() {
               {/* Title */}
               <h3
                 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300"
-                style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+               
               >
                 {solution.title}
               </h3>
@@ -135,7 +135,7 @@ export default function IndustrialFireSolutions() {
               {/* Description */}
               <p
                 className="text-base text-gray-600 leading-relaxed font-normal flex-grow"
-                style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+               
               >
                 {solution.description}
               </p>

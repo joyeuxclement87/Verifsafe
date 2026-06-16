@@ -20,7 +20,7 @@ export default function Footer() {
             <div>
               <p
                 className="text-[#FFC107] text-sm font-semibold"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 Peace of Mind, Verified
               </p>
@@ -28,7 +28,7 @@ export default function Footer() {
             
             <p
               className="text-gray-400 text-base leading-relaxed font-normal"
-              style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+             
             >
               Rwanda&apos;s leading fire protection solutions provider. Trusted by businesses and organizations to keep people safe.
             </p>
@@ -78,7 +78,7 @@ export default function Footer() {
           <div>
             <h4
               className="text-white text-lg font-bold mb-6"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               Equipments
             </h4>
@@ -95,7 +95,7 @@ export default function Footer() {
                   <a
                     href={equipment.href}
                     className="text-gray-400 hover:text-[#E53935] transition-colors duration-300 font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                   
                   >
                     {equipment.label}
                   </a>
@@ -108,7 +108,7 @@ export default function Footer() {
           <div>
             <h4
               className="text-white text-lg font-bold mb-6"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               What We Do
             </h4>
@@ -124,7 +124,7 @@ export default function Footer() {
                   <a
                     href={service.href}
                     className="text-gray-400 hover:text-[#E53935] transition-colors duration-300 font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                   
                   >
                     {service.label}
                   </a>
@@ -137,7 +137,7 @@ export default function Footer() {
           <div>
             <h4
               className="text-white text-lg font-bold mb-6"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               Get in Touch
             </h4>
@@ -151,14 +151,14 @@ export default function Footer() {
                 <div>
                   <p
                     className="text-gray-400 text-sm font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                   
                   >
                     Phone
                   </p>
                   <a
                     href="tel:+250 788 632 620"
                     className="text-white group-hover:text-[#E53935] transition-colors font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                   
                   >
                     +250 788 632 620
                   </a>
@@ -174,14 +174,14 @@ export default function Footer() {
                 <div>
                   <p
                     className="text-gray-400 text-sm font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                   
                   >
                     Email
                   </p>
                   <a
                     href="mailto:info@verifsafe.com"
                     className="text-white group-hover:text-[#E53935] transition-colors font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                   
                   >
                     info@verifsafe.com
                   </a>
@@ -197,13 +197,13 @@ export default function Footer() {
                 <div>
                   <p
                     className="text-gray-400 text-sm font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                   
                   >
                     Location
                   </p>
                   <p
                     className="text-white font-normal"
-                    style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                   
                   >
                     Kigali, Rwanda
                   </p>
@@ -221,7 +221,7 @@ export default function Footer() {
           {/* Copyright */}
           <p
             className="text-gray-500 text-sm text-center sm:text-left font-normal"
-            style={{ fontFamily: 'Noto Sans, sans-serif' }}
+           
           >
             © {currentYear} Verifsafe. All rights reserved. Peace of Mind, Verified.
           </p>
@@ -237,7 +237,7 @@ export default function Footer() {
                 key={index}
                 href={link.href}
                 className="text-gray-500 hover:text-[#E53935] text-sm transition-colors duration-300 font-normal"
-                style={{ fontFamily: 'Noto Sans, sans-serif' }}
+               
               >
                 {link.label}
               </a>

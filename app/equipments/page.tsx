@@ -79,7 +79,7 @@ export default function EquipmentsPage() {
             className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
           >
             <Star size={16} className="text-[#E53935]" />
-            <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+            <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase">
               Product Catalog
             </p>
           </motion.div>
@@ -88,7 +88,7 @@ export default function EquipmentsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tight"
-            style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+           
           >
             Fire Safety <span className="text-[#E53935]">Equipment</span>
           </motion.h1>
@@ -97,7 +97,7 @@ export default function EquipmentsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-normal"
-            style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+           
           >
             Certified, high-performance fire protection hardware designed to safeguard people and property in any environment.
           </motion.p>
@@ -115,13 +115,13 @@ export default function EquipmentsPage() {
           >
             <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
               <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Quality Standards</p>
+              <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Quality Standards</p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
               Built for <span className="text-[#E53935]">Safety</span>
             </h2>
             <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
-            <p className="text-lg text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+            <p className="text-lg text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto">
               The right equipment can stop a small fire from becoming a major disaster. Our products are selected for real-world reliability.
             </p>
           </motion.div>
@@ -168,20 +168,20 @@ export default function EquipmentsPage() {
                   <div className="p-8 flex flex-col flex-grow">
                     <h3
                       className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300 uppercase tracking-tight"
-                      style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+                     
                     >
                       {equipment.title}
                     </h3>
                     <p
                       className="text-sm text-gray-500 leading-relaxed font-normal flex-grow mb-6"
-                      style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+                     
                     >
                       {equipment.description}
                     </p>
                     <div className="mt-auto flex items-center justify-between">
                       <span
                         className="inline-flex items-center gap-2 text-[#E53935] font-bold text-xs uppercase tracking-widest group-hover:gap-3 transition-all duration-300"
-                        style={{ fontFamily: 'Noto Sans, sans-serif' }}
+                       
                       >
                         View Solutions
                         <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -209,13 +209,13 @@ export default function EquipmentsPage() {
               <div className="lg:col-span-1 lg:sticky lg:top-8">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Core Value</p>
+                  <p className="text-[#E53935] text-xs font-bold tracking-widest uppercase">Core Value</p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+                <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black text-gray-900 mb-5 leading-tight uppercase">
                   Reliable <span className="text-[#E53935]">Performance</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
-                <p className="text-lg text-gray-600 leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+                <p className="text-lg text-gray-600 leading-relaxed font-normal">
                   We don&apos;t just sell equipment; we provide certified life-safety systems.
                 </p>
               </div>
@@ -240,7 +240,7 @@ export default function EquipmentsPage() {
                         {benefit.icon}
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>{benefit.title}</span>
+                        <span className="text-xl font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300">{benefit.title}</span>
                         <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">{benefit.detail}</span>
                       </div>
                     </motion.div>
@@ -272,7 +272,7 @@ export default function EquipmentsPage() {
             viewport={{ once: true }}
             className="inline-block mb-3"
           >
-            <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+            <p className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
               <Star size={16} />
               Upgrade Your Site
             </p>
@@ -282,7 +282,7 @@ export default function EquipmentsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight"
           >
             Ready to <span className="text-[#E53935]">get started</span>?
           </motion.h2>
@@ -291,7 +291,7 @@ export default function EquipmentsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}
+            className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal"
           >
             Contact our specialists today to determine the best equipment configuration for your property.
           </motion.p>
@@ -305,7 +305,7 @@ export default function EquipmentsPage() {
             <Link
               href="#project-form"
               className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
-              style={{ fontFamily: 'Noto Sans, sans-serif' }}
+             
             >
               Request Quote
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
@@ -328,20 +328,20 @@ export default function EquipmentsPage() {
               className="flex flex-col gap-6"
             >
               <div className="inline-block">
-                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest uppercase px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2">
                   <FileText size={16} />
                   Enquire Now
                 </p>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
                 Tell us about <span className="text-[#E53935]">your project</span>
               </h2>
-              <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed" style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: 400 }}>
+              <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed">
                 Share your fire safety needs and we&apos;ll recommend the right equipment and send you a tailored quote within 24 hours.
               </p>
               <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-                <h4 className="text-sm font-bold text-gray-900 mb-4" style={{ fontFamily: "'Oakes Grotesk', sans-serif" }}>Our Commitment</h4>
-                <ul className="space-y-4 text-gray-600 text-sm" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
+                <h4 className="text-sm font-bold text-gray-900 mb-4">Our Commitment</h4>
+                <ul className="space-y-4 text-gray-600 text-sm">
                    <li className="flex items-start gap-3">
                     <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0"><Check size={13} /></span>
                     Expert Product Selection
@@ -366,17 +366,17 @@ export default function EquipmentsPage() {
               <form onSubmit={(e) => { e.preventDefault(); }} className="space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Name</label>
-                    <input type="text" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} placeholder="Your name" />
+                    <label className="block text-sm font-semibold text-gray-800 mb-2">Name</label>
+                    <input type="text" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ borderWidth: '1px' }} placeholder="Your name" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Email</label>
-                    <input type="email" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} placeholder="your@email.com" />
+                    <label className="block text-sm font-semibold text-gray-800 mb-2">Email</label>
+                    <input type="email" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ borderWidth: '1px' }} placeholder="your@email.com" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Primary Interest</label>
-                  <select className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} defaultValue="EquipmentSupply">
+                  <label className="block text-sm font-semibold text-gray-800 mb-2">Primary Interest</label>
+                  <select className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} defaultValue="EquipmentSupply">
                     <option value="EquipmentSupply">Bulk Equipment Supply</option>
                     <option value="Installation">Installation Project</option>
                     <option value="Maintenance">System Maintenance</option>
@@ -384,8 +384,8 @@ export default function EquipmentsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2" style={{ fontFamily: 'Noto Sans, sans-serif' }}>Message</label>
-                  <textarea rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900 resize-none" style={{ fontFamily: 'Noto Sans, sans-serif', borderWidth: '1px' }} placeholder="Describe your safety requirements..." />
+                  <label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
+                  <textarea rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900 resize-none" style={{ borderWidth: '1px' }} placeholder="Describe your safety requirements..." />
                 </div>
                 <button type="submit" className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2 group">
                   Send Enquiry
