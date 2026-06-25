@@ -15,8 +15,10 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -24,18 +26,40 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Unable to send your message right now.');
+      }
+
+      setSubmitted(true);
       setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-      setSubmitted(false);
-    }, 3000);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 4000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to send your message right now.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="w-full bg-gray-50 py-14 sm:py-18 lg:py-24 relative overflow-hidden">
+    <section id="contact-form" className="w-full bg-gray-50 py-14 sm:py-18 lg:py-24 relative overflow-hidden">
       <div className="absolute top-10 left-10 w-32 h-32 bg-red-50/40 rounded-full blur-3xl" />
       <div className="absolute bottom-10 right-10 w-40 h-40 bg-gray-200/30 rounded-full blur-3xl" />
 
@@ -150,7 +174,7 @@ export default function Contact() {
             </div>
 
             {/* Sub-container for the embedded Google Map location */}
-            <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-lg flex-1 min-h-[240px]">
+            <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-lg flex-1 min-h-60">
               <iframe
                 title="Verifsafe Location – Kigali, Rwanda"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63799.41861375086!2d30.04800!3d-1.94995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca4258ed8e797%3A0xf32b36a5411d0bc8!2sKigali%2C%20Rwanda!5e0!3m2!1sen!2s!4v1713600000000!5m2!1sen!2s"
@@ -231,7 +255,7 @@ export default function Contact() {
                   id="service"
                   name="service"
                   value={formData.service}
-                  onChange={handleChange as any}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:bg-white focus:border-[#E53935] focus:ring-0 outline-none transition-all duration-300 text-gray-900"
                   style={{ borderWidth: '1px' }}
@@ -291,33 +315,40 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Interactive primary submit button with hover animations */}
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 type="submit"
-                className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 shadow-lg inline-flex items-center justify-center gap-2 group"
-               
+                disabled={isSubmitting}
+                className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 shadow-lg inline-flex items-center justify-center gap-2 group disabled:cursor-not-allowed disabled:opacity-80"
               >
-                Send Message
-                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {!isSubmitting && (
+                  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                )}
               </motion.button>
 
-              {/* Success notification displayed after successful form submission */}
-              {submitted && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-green-50 border border-green-200 rounded-lg"
+                  className="rounded-xl border border-red-200 bg-red-50 p-4"
                 >
-                  <p
-                    className="text-green-800 font-semibold text-center"
-                   
-                  >
-                    ✓ Thank you! We will be in touch shortly.
-                  </p>
+                  <p className="text-sm font-semibold text-red-700">Your message could not be sent</p>
+                  <p className="mt-1 text-sm text-red-600">{error}</p>
+                </motion.div>
+              )}
+
+              {submitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-xl border border-emerald-200 bg-emerald-50 p-4"
+                >
+                  <p className="text-sm font-semibold text-emerald-700">Thank you for your message</p>
+                  <p className="mt-1 text-sm text-emerald-600">Our team will review your request and get back to you shortly.</p>
                 </motion.div>
               )}
             </form>
