@@ -57,7 +57,7 @@ export default function ProtectionCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
             {/* Primary Button */}
             <Link
-              href="/services#project-form"
+              href="/contact#contact-form"
               className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 shadow-lg group hover:scale-105 active:scale-95"
              
             >

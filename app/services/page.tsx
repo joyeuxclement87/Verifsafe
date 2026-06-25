@@ -5,8 +5,62 @@ import { Tools, Shield, Phone, Star, Send, FileText, Check, ArrowRight, Package,
 import DeploymentWorkflow from '@/components/sections/process/DeploymentWorkflow';
 import WhoWeServe from '@/components/sections/marketing/WhoWeServe';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function ServicesPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const contentType = response.headers.get('content-type') || '';
+      const rawText = await response.text();
+      let data: { message?: string } | null = null;
+
+      if (rawText) {
+        try {
+          data = contentType.includes('application/json') ? JSON.parse(rawText) : JSON.parse(rawText);
+        } catch {
+          data = { message: 'Our team is currently unavailable. Please try again shortly.' };
+        }
+      }
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'Unable to send your request.');
+      }
+
+      setSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to send your request.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const services = [
     {
@@ -171,7 +225,7 @@ export default function ServicesPage() {
                     ))}
                   </div>
                   <div className="mt-auto w-full">
-                    <button onClick={() => { const el = document.getElementById(service.title === 'Fire Equipment Supply' ? 'equipment' : 'project-form'); el?.scrollIntoView({ behavior: 'smooth' }); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group">
+                    <button onClick={() => { window.location.assign('/contact#contact-form'); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group">
                       {service.title === 'Fire Equipment Supply' ? 'View Equipments' : 'Request a Quote'}
                       <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
                     </button>
@@ -235,7 +289,7 @@ export default function ServicesPage() {
                     ))}
                   </div>
                   <div className="mt-auto w-full">
-                    <button onClick={() => { document.getElementById('project-form')?.scrollIntoView({ behavior: 'smooth' }); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group">
+                    <button onClick={() => { window.location.assign('/contact#contact-form'); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group">
                       Request a Quote
                       <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
                     </button>
@@ -415,16 +469,20 @@ export default function ServicesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <form onSubmit={(e) => { e.preventDefault(); }} className="space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl">
+              <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl">
                 <div><label className="block text-sm font-semibold text-gray-800 mb-2">Name</label>
-                <input type="text" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="Your name" /></div>
+                <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="Your name" /></div>
                 <div><label className="block text-sm font-semibold text-gray-800 mb-2">Email</label>
-                <input type="email" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="your@email.com" /></div>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="your@email.com" /></div>
+                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Phone</label>
+                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="+250 xxx xxx xxx" /></div>
                 <div><label className="block text-sm font-semibold text-gray-800 mb-2">Service Type</label>
-                <select required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} defaultValue=""><option value="" disabled>Select a service type</option><option value="Fire Equipment Supply">Fire Equipment Supply</option><option value="Installation Services">Installation Services</option><option value="Inspection & Testing">Inspection &amp; Testing</option><option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option><option value="Maintenance Services">Maintenance Services</option><option value="Fire Safety Awareness Training">Fire Safety Awareness Training</option><option value="First Aid Training">First Aid Training</option><option value="Other">Other</option></select></div>
+                <select name="service" value={formData.service} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }}><option value="" disabled>Select a service type</option><option value="Fire Equipment Supply">Fire Equipment Supply</option><option value="Installation Services">Installation Services</option><option value="Inspection & Testing">Inspection &amp; Testing</option><option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option><option value="Maintenance Services">Maintenance Services</option><option value="Fire Safety Awareness Training">Fire Safety Awareness Training</option><option value="First Aid Training">First Aid Training</option><option value="Other">Other</option></select></div>
                 <div><label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
-                <textarea required rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900 resize-none" style={{ borderWidth: '1px' }} placeholder="Describe your request..."></textarea></div>
-                <button type="submit" className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2 group">Send Message <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" /></button>
+                <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900 resize-none" style={{ borderWidth: '1px' }} placeholder="Describe your request..."></textarea></div>
+                <button type="submit" disabled={isSubmitting} className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2 group disabled:cursor-not-allowed disabled:opacity-80">{isSubmitting ? 'Sending...' : 'Request a Quote'} <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" /></button>
+                {error && <p className="text-sm text-red-600 text-center">{error}</p>}
+                {submitted && <p className="text-sm text-green-600 text-center">Thank you! Your request has been received and our team will follow up shortly.</p>}
               </form>
             </motion.div>
           </div>

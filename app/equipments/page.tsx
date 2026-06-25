@@ -5,6 +5,7 @@ import { Tool, Star, ArrowRight, FileText, ShieldCheck, Hammer, MapPin, Flame, C
 import Link from 'next/link';
 import WhoWeServe from '@/components/sections/marketing/WhoWeServe';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const equipmentDetails = [
   {
@@ -58,6 +59,60 @@ const equipmentDetails = [
 ];
 
 export default function EquipmentsPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const contentType = response.headers.get('content-type') || '';
+      const rawText = await response.text();
+      let data: { message?: string } | null = null;
+
+      if (rawText) {
+        try {
+          data = contentType.includes('application/json') ? JSON.parse(rawText) : JSON.parse(rawText);
+        } catch {
+          data = { message: 'Our team is currently unavailable. Please try again shortly.' };
+        }
+      }
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'Unable to send your enquiry.');
+      }
+
+      setSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to send your enquiry.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="w-full bg-white overflow-x-hidden">
       {/* Hero Section */}
@@ -303,7 +358,7 @@ export default function EquipmentsPage() {
             className="mt-8"
           >
             <Link
-              href="#project-form"
+              href="/contact#contact-form"
               className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
              
             >
@@ -363,34 +418,43 @@ export default function EquipmentsPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <form onSubmit={(e) => { e.preventDefault(); }} className="space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl">
+              <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-800 mb-2">Name</label>
-                    <input type="text" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ borderWidth: '1px' }} placeholder="Your name" />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ borderWidth: '1px' }} placeholder="Your name" />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-800 mb-2">Email</label>
-                    <input type="email" required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ borderWidth: '1px' }} placeholder="your@email.com" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ borderWidth: '1px' }} placeholder="your@email.com" />
                   </div>
                 </div>
                 <div>
+                  <label className="block text-sm font-semibold text-gray-800 mb-2">Phone</label>
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900" style={{ borderWidth: '1px' }} placeholder="+250 xxx xxx xxx" />
+                </div>
+                <div>
                   <label className="block text-sm font-semibold text-gray-800 mb-2">Primary Interest</label>
-                  <select className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} defaultValue="EquipmentSupply">
-                    <option value="EquipmentSupply">Bulk Equipment Supply</option>
-                    <option value="Installation">Installation Project</option>
-                    <option value="Maintenance">System Maintenance</option>
-                    <option value="Audit">Safety Site Audit</option>
+                  <select name="service" value={formData.service} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }}>
+                    <option value="" disabled>Select your interest</option>
+                    <option value="Fire Equipment Supply">Fire Equipment Supply</option>
+                    <option value="Installation Services">Installation Services</option>
+                    <option value="Inspection & Testing">Inspection & Testing</option>
+                    <option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option>
+                    <option value="Maintenance Services">Maintenance Services</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
-                  <textarea rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900 resize-none" style={{ borderWidth: '1px' }} placeholder="Describe your safety requirements..." />
+                  <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all placeholder-gray-400 text-gray-900 resize-none" style={{ borderWidth: '1px' }} placeholder="Describe your safety requirements..." />
                 </div>
-                <button type="submit" className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2 group">
-                  Send Enquiry
+                <button type="submit" disabled={isSubmitting} className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2 group disabled:cursor-not-allowed disabled:opacity-80">
+                  {isSubmitting ? 'Sending...' : 'Request a Quote'}
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </button>
+                {error && <p className="text-sm text-red-600 text-center">{error}</p>}
+                {submitted && <p className="text-sm text-green-600 text-center">Thank you! Your enquiry has been received and our team will follow up shortly.</p>}
               </form>
             </motion.div>
           </div>

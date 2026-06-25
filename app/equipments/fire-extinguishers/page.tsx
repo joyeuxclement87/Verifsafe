@@ -495,7 +495,7 @@ export default function FireExtinguishersPage() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">Ensure your <span className="text-[#E53935]">safety today</span></h2>
             <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal mb-8">Contact our experts for the right recommendation and installation.</p>
             <Link
-              href="/services#project-form"
+              href="/contact#contact-form"
               className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
              
             >

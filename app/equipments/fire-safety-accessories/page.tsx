@@ -470,7 +470,7 @@ export default function FireSafetyAccessoriesPage() {
               Contact our experts for the right safety accessories and professional equipment installation.
             </p>
             <Link
-              href="/services#project-form"
+              href="/contact#contact-form"
               className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg group"
              
             >

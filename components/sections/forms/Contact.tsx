@@ -40,10 +40,20 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      const rawText = await response.text();
+      let data: { message?: string } | null = null;
+
+      if (rawText) {
+        try {
+          data = contentType.includes('application/json') ? JSON.parse(rawText) : JSON.parse(rawText);
+        } catch {
+          data = { message: 'Our team is currently unavailable. Please try again shortly.' };
+        }
+      }
 
       if (!response.ok) {
-        throw new Error(data.message || 'Unable to send your message right now.');
+        throw new Error(data?.message || 'Unable to send your message right now.');
       }
 
       setSubmitted(true);

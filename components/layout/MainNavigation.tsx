@@ -125,7 +125,7 @@ export default function MainNavigation() {
           <div className="flex items-center gap-4">
             {/* CTA Button - Desktop */}
             <Link
-              href="/services#project-form"
+              href="/contact#contact-form"
               className="hidden sm:inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md rounded-lg"
              
             >
@@ -251,7 +251,7 @@ export default function MainNavigation() {
                 </div>
               ))}
               <Link
-                href="/services#project-form"
+                href="/contact#contact-form"
                 className="flex items-center justify-center gap-2 w-full mt-4 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md rounded-lg"
                
                 onClick={() => setIsOpen(false)}
