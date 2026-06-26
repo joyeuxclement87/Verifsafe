@@ -58,7 +58,7 @@ export default function ProtectionCTA() {
             {/* Primary Button */}
             <Link
               href="/contact#contact-form"
-              className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 shadow-lg group hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 shadow-md group hover:scale-105 active:scale-95"
              
             >
               <FileText size={20} strokeWidth={1} />
@@ -69,16 +69,9 @@ export default function ProtectionCTA() {
             </Link>
 
             {/* Secondary Button */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const element = document.getElementById('contact');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-white/5 backdrop-blur-md text-white font-medium text-base rounded-lg border border-[#E53935] hover:bg-[#E53935]/20 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/20 group"
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-white/5 backdrop-blur-md text-white font-medium text-base rounded-lg border border-[#E53935] hover:bg-[#E53935]/20 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 group hover:scale-105 active:scale-95"
               style={{ borderWidth: '1px' }}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,7 +81,7 @@ export default function ProtectionCTA() {
               <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </motion.button>
+            </Link>
           </div>
 
           {/* Bottom Text */}

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Flame, Tool, Bolt, Walk, School } from 'tabler-icons-react';
 
 export default function FireSafetyTraining() {
@@ -83,7 +84,7 @@ export default function FireSafetyTraining() {
             >
               {/* Card */}
               <div
-                className="bg-white border border-gray-200 rounded-xl p-8 sm:p-6 hover:border-[#E53935] hover:shadow-2xl hover:scale-105 transition-all duration-300 h-full relative overflow-hidden"
+                className="bg-white border border-gray-200 rounded-xl p-8 sm:p-6 hover:border-[#E53935]/30 hover:shadow-lg hover:scale-105 transition-all duration-300 h-full relative overflow-hidden"
                 style={{ borderWidth: '1px' }}
               >
                 {/* Top accent line */}
@@ -125,7 +126,7 @@ export default function FireSafetyTraining() {
         <div className="relative mb-12">
           <div className="absolute inset-0 bg-gradient-to-r from-[#E53935]/5 to-red-600/5 rounded-2xl" />
           
-          <div className="relative bg-white border border-gray-200 rounded-2xl p-8 sm:p-10 text-center hover:border-[#E53935] hover:shadow-xl transition-all duration-300"
+          <div className="relative bg-white border border-gray-200 rounded-2xl p-8 sm:p-10 text-center hover:border-[#E53935]/30 hover:shadow-lg transition-all duration-300"
             style={{ borderWidth: '1px', opacity: 0.95 }}
           >
             <p
@@ -139,8 +140,9 @@ export default function FireSafetyTraining() {
 
         {/* CTA Button */}
         <div className="flex justify-center">
-          <button
-            className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3 group"
+          <Link
+            href="/contact#contact-form"
+            className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md inline-flex items-center gap-3 group"
            
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +152,7 @@ export default function FireSafetyTraining() {
             <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

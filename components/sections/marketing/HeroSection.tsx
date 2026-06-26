@@ -94,7 +94,7 @@ export default function HeroSection() {
             {/* Primary Button */}
             <Link
               href="/contact#contact-form"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg rounded-lg capitalize tracking-wide"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md rounded-lg capitalize tracking-wide"
              
             >
               <FileText size={16} strokeWidth={1} />

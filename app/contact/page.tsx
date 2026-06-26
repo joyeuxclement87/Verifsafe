@@ -126,7 +126,7 @@ export default function ContactPage() {
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className="group relative bg-white border border-gray-100 rounded-2xl p-8 hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden cursor-pointer"
+                className="group relative bg-white border border-gray-100 rounded-2xl p-8 hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden cursor-pointer"
                 style={{ borderWidth: '1px' }}
               >
                 {/* Top accent line on hover */}
