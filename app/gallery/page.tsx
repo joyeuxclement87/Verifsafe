@@ -107,30 +107,28 @@ export default function GalleryPage() {
   return (
     <main className="w-full">
       {/* Hero Section */}
-      <section className="relative w-full h-96 sm:h-125 lg:h-150 flex items-center justify-center overflow-hidden mt-0">
+      <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden mt-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url("/hero-1.webp")` }}
         />
         <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center text-center"
           >
-            <div className="inline-block mb-4">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
-                <Camera size={16} />
-                Our work
-              </p>
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+              <Camera size={16} className="text-[#E53935]" />
+              <p className="text-label text-white">Our Work</p>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 leading-tight capitalize tracking-wider">
+            <h1 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white mb-6">
               Project Gallery
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl leading-relaxed font-normal">
+            <p className="text-subheading text-gray-200 max-w-2xl mx-auto mb-8">
               Explore our fire safety equipment installations, systems, and projects across different environments.
             </p>
           </motion.div>
@@ -149,17 +147,15 @@ export default function GalleryPage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <div className="inline-block mb-4">
-              <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center">
-                <Eye size={16} />
-                What you’ll see
-              </p>
+            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+              <p className="text-label text-[#E53935]">What You'll See</p>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-3 leading-tight">
+            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
               Real Work. Real Protection.
             </h2>
-            <div className="w-12 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
-            <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-normal">
+            <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-8" />
+            <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
               A collection of our completed installations and equipment setups, showcasing the quality and reliability of our fire safety solutions.
             </p>
           </motion.div>
@@ -177,13 +173,11 @@ export default function GalleryPage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <div className="inline-block mb-4">
-              <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2 justify-center">
-                <Filter size={16} />
-                Browse by category
-              </p>
+            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+              <p className="text-label text-[#E53935]">Browse By Category</p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
+            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
               View by Type
             </h2>
           </motion.div>
@@ -215,9 +209,9 @@ export default function GalleryPage() {
                   setActiveCategory(category);
                   setIsFilterOpen(false);
                 }}
-                className={`px-6 py-2.5 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 border w-full md:w-auto ${
+                className={`px-6 py-2.5 rounded-full text-btn text-sm sm:text-base transition-all duration-300 border w-full md:w-auto ${
                   activeCategory === category
-                    ? 'bg-[#E53935] text-white border-[#E53935] shadow-md shadow-red-500/20 md:scale-105'
+                    ? 'bg-[#E53935] text-white border-[#E53935] shadow-md shadow-red-500/10 hover:shadow-lg hover:shadow-red-500/20 md:scale-105'
                     : 'bg-white text-gray-600 border-gray-200 hover:border-[#E53935] hover:text-[#E53935]'
                 }`}
                
@@ -253,17 +247,19 @@ export default function GalleryPage() {
                       setCurrentImageIndex(index);
                       setLightboxOpen(true);
                     }}
-                    className="break-inside-avoid group relative bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#E53935] hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                    className="break-inside-avoid group relative bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#E53935]/30 hover:shadow-lg transition-all duration-300 cursor-pointer"
                   >
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-10" />
                     <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden">
                       <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="absolute inset-x-0 bottom-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E53935] text-white text-xs font-bold capitalize tracking-wider rounded-full mb-3">
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E53935] text-white text-label rounded-full mb-3">
                           <Photo size={14} />
                           {item.label}
                         </div>
-                        <h3 className="text-xl font-bold text-white leading-tight">{item.title}</h3>
+                        <h3 className="text-card-title text-xl text-white leading-tight">{item.title}</h3>
                       </div>
                     </div>
                   </motion.div>
@@ -299,11 +295,11 @@ export default function GalleryPage() {
               <ChevronLeft size={32} />
             </button>
             <div className="relative w-full max-w-6xl mx-auto flex flex-col justify-center items-center pointer-events-none px-4 sm:px-16" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
-              <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative w-full h-[60vh] sm:h-[80vh] pointer-events-auto shadow-2xl">
+              <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative w-full h-[60vh] sm:h-[80vh] pointer-events-auto shadow-lg">
                 <Image src={filteredItems[currentImageIndex].image} alt={filteredItems[currentImageIndex].title} fill className="object-contain" sizes="100vw" priority />
                 <div className="absolute bottom-0 inset-x-0 p-6 bg-linear-to-t from-black/90 to-transparent text-center">
-                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-wide">{filteredItems[currentImageIndex].title}</h3>
-                   <p className="text-gray-300 text-sm sm:text-base font-medium capitalize tracking-wider">{filteredItems[currentImageIndex].label}</p>
+                   <h3 className="text-card-title text-xl sm:text-2xl text-white mb-2 tracking-wide">{filteredItems[currentImageIndex].title}</h3>
+                   <p className="text-gray-300 text-body-sm font-medium capitalize tracking-wider">{filteredItems[currentImageIndex].label}</p>
                 </div>
               </motion.div>
             </div>

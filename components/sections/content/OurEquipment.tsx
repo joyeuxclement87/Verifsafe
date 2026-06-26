@@ -2,8 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs } from '@fortawesome/free-solid-svg-icons';
+import { Settings, ArrowRight } from 'tabler-icons-react';
 import { motion, Variants } from 'framer-motion';
 
 export default function OurEquipment() {
@@ -43,89 +42,73 @@ export default function OurEquipment() {
     }
   ];
 
-  // Animation variants
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
+      transition: { staggerChildren: 0.15 }
     }
   };
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: "easeOut" }
+      transition: { duration: 0.7, ease: 'easeOut' }
     }
   };
 
   return (
-    <section className="w-full bg-white py-18 sm:py-21 lg:py-28 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+    <section className="w-full bg-white py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+      <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl" />
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl" />
 
-      {/* Main content container with maximum width and horizontal centering */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Section header sub-container for badges and primary typography */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-18"
+          className="text-center mb-16"
         >
-          {/* Wrapper for the equipment category highlighted label */}
-          <div className="inline-block mb-4">
-            <p className="text-label text-[#E53935] px-4 py-2 bg-red-50 rounded-full flex items-center gap-2">
-              <FontAwesomeIcon icon={faCogs} className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+            <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+            <p className="text-label text-[#E53935] flex items-center gap-2">
+              <Settings size={15} />
               Our Equipment
             </p>
           </div>
 
-          {/* Main heading for the equipment showcase */}
-          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900">
+          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
             What We <span className="text-[#E53935]">Provide</span>
           </h2>
 
-          {/* Decorative centered divider line */}
-          <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
+          <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
 
-          {/* Descriptive subheading explaining the equipment focus */}
-          <p className="text-subheading text-gray-700 max-w-2xl mx-auto">
+          <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
             We supply fire safety equipment which helps detect, control, and respond to fire emergencies in different environments.
           </p>
         </motion.div>
 
-        {/* Responsive grid for equipment items with staggered entrance animations */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-9 mb-14 sm:mb-18"
         >
           {equipment.slice(0, 3).map((item, index) => (
-            /* Animated wrapper for each equipment card */
-            <motion.div
-              key={index}
-              variants={itemVariants}
-            >
-              {/* Interactive link card for specific equipment details */}
+            <motion.div key={index} variants={itemVariants}>
               <Link
                 href={item.link || '#'}
-                className="group relative h-full bg-white border border-gray-100 rounded-2xl p-8 hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
+                className="group relative h-full bg-white border border-gray-100 rounded-2xl p-8 hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
                 style={{ borderWidth: '1px' }}
               >
-                {/* Visual top accent line visible on hover */}
+                {/* Top accent line */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Sub-container for the equipment product image */}
                 <div className="w-full h-48 sm:h-56 bg-gray-50 mb-6 overflow-hidden relative rounded-xl group-hover:shadow-md transition-all duration-300 border border-gray-100">
                   <Image
                     src={item.image}
@@ -135,53 +118,42 @@ export default function OurEquipment() {
                   />
                 </div>
 
-                {/* Title of the specific equipment item */}
                 <h3 className="text-card-title text-xl text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300">
                   {item.title}
                 </h3>
 
-                {/* Short description of the equipment's purpose */}
                 <p className="text-body text-gray-600 mb-4">
                   {item.description}
                 </p>
 
-                {/* Footer text indicating more details are available */}
-                <span className="inline-block text-[#E53935] font-semibold text-sm group-hover:gap-2 transition-all mt-auto">
-                  View Details →
+                <span className="inline-flex items-center gap-1.5 text-[#E53935] font-semibold text-sm group-hover:gap-2.5 transition-all mt-auto">
+                  View Details
+                  <ArrowRight size={15} strokeWidth={2} className="transition-transform group-hover:translate-x-1" />
                 </span>
 
-                {/* Decorative bottom line that expands from the left on hover */}
+                {/* Bottom accent line */}
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Bottom CTA container with border accent */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 border-t border-gray-200"
         >
-          {/* Main button for navigating to the full equipment catalog */}
           <Link
             href="/equipments"
-            className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-2 group"
-           
+            className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white text-btn text-base rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md inline-flex items-center gap-2 group"
           >
             View All Equipment
-            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
+            <ArrowRight size={18} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
           </Link>
 
-          {/* Supportive text next to the CTA button */}
-          <span
-            className="text-gray-600 text-sm"
-           
-          >
+          <span className="text-body-sm text-gray-600">
             Comprehensive fire safety solutions for every need
           </span>
         </motion.div>

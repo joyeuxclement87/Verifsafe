@@ -141,17 +141,11 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            <h1
-              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 sm:mb-5 leading-tight capitalize tracking-wider"
-             
-            >
+            <h1 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white mb-4 tracking-wider">
               Professional Fire Protection <span className="text-[#E53935]">Services</span>
             </h1>
 
-            <p
-              className="text-lg sm:text-xl text-gray-200 mb-7 sm:mb-9 max-w-2xl leading-relaxed font-normal"
-             
-            >
+            <p className="text-subheading text-gray-200 max-w-2xl">
               We provide fire safety services which ensure equipment and systems are installed, maintained, and ready when needed.
             </p>
           </motion.div>
@@ -159,40 +153,32 @@ export default function ServicesPage() {
       </section>
 
       {/* Equipment & Systems Section */}
-      <section className="relative w-full bg-linear-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-        <div className="absolute bottom-20 left-20 w-32 h-32 bg-yellow-100/20 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+      <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32 overflow-hidden">
+        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
+        <div className="absolute bottom-20 left-20 w-32 h-32 bg-yellow-100/10 rounded-full blur-2xl" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            <div className="inline-block mb-4">
-              <p
-                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-               
-              >
-                <Tools size={16} />
-                Equipment & Systems
+            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+              <p className="text-label text-[#E53935] flex items-center gap-2">
+                <Tools size={15} />
+                Equipment &amp; Systems
               </p>
             </div>
 
-            <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight"
-             
-            >
-              Supply, Installation & <span className="text-[#E53935]">Maintenance</span>
+            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
+              Supply, Installation &amp; <span className="text-[#E53935]">Maintenance</span>
             </h2>
 
-            <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
+            <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
 
-            <p
-              className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-             
-            >
+            <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
               We deliver fire protection services which support businesses, institutions, and homes with reliable safety systems. From supply to maintenance, our services are designed to ensure continuous protection.
             </p>
           </motion.div>
@@ -205,7 +191,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
+                className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
                 style={{ borderWidth: '1px' }}
               >
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
@@ -214,8 +200,8 @@ export default function ServicesPage() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="p-6 pt-5 flex flex-col flex-grow w-full">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">{service.title}</h3>
-                  <p className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5">{service.description}</p>
+                  <h3 className="text-card-title text-xl text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">{service.title}</h3>
+                  <p className="text-body text-gray-600 flex-grow mb-5">{service.description}</p>
                   <div className="space-y-2 mb-5 w-full">
                     {service.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-2">
@@ -239,26 +225,26 @@ export default function ServicesPage() {
       </section>
 
       {/* Training & Safety Section */}
-      <section className="relative w-full bg-linear-to-b from-gray-50 to-white py-20 sm:py-24 lg:py-32 overflow-hidden">
+      <section className="relative w-full bg-slate-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
+        <div className="absolute top-20 left-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl" />
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            <div className="inline-block mb-4">
-              <p
-                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-               
-              >
-                <Shield size={16} />
-                Training & Safety
+            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+              <p className="text-label text-[#E53935] flex items-center gap-2">
+                <Shield size={15} />
+                Training &amp; Safety
               </p>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">Fire Awareness & <span className="text-[#E53935]">First Aid Training</span></h2>
-            <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">Comprehensive training programs designed to educate and equip individuals with essential fire safety and emergency response skills.</p>
+            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">Fire Awareness &amp; <span className="text-[#E53935]">First Aid Training</span></h2>
+            <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
+            <p className="text-subheading text-gray-600 max-w-2xl mx-auto">Comprehensive training programs designed to educate and equip individuals with essential fire safety and emergency response skills.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 max-w-4xl mx-auto">
@@ -269,7 +255,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
+                className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
                 style={{ borderWidth: '1px' }}
               >
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
@@ -278,8 +264,8 @@ export default function ServicesPage() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="p-6 pt-5 flex flex-col flex-grow w-full">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">{service.title}</h3>
-                  <p className="text-base text-gray-600 leading-relaxed font-normal flex-grow mb-5">{service.description}</p>
+                  <h3 className="text-card-title text-xl text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">{service.title}</h3>
+                  <p className="text-body text-gray-600 flex-grow mb-5">{service.description}</p>
                   <div className="space-y-2 mb-5 w-full">
                     {service.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-2">
@@ -303,26 +289,25 @@ export default function ServicesPage() {
       </section>
 
       {/* Why Our Services Matter Section */}
-      <section className="relative w-full bg-linear-to-b from-gray-50 to-white py-20 sm:py-24 lg:py-32 overflow-hidden">
+      <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32 overflow-hidden">
+        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16 sm:mb-20"
+            className="text-center mb-16"
           >
-            <div className="inline-block mb-4">
-              <p
-                className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-               
-              >
-                <Shield size={16} />
+            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+              <p className="text-label text-[#E53935] flex items-center gap-2">
+                <Shield size={15} />
                 Why It Matters
               </p>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">Why Our Services <span className="text-[#E53935]">Matter</span></h2>
-            <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">Safety Is Not Optional</p>
+            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">Why Our Services <span className="text-[#E53935]">Matter</span></h2>
+            <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
+            <p className="text-subheading text-gray-600 max-w-2xl mx-auto">Safety Is Not Optional</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -353,8 +338,8 @@ export default function ServicesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                      <h3 className="text-card-title text-xl text-gray-900 mb-2">{item.title}</h3>
+                      <p className="text-body text-gray-600">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -368,7 +353,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="relative group bg-white border border-gray-200 rounded-2xl p-8 hover:border-[#E53935] hover:shadow-2xl transition-all duration-500 overflow-hidden">
+              <div className="relative group bg-white border border-gray-100 rounded-2xl p-8 hover:border-[#E53935]/30 hover:shadow-lg transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 opacity-5">
                   <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(229, 57, 53, 0.3) 1px, transparent 0)`, backgroundSize: '30px 30px' }} />
                 </div>
@@ -377,8 +362,8 @@ export default function ServicesPage() {
                     <Shield size={32} className="text-[#E53935]" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Your Safety Partner</h3>
-                    <p className="text-gray-600 leading-relaxed">From equipment supply to training, we ensure your fire safety systems are always ready and reliable.</p>
+                    <h3 className="text-card-title text-2xl text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">Your Safety Partner</h3>
+                    <p className="text-body text-gray-600">From equipment supply to training, we ensure your fire safety systems are always ready and reliable.</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100">
                     <div className="text-center">
@@ -391,8 +376,8 @@ export default function ServicesPage() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             </motion.div>
           </div>
@@ -404,7 +389,7 @@ export default function ServicesPage() {
       <WhoWeServe />
 
       {/* CTA Section */}
-      <section className="relative w-full py-14 sm:py-16 lg:py-20 overflow-hidden">
+      <section className="relative w-full py-20 sm:py-24 lg:py-28 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -421,68 +406,184 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-block mb-3">
-              <p className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <div className="inline-block mb-4">
+              <p className="text-label text-white px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
+                <Shield size={16} />
                 Get Started
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 leading-tight">Take <span className="text-[#E53935]">the next step</span></h2>
-            <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal">Ensure your property is protected with reliable fire safety systems and expert support.</p>
+            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6">Take <span className="text-[#E53935]">the next step</span></h2>
+            <p className="text-subheading text-gray-300 max-w-2xl mx-auto">Ensure your property is protected with reliable fire safety systems and expert support.</p>
           </motion.div>
         </div>
       </section>
 
       {/* Project Enquiry Section */}
-      <section id="project-form" className="w-full bg-gray-50 py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <section id="project-form" className="relative w-full bg-slate-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
+        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
+        <div className="absolute bottom-20 left-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl" />
+
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
-            <motion.div 
+
+            {/* Left Column: Info */}
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="flex flex-col gap-6"
             >
-              <div className="inline-block">
-                <p className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full inline-flex items-center gap-2"><FileText size={16} />Project Enquiry</p>
+              <div>
+                <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-red-50 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E53935]" />
+                  <p className="text-label text-[#E53935]">
+                    Project Enquiry
+                  </p>
+                </div>
+                <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-3">
+                  Tell us about your <span className="text-[#E53935]">project</span>
+                </h2>
+                <div className="w-12 h-1 bg-[#E53935] rounded-full mb-4" />
+                <p className="text-subheading text-gray-600 max-w-lg">
+                  Share your fire safety needs and we&apos;ll recommend the right solution and send you a tailored quote.
+                </p>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">Tell us about your project</h2>
-              <p className="text-sm text-gray-500">We respond within 24 hours with a full proposal.</p>
-              <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed">Share your fire safety needs and we'll recommend the right solution and send you a tailored quote.</p>
-              <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
-                <h4 className="text-sm font-bold text-gray-900 mb-3">What happens next?</h4>
-                <ul className="space-y-3 text-gray-600 text-sm">
-                  {['We review your request', 'We analyze your safety needs', 'We send a tailored quotation'].map((text, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E53935]/10 text-[#E53935] shrink-0"><Check size={13} /></span>
-                      {text}
-                    </li>
+
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-body-sm text-gray-500 flex items-center gap-2"
+              >
+                <Clock size={16} className="text-[#E53935] shrink-0" />
+                We respond within 24 hours with a full proposal.
+              </motion.p>
+
+              {/* What happens next card */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="group relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-[#E53935]/30 transition-all duration-300 overflow-hidden"
+                style={{ borderWidth: '1px' }}
+              >
+                {/* Left accent bar on hover */}
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#E53935] rounded-l-2xl transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+
+                <h4 className="text-card-title text-base text-gray-900 mb-4 group-hover:text-[#E53935] transition-colors duration-300">What happens next?</h4>
+                <ul className="space-y-3">
+                  {[
+                    { step: '01', text: 'We review your request' },
+                    { step: '02', text: 'We analyze your safety needs' },
+                    { step: '03', text: 'We send a tailored quotation' },
+                  ].map((item, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
+                      className="flex items-center gap-3"
+                    >
+                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#E53935]/10 text-[#E53935] text-xs font-black shrink-0">
+                        {item.step}
+                      </span>
+                      <span className="text-body-sm text-gray-600">{item.text}</span>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </motion.div>
 
+            {/* Right Column: Form */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl">
-                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Name</label>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="Your name" /></div>
-                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Email</label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="your@email.com" /></div>
-                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Phone</label>
-                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }} placeholder="+250 xxx xxx xxx" /></div>
-                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Service Type</label>
-                <select name="service" value={formData.service} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900" style={{ borderWidth: '1px' }}><option value="" disabled>Select a service type</option><option value="Fire Equipment Supply">Fire Equipment Supply</option><option value="Installation Services">Installation Services</option><option value="Inspection & Testing">Inspection &amp; Testing</option><option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option><option value="Maintenance Services">Maintenance Services</option><option value="Fire Safety Awareness Training">Fire Safety Awareness Training</option><option value="First Aid Training">First Aid Training</option><option value="Other">Other</option></select></div>
-                <div><label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
-                <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-[#E53935] outline-none transition-all text-gray-900 resize-none" style={{ borderWidth: '1px' }} placeholder="Describe your request..."></textarea></div>
-                <button type="submit" disabled={isSubmitting} className="w-full px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-bold text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2 group disabled:cursor-not-allowed disabled:opacity-80">{isSubmitting ? 'Sending...' : 'Request a Quote'} <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" /></button>
-                {error && <p className="text-sm text-red-600 text-center">{error}</p>}
-                {submitted && <p className="text-sm text-green-600 text-center">Thank you! Your request has been received and our team will follow up shortly.</p>}
+              <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 sm:p-8 lg:p-10 rounded-2xl border border-gray-100 shadow-xl relative overflow-hidden" style={{ borderWidth: '1px' }}>
+                {/* Gradient top accent */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#FF4D4D] via-[#E53935] to-[#FF4D4D]" />
+
+                {/* Name & Email in a row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-label text-gray-700 block mb-2">Name</label>
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }} placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label className="text-label text-gray-700 block mb-2">Email</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }} placeholder="your@email.com" />
+                  </div>
+                </div>
+
+                {/* Phone & Service in a row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-label text-gray-700 block mb-2">Phone</label>
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }} placeholder="+250 xxx xxx xxx" />
+                  </div>
+                  <div>
+                    <label className="text-label text-gray-700 block mb-2">Service Type</label>
+                    <select name="service" value={formData.service} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }}>
+                      <option value="" disabled>Select a service type</option>
+                      <option value="Fire Equipment Supply">Fire Equipment Supply</option>
+                      <option value="Installation Services">Installation Services</option>
+                      <option value="Inspection & Testing">Inspection &amp; Testing</option>
+                      <option value="Fire Extinguisher Refilling">Fire Extinguisher Refilling</option>
+                      <option value="Maintenance Services">Maintenance Services</option>
+                      <option value="Fire Safety Awareness Training">Fire Safety Awareness Training</option>
+                      <option value="First Aid Training">First Aid Training</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="text-label text-gray-700 block mb-2">Message</label>
+                  <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none text-body-sm" style={{ borderWidth: '1px' }} placeholder="Describe your request..." />
+                </div>
+
+                {/* Submit button */}
+                <motion.button
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-3.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white text-btn text-base rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 shadow-md inline-flex items-center justify-center gap-2 group disabled:cursor-not-allowed disabled:opacity-80"
+                >
+                  {isSubmitting ? 'Sending...' : 'Request a Quote'}
+                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                </motion.button>
+
+                {/* Error alert */}
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="rounded-xl border border-red-200 bg-red-50 p-4"
+                  >
+                    <p className="text-sm font-semibold text-red-700">Your message could not be sent</p>
+                    <p className="mt-1 text-sm text-red-600">{error}</p>
+                  </motion.div>
+                )}
+
+                {/* Success alert */}
+                {submitted && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="rounded-xl border border-emerald-200 bg-emerald-50 p-4"
+                  >
+                    <p className="text-sm font-semibold text-emerald-700">Thank you for your request</p>
+                    <p className="mt-1 text-sm text-emerald-600">Our team will review your request and follow up shortly.</p>
+                  </motion.div>
+                )}
               </form>
             </motion.div>
           </div>

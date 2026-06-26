@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTools, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Tool, ArrowRight } from 'tabler-icons-react';
 import { motion, Variants } from 'framer-motion';
 
 export default function OurServices() {
@@ -30,94 +29,77 @@ export default function OurServices() {
     }
   ];
 
-  // Animation variants
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, x: -30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
-      transition: { duration: 0.7, ease: "easeOut" }
+      transition: { duration: 0.7, ease: 'easeOut' }
     }
   };
 
   return (
     <section className="w-full bg-slate-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(229, 9, 20, 0.1) 1px, transparent 0)`,
-          backgroundSize: '30px 30px'
-        }} />
-      </div>
+      {/* Background Elements */}
+      <div className="absolute top-20 left-10 w-16 h-16 bg-red-100/20 rounded-full blur-xl" />
+      <div className="absolute bottom-20 right-20 w-24 h-24 bg-gray-400/5 rounded-full blur-lg" />
 
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-16 h-16 bg-red-100 rounded-full blur-xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-24 h-24 bg-gray-400/5 rounded-full blur-lg animate-bounce" style={{ animationDelay: '1s' }} />
-
-      {/* Main structural wrapper for centering and responsive width constraints */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Section header containing the top badge, main title, and introductory text */}
-        <motion.div 
+        {/* Section header */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          {/* Container for the "Our Services" highlighted label */}
-          <div className="inline-block mb-4">
-            <p className="text-label text-[#E53935] px-4 py-2 bg-red-50 rounded-full flex items-center gap-2">
-              <FontAwesomeIcon icon={faTools} className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+            <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+            <p className="text-label text-[#E53935] flex items-center gap-2">
+              <Tool size={15} />
               Our Services
             </p>
           </div>
 
-          {/* Core heading of the services section */}
-          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900">
+          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
             What We <span className="text-[#E53935]">Do</span>
           </h2>
 
-          {/* Centered red underline decorative divider */}
-          <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
+          <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
 
-          {/* Descriptive summary paragraph for service overview */}
           <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
             We provide fire safety services which ensure that fire protection systems are installed, inspected, and maintained properly.
           </p>
         </motion.div>
 
-        {/* Grid layout for displaying service cards, using stagger animations for entry */}
-        <motion.div 
+        {/* Service cards */}
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-14"
         >
           {services.map((service, index) => (
-            /* Individual service card with hover effects and internal flex layout */
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative bg-white border border-gray-400/20 rounded-2xl p-4 sm:p-5 hover:border-[#E53935]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row items-stretch gap-6 overflow-hidden cursor-pointer"
+              className="group relative bg-white border border-gray-100 rounded-2xl p-4 sm:p-5 hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row items-stretch gap-6 overflow-hidden cursor-pointer"
               style={{ borderWidth: '1px' }}
             >
-              {/* Subtle top accent line that appears on card hover */}
+              {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              {/* Sub-container for the service illustrative image */}
-              <div className="relative w-full sm:w-5/12 aspect-[4/3] sm:aspect-auto rounded-xl overflow-hidden shrink-0 border border-gray-400/20">
+              <div className="relative w-full sm:w-5/12 aspect-[4/3] sm:aspect-auto rounded-xl overflow-hidden shrink-0 border border-gray-100">
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -127,27 +109,23 @@ export default function OurServices() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              {/* Sub-container for service title and descriptive text */}
               <div className="flex flex-col justify-center py-2 flex-1 pr-4">
-                {/* Specific service title heading */}
                 <h3 className="text-card-title text-xl text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300">
                   {service.title}
                 </h3>
-
-                {/* Paragraph detailing the specific service scope */}
                 <p className="text-body text-gray-600 mb-6">
                   {service.description}
                 </p>
               </div>
 
-              {/* Decorative bottom line that expands on hover for visual feedback */}
+              {/* Bottom accent line */}
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Centered wrapper for the final call-to-action button */}
-        <motion.div 
+        {/* CTA */}
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -155,12 +133,9 @@ export default function OurServices() {
           className="flex justify-center"
         >
           <Link href="/services">
-            <button
-              className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 shadow-lg inline-flex items-center gap-3"
-             
-            >
+            <button className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white text-btn text-base rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md inline-flex items-center gap-3">
               Explore All Services
-              <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />
+              <ArrowRight size={18} strokeWidth={1.5} />
             </button>
           </Link>
         </motion.div>

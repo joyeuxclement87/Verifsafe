@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { Plus, Minus, Help } from 'tabler-icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function FAQSection() {
@@ -41,43 +40,40 @@ export default function FAQSection() {
 
   return (
     <section className="w-full py-20 sm:py-24 lg:py-32 bg-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/20 rounded-full blur-2xl" />
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gray-400/5 rounded-full blur-2xl" />
 
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-18"
+          className="text-center mb-16"
         >
-          {/* Section Label */}
-          <div className="inline-block mb-4">
-            <p className="text-label text-[#E53935] px-4 py-2 bg-red-50 rounded-full flex items-center gap-2">
-              <FontAwesomeIcon icon={faQuestionCircle} className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
+            <span className="w-2 h-2 rounded-full bg-[#E53935]" />
+            <p className="text-label text-[#E53935] flex items-center gap-2">
+              <Help size={15} />
               Common Questions
             </p>
           </div>
 
-          {/* Main Heading */}
-          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900">
+          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
             Frequently Asked{' '}
             <span className="text-[#E53935]">Questions</span>
           </h2>
 
-          {/* Decorative Divider */}
-          <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
+          <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
 
-          {/* Subheading */}
           <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
             Find answers to common questions about our fire protection services and products.
           </p>
         </motion.div>
 
-        {/* FAQs Container */}
+        {/* FAQs */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
@@ -85,8 +81,8 @@ export default function FAQSection() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-pointer"
+              transition={{ delay: index * 0.08, duration: 0.5 }}
+              className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 overflow-hidden cursor-pointer"
               style={{ borderWidth: '1px' }}
             >
               {/* Top accent line */}
@@ -100,24 +96,23 @@ export default function FAQSection() {
                   {faq.question}
                 </h3>
                 <div className="flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 bg-red-50 group-hover:bg-[#E53935] rounded-full transition-colors duration-300">
-                  <FontAwesomeIcon
-                    icon={expandedIndex === index ? faMinus : faPlus}
-                    className="w-4 h-4 text-[#E53935] group-hover:text-white transition-colors duration-300"
-                  />
+                  {expandedIndex === index
+                    ? <Minus size={16} className="text-[#E53935] group-hover:text-white transition-colors duration-300" />
+                    : <Plus size={16} className="text-[#E53935] group-hover:text-white transition-colors duration-300" />
+                  }
                 </div>
               </button>
 
-              {/* FAQ Answer with AnimatePresence */}
               <AnimatePresence>
                 {expandedIndex === index && (
-                  <motion.div 
+                  <motion.div
                     initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
+                    animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                     className="px-6 sm:px-8 pb-5 border-t border-gray-100 overflow-hidden"
                   >
-                    <p className="text-body text-gray-700 py-4">
+                    <p className="text-body text-gray-600 py-4">
                       {faq.answer}
                     </p>
                   </motion.div>
