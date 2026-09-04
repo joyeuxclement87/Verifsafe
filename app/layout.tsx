@@ -3,8 +3,13 @@ import ConditionalLayout from "@/components/layout/ConditionalLayout";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Verifsafe - Fire Protection Solutions in Rwanda",
-  description: "Fire protection solutions for businesses and buildings in Rwanda. We supply, install, inspect, and maintain certified fire safety equipment and protection systems.",
+  title: {
+    default: "Fire Protection & Safety Equipment in Rwanda | VerifSafe",
+    template: "%s | VerifSafe",
+  },
+  description:
+    "VerifSafe provides fire safety equipment, fire alarm systems, installation, inspection, maintenance and fire protection services across Rwanda.",
+  metadataBase: new URL("https://verifsafe.com"),
 };
 
 export default function RootLayout({

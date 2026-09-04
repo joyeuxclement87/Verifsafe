@@ -103,9 +103,9 @@
   --color-brand-light: #fce8e8;
 
   /* Charcoal — authority, serious moments, dark surfaces */
-  --color-ink: #111111;
-  --color-surface-dark: #181818;
-  --color-surface-soft: #242424;
+  --color-ink: #1a2332;
+  --color-surface-dark: #1e293b;
+  --color-surface-soft: #334155;
 
   /* Light surfaces — content-carrying sections */
   --color-paper: #fafaf9;
@@ -119,7 +119,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #111111;
+    --background: #1a2332;
     --foreground: #ededed;
   }
 }

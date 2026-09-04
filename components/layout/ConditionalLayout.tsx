@@ -101,7 +101,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
       <PageLoader />
       <TopBar />
       <MainNavigation />
-      <div className="pt-32 flex-1">
+      <div className="pt-[104px] lg:pt-[112px] flex-1">
         {children}
       </div>
       <WhatsAppButton />

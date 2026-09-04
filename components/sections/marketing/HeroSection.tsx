@@ -1,90 +1,375 @@
 'use client';
 
+import { useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
+import { ChevronLeft, ChevronRight, PlayerPause, PlayerPlay } from 'tabler-icons-react';
+
+const slides = [
+  {
+    id: 1,
+    eyebrow: 'fire protection · Rwanda',
+    headline: 'fire protection, verified.',
+    headlineTag: 'h1',
+    description:
+      'Reliable fire safety equipment, installation, inspection and maintenance for buildings across Rwanda.',
+    cta: { label: 'Request a quote', href: '/contact#contact-form' },
+    secondaryCta: { label: 'Explore solutions', href: '/equipments' },
+    image: '/hero2.jpg',
+    alt: 'Fire safety equipment and protection systems installed in a commercial building in Rwanda',
+  },
+  {
+    id: 2,
+    eyebrow: 'fire detection systems',
+    headline: 'detect it before it spreads.',
+    headlineTag: 'h2',
+    description:
+      'Professional fire detection and alarm systems designed to help buildings respond faster.',
+    cta: { label: 'Explore fire alarm systems', href: '/equipments/fire-alarm-systems' },
+    secondaryCta: null,
+    image: '/alarms.png',
+    alt: 'Fire alarm control panel and detection system installed in a building',
+  },
+  {
+    id: 3,
+    eyebrow: 'inspection · testing · maintenance',
+    headline: 'protection needs to stay ready.',
+    headlineTag: 'h2',
+    description:
+      'Inspection, testing and maintenance that keep your fire protection systems prepared when they matter.',
+    cta: { label: 'Book an inspection', href: '/contact#contact-form' },
+    secondaryCta: null,
+    image: '/fire training 2.jpg',
+    alt: 'Fire safety technician inspecting and testing fire protection equipment',
+  },
+  {
+    id: 4,
+    eyebrow: 'complete fire protection',
+    headline: 'from equipment to readiness.',
+    headlineTag: 'h2',
+    description:
+      'Supply, installation, testing, maintenance and training — handled through one reliable fire-safety partner.',
+    cta: { label: 'Talk to our team', href: '/contact#contact-form' },
+    secondaryCta: null,
+    image: '/hero-3.webp',
+    alt: 'Professional fire protection installation with multiple safety systems in a building',
+  },
+];
+
+const SLIDE_DURATION = 6000;
+const TRANSITION_DURATION = 800;
 
 export default function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPausedByInteraction, setIsPausedByInteraction] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const containerRef = useRef<HTMLElement>(null);
+
+  // Check reduced motion preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  // Mark as loaded after mount
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const goToSlide = useCallback(
+    (index: number) => {
+      setCurrentSlide(index);
+      if (isPlaying && !isPausedByInteraction) {
+        if (timerRef.current) clearInterval(timerRef.current);
+        timerRef.current = setInterval(() => {
+          setCurrentSlide((prev) => (prev + 1) % slides.length);
+        }, SLIDE_DURATION);
+      }
+    },
+    [isPlaying, isPausedByInteraction]
+  );
+
+  const goNext = useCallback(() => {
+    goToSlide((currentSlide + 1) % slides.length);
+  }, [currentSlide, goToSlide]);
+
+  const goPrev = useCallback(() => {
+    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+  }, [currentSlide, goToSlide]);
+
+  const togglePlay = useCallback(() => {
+    setIsPlaying((prev) => !prev);
+    setIsPausedByInteraction(false);
+  }, []);
+
+  const pauseOnInteraction = useCallback(() => {
+    if (isPlaying) {
+      setIsPausedByInteraction(true);
+      if (timerRef.current) clearInterval(timerRef.current);
+    }
+  }, [isPlaying]);
+
+  // Autoplay
+  useEffect(() => {
+    if (!isPlaying || isPausedByInteraction) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
+    }
+    timerRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, SLIDE_DURATION);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isPlaying, isPausedByInteraction]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        pauseOnInteraction();
+        goPrev();
+      } else if (e.key === 'ArrowRight') {
+        pauseOnInteraction();
+        goNext();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [goNext, goPrev, pauseOnInteraction]);
+
+  const slide = slides[currentSlide];
+  const progress = ((currentSlide + 1) / slides.length) * 100;
+
   return (
-    <section className="relative w-full min-h-svh flex items-center overflow-hidden">
-      {/* Background Image */}
+    <section
+      ref={containerRef}
+      aria-roledescription="carousel"
+      aria-label="VerifSafe fire protection services"
+      className="relative w-full overflow-hidden"
+      style={{ backgroundColor: '#0B1720' }}
+      onMouseEnter={pauseOnInteraction}
+      onFocus={pauseOnInteraction}
+    >
+      {/* Background color */}
+      <div className="absolute inset-0 bg-[#0B1720]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1720]/95 via-[#0B1720]/80 to-[#123B5D]/40" />
+
+      {/* Technical grid overlay - extremely subtle */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url("/hero2.jpg")` }}
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
       />
 
-      {/* Controlled overlay — strongest behind the content, right side stays visible */}
-      <div className="absolute inset-0 bg-ink/60" />
-      <div className="absolute inset-0 bg-linear-to-r from-ink/85 via-ink/45 to-transparent" />
-
-      {/* Content Container */}
+      {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl flex flex-col items-start py-20 sm:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[520px] lg:min-h-[700px] pt-14 pb-8 sm:pt-20 sm:pb-10 lg:py-0">
 
-          {/* Eyebrow / Context Label */}
-          <p
-            className="hero-enter mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-white/60"
-            style={{ animationDelay: '0.05s' }}
-          >
-            Fire Protection &middot; Rwanda
-          </p>
-
-          {/* Main Headline */}
-          <h1
-            className="hero-enter text-hero-heading text-white"
-            style={{ fontWeight: 700, animationDelay: '0.15s' }}
-          >
-            Protect What
-            <br />
-            Matters Most.
-          </h1>
-
-          {/* Supporting Copy */}
-          <p
-            className="hero-enter text-subheading text-gray-300 mt-6 max-w-xl"
-            style={{ animationDelay: '0.3s' }}
-          >
-            We supply, install, inspect, and maintain fire protection systems and certified
-            safety equipment for businesses and buildings across Rwanda.
-          </p>
-
-          {/* Call to Action */}
-          <div
-            className="hero-enter mt-9 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5"
-            style={{ animationDelay: '0.45s' }}
-          >
-            <Button
-              href="/contact#contact-form"
-              variant="primary"
-              size="lg"
-              className="self-start"
+          {/* Left: Text content */}
+          <div className="flex flex-col items-start">
+            {/* Eyebrow */}
+            <p
+              className={`mb-4 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] transition-all ${
+                isReducedMotion ? 'duration-0' : 'duration-500'
+              } ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
+              style={{ color: '#E53935' }}
+              key={`eyebrow-${currentSlide}`}
             >
-              Request a Fire Safety Inspection
-            </Button>
+              {slide.eyebrow}
+            </p>
 
-            <Button
-              href="/equipments"
-              variant="secondary"
-              size="lg"
-              className="self-start sm:self-auto"
+            {/* Headline */}
+            {slide.headlineTag === 'h1' ? (
+              <h1
+                className={`text-hero-heading leading-[1.05] transition-all ${
+                  isReducedMotion ? 'duration-0' : 'duration-500 delay-100'
+                } ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                style={{ color: '#F4F3EF' }}
+                key={`headline-${currentSlide}`}
+              >
+                {slide.headline}
+              </h1>
+            ) : (
+              <h2
+                className={`text-hero-heading leading-[1.05] transition-all ${
+                  isReducedMotion ? 'duration-0' : 'duration-500 delay-100'
+                } ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                style={{ color: '#F4F3EF' }}
+                key={`headline-${currentSlide}`}
+              >
+                {slide.headline}
+              </h2>
+            )}
+
+            {/* Description */}
+            <p
+              className={`text-subheading mt-5 max-w-lg transition-all ${
+                isReducedMotion ? 'duration-0' : 'duration-500 delay-200'
+              } ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              style={{ color: '#A7B0B5' }}
+              key={`desc-${currentSlide}`}
             >
-              Explore Solutions
-            </Button>
+              {slide.description}
+            </p>
+
+            {/* CTAs */}
+            <div
+              className={`mt-8 w-full sm:w-auto flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 transition-all ${
+                isReducedMotion ? 'duration-0' : 'duration-500 delay-300'
+              } ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              key={`cta-${currentSlide}`}
+            >
+              <Button
+                href={slide.cta.href}
+                variant="primary"
+                size="lg"
+                className="w-full sm:w-auto sm:self-auto !rounded-lg !h-12 !px-7 !bg-[#E53935] hover:!bg-[#C62828] !shadow-[0_10px_24px_-10px_rgba(229,57,53,0.5)]"
+              >
+                {slide.cta.label}
+              </Button>
+              {slide.secondaryCta && (
+                <Button
+                  href={slide.secondaryCta.href}
+                  variant="secondary"
+                  size="lg"
+                  className="w-full sm:w-auto sm:self-auto !rounded-lg !bg-transparent !border-white/25 !text-[#F4F3EF] hover:!border-white/60 hover:!bg-white/5 !shadow-none"
+                >
+                  {slide.secondaryCta.label}
+                </Button>
+              )}
+            </div>
           </div>
 
-          {/* Proof Line */}
-          <div
-            className="hero-enter mt-14 w-full max-w-xl border-t border-white/15 pt-6"
-            style={{ animationDelay: '0.6s' }}
-          >
-            <ul className="flex flex-wrap items-center gap-x-2.5 gap-y-2 text-sm text-gray-400">
-              <li>Certified equipment</li>
-              <li aria-hidden="true" className="text-white/25">&middot;</li>
-              <li>Professional installation</li>
-              <li aria-hidden="true" className="text-white/25">&middot;</li>
-              <li>Inspection &amp; maintenance</li>
-            </ul>
+          {/* Right: Visual area with technical elements */}
+          <div className="relative w-full aspect-[16/10] lg:aspect-[3/4]">
+            {/* Technical frame element */}
+            <div
+              className={`absolute -inset-2 lg:-inset-4 border border-white/5 rounded-xl transition-all ${
+                isReducedMotion ? 'duration-0' : 'duration-700 delay-200'
+              } ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+            />
+
+            {/* Corner coordinates - technical detail */}
+            <div
+              className={`absolute -top-6 -left-6 text-[10px] font-mono tracking-wider transition-all ${
+                isReducedMotion ? 'duration-0' : 'duration-500 delay-400'
+              } ${isLoaded ? 'opacity-40' : 'opacity-0'}`}
+              style={{ color: '#A7B0B5' }}
+            >
+              <span className="hidden lg:inline">0{currentSlide + 1}/04</span>
+            </div>
+
+            {/* Current slide image in the visual area */}
+            <div className="relative w-full h-full rounded-xl overflow-hidden">
+              {slides.map((s, index) => (
+                <div
+                  key={s.id}
+                  className={`absolute inset-0 transition-opacity ${
+                    isReducedMotion ? 'duration-0' : `duration-[${TRANSITION_DURATION}ms]`
+                  } ease-in-out`}
+                  style={{ opacity: index === currentSlide ? 1 : 0 }}
+                  aria-hidden={true}
+                >
+                  <Image
+                    src={s.image}
+                    alt={s.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+              {/* Image overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1720]/40 via-transparent to-transparent" />
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom controls bar — in flow on mobile, anchored bottom on desktop */}
+        <div className="mt-4 pb-16 sm:pb-20 lg:mt-0 lg:pb-0 lg:absolute lg:bottom-8 lg:left-8 lg:right-8 flex items-center justify-between">
+          {/* Slide counter */}
+          <div className="flex items-center gap-3">
+            <span
+              className="text-xs font-mono tracking-wider"
+              style={{ color: '#A7B0B5' }}
+            >
+              0{currentSlide + 1} / 04
+            </span>
+            {/* Progress bar */}
+            <div className="w-16 h-px bg-white/20 overflow-hidden">
+              <div
+                className={`h-full transition-all ${isReducedMotion ? 'duration-0' : 'duration-500'}`}
+                style={{
+                  width: `${progress}%`,
+                  backgroundColor: '#E53935',
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Navigation controls */}
+          <div className="flex items-center gap-2">
+            {/* Play/Pause */}
+            <button
+              type="button"
+              onClick={togglePlay}
+              aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              {isPlaying ? (
+                <PlayerPause size={14} style={{ color: '#F4F3EF' }} />
+              ) : (
+                <PlayerPlay size={14} style={{ color: '#F4F3EF' }} />
+              )}
+            </button>
+
+            {/* Previous */}
+            <button
+              type="button"
+              onClick={() => {
+                pauseOnInteraction();
+                goPrev();
+              }}
+              aria-label="Previous slide"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <ChevronLeft size={16} style={{ color: '#F4F3EF' }} />
+            </button>
+
+            {/* Next */}
+            <button
+              type="button"
+              onClick={() => {
+                pauseOnInteraction();
+                goNext();
+              }}
+              aria-label="Next slide"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <ChevronRight size={16} style={{ color: '#F4F3EF' }} />
+            </button>
           </div>
         </div>
+
       </div>
+
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ backgroundColor: 'rgba(167, 176, 181, 0.1)' }} />
     </section>
   );
 }
