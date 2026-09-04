@@ -1,11 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { Tool, Star, ArrowRight, FileText, ShieldCheck, Hammer, MapPin, Flame, Clock, Check, Bulb, Bell, Droplet, Radar, Package, Shield } from 'tabler-icons-react';
+import { ArrowRight, ShieldCheck, Hammer, MapPin, Flame, Clock, Bulb, Bell, Droplet, Radar, Package, Shield } from 'tabler-icons-react';
 import Link from 'next/link';
 import WhoWeServe from '@/components/sections/marketing/WhoWeServe';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Button from '@/components/ui/Button';
 
 const equipmentDetails = [
   {
@@ -60,7 +61,7 @@ const equipmentDetails = [
 
 // ─── Shared form input class ────────────────────────────────────────────────
 const inputCls =
-  'w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm';
+  'w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#D62828] focus:ring-2 focus:ring-[#D62828]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm';
 
 export default function EquipmentsPage() {
   const [formData, setFormData] = useState({
@@ -126,26 +127,27 @@ export default function EquipmentsPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url("/verif.png")`, backgroundAttachment: 'fixed' }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/80 to-gray-950/70" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/80 to-ink/70" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-20">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
+            className="flex items-center justify-center gap-3 mb-6"
           >
-            <Star size={16} className="text-[#E53935]" />
-            <p className="text-label text-white">Product Catalog</p>
+            <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+            <p className="text-label text-white/60">Product Catalog</p>
+            <span aria-hidden="true" className="h-px w-8 bg-white/60" />
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-section-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white mb-6"
+            className="text-page-heading text-white mb-6"
           >
-            Fire Safety <span className="text-[#E53935]">Equipment</span>
+            Fire Safety Equipment
           </motion.h1>
 
           <motion.p
@@ -168,19 +170,16 @@ export default function EquipmentsPage() {
             viewport={{ once: true }}
             className="text-center mb-4"
           >
-            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-label text-[#E53935] flex items-center gap-2">
-                <Tool size={15} />
-                Quality Standards
-              </p>
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+              <p className="text-label text-gray-500">Quality Standards</p>
+              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
             </div>
 
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6 capitalize">
-              Built for <span className="text-[#E53935]">Safety</span>
+            <h2 className="text-section-heading  text-gray-900 mb-6 capitalize">
+              Built for Safety
             </h2>
 
-            <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
 
             <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
               The right equipment can stop a small fire from becoming a major disaster. Our products are selected for real-world reliability.
@@ -190,9 +189,7 @@ export default function EquipmentsPage() {
       </section>
 
       {/* ─── EQUIPMENT GRID ───────────────────────────────────────── */}
-      <section className="relative w-full bg-slate-50 py-16 sm:py-20 lg:py-24 overflow-hidden">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
-        <div className="absolute bottom-20 left-10 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl" />
+      <section className="relative w-full bg-neutral py-16 sm:py-20 lg:py-24 overflow-hidden">
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
@@ -206,13 +203,11 @@ export default function EquipmentsPage() {
               >
                 <Link
                   href={equipment.link}
-                  className="group relative h-full bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden"
+                  className="group relative h-full bg-white border border-gray-100 rounded-md hover:border-[#D62828]/40 transition-colors duration-200 flex flex-col overflow-hidden"
                   style={{ borderWidth: '1px' }}
                 >
                   {/* Top accent line */}
-                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
                   {/* Bottom accent line */}
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
                   {/* Image */}
                   <div className="relative w-full h-52 overflow-hidden">
@@ -225,7 +220,7 @@ export default function EquipmentsPage() {
                     <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                     {/* Icon badge */}
                     <div className="absolute bottom-4 left-5 z-20">
-                      <div className="w-10 h-10 rounded-xl bg-[#E53935] flex items-center justify-center text-white shadow-lg">
+                      <div className="w-10 h-10 rounded-md bg-[#D62828] flex items-center justify-center text-white">
                         {equipment.icon}
                       </div>
                     </div>
@@ -233,13 +228,13 @@ export default function EquipmentsPage() {
 
                   {/* Content */}
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-card-title text-xl text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300">
+                    <h3 className="text-card-title text-gray-900 mb-3 duration-300">
                       {equipment.title}
                     </h3>
                     <p className="text-body text-gray-600 flex-grow mb-6">
                       {equipment.description}
                     </p>
-                    <div className="mt-auto flex items-center gap-2 text-[#E53935] font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                    <div className="mt-auto flex items-center gap-2 text-[#D62828] font-semibold text-sm group-hover:gap-3 transition-all duration-300">
                       View Solutions
                       <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
                     </div>
@@ -253,30 +248,27 @@ export default function EquipmentsPage() {
 
       {/* ─── WHY OUR EQUIPMENT ────────────────────────────────────── */}
       <section className="w-full bg-white py-20 sm:py-24 lg:py-32 relative overflow-hidden">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/10 rounded-full blur-2xl" />
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white border border-gray-100 rounded-2xl p-8 sm:p-12 shadow-sm relative overflow-hidden"
+            className="bg-white border border-gray-200 rounded-md p-8 sm:p-12 relative overflow-hidden"
             style={{ borderWidth: '1px' }}
           >
             {/* Top accent line */}
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20 relative z-10 items-start">
               {/* Left sticky col */}
               <div className="lg:col-span-1 lg:sticky lg:top-8">
-                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-                  <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-label text-[#E53935]">Core Value</p>
-                </div>
-                <h2 className="text-section-heading text-3xl sm:text-4xl text-gray-900 mb-5 capitalize">
-                  Reliable <span className="text-[#E53935]">Performance</span>
+                <div className="flex items-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+  <p className="text-label text-gray-500">Core Value</p>
+</div>
+                <h2 className="text-section-heading text-gray-900 mb-5 capitalize">
+                  Reliable Performance
                 </h2>
-                <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
                 <p className="text-body text-gray-600">
                   We don&apos;t just sell equipment; we provide certified life-safety systems.
                 </p>
@@ -293,20 +285,20 @@ export default function EquipmentsPage() {
                   ].map((benefit, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="group flex items-start gap-5 pb-6 border-b border-gray-100 hover:border-[#E53935]/40 transition-all duration-300"
+                      className="group flex items-start gap-5 pb-6 border-b border-gray-100 hover:border-[#D62828]/40 transition-all duration-300"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] group-hover:scale-110 transition-all duration-300 shrink-0 mt-1">
+                      <div className="flex items-center justify-center text-gray-400 shrink-0 mt-1">
                         {benefit.icon}
                       </div>
                       <div>
-                        <p className="text-card-title text-base text-gray-900 mb-1 group-hover:text-[#E53935] transition-colors duration-300">
+                        <p className="text-card-title text-base text-gray-900 mb-1 duration-300">
                           {benefit.title}
                         </p>
-                        <p className="text-body-sm text-gray-500 group-hover:text-gray-600 transition-colors duration-300">
+                        <p className="text-body-sm text-gray-500">
                           {benefit.detail}
                         </p>
                       </div>
@@ -327,7 +319,7 @@ export default function EquipmentsPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url("/verif.png")`, backgroundAttachment: 'fixed' }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/90 to-ink/90" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
@@ -336,9 +328,11 @@ export default function EquipmentsPage() {
             viewport={{ once: true }}
             className="inline-block mb-4"
           >
-            <p className="text-label text-white px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
+            <p className="text-label text-white flex items-center gap-3 justify-center">
+              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
               <Shield size={16} />
               Upgrade Your Site
+              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
             </p>
           </motion.div>
 
@@ -347,9 +341,9 @@ export default function EquipmentsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6"
+            className="text-section-heading text-white mb-6"
           >
-            Ready to <span className="text-[#E53935]">get started</span>?
+            Ready to get started?
           </motion.h2>
 
           <motion.p
@@ -368,45 +362,35 @@ export default function EquipmentsPage() {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            <Link
-              href="/contact#contact-form"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white text-btn text-base rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md group"
-            >
+            <Button href="/contact#contact-form" variant="primary" size="lg">
               Request Quote
-              <ArrowRight size={18} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
-            </Link>
+            </Button>
           </motion.div>
         </div>
       </section>
 
       {/* ─── PROJECT ENQUIRY ──────────────────────────────────────── */}
-      <section id="project-form" className="relative w-full bg-slate-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
-        <div className="absolute bottom-20 left-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl" />
+      <section id="project-form" className="relative w-full bg-neutral py-20 sm:py-24 lg:py-32 overflow-hidden">
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
 
             {/* Left col */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="flex flex-col gap-6"
             >
               <div>
-                <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-red-50 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E53935]" />
-                  <p className="text-label text-[#E53935] flex items-center gap-2">
-                    <FileText size={14} />
-                    Enquire Now
-                  </p>
+                <div className="flex items-center gap-3 mb-4">
+                  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                  <p className="text-label text-gray-500">Enquire Now</p>
                 </div>
-                <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-3">
-                  Tell us about <span className="text-[#E53935]">your project</span>
+                <h2 className="text-section-heading  text-gray-900 mb-3">
+                  Tell us about your project
                 </h2>
-                <div className="w-12 h-1 bg-[#E53935] rounded-full mb-4" />
                 <p className="text-subheading text-gray-600 max-w-lg">
                   Share your fire safety needs and we&apos;ll recommend the right equipment and send you a tailored quote within 24 hours.
                 </p>
@@ -419,7 +403,7 @@ export default function EquipmentsPage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-body-sm text-gray-500 flex items-center gap-2"
               >
-                <Clock size={16} className="text-[#E53935] shrink-0" />
+                <Clock size={16} className="text-[#D62828] shrink-0" />
                 We respond within 24 hours with a full proposal.
               </motion.p>
 
@@ -429,11 +413,10 @@ export default function EquipmentsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="group relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-[#E53935]/30 transition-all duration-300 overflow-hidden"
+                className="group relative bg-white border border-gray-100 rounded-md p-6 hover:border-[#D62828]/40 transition-colors duration-200 overflow-hidden"
                 style={{ borderWidth: '1px' }}
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#E53935] rounded-l-2xl transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
-                <h4 className="text-card-title text-base text-gray-900 mb-4 group-hover:text-[#E53935] transition-colors duration-300">Our Commitment</h4>
+                <h4 className="text-card-title text-base text-gray-900 mb-4 duration-300">Our Commitment</h4>
                 <ul className="space-y-3">
                   {[
                     { step: '01', text: 'Expert Product Selection' },
@@ -442,13 +425,13 @@ export default function EquipmentsPage() {
                   ].map((item, i) => (
                     <motion.li
                       key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
                       className="flex items-center gap-3"
                     >
-                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#E53935]/10 text-[#E53935] text-xs font-black shrink-0">
+                      <span className="w-7 shrink-0 text-base font-bold text-gray-400 tabular-nums">
                         {item.step}
                       </span>
                       <span className="text-body-sm text-gray-600">{item.text}</span>
@@ -460,18 +443,17 @@ export default function EquipmentsPage() {
 
             {/* Right col: Form — identical pattern to Contact.tsx */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
               <form
                 onSubmit={handleSubmit}
-                className="space-y-6 bg-white p-6 sm:p-8 lg:p-10 rounded-2xl border border-gray-100 shadow-xl relative overflow-hidden"
+                className="space-y-6 bg-white p-6 sm:p-8 lg:p-10 rounded-md border border-gray-200 relative"
                 style={{ borderWidth: '1px' }}
               >
                 {/* Gradient top accent */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#FF4D4D] via-[#E53935] to-[#FF4D4D]" />
 
                 {/* Name & Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -559,16 +541,14 @@ export default function EquipmentsPage() {
                 </div>
 
                 {/* Submit */}
-                <motion.button
-                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                <Button
                   type="submit"
+                  loading={isSubmitting}
                   disabled={isSubmitting}
-                  className="w-full px-8 py-3.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white text-btn text-base rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 shadow-md inline-flex items-center justify-center gap-2 group disabled:cursor-not-allowed disabled:opacity-80"
+                  className="w-full"
                 >
                   {isSubmitting ? 'Sending...' : 'Request a Quote'}
-                  <ArrowRight size={18} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
-                </motion.button>
+                </Button>
 
                 {/* Error */}
                 {error && (

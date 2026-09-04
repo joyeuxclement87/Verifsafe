@@ -1,131 +1,88 @@
 'use client';
 
-import { useRef } from 'react';
-import Link from 'next/link';
-import { FileText, ArrowRight, Shield } from 'tabler-icons-react';
-import { motion, useScroll, useTransform, Variants } from 'framer-motion';
+import Button from '@/components/ui/Button';
 
 export default function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-
-  // Content animation variants
-  const fadeIn: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (custom: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: custom * 0.2, duration: 0.8, ease: "easeOut" }
-    })
-  };
-
   return (
-    <section ref={containerRef} className="relative w-full h-screen flex items-start justify-center overflow-hidden pt-50 sm:pt-40">
-      {/* Background Image - Subtle Parallax */}
-      <motion.div
-        className="absolute -inset-x-0 -top-[10%] -bottom-[10%] bg-cover bg-center"
-        style={{
-          backgroundImage: `url("/hero2.jpg")`,
-          y
-        }}
+    <section className="relative w-full min-h-svh flex items-center overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url("/hero2.jpg")` }}
       />
-      
-      {/* Dark Overlay with Gradient */}
-      <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/80 to-gray-950/60" />
 
-      {/* Background Glow Effects */}
-      <div className="absolute top-1/2 -translate-y-1/2 -left-48 w-96 h-96 bg-red-600/10 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute top-1/2 -translate-y-1/2 -right-48 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
+      {/* Controlled overlay — strongest behind the content, right side stays visible */}
+      <div className="absolute inset-0 bg-ink/60" />
+      <div className="absolute inset-0 bg-linear-to-r from-ink/85 via-ink/45 to-transparent" />
 
       {/* Content Container */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center">
-          
-          {/* Section Label */}
-          <motion.div 
-            custom={0}
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="inline-block mb-4"
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl flex flex-col items-start py-20 sm:py-24">
+
+          {/* Eyebrow / Context Label */}
+          <p
+            className="hero-enter mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-white/60"
+            style={{ animationDelay: '0.05s' }}
           >
-            <div className="text-label text-white px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2">
-              <Shield size={16} strokeWidth={1.5} />
-              Premium fire safety solutions
-            </div>
-          </motion.div>
+            Fire Protection &middot; Rwanda
+          </p>
 
           {/* Main Headline */}
-          <motion.h1
-            custom={1}
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="text-section-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white mb-3 sm:mb-5 tracking-wider"
+          <h1
+            className="hero-enter text-hero-heading text-white"
+            style={{ fontWeight: 700, animationDelay: '0.15s' }}
           >
-            Absolute <span className="text-[#E53935]">Fire Protection</span><br />
-            You Can Trust
-          </motion.h1>
+            Protect What
+            <br />
+            Matters Most.
+          </h1>
 
-          {/* Subheadline */}
-          <motion.p
-            custom={2}
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="text-subheading text-gray-200 mb-7 sm:mb-9 max-w-2xl"
+          {/* Supporting Copy */}
+          <p
+            className="hero-enter text-subheading text-gray-300 mt-6 max-w-xl"
+            style={{ animationDelay: '0.3s' }}
           >
-            State-of-the-art detection and suppression technology for industrial-scale safety. We safeguard high-risk environments with precision engineering.
-          </motion.p>
+            We supply, install, inspect, and maintain fire protection systems and certified
+            safety equipment for businesses and buildings across Rwanda.
+          </p>
 
-          {/* Buttons Container */}
-          <motion.div 
-            custom={3}
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
+          {/* Call to Action */}
+          <div
+            className="hero-enter mt-9 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5"
+            style={{ animationDelay: '0.45s' }}
           >
-            {/* Primary Button */}
-            <Link
+            <Button
               href="/contact#contact-form"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md rounded-lg capitalize tracking-wide"
-             
+              variant="primary"
+              size="lg"
+              className="self-start"
             >
-              <FileText size={16} strokeWidth={1} />
-              Request Inspection
-            </Link>
+              Request a Fire Safety Inspection
+            </Button>
 
-            {/* Secondary Button */}
-            <Link
+            <Button
               href="/equipments"
-              className="inline-flex items-center gap-2 px-8 py-3 border border-white/30 text-white font-medium text-base transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-lg bg-white/20 backdrop-blur-sm capitalize tracking-wide"
-             
+              variant="secondary"
+              size="lg"
+              className="self-start sm:self-auto"
             >
-              Explore Systems
-              <ArrowRight size={16} strokeWidth={1.5} />
-            </Link>
-          </motion.div>
+              Explore Solutions
+            </Button>
+          </div>
 
-          {/* Decorative Accent Line */}
-          <motion.div 
-            custom={4}
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="mt-8 sm:mt-10 flex items-center gap-4 text-white/80"
+          {/* Proof Line */}
+          <div
+            className="hero-enter mt-14 w-full max-w-xl border-t border-white/15 pt-6"
+            style={{ animationDelay: '0.6s' }}
           >
-            <div className="h-1 w-8 bg-gradient-to-r from-[#E53935] to-transparent" />
-            <span className="text-xs sm:text-sm font-bold tracking-widest capitalize">
-              Certified & Trusted
-            </span>
-            <div className="h-1 w-8 bg-gradient-to-l from-[#E53935] to-transparent" />
-          </motion.div>
+            <ul className="flex flex-wrap items-center gap-x-2.5 gap-y-2 text-sm text-gray-400">
+              <li>Certified equipment</li>
+              <li aria-hidden="true" className="text-white/25">&middot;</li>
+              <li>Professional installation</li>
+              <li aria-hidden="true" className="text-white/25">&middot;</li>
+              <li>Inspection &amp; maintenance</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

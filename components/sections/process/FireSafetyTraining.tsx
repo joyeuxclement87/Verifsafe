@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
-import { Flame, Tool, Bolt, Walk, School } from 'tabler-icons-react';
+import { Flame, Tool, Bolt, Walk } from 'tabler-icons-react';
+import Button from '@/components/ui/Button';
 
 export default function FireSafetyTraining() {
   const trainingPoints = [
@@ -29,130 +29,64 @@ export default function FireSafetyTraining() {
 
   const renderIcon = (iconName: string) => {
     switch(iconName) {
-      case 'fire': return <Flame size={24} className="text-[#E53935]" />;
-      case 'extinguisher': return <Tool size={24} className="text-[#E53935]" />;
-      case 'bolt': return <Bolt size={24} className="text-[#E53935]" />;
-      case 'walk': return <Walk size={24} className="text-[#E53935]" />;
+      case 'fire': return <Flame size={24} className="text-[#D62828]" />;
+      case 'extinguisher': return <Tool size={24} className="text-[#D62828]" />;
+      case 'bolt': return <Bolt size={24} className="text-[#D62828]" />;
+      case 'walk': return <Walk size={24} className="text-[#D62828]" />;
       default: return null;
     }
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-white to-gray-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden\">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-red-100/20 rounded-full blur-3xl opacity-20" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-yellow-100/20 rounded-full blur-3xl opacity-20" />
+    <section className="w-full bg-white py-20 sm:py-24 lg:py-32">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center mb-20">
-          {/* Section Label */}
-          <div className="inline-block mb-4">
-            <p
-              className="text-[#E53935] text-sm sm:text-base font-bold tracking-widest capitalize px-4 py-2 bg-red-50 rounded-full flex items-center gap-2"
-             
-            >
-              <School size={16} />
+        <div className="mb-12 sm:mb-16">
+          <div className="flex items-center gap-3 mb-5">
+            <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
               Education & Training
             </p>
           </div>
 
-          {/* Main Heading */}
-          <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight"
-           
-          >
-            Fire Safety <span className="text-[#E53935]">Training</span>
+          <h2 className="text-section-heading text-gray-900">
+            Fire Safety Training
           </h2>
 
-          {/* Subheading */}
-          <p
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed"
-           
-          >
+          <p className="text-subheading text-gray-600 mt-6 max-w-2xl">
             Our fire safety training programs equip individuals and teams with the knowledge and confidence to respond effectively during emergencies.
           </p>
         </div>
 
-        {/* Training Points Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {trainingPoints.map((point, index) => (
             <div
               key={index}
-              className="group relative"
+              className="border-t border-gray-200 pt-8"
             >
-              {/* Card */}
-              <div
-                className="bg-white border border-gray-200 rounded-xl p-8 sm:p-6 hover:border-[#E53935]/30 hover:shadow-lg hover:scale-105 transition-all duration-300 h-full relative overflow-hidden"
-                style={{ borderWidth: '1px' }}
-              >
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Icon Container */}
-                <div className="mb-4">
-                  <div className="relative inline-block">
-                    <div className="relative bg-gradient-to-br from-[#E53935]/10 to-red-600/10 p-3 rounded-lg">
-                      {renderIcon(point.iconName)}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3
-                  className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-[#E53935] transition-colors duration-300 mb-2 leading-snug"
-                 
-                >
-                  {point.title}
-                </h3>
-
-                {/* Description */}
-                <p
-                  className="text-sm text-gray-600 leading-relaxed font-normal"
-                 
-                >
-                  {point.description}
-                </p>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E53935] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="mb-4">
+                {renderIcon(point.iconName)}
               </div>
+
+              <h3 className="text-card-title text-gray-900 mb-2">
+                {point.title}
+              </h3>
+
+              <p className="text-body-sm text-gray-600">
+                {point.description}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Key Message Box */}
-        <div className="relative mb-12">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#E53935]/5 to-red-600/5 rounded-2xl" />
-          
-          <div className="relative bg-white border border-gray-200 rounded-2xl p-8 sm:p-10 text-center hover:border-[#E53935]/30 hover:shadow-lg transition-all duration-300"
-            style={{ borderWidth: '1px', opacity: 0.95 }}
-          >
-            <p
-              className="text-xl sm:text-2xl font-bold text-gray-900 leading-relaxed"
-             
-            >
-              Training is <span className="text-[#E53935]">practical, easy to understand</span>, and designed for <span className="text-[#E53935]">real-life situations</span>.
-            </p>
-          </div>
-        </div>
+        <p className="text-subheading text-gray-700 max-w-3xl border-l-2 border-[#D62828] pl-6 mb-12">
+          Training is practical, easy to understand, and designed for real-life situations.
+        </p>
 
-        {/* CTA Button */}
-        <div className="flex justify-center">
-          <Link
-            href="/contact#contact-form"
-            className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md inline-flex items-center gap-3 group"
-           
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m0 0h6m-6-6h6m-6 6h6" />
-            </svg>
+        <div>
+          <Button href="/contact#contact-form">
             Book Training Session
-            <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

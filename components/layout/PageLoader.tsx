@@ -56,7 +56,7 @@ export default function PageLoader() {
       `}</style>
 
       <div
-        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gray-950"
+        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-ink"
         style={{ transition: 'opacity 0.5s ease', opacity: phase === 'fadeout' ? 0 : 1, pointerEvents: phase === 'fadeout' ? 'none' : 'all' }}
       >
         {/* ── Centre group ── */}
@@ -70,7 +70,7 @@ export default function PageLoader() {
                 className="absolute left-0 right-0"
                 style={{
                   height: '1px',
-                  background: 'linear-gradient(90deg, transparent, #E53935 40%, #E53935 60%, transparent)',
+                  background: 'linear-gradient(90deg, transparent, #D62828 40%, #D62828 60%, transparent)',
                   opacity: 0.7,
                   animation: `scan-line ${SCAN_DURATION}s ease-in-out forwards`,
                 }}
@@ -97,7 +97,7 @@ export default function PageLoader() {
                 {/* Dot */}
                 <div
                   className="w-1 h-1 rounded-full shrink-0 transition-all duration-400"
-                  style={{ background: scanPass > i ? '#E53935' : 'rgba(229,57,53,0.2)' }}
+                  style={{ background: scanPass > i ? '#D62828' : 'rgba(229,57,53,0.2)' }}
                 />
                 {/* Text */}
                 <span
@@ -117,7 +117,7 @@ export default function PageLoader() {
           {/* Progress bar */}
           <div className="w-full h-px bg-white/5 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#E53935] rounded-full transition-all duration-700 ease-out"
+              className="h-full bg-[#D62828] rounded-full transition-all duration-700 ease-out"
               style={{ width: `${(scanPass / SCAN_COUNT) * 100}%` }}
             />
           </div>
@@ -126,11 +126,11 @@ export default function PageLoader() {
           <div className="h-7 mt-5 flex items-center">
             {showSecured && (
               <span
-                className="text-[11px] tracking-[0.2em] capitalize text-[#E53935] flex items-center gap-2"
+                className="text-[11px] tracking-[0.2em] capitalize text-[#D62828] flex items-center gap-2"
                 style={{ animation: 'fade-up 0.4s ease-out forwards' }}
               >
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                  <path d="M1.5 5L4 7.5L8.5 2.5" stroke="#E53935" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M1.5 5L4 7.5L8.5 2.5" stroke="#D62828" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 System Secured
               </span>

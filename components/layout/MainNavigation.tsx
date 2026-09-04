@@ -1,268 +1,396 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, FileText } from 'tabler-icons-react';
+import { ChevronDown } from 'tabler-icons-react';
+import Button from '@/components/ui/Button';
+
+const equipmentItems = [
+  {
+    title: 'Fire Extinguishers',
+    description: 'Certified portable suppression for specific classes of fire.',
+    link: '/equipments/fire-extinguishers'
+  },
+  {
+    title: 'Fire Alarm Systems',
+    description: 'Networked sensors and control panels for early warning and evacuation.',
+    link: '/equipments/fire-alarm-systems'
+  },
+  {
+    title: 'Fire Hose Reels',
+    description: 'High-pressure water delivery for commercial and industrial sites.',
+    link: '/equipments/fire-hose-reels'
+  },
+  {
+    title: 'Fire Detection Devices',
+    description: 'Precision smoke, heat, and flame sensors for the earliest detection.',
+    link: '/equipments/fire-detection-devices'
+  },
+  {
+    title: 'Emergency Lights & Exit Signs',
+    description: 'Backup illumination and exit signage for safe evacuation.',
+    link: '/equipments/emergency-lights'
+  },
+  {
+    title: 'Fire Safety Accessories',
+    description: 'Cabinets, blankets, and signage to support safety infrastructure.',
+    link: '/equipments/fire-safety-accessories'
+  }
+];
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/equipments', label: 'Equipment', hasDropdown: true },
+  { href: '/about', label: 'About' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/contact', label: 'Contact' }
+];
+
+const focusClasses =
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D62828]';
 
 export default function MainNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [openPathname, setOpenPathname] = useState<string | null>(null);
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
+  const dropdownTriggerRef = useRef<HTMLButtonElement>(null);
+  const dropdownPanelRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  const services = [
-    { title: 'Fire Equipment Supply', description: 'Certified fire safety equipment for reliable protection.' },
-    { title: 'Installation Services', description: 'Professional installation of fire safety systems.' },
-    { title: 'Inspection & Testing', description: 'Ensuring fire protection equipment works properly.' },
-    { title: 'Fire Extinguisher Refilling', description: 'Refilling and servicing extinguishers.' },
-    { title: 'Maintenance Services', description: 'Regular maintenance for reliable systems.' },
-    { title: 'Fire Safety Training', description: 'Comprehensive training for emergency preparedness.' }
-  ];
+  // Menus are only visible on the route where they were opened, so a route
+  // change (including back/forward navigation) closes them automatically.
+  const mobileMenuOpen = isOpen && openPathname === pathname;
+  const dropdownOpen = activeDropdown !== null && openPathname === pathname ? activeDropdown : null;
 
-  const equipments = [
-    { title: 'Fire Extinguishers', description: 'Portable firefighting equipment for small fires.', link: '/equipments/fire-extinguishers' },
-    { title: 'Fire Alarm Systems', description: 'Detection systems that alert occupants.', link: '/equipments/fire-alarm-systems' },
-    { title: 'Fire Hose Reels', description: 'Water supply equipment for firefighting.', link: '/equipments/fire-hose-reels' },
-    { title: 'Fire Detection Devices', description: 'Smoke and heat detectors for early detection.', link: '/equipments/fire-detection-devices' },
-    { title: 'Emergency Lights & Exit Signs', description: 'Lighting systems guiding to safety.', link: '/equipments/emergency-lights' },
-    { title: 'Fire Safety Accessories', description: 'Additional equipment supporting fire protection.', link: '/equipments/fire-safety-accessories' }
-  ];
+  // Global: Escape closes and restores focus, click outside closes
+  useEffect(() => {
+    if (!isOpen && !activeDropdown) return;
 
-  const navLinks = [
-    { href: '/', label: 'HOME' },
-    { href: '/about', label: 'ABOUT' },
-    { href: '/services', label: 'SERVICES', hasDropdown: false },
-    { href: '/equipments', label: 'EQUIPMENTS', hasDropdown: true },
-    { href: '/gallery', label: 'GALLERY' },
-    { href: '/contact', label: 'CONTACT' },
-  ];
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      if (dropdownOpen) {
+        setActiveDropdown(null);
+        dropdownTriggerRef.current?.focus();
+      } else if (mobileMenuOpen) {
+        setIsOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    const onClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('click', onClickOutside);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('click', onClickOutside);
+    };
+  }, [isOpen, activeDropdown, dropdownOpen, mobileMenuOpen]);
+
+  // Lock body scroll while the mobile menu is visible
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [mobileMenuOpen]);
+
+  // Close the mobile menu if the viewport grows to desktop width
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const media = window.matchMedia('(min-width: 1024px)');
+    const closeOnDesktop = () => setIsOpen(false);
+    media.addEventListener('change', closeOnDesktop);
+    return () => media.removeEventListener('change', closeOnDesktop);
+  }, [mobileMenuOpen]);
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
     return pathname.startsWith(href);
   };
 
+  const closeAll = () => {
+    setIsOpen(false);
+    setActiveDropdown(null);
+  };
+
+  const handleTriggerKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setOpenPathname(pathname);
+      setActiveDropdown('Equipment');
+      requestAnimationFrame(() => {
+        dropdownPanelRef.current?.querySelector<HTMLAnchorElement>('a')?.focus();
+      });
+    }
+  };
+
+  const handleDropdownKeyDown = (e: React.KeyboardEvent) => {
+    const links = Array.from(dropdownPanelRef.current?.querySelectorAll<HTMLAnchorElement>('a') ?? []);
+    const currentIndex = links.indexOf(document.activeElement as HTMLAnchorElement);
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      links[Math.min(currentIndex + 1, links.length - 1)]?.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      links[Math.max(currentIndex - 1, 0)]?.focus();
+    }
+  };
+
+  const handleDropdownBlur = (e: React.FocusEvent) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setActiveDropdown(null);
+    }
+  };
+
+  const ActiveIndicator = () => (
+    <span aria-hidden="true" className="absolute left-1/2 -translate-x-1/2 -bottom-0.5 h-[2px] w-5 bg-[#D62828]" />
+  );
+
   return (
-    <>
-      {/* Main Navigation Bar */}
-      <nav className="fixed top-12 left-0 right-0 bg-[#0F172A] z-40 shadow-md border-b-2 border-[#E53935]">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-28 flex items-center justify-between">
-          
-          {/* Logo Section */}
-          <Link href="/" className="shrink-0 flex items-center">
-            <div className="relative w-44 h-44">
-              <Image
-                src="/logo.png"
-                alt="Verifsafe Logo"
-                fill
-                sizes="110px"
-                priority
-                className="object-contain"
-              />
-            </div>
-          </Link>
+    <nav ref={navRef} aria-label="Main navigation" className="fixed top-12 left-0 right-0 z-40 bg-[#111111] border-b-2 border-[#D62828]">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <div
-                key={link.href}
-                className="relative"
-                onMouseEnter={() => link.hasDropdown && setActiveDropdown(link.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link
-                  href={link.href}
-                  className={`font-bold text-sm tracking-wide transition-all duration-300 pb-2 border-b-2 flex items-center gap-1 ${
-                    isActive(link.href)
-                      ? 'text-[#E53935] border-[#E53935]'
-                      : 'text-gray-300 border-transparent hover:text-[#E53935] hover:border-[#E53935]'
-                    }`}
-                   
+        {/* Logo */}
+        <Link href="/" aria-label="Verifsafe — Home" onClick={closeAll} className="shrink-0 flex items-center">
+          <Image
+            src="/logo.png"
+            alt="Verifsafe"
+            width={124}
+            height={40}
+            priority
+            className="h-10 w-auto object-contain"
+          />
+        </Link>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden lg:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <li key={link.href} className="relative">
+              {link.hasDropdown ? (
+                <div
+                  className="relative"
+                  onMouseEnter={() => {
+                    setOpenPathname(pathname);
+                    setActiveDropdown(link.label);
+                  }}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                  onBlur={handleDropdownBlur}
                 >
-                  {link.label}
-                  {link.hasDropdown && (
-                    <ChevronDown size={12} strokeWidth={1} className={`transition-transform duration-300 ${activeDropdown === link.label ? 'rotate-180' : ''}`} />
-                  )}
-                </Link>
+                  <button
+                    ref={dropdownTriggerRef}
+                    type="button"
+                    onClick={() => {
+                      setOpenPathname(pathname);
+                      setActiveDropdown(activeDropdown === link.label ? null : link.label);
+                    }}
+                    onKeyDown={handleTriggerKeyDown}
+                    aria-expanded={dropdownOpen === link.label}
+                    aria-haspopup="true"
+                    aria-controls="equipment-dropdown"
+                    className={`relative inline-flex items-center gap-1.5 py-0.5 text-sm font-medium transition-colors duration-200 ${isActive(link.href) ? 'text-white' : 'text-gray-300 hover:text-white'
+                      } ${focusClasses}`}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={13}
+                      strokeWidth={2}
+                      className={`transition-transform duration-200 ${dropdownOpen === link.label ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  {isActive(link.href) && <ActiveIndicator />}
 
-                {/* Dropdown Menu */}
-                {link.hasDropdown && activeDropdown === link.label && (
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-0 bg-[#0F172A] border border-[#E53935] rounded-lg shadow-lg py-3 px-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200" style={{ width: '680px', marginTop: '-8px', paddingTop: '16px' }}>
-                    <div className="grid grid-cols-3 gap-2">
-                      {link.label === 'SERVICES' ? (
-                        services.map((service, idx) => (
-                          <Link
-                            key={idx}
-                            href="/services"
-                            onClick={() => setActiveDropdown(null)}
-                            className="px-4 py-3 text-gray-300 hover:text-[#E53935] hover:bg-gray-700 rounded-lg transition-all duration-200 text-sm font-semibold cursor-pointer block"
-                          >
-                            {service.title}
-                          </Link>
-                        ))
-                      ) : (
-                        equipments.map((equipment, idx) => (
-                          <Link
-                            key={idx}
-                            href={equipment.link}
-                            onClick={() => setActiveDropdown(null)}
-                            className="px-4 py-3 text-gray-300 hover:text-[#E53935] hover:bg-gray-700 rounded-lg transition-all duration-200 text-sm font-semibold cursor-pointer block"
-                          >
-                            {equipment.title}
-                          </Link>
-                        ))
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Right Section: CTA Button and Mobile Menu */}
-          <div className="flex items-center gap-4">
-            {/* CTA Button - Desktop */}
-            <Link
-              href="/contact#contact-form"
-              className="hidden sm:inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md rounded-lg"
-             
-            >
-              <FileText size={16} strokeWidth={1} />
-              Get a Quote
-            </Link>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden relative w-10 h-10 flex flex-col justify-center items-center rounded-lg text-[#E53935] hover:bg-[#E53935]/10 transition-all focus:outline-none"
-              aria-expanded={isOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              <div className="relative w-6 h-4">
-                <span 
-                  className={`absolute left-0 right-0 h-0.5 bg-[#E53935] rounded-full transition-all duration-300 ease-in-out ${
-                    isOpen ? 'top-[7px] rotate-45' : 'top-0'
-                  }`} 
-                />
-                <span 
-                  className={`absolute left-0 right-0 h-0.5 bg-[#E53935] rounded-full transition-all duration-300 ease-in-out ${
-                    isOpen ? 'opacity-0 scale-x-0' : 'top-[7px] w-4'
-                  }`} 
-                />
-                <span 
-                  className={`absolute left-0 right-0 h-0.5 bg-[#E53935] rounded-full transition-all duration-300 ease-in-out ${
-                    isOpen ? 'top-[7px] -rotate-45' : 'top-[14px]'
-                  }`} 
-                />
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-[#0F172A] border-t border-[#E53935] shadow-md max-h-screen overflow-y-auto">
-            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-2">
-              {navLinks.map((link) => (
-                <div key={link.href}>
-                  {link.hasDropdown ? (
-                    <>
-                    {/* Row: Link to page + separate chevron button for dropdown */}
-                    <div className={`flex items-center rounded-md overflow-hidden ${
-                      activeDropdown === link.label ? 'bg-[#E53935]/20' : ''
-                    }`}>
-                      <Link
-                        href={link.href}
-                        className={`flex-1 px-4 py-3 font-bold text-sm transition-all duration-300 ${
-                          isActive(link.href)
-                            ? 'text-[#E53935]'
-                            : 'text-gray-300 hover:text-[#E53935]'
-                        }`}
-                       
-                        onClick={() => setIsOpen(false)}
+                  {dropdownOpen === link.label && (
+                    <div id="equipment-dropdown" className="nav-dropdown-enter absolute left-0 top-full pt-3">
+                      <div
+                        ref={dropdownPanelRef}
+                        onKeyDown={handleDropdownKeyDown}
+                        className="w-[34rem] max-w-[calc(100vw-2rem)] rounded-lg border border-white/10 bg-[#111111] p-4 shadow-xl shadow-black/30"
                       >
-                        {link.label}
-                      </Link>
-                      <button
-                        onClick={() => setActiveDropdown(activeDropdown === link.label ? null : link.label)}
-                        className={`px-3 py-3 transition-all duration-300 hover:text-[#E53935] ${
-                          activeDropdown === link.label ? 'text-[#E53935]' : 'text-gray-300'
-                        }`}
-                      >
-                        <ChevronDown 
-                          size={14}
-                          strokeWidth={1.5}
-                          className={`transition-transform duration-300 ${activeDropdown === link.label ? 'rotate-180' : ''}`}
-                        />
-                      </button>
-                    </div>
-                    {activeDropdown === link.label && (
-                      <div className="bg-[#0F172A] rounded-lg ml-2 mt-2 p-1 border border-gray-700">
-                        <div className="grid grid-cols-2 gap-1">
-                          {link.label === 'SERVICES' ? (
-                            services.map((service, idx) => (
-                              <Link
-                                key={idx}
-                                href="/services"
-                                onClick={() => {
-                                  setIsOpen(false);
-                                  setActiveDropdown(null);
-                                }}
-                                className="px-4 py-3 text-gray-300 hover:text-[#E53935] hover:bg-gray-700 rounded-lg transition-all duration-200 text-xs font-semibold cursor-pointer block"
-                              >
-                                {service.title}
-                              </Link>
-                            ))
-                          ) : (
-                            equipments.map((equipment, idx) => (
-                              <Link
-                                key={idx}
-                                href={equipment.link}
-                                onClick={() => {
-                                  setIsOpen(false);
-                                  setActiveDropdown(null);
-                                }}
-                                className="px-4 py-3 text-gray-300 hover:text-[#E53935] hover:bg-gray-700 rounded-lg transition-all duration-200 text-xs font-semibold cursor-pointer block"
-                              >
-                                {equipment.title}
-                              </Link>
-                            ))
-                          )}
+                        <div className="grid grid-cols-2 gap-x-4">
+                          {equipmentItems.map((item) => (
+                            <Link
+                              key={item.link}
+                              href={item.link}
+                              onClick={closeAll}
+                              className={`group -mx-2 rounded-md px-2 py-2 hover:bg-white/5 transition-colors duration-150 ${focusClasses}`}
+                            >
+                              <span className="block text-sm font-medium text-gray-100 group-hover:text-white transition-colors duration-150">
+                                {item.title}
+                              </span>
+                              <span className="mt-0.5 block text-xs leading-relaxed text-gray-400">
+                                {item.description}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                        <div className="mt-3 border-t border-white/10 pt-3">
+                          <Link
+                            href="/equipments"
+                            onClick={closeAll}
+                            className={`inline-flex items-center text-sm font-semibold text-[#D62828] hover:text-white transition-colors duration-150 ${focusClasses}`}
+                          >
+                            View All Equipment
+                          </Link>
                         </div>
                       </div>
-                    )}
-                  </>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  href={link.href}
+                  onClick={closeAll}
+                  className={`relative inline-block py-0.5 text-sm font-medium transition-colors duration-200 ${isActive(link.href) ? 'text-white' : 'text-gray-300 hover:text-white'
+                    } ${focusClasses}`}
+                >
+                  {link.label}
+                  {isActive(link.href) && <ActiveIndicator />}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        {/* Right Section: CTA and Mobile Menu Trigger */}
+        <div className="flex items-center gap-3">
+          {/* Primary CTA — Desktop only */}
+          <div className="hidden lg:block">
+            <Button
+              href="/contact#contact-form"
+              size="sm"
+              icon={null}
+            >
+              Request a Quote
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            ref={menuButtonRef}
+            type="button"
+            onClick={() => {
+              setOpenPathname(pathname);
+              setIsOpen(!isOpen);
+            }}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? 'Close main menu' : 'Open main menu'}
+            className={`lg:hidden relative w-10 h-10 flex flex-col justify-center items-center text-[#D62828] hover:bg-white/5 rounded-md transition-colors ${focusClasses}`}
+          >
+            <span className="sr-only">{mobileMenuOpen ? 'Close main menu' : 'Open main menu'}</span>
+            <div className="relative w-6 h-4">
+              <span
+                className={`absolute left-0 right-0 h-0.5 bg-[#D62828] rounded-full transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'top-[7px] rotate-45' : 'top-0'
+                  }`}
+              />
+              <span
+                className={`absolute left-0 right-0 h-0.5 bg-[#D62828] rounded-full transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'opacity-0 scale-x-0' : 'top-[7px] w-4'
+                  }`}
+              />
+              <span
+                className={`absolute left-0 right-0 h-0.5 bg-[#D62828] rounded-full transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'top-[7px] -rotate-45' : 'top-[14px]'
+                  }`}
+              />
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div
+          id="mobile-menu"
+          className="nav-dropdown-enter lg:hidden absolute top-full left-0 right-0 bg-[#111111] border-t border-white/10 max-h-[calc(100dvh-8rem)] overflow-y-auto"
+        >
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <ul className="space-y-1">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  {link.hasDropdown ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setOpenPathname(pathname);
+                          setActiveDropdown(activeDropdown === link.label ? null : link.label);
+                        }}
+                        aria-expanded={dropdownOpen === link.label}
+                        aria-controls="mobile-equipment-menu"
+                        className={`w-full flex items-center justify-between px-2 py-3 text-sm font-medium transition-colors duration-200 ${dropdownOpen === link.label ? 'text-white' : 'text-gray-300'
+                          } ${focusClasses}`}
+                      >
+                        {link.label}
+                        <ChevronDown
+                          size={15}
+                          strokeWidth={2}
+                          className={`transition-transform duration-200 ${dropdownOpen === link.label ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                      {dropdownOpen === link.label && (
+                        <ul id="mobile-equipment-menu" className="ml-3 pl-4 border-l border-white/10 space-y-1">
+                          {equipmentItems.map((item) => (
+                            <li key={item.link}>
+                              <Link
+                                href={item.link}
+                                onClick={closeAll}
+                                className={`block px-2 py-3 text-sm text-gray-400 hover:text-white transition-colors duration-200 ${focusClasses}`}
+                              >
+                                {item.title}
+                              </Link>
+                            </li>
+                          ))}
+                          <li>
+                            <Link
+                              href="/equipments"
+                              onClick={closeAll}
+                              className={`block px-2 py-3 text-sm font-semibold text-[#D62828] hover:text-white transition-colors duration-200 ${focusClasses}`}
+                            >
+                              View All Equipment
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </>
                   ) : (
                     <Link
                       href={link.href}
-                      className={`block px-4 py-3 font-bold text-sm transition-all duration-300 rounded-md ${
-                        isActive(link.href)
-                          ? 'bg-[#E53935]/20 text-[#E53935]'
-                          : 'text-gray-300 hover:bg-gray-700 hover:text-[#E53935]'
-                      }`}
-                     
-                      onClick={() => setIsOpen(false)}
+                      onClick={closeAll}
+                      className={`block px-2 py-3 text-sm font-medium transition-colors duration-200 ${isActive(link.href) ? 'text-[#D62828]' : 'text-gray-300 hover:text-white'
+                        } ${focusClasses}`}
                     >
                       {link.label}
                     </Link>
                   )}
-                </div>
+                </li>
               ))}
-              <Link
+            </ul>
+
+            {/* Primary CTA — bottom of the menu */}
+            <div className="mt-4 border-t border-white/10 pt-4">
+              <Button
                 href="/contact#contact-form"
-                className="flex items-center justify-center gap-2 w-full mt-4 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 shadow-md rounded-lg"
-               
-                onClick={() => setIsOpen(false)}
+                onClick={closeAll}
+                icon={null}
+                className="flex w-full"
               >
-                <FileText size={16} strokeWidth={1} />
-                Get a Quote
-              </Link>
+                Request a Quote
+              </Button>
             </div>
           </div>
-        )}
-      </nav>
-    </>
+        </div>
+      )}
+    </nav>
   );
 }

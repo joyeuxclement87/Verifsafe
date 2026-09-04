@@ -1,149 +1,108 @@
 'use client';
 
-import { CircleCheck, Shield, Clock, Award, Star } from 'tabler-icons-react';
-import { motion, Variants } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+
+const features = [
+  {
+    number: '01',
+    label: 'Certified equipment',
+    description:
+      'Extinguishers, alarm systems, hose reels, and safety accessories sourced from approved manufacturers and certified to required safety standards.',
+  },
+  {
+    number: '02',
+    label: 'Expert installation',
+    description:
+      'Licensed technicians install and configure fire alarm systems, detection devices, and safety equipment for reliable performance when it matters.',
+  },
+  {
+    number: '03',
+    label: 'Responsive support',
+    description:
+      'Urgent fire safety issues get attention fast — with 24/7 emergency support and response within 2 hours.',
+  },
+  {
+    number: '04',
+    label: 'Dependable over time',
+    description:
+      'Routine inspection, testing, maintenance, and refilling keep your protection compliant and ready year after year.',
+  },
+];
 
 export default function WhyChooseUs() {
-  const features = [
-    {
-      number: '01',
-      iconName: 'award',
-      label: 'Certified equipment',
-      description: 'We supply only the highest-rated fire safety equipment that rigorously meets international safety and compliance standards.'
-    },
-    {
-      number: '02',
-      iconName: 'shield',
-      label: 'Expert installation',
-      description: 'Our licensed technicians ensure precise, compliant installation for maximum reliability and structural safety when it matters most.'
-    },
-    {
-      number: '03',
-      iconName: 'clock',
-      label: '24/7 support',
-      description: 'Fire emergencies do not wait for business hours. Our dedicated rapid-response support team is available around the clock.'
-    },
-    {
-      number: '04',
-      iconName: 'check',
-      label: 'Quality assured',
-      description: 'Every system and product undergoes rigorous testing and continuous maintenance to guarantee flawless performance and durability.'
-    }
-  ];
-
-  // Animation variants
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.95, y: 20 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-
-  const renderIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'award': return <Award size={44} className="text-[#E53935]" strokeWidth={1} />;
-      case 'shield': return <Shield size={44} className="text-[#E53935]" strokeWidth={1} />;
-      case 'clock': return <Clock size={44} className="text-[#E53935]" strokeWidth={1} />;
-      case 'check': return <CircleCheck size={44} className="text-[#E53935]" strokeWidth={1} />;
-      default: return null;
-    }
-  };
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32 overflow-hidden">
-      {/* Main layout container with maximum width and horizontal centering */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section header sub-container for titles and summary text */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          {/* Wrapper for the advantage/USP highlighted badge */}
-          <div className="inline-block mb-4">
-            <p className="text-label text-[#E53935] px-4 py-2 bg-red-50 rounded-full flex items-center gap-2">
-              <Star size={16} />
-              Our Advantages
-            </p>
-          </div>
-
-          {/* Core heading for the "Why Choose Us" section */}
-          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900">
-            Why Choose{' '}
-            <span className="text-[#E53935]">Verifsafe</span>
-          </h2>
-
-          {/* Decorative centered divider line for visual separation */}
-          <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
-
-          {/* Paragraph detailing the value proposition summary */}
-          <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
-            Trusted protection backed by uncompromising quality, expert service, and strict international compliance.
-          </p>
-        </motion.div>
-
-        {/* Responsive grid for feature cards, using staggered entrance animations */}
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
-        >
-          {features.map((feature, index) => (
-            /* Individual feature card with interactive hover states and internal flex layout */
+    <section className="w-full bg-ink py-20 sm:py-24 lg:py-32">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,26rem)_1fr] gap-12 lg:gap-16 xl:gap-20 items-start">
+          {/* Intro */}
+          <div className="lg:sticky lg:top-24">
             <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group relative bg-white border border-gray-100 rounded-2xl p-8 hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden cursor-pointer"
-              style={{ borderWidth: '1px' }}
+              initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
             >
-              {/* Subtle top accent line visible on card hover */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              {/* Sub-container for the numerical index and illustrative icon */}
-              <div className="w-full flex justify-between items-start mb-6">
-                {/* Large decorative index number in the background of the card */}
-                <span className="text-6xl font-black text-gray-200 group-hover:text-[#E53935]/40 transition-colors duration-300 leading-none">
-                   {feature.number}
-                </span>
-                {/* Wrapper for the feature's primary illustrative icon */}
-                <div className="transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
-                  {renderIcon(feature.iconName)}
-                </div>
+              <div className="flex items-center gap-3 mb-5">
+                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+                  WHY VERIFSAFE
+                </p>
               </div>
 
-              {/* Specific advantage title heading */}
-              <h3 className="text-card-title text-xl text-gray-900 mb-4 group-hover:text-[#E53935] transition-colors duration-300">
-                {feature.label}
-              </h3>
+              <h2 className="text-section-heading text-white">
+                Serious protection, handled end to end.
+              </h2>
 
-              {/* Paragraph detailing the specific advantage scope and benefit */}
-              <p className="text-body text-gray-600">
-                {feature.description}
+              <p className="text-subheading text-gray-400 mt-6">
+                Practical fire protection delivered with certified equipment, skilled execution,
+                and consistent support.
               </p>
 
-              {/* Decorative bottom line that expands on hover for interaction feedback */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="mt-10 pt-8 border-t border-white/10">
+                <p className="text-body-sm text-gray-400">
+                  Serving Kigali and the entire Rwanda region.
+                </p>
+              </div>
             </motion.div>
-          ))}
-        </motion.div>
+          </div>
+
+          {/* Differentiators */}
+          <ol className="border-t border-white/10">
+            {features.map((feature, index) => (
+              <motion.li
+                key={feature.number}
+                initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.45, delay: index * 0.06, ease: 'easeOut' }}
+                className="group relative border-b border-white/10 transition-colors duration-200 hover:bg-white/[0.04] motion-reduce:transition-none"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 inset-y-0 w-0.5 bg-[#D62828] opacity-0 transition-opacity duration-200 group-hover:opacity-100 motion-reduce:transition-none"
+                />
+
+                <div className="flex items-start gap-6 px-4 sm:px-6 py-7 sm:py-9">
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 w-10 pt-1 text-base font-bold text-white/30 tabular-nums transition-colors duration-200 group-hover:text-[#D62828] motion-reduce:transition-none"
+                  >
+                    {feature.number}
+                  </span>
+
+                  <div>
+                    <h3 className="text-card-title text-white mb-2">{feature.label}</h3>
+                    <p className="text-body text-gray-400 transition-colors duration-200 group-hover:text-gray-300 motion-reduce:transition-none">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

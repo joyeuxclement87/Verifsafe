@@ -3,8 +3,8 @@ import ConditionalLayout from "@/components/layout/ConditionalLayout";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Verifisafe - Fire Protection Solutions Rwanda",
-  description: "Reliable fire safety equipment supply, installation, and maintenance services in Rwanda",
+  title: "Verifsafe - Fire Protection Solutions in Rwanda",
+  description: "Fire protection solutions for businesses and buildings in Rwanda. We supply, install, inspect, and maintain certified fire safety equipment and protection systems.",
 };
 
 export default function RootLayout({

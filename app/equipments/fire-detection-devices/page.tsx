@@ -19,12 +19,11 @@ import {
   Tool,
   ClipboardCheck,
   Check,
-  ArrowRight,
   Plus,
   Star
 } from 'tabler-icons-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import WhoWeServe from '@/components/sections/marketing/WhoWeServe';
 import { motion } from 'framer-motion';
 
@@ -85,7 +84,7 @@ export default function FireDetectionDevicesPage() {
             backgroundAttachment: 'fixed',
           }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950/90 via-gray-950/85 to-gray-950/80" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink/90 via-ink/85 to-ink/80" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-20">
           <motion.div
@@ -93,12 +92,13 @@ export default function FireDetectionDevicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-              <Flame size={16} className="text-[#E53935]" />
-              <p className="text-label text-white">Precision Detection</p>
-            </div>
-            <h1 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white mb-6">
-              Detection <span className="text-[#E53935]">Devices</span>
+            <div className="flex items-center justify-center gap-3 mb-6">
+  <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+  <p className="text-label text-white/60">Precision Detection</p>
+  <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+</div>
+            <h1 className="text-page-heading  text-white mb-6">
+              Detection Devices
             </h1>
             <p className="text-subheading text-gray-200 max-w-2xl mx-auto mb-8">
               The frontline of fire safety: high-sensitivity devices designed to identify smoke, heat, and flame at the earliest possible moment.
@@ -112,19 +112,18 @@ export default function FireDetectionDevicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <p className="text-label text-[#E53935]">Technology Overview</p>
-              </div>
-              <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
-                Early Warning <span className="text-[#E53935]">Intelligence</span>
+              <div className="flex items-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+  <p className="text-label text-gray-500">Technology Overview</p>
+</div>
+              <h2 className="text-section-heading  text-gray-900 mb-6">
+                Early Warning Intelligence
               </h2>
-              <div className="w-20 h-1 bg-[#E53935] rounded-full mb-8" />
               <div className="space-y-8">
                 {[
                   { step: "01", title: "Instant Sensing", text: "Advanced sensors detect microscopic changes in air quality or temperature." },
@@ -139,9 +138,9 @@ export default function FireDetectionDevicesPage() {
                     transition={{ delay: i * 0.1 }}
                     className="flex gap-6"
                   >
-                    <span className="text-4xl font-black text-gray-100">{item.step}</span>
+                    <span className="text-base font-bold text-gray-400 tabular-nums">{item.step}</span>
                     <div>
-                      <h4 className="text-card-title text-xl text-gray-900 mb-2">{item.title}</h4>
+                      <h4 className="text-card-title text-gray-900 mb-2">{item.title}</h4>
                       <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{item.text}</p>
                     </div>
                   </motion.div>
@@ -149,13 +148,13 @@ export default function FireDetectionDevicesPage() {
               </div>
             </motion.div>
             <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="aspect-square bg-gray-50 rounded-3xl overflow-hidden shadow-lg relative border border-gray-100">
+              <div className="aspect-square bg-gray-50 rounded-md overflow-hidden relative border border-gray-200">
                 <Image 
                   src="/fire-detection-guide.png" 
                   alt="Fire Detection Guide" 
@@ -168,9 +167,9 @@ export default function FireDetectionDevicesPage() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 z-20"
+                className="absolute -bottom-6 -right-6 bg-white p-6 rounded-md border border-gray-200 z-20"
               >
-                <p className="text-3xl font-black text-[#E53935]">99%</p>
+                <p className="text-card-title font-bold text-[#D62828]">99%</p>
                 <p className="text-xs text-gray-500 font-bold capitalize tracking-widest mt-1">Detection Accuracy</p>
               </motion.div>
             </motion.div>
@@ -179,7 +178,7 @@ export default function FireDetectionDevicesPage() {
       </section>
 
       {/* Types Section */}
-      <section className="w-full py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-neutral">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -187,14 +186,13 @@ export default function FireDetectionDevicesPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-label text-[#E53935]">Device Catalog</p>
-            </div>
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5">
-              Standard <span className="text-[#E53935]">Sensors</span>
+            <div className="flex items-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+  <p className="text-label text-gray-500">Device Catalog</p>
+</div>
+            <h2 className="text-section-heading  text-gray-900 mb-5">
+              Standard Sensors
             </h2>
-            <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
             <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
               Specialized hardware designed to handle different fire signatures and environmental challenges.
             </p>
@@ -208,22 +206,20 @@ export default function FireDetectionDevicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative flex flex-col p-8 bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                className="group relative flex flex-col p-8 bg-white border border-gray-100 rounded-md hover:border-[#D62828]/40 transition-colors duration-200 overflow-hidden"
               >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 
-                <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0 mb-6">
+                <div className="flex items-center justify-center text-gray-400 shrink-0 mb-6">
                   {type.icon}
                 </div>
-                <h3 className="text-card-title text-xl text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors">{type.title}</h3>
+                <h3 className="text-card-title text-gray-900 mb-3">{type.title}</h3>
                 <p className="text-body text-gray-600 leading-relaxed mb-8">
                   {type.description}
                 </p>
 
-                <div className="mt-auto bg-gray-50 p-5 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 group-hover:border-[#E53935]/10 transition-all duration-300">
+                <div className="mt-auto bg-gray-50 p-5 rounded-md border border-gray-100  group-hover:border-[#D62828]/10 transition-all duration-300">
                   <p className="text-xs text-gray-500 leading-relaxed">
-                    <span className="text-label text-gray-900 block mb-2 group-hover:text-[#E53935] transition-colors">Best for</span>
+                    <span className="text-label text-gray-900 block mb-2">Best for</span>
                     {type.bestFor}
                   </p>
                 </div>
@@ -242,10 +238,9 @@ export default function FireDetectionDevicesPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5">
-              Device <span className="text-[#E53935]">Intelligence</span>
+            <h2 className="text-section-heading  text-gray-900 mb-5">
+              Device Intelligence
             </h2>
-            <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -256,14 +251,12 @@ export default function FireDetectionDevicesPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="group flex flex-col p-6 bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg transition-all duration-500 overflow-hidden relative"
+                className="group flex flex-col p-6 bg-white border border-gray-100 rounded-md hover:border-[#D62828]/40 transition-colors duration-200 overflow-hidden relative"
               >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                <div className="w-10 h-10 rounded-lg bg-[#E53935]/10 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935] group-hover:text-white transition-all duration-300 shrink-0 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-[#D62828]/10 flex items-center justify-center text-[#D62828] group-hover:bg-[#D62828] group-hover:text-white transition-all duration-300 shrink-0 mb-4">
                   {item.icon}
                 </div>
-                <h4 className="text-card-title text-base text-gray-900 group-hover:text-[#E53935] transition-colors mb-2">{item.title}</h4>
+                <h4 className="text-card-title text-base text-gray-900 mb-2">{item.title}</h4>
                 <p className="text-body-sm text-gray-500 leading-normal">{item.description}</p>
               </motion.div>
             ))}
@@ -272,25 +265,24 @@ export default function FireDetectionDevicesPage() {
       </section>
 
       {/* Buyer's Guide */}
-      <section className="w-full py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-neutral">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-white border border-gray-100 rounded-2xl p-8 sm:p-12 shadow-sm relative overflow-hidden"
+            className="bg-white border border-gray-200 rounded-md p-8 sm:p-12 relative overflow-hidden"
           >
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20 relative z-10 items-start">
               <div className="lg:col-span-1 lg:sticky lg:top-8">
-                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-                  <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-label text-[#E53935]">Expert Advice</p>
-                </div>
-                <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5">
-                  Simple <span className="text-[#E53935]">Buyer&apos;s Guide</span>
+                <div className="flex items-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+  <p className="text-label text-gray-500">Expert Advice</p>
+</div>
+                <h2 className="text-section-heading  text-gray-900 mb-5">
+                  Simple Buyer&apos;s Guide
                 </h2>
-                <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
                 <p className="text-body text-gray-600">
                   Choosing the correct detection technology is essential for accurate, rapid response.
                 </p>
@@ -305,13 +297,13 @@ export default function FireDetectionDevicesPage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.05 }}
-                      className="group flex items-start gap-6 pb-6 border-b border-gray-100 hover:border-[#E53935]/40 transition-all duration-300"
+                      className="group flex items-start gap-6 pb-6 border-b border-gray-100 hover:border-[#D62828]/40 transition-all duration-300"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] group-hover:scale-110 transition-all duration-500 shrink-0 mt-1">
+                      <div className="flex items-center justify-center text-gray-400 shrink-0 mt-1">
                         <Check size={20} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-card-title text-xl text-gray-900 group-hover:text-[#E53935] transition-colors duration-300">{item.title}</span>
+                        <span className="text-card-title text-gray-900 duration-300">{item.title}</span>
                         <span className="text-body-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">{item.detail}</span>
                       </div>
                     </motion.div>
@@ -330,18 +322,17 @@ export default function FireDetectionDevicesPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white border border-gray-100 rounded-2xl p-8 sm:p-12 shadow-sm relative overflow-hidden"
+            className="bg-white border border-gray-200 rounded-md p-8 sm:p-12 relative overflow-hidden"
           >
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20 relative z-10 items-start">
               <div className="lg:col-span-1 lg:sticky lg:top-8">
-                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-                  <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                  <p className="text-label text-[#E53935]">Use Cases</p>
-                </div>
-                <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5">
-                  Ideal <span className="text-[#E53935]">Applications</span>
+                <div className="flex items-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+  <p className="text-label text-gray-500">Use Cases</p>
+</div>
+                <h2 className="text-section-heading  text-gray-900 mb-5">
+                  Ideal Applications
                 </h2>
-                <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
                 <p className="text-body text-gray-600">
                   Reliable protection across diverse residential and industrial environments.
                 </p>
@@ -356,14 +347,14 @@ export default function FireDetectionDevicesPage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.05 }}
-                      className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#E53935]/40 transition-all duration-300"
+                      className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#D62828]/40 transition-all duration-300"
                     >
-                      <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] group-hover:scale-110 transition-all duration-500 shrink-0">
+                      <div className="flex items-center justify-center text-gray-400 shrink-0">
                         <Building size={24} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-card-title text-xl text-gray-900 group-hover:text-[#E53935] transition-colors duration-300">{app}</span>
-                        <span className="text-body-sm text-gray-400 group-hover:text-gray-600 transition-colors duration-300">Certified Detection</span>
+                        <span className="text-card-title text-gray-900 duration-300">{app}</span>
+                        <span className="text-body-sm text-gray-400">Certified Detection</span>
                       </div>
                     </motion.div>
                   ))}
@@ -389,10 +380,9 @@ export default function FireDetectionDevicesPage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-3">
-              Features & <span className="text-[#E53935]">Benefits</span>
+            <h2 className="text-section-heading  text-gray-900 mb-3">
+              Features & Benefits
             </h2>
-            <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -410,14 +400,12 @@ export default function FireDetectionDevicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group flex items-start gap-3 p-4 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl hover:border-red-400 hover:shadow-lg transition-all duration-300 overflow-hidden relative"
+                className="group flex items-start gap-3 p-4 bg-white border border-gray-200 rounded-md hover:border-[#D62828]/40 transition-colors duration-200 overflow-hidden relative"
               >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935]/10 transition-all shrink-0">
+                <div className="flex items-center justify-center text-[#D62828] shrink-0">
                   <Star size={20} strokeWidth={1.5} />
                 </div>
-                <p className="text-body text-gray-900 group-hover:text-[#E53935] transition-colors mt-1">
+                <p className="text-body text-gray-900 mt-1">
                   {feature}
                 </p>
               </motion.div>
@@ -437,7 +425,7 @@ export default function FireDetectionDevicesPage() {
             backgroundAttachment: 'fixed',
           }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950/90 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink/90 via-ink/90 to-ink/90" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div 
@@ -446,26 +434,20 @@ export default function FireDetectionDevicesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 mb-5">
-              <p className="text-label text-white">
-                <Star size={16} />
-                Upgrade Your Detection
-              </p>
-            </div>
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6">
-              Ensure your <span className="text-[#E53935]">safety today</span>
+            <div className="flex items-center justify-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+  <p className="text-label text-white/60">Upgrade Your Detection</p>
+  <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+</div>
+            <h2 className="text-section-heading  text-white mb-6">
+              Ensure your safety today
             </h2>
             <p className="text-subheading text-gray-300 max-w-2xl mx-auto mb-8">
               Contact our experts for the right fire detection strategy and professional device installation.
             </p>
-            <Link
-              href="/contact#contact-form"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white text-btn text-base rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md group"
-             
-            >
+            <Button href="/contact#contact-form" variant="primary">
               Request Quote
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-            </Link>
+            </Button>
           </motion.div>
         </div>
       </section>

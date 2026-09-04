@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ShieldCheck, ArrowLeft, AlertTriangle, X, InfoCircle } from 'tabler-icons-react';
@@ -19,7 +20,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
     return (
       <div className="flex flex-col w-full min-h-screen m-0 p-0 overflow-hidden">
         {/* Custom Admin Top Bar */}
-        <div className="bg-linear-to-r from-[#111111] via-[#4a0d0d] to-[#111111] text-white px-4 sm:px-8 py-4 sm:py-5 flex flex-wrap gap-4 items-center justify-between shrink-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)] border-b border-[#E53935]/20 relative z-[10000]">
+        <div className="bg-[#111111] text-white px-4 sm:px-8 py-4 sm:py-5 flex flex-wrap gap-4 items-center justify-between shrink-0 border-b border-[#D62828]/20 relative z-[10000]">
           <div className="flex items-center gap-4 sm:gap-6">
             <Image 
               src="/logo2.png" 
@@ -39,19 +40,19 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
             />
             <div className="h-8 w-px bg-white/20 hidden sm:block" />
             <div className="flex items-center gap-2.5 opacity-90">
-              <ShieldCheck size={22} className="text-[#ff6b6b]" />
+              <ShieldCheck size={22} className="text-[#D62828]" />
               <span className="font-bold tracking-widest capitalize text-sm sm:text-base">
                 Content Management
               </span>
-              <span className="hidden lg:inline-block px-2.5 py-1 bg-black/40 rounded text-[11px] capitalize tracking-wider font-bold text-[#ff6b6b] border border-[#ff6b6b]/20">
+              <span className="hidden lg:inline-block px-2.5 py-1 bg-black/40 rounded text-[11px] capitalize tracking-wider font-bold text-[#D62828] border border-[#D62828]/20">
                 Admin Dashboard
               </span>
             </div>
           </div>
-          <a href="/" className="text-xs sm:text-sm font-semibold bg-white/10 hover:bg-white/20 px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 flex items-center gap-2 border border-white/5 hover:border-white/20 hover:shadow-lg">
+          <Link href="/" className="text-xs sm:text-sm font-semibold bg-white/10 hover:bg-white/20 px-5 py-2 sm:py-2.5 rounded-full transition-colors duration-200 flex items-center gap-2 border border-white/5 hover:border-white/20">
             <ArrowLeft size={16} />
             Back to Live Site
-          </a>
+          </Link>
         </div>
 
         {/* Warning / Disclaimer Banner */}
@@ -100,7 +101,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
       <PageLoader />
       <TopBar />
       <MainNavigation />
-      <div className="pt-40 flex-1">
+      <div className="pt-32 flex-1">
         {children}
       </div>
       <WhatsAppButton />

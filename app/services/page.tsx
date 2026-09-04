@@ -1,11 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { Tools, Shield, Phone, Star, Send, FileText, Check, ArrowRight, Package, Eye, HeartHandshake, CircleCheck, Settings, Users, Award, Tool, Clock, Target } from 'tabler-icons-react';
+import { Clock } from 'tabler-icons-react';
 import DeploymentWorkflow from '@/components/sections/process/DeploymentWorkflow';
 import WhoWeServe from '@/components/sections/marketing/WhoWeServe';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { serviceCategories } from '@/lib/services';
+import Button from '@/components/ui/Button';
 
 export default function ServicesPage() {
   const [formData, setFormData] = useState({
@@ -62,57 +64,54 @@ export default function ServicesPage() {
     }
   };
 
-  const services = [
-    {
-      iconName: 'package',
-      image: '/service-1.png',
-      title: 'Fire Equipment Supply',
-      description: 'Providing certified fire safety equipment for reliable protection in different environments.',
-      features: ['Extinguishers', 'Alarms', 'Hose reels', 'Safety accessories']
-    },
-    {
-      iconName: 'tool',
-      image: '/service-2.png',
-      title: 'Installation Services',
-      description: 'Professional installation of fire protection systems to ensure proper setup and performance.',
-      features: ['Fire alarm systems', 'Detection devices', 'Safety equipment']
-    },
-    {
-      iconName: 'check',
-      image: '/service-3.png',
-      title: 'Inspection & Testing',
-      description: 'Routine inspection and testing to ensure fire safety systems function correctly and meet required standards.',
-      features: ['Businesses', 'Offices', 'Compliance checks']
-    },
-    {
-      iconName: 'shield',
-      image: '/refile.jpeg',
-      title: 'Fire Extinguisher Refilling',
-      description: 'Refilling and servicing extinguishers to keep them ready and effective for emergency use.',
-      features: ['Quick service', 'Reliable', 'Essential for safety']
-    },
-    {
-      iconName: 'settings',
-      image: '/service-5.png',
-      title: 'Maintenance Services',
-      description: 'Ongoing maintenance to ensure fire protection systems remain reliable over time.',
-      features: ['Prevents failure', 'Regular servicing', 'System reliability']
-    },
-    {
-      iconName: 'users',
-      image: '/fire training 2.jpg',
-      title: 'Fire Safety Awareness Training',
-      description: 'Training programs which educate individuals and teams on fire prevention, emergency response, and proper use of fire safety equipment.',
-      features: ['Staff training', 'Organizations', 'Workplaces']
-    },
-    {
-      iconName: 'handshake',
-      image: '/first aid.png',
-      title: 'First Aid Training',
-      description: 'Basic first aid training which equips individuals with the skills to respond quickly and effectively during emergencies.',
-      features: ['Emergency response', 'Workplace safety', 'Life-saving skills']
-    }
+  const services = serviceCategories.flatMap((category) => category.services);
+
+  const matterItems = [
+    { number: '01', title: 'Prevention First', desc: 'Fire incidents can happen at any time, and without proper preparation, the consequences can be severe.' },
+    { number: '02', title: 'Real Protection', desc: 'Our services are designed not just to meet requirements, but to provide real protection.' },
+    { number: '03', title: 'Rapid Response', desc: 'Helping you prevent risks, respond effectively, and minimize damage when emergencies occur.' }
   ];
+
+  const nextSteps = [
+    { step: '01', text: 'We review your request' },
+    { step: '02', text: 'We analyze your safety needs' },
+    { step: '03', text: 'We send a tailored quotation' },
+  ];
+
+  const renderServiceCard = (service: { image: string; title: string; description: string; features: string[] }, index: number) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.05, ease: 'easeOut' }}
+      className="group flex flex-col border border-gray-200 rounded-lg overflow-hidden bg-white transition-colors duration-200 hover:border-[#D62828]/40"
+    >
+      <div className="relative w-full h-44 bg-gray-100 overflow-hidden">
+        <Image src={service.image} alt={service.title} fill className="object-cover" />
+      </div>
+      <div className="p-6 pt-5 flex flex-col flex-grow">
+        <h3 className="text-card-title text-gray-900 mb-2">{service.title}</h3>
+        <p className="text-body text-gray-600 flex-grow mb-5">{service.description}</p>
+        <ul className="mb-6">
+          {service.features.map((feature, featureIndex) => (
+            <li key={featureIndex} className="py-1 border-t border-gray-100 text-sm text-gray-600 first:border-t-0">
+              {feature}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-auto">
+          <Button
+            href="/contact#contact-form"
+            variant="text"
+            className="text-sm"
+          >
+            {service.title === 'Fire Equipment Supply' ? 'View Equipments' : 'Request a Quote'}
+          </Button>
+        </div>
+      </div>
+    </motion.div>
+  );
 
   return (
     <main className="w-full">
@@ -125,24 +124,24 @@ export default function ServicesPage() {
             backgroundAttachment: 'fixed',
           }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/90 to-ink/90" />
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center text-center"
           >
-            <div className="inline-block mb-4">
-              <p className="text-label text-white px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
-                <Star size={16} />
-                What we offer
+            <div className="flex items-center gap-3 mb-5 justify-center">
+              <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+                What We Offer
               </p>
             </div>
 
-            <h1 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white mb-4 tracking-wider">
-              Professional Fire Protection <span className="text-[#E53935]">Services</span>
+            <h1 className="text-page-heading  text-white mb-4 tracking-wider">
+              Professional Fire Protection Services
             </h1>
 
             <p className="text-subheading text-gray-200 max-w-2xl">
@@ -153,233 +152,128 @@ export default function ServicesPage() {
       </section>
 
       {/* Equipment & Systems Section */}
-      <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32 overflow-hidden">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
-        <div className="absolute bottom-20 left-20 w-32 h-32 bg-yellow-100/10 rounded-full blur-2xl" />
-
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+      <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="text-center mb-14 sm:mb-16"
           >
-            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-label text-[#E53935] flex items-center gap-2">
-                <Tools size={15} />
+            <div className="flex items-center gap-3 mb-5 justify-center">
+              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                 Equipment &amp; Systems
               </p>
             </div>
 
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
-              Supply, Installation &amp; <span className="text-[#E53935]">Maintenance</span>
+            <h2 className="text-section-heading  text-gray-900">
+              Supply, Installation &amp; Maintenance
             </h2>
 
-            <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
-
-            <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
+            <p className="text-subheading text-gray-600 max-w-2xl mx-auto mt-6">
               We deliver fire protection services which support businesses, institutions, and homes with reliable safety systems. From supply to maintenance, our services are designed to ensure continuous protection.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-            {services.slice(0, 5).map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
-                style={{ borderWidth: '1px' }}
-              >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="relative w-full h-44 overflow-hidden">
-                  <Image src={service.image} alt={service.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
-                </div>
-                <div className="p-6 pt-5 flex flex-col flex-grow w-full">
-                  <h3 className="text-card-title text-xl text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">{service.title}</h3>
-                  <p className="text-body text-gray-600 flex-grow mb-5">{service.description}</p>
-                  <div className="space-y-2 mb-5 w-full">
-                    {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-[#E53935] rounded-full shrink-0" />
-                        <span className="text-sm text-gray-600 font-normal">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-auto w-full">
-                    <button onClick={() => { window.location.assign('/contact#contact-form'); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group">
-                      {service.title === 'Fire Equipment Supply' ? 'View Equipments' : 'Request a Quote'}
-                      <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
-                    </button>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {services.slice(0, 5).map((service, index) => renderServiceCard(service, index))}
           </div>
         </div>
       </section>
 
       {/* Training & Safety Section */}
-      <section className="relative w-full bg-slate-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
-        <div className="absolute top-20 left-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
-        <div className="absolute bottom-20 right-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl" />
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+      <section className="relative w-full bg-neutral py-20 sm:py-24 lg:py-32">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="text-center mb-14 sm:mb-16"
           >
-            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-label text-[#E53935] flex items-center gap-2">
-                <Shield size={15} />
+            <div className="flex items-center gap-3 mb-5 justify-center">
+              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                 Training &amp; Safety
               </p>
             </div>
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">Fire Awareness &amp; <span className="text-[#E53935]">First Aid Training</span></h2>
-            <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
-            <p className="text-subheading text-gray-600 max-w-2xl mx-auto">Comprehensive training programs designed to educate and equip individuals with essential fire safety and emergency response skills.</p>
+
+            <h2 className="text-section-heading  text-gray-900">
+              Fire Awareness &amp; First Aid Training
+            </h2>
+
+            <p className="text-subheading text-gray-600 max-w-2xl mx-auto mt-6">
+              Comprehensive training programs designed to educate and equip individuals with essential fire safety and emergency response skills.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 max-w-4xl mx-auto">
-            {services.slice(5, 7).map((service, index) => (
-              <motion.div
-                key={index + 5}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="group relative bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left overflow-hidden"
-                style={{ borderWidth: '1px' }}
-              >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="relative w-full h-44 overflow-hidden">
-                  <Image src={service.image} alt={service.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
-                </div>
-                <div className="p-6 pt-5 flex flex-col flex-grow w-full">
-                  <h3 className="text-card-title text-xl text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">{service.title}</h3>
-                  <p className="text-body text-gray-600 flex-grow mb-5">{service.description}</p>
-                  <div className="space-y-2 mb-5 w-full">
-                    {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-[#E53935] rounded-full shrink-0" />
-                        <span className="text-sm text-gray-600 font-normal">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-auto w-full">
-                    <button onClick={() => { window.location.assign('/contact#contact-form'); }} className="w-full px-6 py-3 bg-[#E53935]/5 text-[#E53935] hover:bg-[#E53935]/10 font-bold text-sm rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 group">
-                      Request a Quote
-                      <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
-                    </button>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            {services.slice(5, 7).map((service, index) => renderServiceCard(service, index))}
           </div>
         </div>
       </section>
 
       {/* Why Our Services Matter Section */}
-      <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32 overflow-hidden">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+      <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="text-center mb-14 sm:mb-16"
           >
-            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-              <p className="text-label text-[#E53935] flex items-center gap-2">
-                <Shield size={15} />
+            <div className="flex items-center gap-3 mb-5 justify-center">
+              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                 Why It Matters
               </p>
             </div>
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">Why Our Services <span className="text-[#E53935]">Matter</span></h2>
-            <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
-            <p className="text-subheading text-gray-600 max-w-2xl mx-auto">Safety Is Not Optional</p>
+
+            <h2 className="text-section-heading  text-gray-900">
+              Why Our Services Matter
+            </h2>
+
+            <p className="text-subheading text-gray-600 max-w-2xl mx-auto mt-6">
+              Safety is not optional.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
-            >
-              <div className="space-y-6">
-                {[
-                  { title: 'Prevention First', desc: 'Fire incidents can happen at any time, and without proper preparation, the consequences can be severe.', icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z' },
-                  { title: 'Real Protection', desc: 'Our services are designed not just to meet requirements, but to provide real protection.', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
-                  { title: 'Rapid Response', desc: 'Helping you prevent risks, respond effectively, and minimize damage when emergencies occur.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' }
-                ].map((item, idx) => (
-                  <motion.div 
-                    key={idx} 
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="shrink-0 w-12 h-12 bg-[#E53935]/10 rounded-lg flex items-center justify-center">
-                      <svg className="w-6 h-6 text-[#E53935]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                      </svg>
-                    </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            <ol className="border-t border-gray-200">
+              {matterItems.map((item) => (
+                <li key={item.number} className="border-b border-gray-200 py-7">
+                  <div className="flex items-start gap-6">
+                    <span className="shrink-0 w-10 pt-0.5 text-base font-bold text-gray-400 tabular-nums">
+                      {item.number}
+                    </span>
                     <div>
-                      <h3 className="text-card-title text-xl text-gray-900 mb-2">{item.title}</h3>
+                      <h3 className="text-card-title text-gray-900 mb-2">{item.title}</h3>
                       <p className="text-body text-gray-600">{item.desc}</p>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                  </div>
+                </li>
+              ))}
+            </ol>
 
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="relative group bg-white border border-gray-100 rounded-2xl p-8 hover:border-[#E53935]/30 hover:shadow-lg transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 opacity-5">
-                  <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(229, 57, 53, 0.3) 1px, transparent 0)`, backgroundSize: '30px 30px' }} />
+            <div className="border border-gray-200 rounded-lg p-8">
+              <h3 className="text-card-title text-gray-900 mb-2">Your Safety Partner</h3>
+              <p className="text-body text-gray-600">
+                From equipment supply to training, we ensure your fire safety systems are always ready and reliable.
+              </p>
+              <div className="grid grid-cols-2 gap-4 pt-6 mt-6 border-t border-gray-200">
+                <div>
+                  <div className="text-card-title font-bold text-[#D62828]">24/7</div>
+                  <div className="text-sm text-gray-500 mt-1">Support</div>
                 </div>
-                <div className="relative z-10 text-center space-y-6">
-                  <div className="w-20 h-20 bg-[#E53935]/10 rounded-full flex items-center justify-center mx-auto">
-                    <Shield size={32} className="text-[#E53935]" />
-                  </div>
-                  <div>
-                    <h3 className="text-card-title text-2xl text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">Your Safety Partner</h3>
-                    <p className="text-body text-gray-600">From equipment supply to training, we ensure your fire safety systems are always ready and reliable.</p>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100">
-                    <div className="text-center">
-                      <div className="text-2xl font-black text-[#E53935]">24/7</div>
-                      <div className="text-sm text-gray-500">Support</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-black text-[#E53935]">100%</div>
-                      <div className="text-sm text-gray-500">Reliable</div>
-                    </div>
-                  </div>
+                <div>
+                  <div className="text-card-title font-bold text-[#D62828]">100%</div>
+                  <div className="text-sm text-gray-500 mt-1">Reliable</div>
                 </div>
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -397,139 +291,111 @@ export default function ServicesPage() {
             backgroundAttachment: 'fixed',
           }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/90 to-ink/90" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <div className="inline-block mb-4">
-              <p className="text-label text-white px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center">
-                <Shield size={16} />
+            <div className="flex items-center gap-3 mb-5 justify-center">
+              <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
                 Get Started
               </p>
             </div>
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6">Take <span className="text-[#E53935]">the next step</span></h2>
-            <p className="text-subheading text-gray-300 max-w-2xl mx-auto">Ensure your property is protected with reliable fire safety systems and expert support.</p>
+            <h2 className="text-section-heading  text-white">
+              Take the Next Step
+            </h2>
+            <p className="text-subheading text-gray-300 max-w-2xl mx-auto mt-6">
+              Ensure your property is protected with reliable fire safety systems and expert support.
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* Project Enquiry Section */}
-      <section id="project-form" className="relative w-full bg-slate-50 py-20 sm:py-24 lg:py-32 overflow-hidden">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-red-100/20 rounded-full blur-2xl" />
-        <div className="absolute bottom-20 left-20 w-32 h-32 bg-gray-400/5 rounded-full blur-2xl" />
-
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section id="project-form" className="relative w-full bg-neutral py-20 sm:py-24 lg:py-32">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
 
             {/* Left Column: Info */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
               className="flex flex-col gap-6"
             >
               <div>
-                <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-red-50 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E53935]" />
-                  <p className="text-label text-[#E53935]">
+                <div className="flex items-center gap-3 mb-5">
+                  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                     Project Enquiry
                   </p>
                 </div>
-                <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-3">
-                  Tell us about your <span className="text-[#E53935]">project</span>
+                <h2 className="text-section-heading  text-gray-900 mb-3">
+                  Tell Us About Your Project
                 </h2>
-                <div className="w-12 h-1 bg-[#E53935] rounded-full mb-4" />
                 <p className="text-subheading text-gray-600 max-w-lg">
                   Share your fire safety needs and we&apos;ll recommend the right solution and send you a tailored quote.
                 </p>
               </div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-body-sm text-gray-500 flex items-center gap-2"
-              >
-                <Clock size={16} className="text-[#E53935] shrink-0" />
+              <p className="text-body-sm text-gray-500 flex items-center gap-2">
+                <Clock size={16} className="text-[#D62828] shrink-0" />
                 We respond within 24 hours with a full proposal.
-              </motion.p>
+              </p>
 
-              {/* What happens next card */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="group relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-[#E53935]/30 transition-all duration-300 overflow-hidden"
-                style={{ borderWidth: '1px' }}
-              >
-                {/* Left accent bar on hover */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#E53935] rounded-l-2xl transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
-
-                <h4 className="text-card-title text-base text-gray-900 mb-4 group-hover:text-[#E53935] transition-colors duration-300">What happens next?</h4>
-                <ul className="space-y-3">
-                  {[
-                    { step: '01', text: 'We review your request' },
-                    { step: '02', text: 'We analyze your safety needs' },
-                    { step: '03', text: 'We send a tailored quotation' },
-                  ].map((item, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
-                      className="flex items-center gap-3"
-                    >
-                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#E53935]/10 text-[#E53935] text-xs font-black shrink-0">
+              {/* What happens next */}
+              <div className="border border-gray-200 rounded-lg p-6 bg-white">
+                <h4 className="text-card-title text-base text-gray-900 mb-5">What happens next?</h4>
+                <ol>
+                  {nextSteps.map((item) => (
+                    <li key={item.step} className="flex items-center gap-4 py-3 border-t border-gray-100 first:border-t-0">
+                      <span className="w-8 pt-0.5 text-sm font-bold text-gray-400 tabular-nums">
                         {item.step}
                       </span>
                       <span className="text-body-sm text-gray-600">{item.text}</span>
-                    </motion.li>
+                    </li>
                   ))}
-                </ul>
-              </motion.div>
+                </ol>
+              </div>
             </motion.div>
 
             {/* Right Column: Form */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             >
-              <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 sm:p-8 lg:p-10 rounded-2xl border border-gray-100 shadow-xl relative overflow-hidden" style={{ borderWidth: '1px' }}>
-                {/* Gradient top accent */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#FF4D4D] via-[#E53935] to-[#FF4D4D]" />
+              <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 sm:p-8 lg:p-10 rounded-lg border border-gray-200 relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#D62828]" />
 
                 {/* Name & Email in a row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-label text-gray-700 block mb-2">Name</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }} placeholder="Your name" />
+                    <label className="text-label text-gray-700 block mb-2" htmlFor="name">Name</label>
+                    <input id="name" type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-[#D62828] focus:ring-2 focus:ring-[#D62828]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }} placeholder="Your name" />
                   </div>
                   <div>
-                    <label className="text-label text-gray-700 block mb-2">Email</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }} placeholder="your@email.com" />
+                    <label className="text-label text-gray-700 block mb-2" htmlFor="email">Email</label>
+                    <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-[#D62828] focus:ring-2 focus:ring-[#D62828]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }} placeholder="your@email.com" />
                   </div>
                 </div>
 
                 {/* Phone & Service in a row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-label text-gray-700 block mb-2">Phone</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }} placeholder="+250 xxx xxx xxx" />
+                    <label className="text-label text-gray-700 block mb-2" htmlFor="phone">Phone</label>
+                    <input id="phone" type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-[#D62828] focus:ring-2 focus:ring-[#D62828]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }} placeholder="+250 xxx xxx xxx" />
                   </div>
                   <div>
-                    <label className="text-label text-gray-700 block mb-2">Service Type</label>
-                    <select name="service" value={formData.service} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }}>
+                    <label className="text-label text-gray-700 block mb-2" htmlFor="service">Service Type</label>
+                    <select id="service" name="service" value={formData.service} onChange={handleChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-[#D62828] focus:ring-2 focus:ring-[#D62828]/10 outline-none transition-all duration-300 text-gray-900 text-body-sm" style={{ borderWidth: '1px' }}>
                       <option value="" disabled>Select a service type</option>
                       <option value="Fire Equipment Supply">Fire Equipment Supply</option>
                       <option value="Installation Services">Installation Services</option>
@@ -545,28 +411,26 @@ export default function ServicesPage() {
 
                 {/* Message */}
                 <div>
-                  <label className="text-label text-gray-700 block mb-2">Message</label>
-                  <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#E53935] focus:ring-2 focus:ring-[#E53935]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none text-body-sm" style={{ borderWidth: '1px' }} placeholder="Describe your request..." />
+                  <label className="text-label text-gray-700 block mb-2" htmlFor="message">Message</label>
+                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-[#D62828] focus:ring-2 focus:ring-[#D62828]/10 outline-none transition-all duration-300 placeholder-gray-400 text-gray-900 resize-none text-body-sm" style={{ borderWidth: '1px' }} placeholder="Describe your request..." />
                 </div>
 
                 {/* Submit button */}
-                <motion.button
-                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                <Button
                   type="submit"
+                  loading={isSubmitting}
                   disabled={isSubmitting}
-                  className="w-full px-8 py-3.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white text-btn text-base rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 shadow-md inline-flex items-center justify-center gap-2 group disabled:cursor-not-allowed disabled:opacity-80"
+                  className="w-full"
                 >
                   {isSubmitting ? 'Sending...' : 'Request a Quote'}
-                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-                </motion.button>
+                </Button>
 
                 {/* Error alert */}
                 {error && (
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="rounded-xl border border-red-200 bg-red-50 p-4"
+                    className="rounded-lg border border-red-200 bg-red-50 p-4"
                   >
                     <p className="text-sm font-semibold text-red-700">Your message could not be sent</p>
                     <p className="mt-1 text-sm text-red-600">{error}</p>
@@ -578,7 +442,7 @@ export default function ServicesPage() {
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="rounded-xl border border-emerald-200 bg-emerald-50 p-4"
+                    className="rounded-lg border border-emerald-200 bg-emerald-50 p-4"
                   >
                     <p className="text-sm font-semibold text-emerald-700">Thank you for your request</p>
                     <p className="mt-1 text-sm text-emerald-600">Our team will review your request and follow up shortly.</p>

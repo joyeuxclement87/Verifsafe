@@ -38,7 +38,6 @@ export default function DeploymentWorkflow() {
 
   return (
     <section id="deployment-workflow" className="relative w-full py-20 sm:py-24 lg:py-32 overflow-hidden">
-      {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -46,123 +45,70 @@ export default function DeploymentWorkflow() {
           backgroundAttachment: 'fixed',
         }}
       />
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/90 to-gray-950/90" />
+      <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/90 to-ink/90" />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16 sm:mb-20"
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="mb-14 sm:mb-16"
         >
-          {/* Section Label */}
-          <div className="inline-block mb-4">
-            <p
-              className="text-white text-xs sm:text-sm font-bold tracking-widest capitalize px-4 py-2 bg-[#E53935]/10 rounded-full border border-[#E53935]/40 flex items-center gap-2 justify-center"
-             
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
+          <div className="flex items-center gap-3 mb-5">
+            <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
               Our Process
             </p>
           </div>
 
-          {/* Main Heading */}
-          <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight"
-           
-          >
-            How We <span className="text-[#E53935]">Work</span>
+          <h2 className="text-section-heading  text-white">
+            How We Work
           </h2>
 
-          {/* Decorative Divider */}
-          <div className="w-20 h-1 bg-[#E53935] mx-auto mt-6 mb-6 rounded-full" />
-
-          {/* Subheading */}
-          <p
-            className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto font-normal leading-relaxed"
-           
-          >
+          <p className="text-subheading text-gray-400 mt-6 max-w-2xl">
             A meticulous 5-step process ensuring total structural protection and compliance.
           </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="space-y-0">
+        <ol className="border-t border-white/15">
           {steps.map((step, index) => (
-            <motion.div 
-              key={index} 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+            <motion.li
+              key={index}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative"
+              transition={{ duration: 0.5, delay: index * 0.05, ease: 'easeOut' }}
+              className="group border-b border-white/15 py-8 sm:py-9"
             >
-              {/* Connector line */}
-              {index < steps.length - 1 && (
-                <div className="absolute left-6 sm:left-8 top-16 bottom-0 w-px bg-gray-800 group-hover:bg-[#E53935]/30 transition-colors duration-500" />
-              )}
-
-              <div className="flex gap-6 sm:gap-10 py-8 sm:py-10">
-                {/* Number */}
-                <div className="shrink-0 relative">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gray-900 border border-gray-800 group-hover:border-[#E53935]/50 group-hover:bg-[#E53935]/10 flex items-center justify-center transition-all duration-300 relative z-10">
-                    <span
-                      className="text-lg sm:text-xl font-black text-gray-600 group-hover:text-[#E53935] transition-colors duration-300"
-                     
-                    >
-                      {step.number}
-                    </span>
-                  </div>
+              <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-12">
+                <div className="flex items-start gap-6 lg:w-56 shrink-0">
+                  <span className="shrink-0 w-10 pt-0.5 text-base font-bold text-white/40 tabular-nums transition-colors duration-200 group-hover:text-[#D62828] motion-reduce:transition-none">
+                    {step.number}
+                  </span>
+                  <h3 className="text-card-title text-white transition-colors duration-200 motion-reduce:transition-none">
+                    {step.title}
+                  </h3>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1 pb-2">
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12">
-                    {/* Title & Description */}
-                    <div className="flex-1 mb-4 lg:mb-0">
-                      <h3
-                        className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-[#E53935] transition-colors duration-300"
-                       
-                      >
-                        {step.title}
-                      </h3>
-                      <p
-                        className="text-gray-400 text-base leading-relaxed max-w-lg font-normal"
-                       
-                      >
-                        {step.description}
-                      </p>
-                    </div>
+                <div className="flex-1">
+                  <p className="text-gray-400 text-base leading-relaxed max-w-lg">
+                    {step.description}
+                  </p>
 
-                    {/* Details */}
-                    <div className="flex flex-wrap gap-2 lg:pt-1">
-                      {step.details.map((detail, detailIndex) => (
-                        <span
-                          key={detailIndex}
-                          className="text-xs text-gray-500 group-hover:text-gray-300 border border-gray-800 group-hover:border-[#E53935]/30 px-3 py-1.5 rounded-full transition-all duration-300"
-                         
-                        >
-                          {detail}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Divider line */}
-                  {index < steps.length - 1 && (
-                    <div className="mt-8 sm:mt-10 h-px bg-gray-800/50 group-hover:bg-[#E53935]/20 transition-colors duration-300" />
-                  )}
+                  <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                    {step.details.map((detail, detailIndex) => (
+                      <li key={detailIndex} className="text-xs text-gray-500 group-hover:text-gray-300 transition-colors duration-200 motion-reduce:transition-none">
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

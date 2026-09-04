@@ -6,11 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#0F172A] text-gray-300 relative overflow-hidden">
-      {/* Background Glow Effects */}
-      <div className="absolute top-1/2 -translate-y-1/2 -left-48 w-96 h-96 bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 -translate-y-1/2 -right-48 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none" />
-
+    <footer className="w-full bg-[#111111] text-gray-300 relative overflow-hidden">
       {/* Main Footer Content */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 mb-12">
@@ -19,7 +15,7 @@ export default function Footer() {
           <div className="space-y-6">
             <div>
               <p
-                className="text-[#FFC107] text-sm font-semibold"
+                className="text-white/70 text-sm font-semibold"
                
               >
                 Peace of Mind, Verified
@@ -39,7 +35,7 @@ export default function Footer() {
                 href="https://www.facebook.com/profile.php?id=61577821846154"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#D62828] flex items-center justify-center transition-all duration-300 group"
                 aria-label="Facebook"
               >
                 <BrandFacebook size={20} className="text-gray-400 group-hover:text-white transition-colors" />
@@ -48,7 +44,7 @@ export default function Footer() {
                 href="https://x.com/verifsafe_rw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#D62828] flex items-center justify-center transition-all duration-300 group"
                 aria-label="Twitter"
               >
                 <BrandTwitter size={20} className="text-gray-400 group-hover:text-white transition-colors" />
@@ -57,7 +53,7 @@ export default function Footer() {
                 href="https://www.instagram.com/verifsafe_rw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#D62828] flex items-center justify-center transition-all duration-300 group"
                 aria-label="Instagram"
               >
                 <BrandInstagram size={20} className="text-gray-400 group-hover:text-white transition-colors" />
@@ -66,7 +62,7 @@ export default function Footer() {
                 href="https://www.tiktok.com/@verifsafe"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E53935] flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#D62828] flex items-center justify-center transition-all duration-300 group"
                 aria-label="TikTok"
               >
                 <BrandLinkedin size={20} className="text-gray-400 group-hover:text-white transition-colors" />
@@ -94,7 +90,7 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     href={equipment.href}
-                    className="text-gray-400 hover:text-[#E53935] transition-colors duration-300 font-normal"
+                    className="text-gray-400 hover:text-[#D62828] transition-colors duration-300 font-normal"
                    
                   >
                     {equipment.label}
@@ -123,7 +119,7 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     href={service.href}
-                    className="text-gray-400 hover:text-[#E53935] transition-colors duration-300 font-normal"
+                    className="text-gray-400 hover:text-[#D62828] transition-colors duration-300 font-normal"
                    
                   >
                     {service.label}
@@ -146,7 +142,7 @@ export default function Footer() {
               <div className="flex items-start gap-3 group cursor-pointer">
                 <Phone
                   size={20}
-                  className="text-[#E53935] transition-colors"
+                  className="text-[#D62828] transition-colors"
                 />
                 <div>
                   <p
@@ -157,7 +153,7 @@ export default function Footer() {
                   </p>
                   <a
                     href="tel:+250 788 632 620"
-                    className="text-white group-hover:text-[#E53935] transition-colors font-normal"
+                    className="text-white group-hover:text-[#D62828] transition-colors font-normal"
                    
                   >
                     +250 788 632 620
@@ -169,7 +165,7 @@ export default function Footer() {
               <div className="flex items-start gap-3 group cursor-pointer">
                 <Mail
                   size={20}
-                  className="text-[#E53935] transition-colors"
+                  className="text-[#D62828] transition-colors"
                 />
                 <div>
                   <p
@@ -180,7 +176,7 @@ export default function Footer() {
                   </p>
                   <a
                     href="mailto:info@verifsafe.com"
-                    className="text-white group-hover:text-[#E53935] transition-colors font-normal"
+                    className="text-white group-hover:text-[#D62828] transition-colors font-normal"
                    
                   >
                     info@verifsafe.com
@@ -192,7 +188,7 @@ export default function Footer() {
               <div className="flex items-start gap-3 group cursor-pointer">
                 <MapPin
                   size={20}
-                  className="text-[#E53935] transition-colors"
+                  className="text-[#D62828] transition-colors"
                 />
                 <div>
                   <p
@@ -214,7 +210,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent my-12" />
+        <div className="h-px bg-white/10 my-12" />
 
         {/* Bottom Footer */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -236,7 +232,7 @@ export default function Footer() {
               <a
                 key={index}
                 href={link.href}
-                className="text-gray-500 hover:text-[#E53935] text-sm transition-colors duration-300 font-normal"
+                className="text-gray-500 hover:text-[#D62828] text-sm transition-colors duration-300 font-normal"
                
               >
                 {link.label}
@@ -247,7 +243,7 @@ export default function Footer() {
       </div>
 
       {/* Top Border Accent */}
-      <div className="h-1 bg-gradient-to-r from-[#E53935] via-red-600 to-[#E53935]" />
+      <div className="h-1 bg-[#D62828]" />
     </footer>
   );
 }

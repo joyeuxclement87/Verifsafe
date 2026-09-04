@@ -1,144 +1,301 @@
 'use client';
 
+import { useRef, useState, type KeyboardEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Tool, ArrowRight } from 'tabler-icons-react';
-import { motion, Variants } from 'framer-motion';
+import { ArrowRight, ChevronDown } from 'tabler-icons-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { serviceCategories, type ServiceCategory } from '@/lib/services';
+import SectionHeading from '@/components/ui/SectionHeading';
+import Button from '@/components/ui/Button';
+
+const categoryLinks: Record<string, { href: string; label: string }> = {
+  supply: { href: '/equipments', label: 'Explore equipment solutions' },
+  installation: { href: '/services', label: 'Explore installation and maintenance services' },
+  inspection: { href: '/services', label: 'Explore inspection and testing services' },
+  training: { href: '/services', label: 'Explore fire safety training services' },
+};
+
+const getCategoryLink = (categoryId: string) =>
+  categoryLinks[categoryId] || { href: '/services', label: 'Explore this solution' };
+
+const getCategoryCapabilities = (category: ServiceCategory) => {
+  const uniqueFeatures = Array.from(
+    new Set(category.services.flatMap((service) => service.features))
+  );
+  return uniqueFeatures.slice(0, 4);
+};
 
 export default function OurServices() {
-  const services = [
-    {
-      image: '/service-1.png',
-      title: 'Equipment Supply',
-      description: 'Certified fire safety equipment for immediate protection against potential hazards.'
-    },
-    {
-      image: '/service-2.png',
-      title: 'Installation Services',
-      description: 'Professional system setup with full compliance verification for safety standards.'
-    },
-    {
-      image: '/service-3.png',
-      title: 'Inspection & Testing',
-      description: 'Regular maintenance checks to ensure peak performance of all installed systems.'
-    },
-    {
-      image: '/service-5.png',
-      title: 'Fire Safety Training',
-      description: 'Expert-led practical courses for complete organizational emergency preparedness.'
-    }
-  ];
+  const reduceMotion = useReducedMotion();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
+  const activeCategory = serviceCategories[activeIndex];
+  const activeCategoryImage = activeCategory.services[0]?.image;
+  const activeCategoryLink = getCategoryLink(activeCategory.id);
+  const activeCapabilities = getCategoryCapabilities(activeCategory);
+
+  const selectCategory = (index: number) => {
+    if (index === activeIndex) return;
+    setActiveIndex(index);
   };
 
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.7, ease: 'easeOut' }
+  const handleListKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    let nextIndex: number | null = null;
+
+    switch (event.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+        nextIndex = (activeIndex + 1) % serviceCategories.length;
+        break;
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        nextIndex = (activeIndex - 1 + serviceCategories.length) % serviceCategories.length;
+        break;
+      case 'Home':
+        nextIndex = 0;
+        break;
+      case 'End':
+        nextIndex = serviceCategories.length - 1;
+        break;
+      default:
+        return;
     }
+
+    event.preventDefault();
+    selectCategory(nextIndex);
+    tabRefs.current[nextIndex]?.focus();
   };
 
   return (
-    <section className="w-full bg-slate-50 py-20 sm:py-24 lg:py-32 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-20 left-10 w-16 h-16 bg-red-100/20 rounded-full blur-xl" />
-      <div className="absolute bottom-20 right-20 w-24 h-24 bg-gray-400/5 rounded-full blur-lg" />
+    <section className="w-full bg-white py-20 sm:py-24 lg:py-32">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          label="OUR SOLUTIONS"
+          title="Protection for every stage of your building's safety."
+          description="Practical fire protection solutions covering equipment, systems, inspection, maintenance, and staff readiness."
+          className="mb-14"
+        />
 
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="hidden lg:grid lg:grid-cols-[minmax(0,24rem)_1fr] gap-12 lg:gap-16 xl:gap-20 items-start">
+          <div
+            role="tablist"
+            aria-label="Fire protection solutions"
+            onKeyDown={handleListKeyDown}
+            className="border-t border-gray-200 lg:sticky lg:top-24"
+          >
+            {serviceCategories.map((category, index) => {
+              const isActive = index === activeIndex;
 
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-            <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-            <p className="text-label text-[#E53935] flex items-center gap-2">
-              <Tool size={15} />
-              Our Services
-            </p>
+              return (
+                <button
+                  key={category.id}
+                  ref={(el) => {
+                    tabRefs.current[index] = el;
+                  }}
+                  role="tab"
+                  id={`solution-tab-${category.id}`}
+                  aria-selected={isActive}
+                  aria-controls="solution-panel"
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => selectCategory(index)}
+                  className={`group relative w-full flex items-start gap-5 py-5 sm:py-6 px-2 text-left border-b border-gray-200 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828] ${
+                    isActive ? 'bg-[#FAF7F7] text-gray-900' : 'text-gray-500 hover:text-gray-900'
+                  }`}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`absolute left-0 inset-y-0 w-0.5 bg-[#D62828] transition-opacity duration-200 motion-reduce:transition-none ${
+                      isActive ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+
+                  <span
+                    className={`shrink-0 w-10 text-sm font-bold tabular-nums transition-colors duration-200 motion-reduce:transition-none ${
+                      isActive ? 'text-[#D62828]' : 'text-gray-400'
+                    }`}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <span className="flex-1 pr-2">
+                    <span className="block text-lg font-semibold tracking-tight">{category.label}</span>
+                    <span className="block mt-1 text-body-sm text-gray-500">{category.description}</span>
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
-          <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
-            What We <span className="text-[#E53935]">Do</span>
-          </h2>
-
-          <div className="w-20 h-1 bg-[#E53935] mx-auto mb-6 rounded-full" />
-
-          <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
-            We provide fire safety services which ensure that fire protection systems are installed, inspected, and maintained properly.
-          </p>
-        </motion.div>
-
-        {/* Service cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-14"
-        >
-          {services.map((service, index) => (
+          <div
+            id="solution-panel"
+            role="tabpanel"
+            aria-labelledby={`solution-tab-${activeCategory.id}`}
+            className="border-t border-gray-200 pt-10 sm:pt-12 min-w-0"
+          >
             <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group relative bg-white border border-gray-100 rounded-2xl p-4 sm:p-5 hover:border-[#E53935]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row items-stretch gap-6 overflow-hidden cursor-pointer"
-              style={{ borderWidth: '1px' }}
+              key={activeCategory.id}
+              initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
             >
-              {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              <div className="relative w-full sm:w-5/12 aspect-[4/3] sm:aspect-auto rounded-xl overflow-hidden shrink-0 border border-gray-100">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-
-              <div className="flex flex-col justify-center py-2 flex-1 pr-4">
-                <h3 className="text-card-title text-xl text-gray-900 mb-3 group-hover:text-[#E53935] transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-body text-gray-600 mb-6">
-                  {service.description}
+              <div className="flex items-center gap-3 mb-8">
+                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                <p className="text-label text-gray-500">
+                  {String(activeIndex + 1).padStart(2, '0')} · SOLUTION DIRECTORY
                 </p>
               </div>
 
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#E53935] to-transparent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-            </motion.div>
-          ))}
-        </motion.div>
+              <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-10 xl:gap-12 items-start">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 tracking-tight">
+                    {activeCategory.label}
+                  </h3>
+                  <p className="text-subheading text-gray-600 mt-4">{activeCategory.description}</p>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex justify-center"
-        >
-          <Link href="/services">
-            <button className="px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white text-btn text-base rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md inline-flex items-center gap-3">
-              Explore All Services
-              <ArrowRight size={18} strokeWidth={1.5} />
-            </button>
-          </Link>
-        </motion.div>
+                  <div className="mt-8 border-t border-gray-200 pt-6">
+                    <p className="text-label text-gray-500 mb-4">KEY CAPABILITIES</p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                      {activeCapabilities.map((feature) => (
+                        <li key={feature} className="text-body text-gray-700 border-b border-gray-200 pb-2">
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                </div>
+
+                <div className="xl:pl-4">
+                  {activeCategoryImage && (
+                    <div className="w-full bg-neutral overflow-hidden">
+                      <Image
+                        src={activeCategoryImage}
+                        alt={activeCategory.label}
+                        width={1200}
+                        height={900}
+                        sizes="(min-width: 1280px) 34vw, (min-width: 1024px) 40vw, 100vw"
+                        className="h-auto w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+
+                  <div className="mt-6 pt-6 border-t border-gray-200">
+                    <Link
+                      href={activeCategoryLink.href}
+                      className="inline-flex items-center gap-2 text-base font-semibold text-[#D62828] hover:text-[#A91D1D] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
+                    >
+                      {activeCategoryLink.label}
+                      <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        <div className="lg:hidden border-t border-gray-200">
+          {serviceCategories.map((category, index) => {
+            const isOpen = activeIndex === index;
+            const categoryLink = getCategoryLink(category.id);
+            const capabilities = getCategoryCapabilities(category);
+            const categoryImage = category.services[0]?.image;
+
+            return (
+              <div key={category.id} className="border-b border-gray-200">
+                <button
+                  id={`solution-mobile-trigger-${category.id}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`solution-mobile-panel-${category.id}`}
+                  onClick={() => selectCategory(index)}
+                  className={`w-full flex items-center gap-4 py-5 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828] ${
+                    isOpen ? 'bg-[#FAF7F7]' : 'bg-white'
+                  }`}
+                >
+                  <span
+                    className={`shrink-0 w-10 text-sm font-bold tabular-nums ${
+                      isOpen ? 'text-[#D62828]' : 'text-gray-400'
+                    }`}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <span className="flex-1">
+                    <span className="block text-base font-semibold text-gray-900">{category.label}</span>
+                    <span className="block mt-1 text-body-sm text-gray-500">{category.description}</span>
+                  </span>
+
+                  <ChevronDown
+                    size={18}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                    className={`shrink-0 text-gray-400 transition-transform duration-200 motion-reduce:transition-none ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <motion.div
+                    id={`solution-mobile-panel-${category.id}`}
+                    role="region"
+                    aria-labelledby={`solution-mobile-trigger-${category.id}`}
+                    initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: reduceMotion ? 0 : 0.2, ease: 'easeOut' }}
+                    className="pb-6 pl-14 pr-1"
+                  >
+                    <ul className="space-y-2 mb-5">
+                      {capabilities.map((feature) => (
+                        <li key={feature} className="text-body-sm text-gray-700">
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {categoryImage && (
+                      <div className="w-full bg-neutral overflow-hidden mb-5">
+                        <Image
+                          src={categoryImage}
+                          alt={category.label}
+                          width={1200}
+                          height={750}
+                          sizes="100vw"
+                          className="h-auto w-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+
+                    <Link
+                      href={categoryLink.href}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-[#D62828] hover:text-[#A91D1D] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
+                    >
+                      {categoryLink.label}
+                      <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
+                    </Link>
+                  </motion.div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-16 sm:mt-20 pt-8 border-t border-gray-200 flex items-center justify-between gap-6">
+          <p className="text-body-sm text-gray-500 max-w-md">
+            Explore practical fire protection solutions for supply, installation, inspection, and training.
+          </p>
+          <Button
+            href="/services"
+            variant="secondary"
+            className="shrink-0 self-start sm:self-auto"
+          >
+            Explore all solutions
+          </Button>
+        </div>
       </div>
     </section>
   );

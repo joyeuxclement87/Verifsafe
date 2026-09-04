@@ -82,6 +82,10 @@
   font-display: swap;
 }
 
+/* ─── Design Tokens ────────────────────────────────────────────────────────
+   Small, intentional palette built on the Verifsafe brand.
+   Red guides attention. Charcoal communicates authority. Neutrals carry content.
+   ──────────────────────────────────────────────────────────────────────── */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -92,11 +96,30 @@
   --color-foreground: var(--foreground);
   --font-sans: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
   --font-mono: var(--font-geist-mono);
+
+  /* Brand red — primary action, emphasis, small accents */
+  --color-brand: #d62828;
+  --color-brand-dark: #a91d1d;
+  --color-brand-light: #fce8e8;
+
+  /* Charcoal — authority, serious moments, dark surfaces */
+  --color-ink: #111111;
+  --color-surface-dark: #181818;
+  --color-surface-soft: #242424;
+
+  /* Light surfaces — content-carrying sections */
+  --color-paper: #fafaf9;
+  --color-neutral: #f3f3f1;
+  --color-line: #e5e5e3;
+
+  /* Text hierarchy */
+  --color-ink-soft: #5f5f5a;
+  --color-muted: #7a7a74;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #111111;
     --foreground: #ededed;
   }
 }
@@ -104,55 +127,68 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  /* Primary site font — Oakes Grotesk */
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Typography System ──────────────────────────────────────────────────────
-   Use these semantic classes throughout the site instead of ad-hoc inline
-   fontFamily style props. All weights come from Oakes Grotesk local files.
-   ────────────────────────────────────────────────────────────────────────── */
+/* ─── Typography System ────────────────────────────────────────────────────
+   Fluid responsive scale. Use these semantic classes instead of ad-hoc
+   inline font sizes. All weights come from Oakes Grotesk local files.
+   ──────────────────────────────────────────────────────────────────────── */
 
-/* Page / section hero headline  (h1) */
+/* Display / hero headline */
 .text-hero-heading {
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
-  font-size: clamp(1.75rem, 4vw, 3.5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  text-transform: capitalize;
+  font-size: clamp(2.625rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
-/* Section / card heading  (h2, h3) */
+/* Page H1 */
+.text-page-heading {
+  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
+  font-size: clamp(2.375rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Major section H2 */
 .text-section-heading {
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
-  font-weight: 900;
+  font-size: clamp(2rem, 3vw, 2.625rem);
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
 
-/* Sub-section or card title  (h3, h4) */
+/* Sub-section / card title (h3) */
 .text-card-title {
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
-  font-weight: 700;
+  font-size: clamp(1.4375rem, 2vw, 1.625rem);
+  font-weight: 600;
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
-/* Small capitalize label / badge text */
+/* Eyebrow / section label */
+.eyebrow,
 .text-label {
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: capitalize;
+  font-size: clamp(0.75rem, 1vw, 0.8125rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
-/* Lead / sub-heading paragraph below a section title */
+/* Lead / intro paragraph below a section title */
 .text-subheading {
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 /* Standard body copy */
@@ -160,7 +196,7 @@ body {
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
 /* Small body / helper / caption text */
@@ -168,15 +204,17 @@ body {
   font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
-/* Button / CTA text */
+/* ─── Buttons ─────────────────────────────────────────────────────────────
+   All buttons use components/ui/Button.tsx (primary / secondary / dark / text).
+   .text-btn remains as a shared type utility for filter chips and similar controls.
+   ──────────────────────────────────────────────────────────────────────── */
 .text-btn {
-  font-family: 'Oakes Grotesk', Arial, Helvetica, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 @keyframes fadeIn {
@@ -192,4 +230,48 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out;
+}
+
+/* Header dropdown / mobile menu entrance — fast and restrained */
+@keyframes nav-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-dropdown-enter {
+  animation: nav-dropdown-in 0.16s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-dropdown-enter {
+    animation: none;
+  }
+}
+
+/* Hero entrance animation — pure CSS so content is never stuck invisible */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-enter {
+  animation: hero-fade-up 0.8s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter {
+    animation: none;
+  }
 }

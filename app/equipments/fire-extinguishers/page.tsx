@@ -6,7 +6,6 @@ import {
   Flame,
   BuildingWarehouse,
   Home,
-  FileText,
   Bolt,
   ShieldCheck,
   Settings,
@@ -16,14 +15,13 @@ import {
   Lifebuoy,
   HandFinger,
   Check,
-  ArrowRight,
   Star,
   Armchair,
   Plus
 } from 'tabler-icons-react';
 import Image from 'next/image';
 import WhoWeServe from '@/components/sections/marketing/WhoWeServe';
-import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 
 export default function FireExtinguishersPage() {
@@ -97,15 +95,15 @@ export default function FireExtinguishersPage() {
 
   const getApplicationIcon = (app: string) => {
     switch (app) {
-      case 'Homes': return <Home size={18} className="text-[#E53935]" />;
-      case 'Offices': return <Armchair size={18} className="text-[#E53935]" />;
-      case 'Vehicles': return <Building size={18} className="text-[#E53935]" />;
-      case 'Warehouses': return <BuildingWarehouse size={18} className="text-[#E53935]" />;
-      case 'Commercial buildings': return <Building size={18} className="text-[#E53935]" />;
-      case 'Restaurants': return <Building size={18} className="text-[#E53935]" />;
-      case 'Factories': return <BuildingWarehouse size={18} className="text-[#E53935]" />;
-      case 'Data Centers': return <Building size={18} className="text-[#E53935]" />;
-      default: return <Building size={18} className="text-[#E53935]" />;
+      case 'Homes': return <Home size={18} className="text-[#D62828]" />;
+      case 'Offices': return <Armchair size={18} className="text-[#D62828]" />;
+      case 'Vehicles': return <Building size={18} className="text-[#D62828]" />;
+      case 'Warehouses': return <BuildingWarehouse size={18} className="text-[#D62828]" />;
+      case 'Commercial buildings': return <Building size={18} className="text-[#D62828]" />;
+      case 'Restaurants': return <Building size={18} className="text-[#D62828]" />;
+      case 'Factories': return <BuildingWarehouse size={18} className="text-[#D62828]" />;
+      case 'Data Centers': return <Building size={18} className="text-[#D62828]" />;
+      default: return <Building size={18} className="text-[#D62828]" />;
     }
   };
 
@@ -140,7 +138,7 @@ export default function FireExtinguishersPage() {
             backgroundAttachment: 'fixed',
           }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950/85 via-gray-950/85 to-gray-950/75" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink/85 via-ink/85 to-ink/75" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-20">
           <motion.div
@@ -148,12 +146,13 @@ export default function FireExtinguishersPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-              <Flame size={16} className="text-[#E53935]" />
-              <p className="text-label text-white">Equipment Guide</p>
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+              <p className="text-label text-white/60">Equipment Guide</p>
+              <span aria-hidden="true" className="h-px w-8 bg-white/60" />
             </div>
-            <h1 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white mb-4">
-              Fire <span className="text-[#E53935]">Extinguishers</span>
+            <h1 className="text-page-heading  text-white mb-4">
+              Fire Extinguishers
             </h1>
             <p className="text-subheading text-gray-200 max-w-2xl mx-auto mb-8">
               Essential portable firefighting equipment designed to control small fires and protect lives before professional help arrives.
@@ -167,19 +166,18 @@ export default function FireExtinguishersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <p className="text-label text-[#E53935]">Operational Guide</p>
-              </div>
-              <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6">
-                First Line <span className="text-[#E53935]">of Defense</span>
+              <div className="flex items-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+  <p className="text-label text-gray-500">Operational Guide</p>
+</div>
+              <h2 className="text-section-heading  text-gray-900 mb-6">
+                First Line of Defense
               </h2>
-              <div className="w-20 h-1 bg-[#E53935] rounded-full mb-8" />
               <div className="space-y-8">
                 {[
                   { step: "01", title: "Immediate Response", text: "Enables quick action when fire starts, providing the crucial first line of defense." },
@@ -194,9 +192,9 @@ export default function FireExtinguishersPage() {
                     transition={{ delay: i * 0.1 }}
                     className="flex gap-6"
                   >
-                    <span className="text-4xl font-black text-gray-100">{item.step}</span>
+                    <span className="text-base font-bold text-gray-400 tabular-nums">{item.step}</span>
                     <div>
-                      <h4 className="text-card-title text-xl text-gray-900 mb-2">{item.title}</h4>
+                      <h4 className="text-card-title text-gray-900 mb-2">{item.title}</h4>
                       <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{item.text}</p>
                     </div>
                   </motion.div>
@@ -204,13 +202,13 @@ export default function FireExtinguishersPage() {
               </div>
             </motion.div>
             <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="aspect-square bg-gray-50 rounded-3xl overflow-hidden shadow-lg relative border border-gray-100">
+              <div className="aspect-square bg-gray-50 rounded-md overflow-hidden relative border border-gray-200">
                 <Image 
                   src="/fire-extinguisher-guide.png" 
                   alt="Fire Extinguisher Guide" 
@@ -223,9 +221,9 @@ export default function FireExtinguishersPage() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 z-20"
+                className="absolute -bottom-6 -left-6 bg-white p-6 rounded-md border border-gray-200 z-20"
               >
-                <p className="text-3xl font-black text-[#E53935]">6KG</p>
+                <p className="text-card-title font-bold text-[#D62828]">6KG</p>
                 <p className="text-xs text-gray-500 font-bold capitalize tracking-widest mt-1">Standard Unit</p>
               </motion.div>
             </motion.div>
@@ -234,7 +232,7 @@ export default function FireExtinguishersPage() {
       </section>
 
       {/* Types Section */}
-      <section className="w-full py-12 sm:py-16 lg:py-20 bg-linear-to-b from-gray-50 via-white to-gray-50">
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -242,8 +240,7 @@ export default function FireExtinguishersPage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-3">Choose the <span className="text-[#E53935]">Right Type</span></h2>
-            <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
+            <h2 className="text-section-heading  text-gray-900 mb-3">Choose the Right Type</h2>
             <p className="text-subheading text-gray-600 max-w-2xl mx-auto">Fire extinguishers are color-coded and specifically designed to combat different classes of fire.</p>
           </motion.div>
 
@@ -261,20 +258,18 @@ export default function FireExtinguishersPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group flex flex-col p-6 bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg transition-all duration-300 overflow-hidden relative"
+                className="group flex flex-col p-6 bg-white border border-gray-100 rounded-md hover:border-[#D62828]/40 transition-colors duration-200 overflow-hidden relative"
               >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 <div className="flex items-start gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0"><type.icon size={24} /></div>
+                  <div className="flex items-center justify-center text-gray-400 shrink-0"><type.icon size={24} /></div>
                   <div className="flex-1">
-                    <h3 className="text-card-title text-xl text-gray-900 group-hover:text-[#E53935] transition-colors">{type.title}</h3>
-                    <p className="text-xs font-bold text-[#E53935] capitalize tracking-wider mt-1">Classes: {type.classes}</p>
+                    <h3 className="text-card-title text-gray-900">{type.title}</h3>
+                    <p className="text-xs font-bold text-[#D62828] capitalize tracking-wider mt-1">Classes: {type.classes}</p>
                   </div>
                 </div>
                 <p className="text-body text-gray-600 mb-6">{type.desc}</p>
-                <div className="mt-auto bg-gray-50 p-4 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 transition-all duration-300">
-                  <p className="text-xs text-gray-500"><span className="text-label text-gray-900 block mb-1 group-hover:text-[#E53935] transition-colors">Best for</span>{type.bestFor}</p>
+                <div className="mt-auto bg-neutral p-4 rounded-md border border-line">
+                  <p className="text-xs text-gray-500"><span className="text-label text-gray-900 block mb-1">Best for</span>{type.bestFor}</p>
                 </div>
               </motion.div>
             ))}
@@ -287,14 +282,16 @@ export default function FireExtinguishersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20 relative z-10 items-start">
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="lg:col-span-1 lg:sticky lg:top-8"
             >
-              <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full"><span className="w-2 h-2 rounded-full bg-[#E53935]" /><p className="text-label text-[#E53935]">Quick Guide</p></div>
-              <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5">Fire <span className="text-[#E53935]">Classes</span></h2>
-              <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
+              <div className="flex items-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+  <p className="text-label text-gray-500">Quick Guide</p>
+</div>
+              <h2 className="text-section-heading  text-gray-900 mb-5">Fire Classes</h2>
               <p className="text-body text-gray-600">Understanding fire classes is essential for choosing the right extinguishing agent.</p>
             </motion.div>
 
@@ -309,14 +306,14 @@ export default function FireExtinguishersPage() {
                 ].map((item, i) => (
                   <motion.div 
                     key={i} 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#E53935]/40 transition-all duration-300"
+                    className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#D62828]/40 transition-all duration-300"
                   >
-                    <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0"><span className="text-2xl font-black">{item.class}</span></div>
-                    <div className="flex flex-col"><span className="text-card-title text-xl text-gray-900 group-hover:text-[#E53935] transition-colors duration-300">{item.title}</span><span className="text-body-sm text-gray-400 group-hover:text-gray-600 transition-colors duration-300">{item.detail}</span></div>
+                    <div className="flex items-center justify-center text-gray-400 shrink-0"><span className="text-2xl font-black">{item.class}</span></div>
+                    <div className="flex flex-col"><span className="text-card-title text-gray-900 duration-300">{item.title}</span><span className="text-body-sm text-gray-400">{item.detail}</span></div>
                   </motion.div>
                 ))}
               </div>
@@ -326,7 +323,7 @@ export default function FireExtinguishersPage() {
       </section>
 
       {/* Sizes Section */}
-      <section className="w-full py-12 sm:py-16 lg:py-20 bg-linear-to-b from-gray-50 via-white to-gray-50">
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -334,8 +331,7 @@ export default function FireExtinguishersPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5">Available <span className="text-[#E53935]">Sizes</span></h2>
-            <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-6" />
+            <h2 className="text-section-heading  text-gray-900 mb-5">Available Sizes</h2>
             <p className="text-subheading text-gray-600 max-w-2xl mx-auto">Fire extinguishers come in various sizes measured by weight (kg).</p>
           </motion.div>
 
@@ -347,20 +343,18 @@ export default function FireExtinguishersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative flex flex-col p-6 bg-white border border-gray-100 rounded-2xl hover:border-[#E53935]/30 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                className="group relative flex flex-col p-6 bg-white border border-gray-100 rounded-md hover:border-[#D62828]/40 transition-colors duration-200 overflow-hidden"
               >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0"><BuildingWarehouse size={24} /></div>
-                  <div><h3 className="text-card-title text-xl text-gray-900 group-hover:text-[#E53935] transition-colors">{sizeCategory.category}</h3><p className="text-body-sm text-gray-400 mt-1">{sizeCategory.description}</p></div>
+                  <div className="flex items-center justify-center text-gray-400 shrink-0"><BuildingWarehouse size={24} /></div>
+                  <div><h3 className="text-card-title text-gray-900">{sizeCategory.category}</h3><p className="text-body-sm text-gray-400 mt-1">{sizeCategory.description}</p></div>
                 </div>
                 <div className="flex-1 space-y-3 mb-6">
                   {sizeCategory.sizes.map((size, i) => (
-                    <div key={i} className="flex items-center gap-3"><div className="w-2 h-2 rounded-full bg-[#E53935]/20 group-hover:bg-[#E53935] transition-colors duration-300" /><span className="text-base text-gray-700 font-medium">{size}</span></div>
+                    <div key={i} className="flex items-center gap-3"><div className="w-2 h-2 rounded-full bg-[#D62828]/20 group-hover:bg-[#D62828] transition-colors duration-300" /><span className="text-base text-gray-700 font-medium">{size}</span></div>
                   ))}
                 </div>
-                <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 group-hover:bg-red-50/50 transition-all duration-300"><p className="text-xs text-gray-500"><span className="text-label text-gray-900 block mb-1 group-hover:text-[#E53935] transition-colors">Recommended for</span>{sizeCategory.bestFor}</p></div>
+                <div className="bg-neutral p-4 rounded-md border border-line"><p className="text-xs text-gray-500"><span className="text-label text-gray-900 block mb-1">Recommended for</span>{sizeCategory.bestFor}</p></div>
               </motion.div>
             ))}
           </div>
@@ -375,14 +369,15 @@ export default function FireExtinguishersPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-white border border-gray-100 rounded-2xl p-8 sm:p-12 shadow-sm relative overflow-hidden"
+            className="bg-white border border-gray-200 rounded-md p-8 sm:p-12 relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[#E53935]/5 rounded-full blur-3xl -mr-24 -mt-24 pointer-events-none" />
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20 relative z-10 items-start">
               <div className="lg:col-span-1 lg:sticky lg:top-8">
-                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full"><span className="w-2 h-2 rounded-full bg-[#E53935]" /><p className="text-label text-[#E53935]">Quick Reference</p></div>
-                <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5">Simple <span className="text-[#E53935]">Buyer&apos;s Guide</span></h2>
-                <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
+                <div className="flex items-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+  <p className="text-label text-gray-500">Quick Reference</p>
+</div>
+                <h2 className="text-section-heading  text-gray-900 mb-5">Simple Buyer&apos;s Guide</h2>
                 <p className="text-body text-gray-600">Need a quick recommendation?</p>
               </div>
               <div className="lg:col-span-2">
@@ -394,10 +389,10 @@ export default function FireExtinguishersPage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.05 }}
-                      className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#E53935]/40 transition-all duration-300"
+                      className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#D62828]/40 transition-all duration-300"
                     >
-                      <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0">{getRenderIcon(guide.iconName)}</div>
-                      <div className="flex flex-col"><h3 className="text-card-title text-xl text-gray-900 group-hover:text-[#E53935] transition-colors truncate">{guide.scenario}</h3><p className="text-sm font-black text-[#E53935] capitalize tracking-wider mt-1">Use: {guide.recommendation}</p></div>
+                      <div className="flex items-center justify-center text-gray-400 shrink-0">{getRenderIcon(guide.iconName)}</div>
+                      <div className="flex flex-col"><h3 className="text-card-title text-gray-900 truncate">{guide.scenario}</h3><p className="text-label text-[#D62828] mt-2">Use: {guide.recommendation}</p></div>
                     </motion.div>
                   ))}
                 </div>
@@ -408,19 +403,21 @@ export default function FireExtinguishersPage() {
       </section>
 
       {/* Applications */}
-      <section className="w-full py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-neutral">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white border border-gray-100 rounded-2xl p-8 sm:p-12 shadow-sm relative overflow-hidden"
+            className="bg-white border border-gray-200 rounded-md p-8 sm:p-12 relative overflow-hidden"
           >
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20 relative z-10 items-start">
               <div className="lg:col-span-1 lg:sticky lg:top-8">
-                <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-red-50 rounded-full"><span className="w-2 h-2 rounded-full bg-[#E53935]" /><p className="text-label text-[#E53935]">Use Cases</p></div>
-                <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5">Ideal <span className="text-[#E53935]">Applications</span></h2>
-                <div className="w-20 h-1 bg-[#E53935] rounded-full mb-6" />
+                <div className="flex items-center gap-3 mb-5">
+  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+  <p className="text-label text-gray-500">Use Cases</p>
+</div>
+                <h2 className="text-section-heading  text-gray-900 mb-5">Ideal Applications</h2>
                 <p className="text-body text-gray-600">Strategically placed fire extinguishers are the first line of defense.</p>
               </div>
               <div className="lg:col-span-2">
@@ -432,10 +429,10 @@ export default function FireExtinguishersPage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.05 }}
-                      className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#E53935]/40 transition-all duration-300"
+                      className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#D62828]/40 transition-all duration-300"
                     >
-                      <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#E53935]/10 group-hover:text-[#E53935] transition-all duration-500 shrink-0">{getApplicationIcon(app)}</div>
-                      <div className="flex flex-col"><span className="text-card-title text-xl text-gray-900 group-hover:text-[#E53935] transition-colors duration-300">{app}</span><span className="text-body-sm text-gray-400">Essential Safety Protection</span></div>
+                      <div className="flex items-center justify-center text-gray-400 shrink-0">{getApplicationIcon(app)}</div>
+                      <div className="flex flex-col"><span className="text-card-title text-gray-900 duration-300">{app}</span><span className="text-body-sm text-gray-400">Essential Safety Protection</span></div>
                     </motion.div>
                   ))}
                 </div>
@@ -454,8 +451,7 @@ export default function FireExtinguishersPage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-3">Features & <span className="text-[#E53935]">Benefits</span></h2>
-            <div className="w-20 h-1 bg-[#E53935] rounded-full mx-auto mb-4" />
+            <h2 className="text-section-heading  text-gray-900 mb-3">Features & Benefits</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -466,12 +462,10 @@ export default function FireExtinguishersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group flex items-start gap-3 p-4 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-xl hover:border-red-400 hover:shadow-lg transition-all duration-300 overflow-hidden relative"
+                className="group flex items-start gap-3 p-4 bg-white border border-gray-200 rounded-md hover:border-[#D62828]/40 transition-colors duration-200 overflow-hidden relative"
               >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#FF4D4D] via-[#E53935] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#FF4D4D] to-[#E53935] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-[#E53935] group-hover:bg-[#E53935]/10 transition-all shrink-0"><CircleCheck size={20} /></div>
-                <p className="text-body text-gray-900 group-hover:text-[#E53935] transition-colors mt-1">{feature}</p>
+                <div className="flex items-center justify-center text-[#D62828] shrink-0"><CircleCheck size={20} /></div>
+                <p className="text-body text-gray-900 mt-1">{feature}</p>
               </motion.div>
             ))}
           </div>
@@ -483,7 +477,7 @@ export default function FireExtinguishersPage() {
       {/* CTA Section */}
       <section className="relative w-full py-14 sm:py-16 lg:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/ext.png")`, backgroundAttachment: 'fixed' }} />
-        <div className="absolute inset-0 bg-linear-to-r from-gray-950/90 via-gray-950/90 to-gray-950/90" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink/90 via-ink/90 to-ink/90" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div 
@@ -492,17 +486,12 @@ export default function FireExtinguishersPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 mb-5"><p className="text-label text-white"><Star size={16} />Get Started</p></div>
-            <h2 className="text-section-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6">Ensure your <span className="text-[#E53935]">safety today</span></h2>
+            <div className="flex items-center justify-center gap-3 mb-5"><span aria-hidden="true" className="h-px w-8 bg-white/60" /><p className="text-label text-white/60">Get Started</p><span aria-hidden="true" className="h-px w-8 bg-white/60" /></div>
+            <h2 className="text-section-heading  text-white mb-6">Ensure your safety today</h2>
             <p className="text-subheading text-gray-300 max-w-2xl mx-auto mb-8">Contact our experts for the right recommendation and installation.</p>
-            <Link
-              href="/contact#contact-form"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#FF4D4D] to-[#E53935] text-white text-btn text-base rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 active:scale-95 shadow-md group"
-             
-            >
+            <Button href="/contact#contact-form" variant="primary">
               Request Quote
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-            </Link>
+            </Button>
           </motion.div>
         </div>
       </section>

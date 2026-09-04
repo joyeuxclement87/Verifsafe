@@ -1,8 +1,7 @@
 import HeroSection from '@/components/sections/marketing/HeroSection';
-import EmergencyPreparedness from '@/components/sections/marketing/EmergencyPreparedness';
-import IndustrialFireSolutions from '@/components/sections/marketing/IndustrialFireSolutions';
+import FireSafetyApproach from '@/components/sections/marketing/FireSafetyApproach';
 import WhyChooseUs from '@/components/sections/marketing/WhyChooseUs';
-import AboutCompany from '@/components/sections/content/AboutCompany';
+import WhoWeServe from '@/components/sections/marketing/WhoWeServe';
 import OurEquipment from '@/components/sections/content/OurEquipment';
 import OurServices from '@/components/sections/content/OurServices';
 import FAQSection from '@/components/sections/content/FAQSection';
@@ -11,31 +10,28 @@ import ProtectionCTA from '@/components/sections/marketing/ProtectionCTA';
 export default function Home() {
   return (
     <main className="w-full">
-      {/* Top landing hero with parallax effect */}
+      {/* Hero: value proposition, primary CTA, quiet proof points */}
       <HeroSection />
-      
-      {/* Awareness and emergency response section */}
-      <EmergencyPreparedness />
-      
-      {/* Core information about the company */}
-      <AboutCompany />
-      
-      {/* Specialized solutions for industrial sectors */}
-      <IndustrialFireSolutions />
-     
-      {/* Grid display of main fire safety equipment */}
-      <OurEquipment />
-      
-      {/* Detailed breakdown of services offered */}
+
+      {/* How we protect: Assess, Equip, Install, Maintain */}
+      <FireSafetyApproach />
+
+      {/* Our solutions: interactive service explorer */}
       <OurServices />
-      
-      {/* Key value propositions and competitive advantages */}
+
+      {/* Equipment & systems */}
+      <OurEquipment />
+
+      {/* Industries we protect */}
+      <WhoWeServe />
+
+      {/* Why Verifsafe: real differentiators */}
       <WhyChooseUs />
-      
-      {/* Frequently asked questions about fire safety */}
+
+      {/* FAQ */}
       <FAQSection />
-      
-      {/* Final call to action for security and protection */}
+
+      {/* Final CTA */}
       <ProtectionCTA />
     </main>
   );
