@@ -95,7 +95,7 @@ export default function ServicesPage() {
         <p className="text-body text-gray-600 flex-grow mb-5">{service.description}</p>
         <ul className="mb-6">
           {service.features.map((feature, featureIndex) => (
-            <li key={featureIndex} className="py-1 border-t border-gray-100 text-sm text-gray-600 first:border-t-0">
+            <li key={featureIndex} className="py-1 border-t border-gray-100 text-body-sm text-gray-600 first:border-t-0">
               {feature}
             </li>
           ))}
@@ -104,7 +104,6 @@ export default function ServicesPage() {
           <Button
             href="/contact#contact-form"
             variant="text"
-            className="text-sm"
           >
             {service.title === 'Fire Equipment Supply' ? 'View Equipments' : 'Request a Quote'}
           </Button>
@@ -246,7 +245,7 @@ export default function ServicesPage() {
               {matterItems.map((item) => (
                 <li key={item.number} className="border-b border-gray-200 py-7">
                   <div className="flex items-start gap-6">
-                    <span className="shrink-0 w-10 pt-0.5 text-base font-bold text-gray-400 tabular-nums">
+                    <span className="shrink-0 w-10 pt-0.5 text-index text-gray-400 tabular-nums">
                       {item.number}
                     </span>
                     <div>
@@ -266,11 +265,11 @@ export default function ServicesPage() {
               <div className="grid grid-cols-2 gap-4 pt-6 mt-6 border-t border-gray-200">
                 <div>
                   <div className="text-card-title font-bold text-[#D62828]">24/7</div>
-                  <div className="text-sm text-gray-500 mt-1">Support</div>
+                  <div className="text-body-sm text-gray-500 mt-1">Support</div>
                 </div>
                 <div>
                   <div className="text-card-title font-bold text-[#D62828]">100%</div>
-                  <div className="text-sm text-gray-500 mt-1">Reliable</div>
+                  <div className="text-body-sm text-gray-500 mt-1">Reliable</div>
                 </div>
               </div>
             </div>
@@ -351,11 +350,11 @@ export default function ServicesPage() {
 
               {/* What happens next */}
               <div className="border border-gray-200 rounded-lg p-6 bg-white">
-                <h4 className="text-card-title text-base text-gray-900 mb-5">What happens next?</h4>
+                <h4 className="text-list-title text-gray-900 mb-5">What happens next?</h4>
                 <ol>
                   {nextSteps.map((item) => (
                     <li key={item.step} className="flex items-center gap-4 py-3 border-t border-gray-100 first:border-t-0">
-                      <span className="w-8 pt-0.5 text-sm font-bold text-gray-400 tabular-nums">
+                      <span className="w-8 pt-0.5 text-index text-gray-400 tabular-nums">
                         {item.step}
                       </span>
                       <span className="text-body-sm text-gray-600">{item.text}</span>
@@ -432,8 +431,8 @@ export default function ServicesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="rounded-lg border border-red-200 bg-red-50 p-4"
                   >
-                    <p className="text-sm font-semibold text-red-700">Your message could not be sent</p>
-                    <p className="mt-1 text-sm text-red-600">{error}</p>
+                    <p className="text-body-sm font-semibold text-red-700">Your message could not be sent</p>
+                    <p className="mt-1 text-body-sm text-red-600">{error}</p>
                   </motion.div>
                 )}
 
@@ -444,8 +443,8 @@ export default function ServicesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="rounded-lg border border-emerald-200 bg-emerald-50 p-4"
                   >
-                    <p className="text-sm font-semibold text-emerald-700">Thank you for your request</p>
-                    <p className="mt-1 text-sm text-emerald-600">Our team will review your request and follow up shortly.</p>
+                    <p className="text-body-sm font-semibold text-emerald-700">Thank you for your request</p>
+                    <p className="mt-1 text-body-sm text-emerald-600">Our team will review your request and follow up shortly.</p>
                   </motion.div>
                 )}
               </form>

@@ -57,18 +57,26 @@ export default function FAQSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
             >
-              <div className="flex items-center gap-3 mb-5">
-                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                  COMMON QUESTIONS
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <p className="flex items-center gap-2.5">
+                  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                  <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
+                    common questions
+                  </span>
                 </p>
+                <span
+                  aria-hidden="true"
+                  className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
+                >
+                  VS / FAQ — 06
+                </span>
               </div>
 
               <h2 className="text-section-heading text-gray-900">
-                Answers before you ask.
+                <span className="text-highlight">Answers</span> before you ask.
               </h2>
 
-              <p className="text-subheading text-gray-600 mt-6">
+              <p className="text-subheading text-gray-600 mt-5 max-w-md">
                 Clear answers on our services, equipment, and maintenance coverage.
               </p>
 
@@ -103,7 +111,7 @@ export default function FAQSection() {
                       className="group w-full py-5 sm:py-6 flex items-center justify-between gap-6 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
                     >
                       <span
-                        className={`text-base sm:text-lg font-semibold tracking-tight transition-colors duration-200 ${
+                        className={`text-list-title transition-colors duration-200 ${
                           isOpen ? 'text-gray-900' : 'text-gray-700 group-hover:text-gray-900'
                         }`}
                       >

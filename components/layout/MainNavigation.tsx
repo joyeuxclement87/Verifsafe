@@ -207,7 +207,7 @@ export default function MainNavigation() {
                     aria-expanded={dropdownOpen === link.label}
                     aria-haspopup="true"
                     aria-controls="equipment-dropdown"
-                    className={`relative inline-flex items-center gap-1 px-3 py-2 text-[13px] font-medium transition-colors duration-200 rounded-md ${
+                    className={`relative inline-flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors duration-200 rounded-md ${
                       isActive(link.href)
                         ? 'text-white bg-white/5'
                         : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -236,7 +236,7 @@ export default function MainNavigation() {
                               onClick={closeAll}
                               className={`group -mx-2 rounded-lg px-2 py-2.5 hover:bg-white/5 transition-colors duration-150 ${focusClasses}`}
                             >
-                              <span className="block text-[13px] font-medium text-gray-100 group-hover:text-white transition-colors duration-150">
+                              <span className="block text-sm font-semibold text-gray-100 group-hover:text-white transition-colors duration-150">
                                 {item.title}
                               </span>
                               <span className="mt-0.5 block text-xs leading-relaxed text-gray-500">
@@ -249,7 +249,7 @@ export default function MainNavigation() {
                           <Link
                             href="/equipments"
                             onClick={closeAll}
-                            className={`inline-flex items-center text-[13px] font-semibold text-brand hover:text-white transition-colors duration-150 ${focusClasses}`}
+                            className={`inline-flex items-center text-sm font-semibold text-brand hover:text-white transition-colors duration-150 ${focusClasses}`}
                           >
                             View All Equipment
                           </Link>
@@ -262,7 +262,7 @@ export default function MainNavigation() {
                 <Link
                   href={link.href}
                   onClick={closeAll}
-                  className={`relative inline-block px-3 py-2 text-[13px] font-medium transition-colors duration-200 rounded-md ${
+                  className={`relative inline-block px-3 py-2 text-sm font-semibold transition-colors duration-200 rounded-md ${
                     isActive(link.href)
                       ? 'text-white bg-white/5'
                       : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -331,7 +331,7 @@ export default function MainNavigation() {
                         }}
                         aria-expanded={dropdownOpen === link.label}
                         aria-controls="mobile-equipment-menu"
-                        className={`w-full flex items-center justify-between px-3 py-3 text-[15px] font-medium rounded-lg transition-colors duration-200 ${
+                        className={`w-full flex items-center justify-between px-3 py-3 text-base font-semibold rounded-lg transition-colors duration-200 ${
                           dropdownOpen === link.label
                             ? 'text-white bg-white/5'
                             : 'text-gray-300 hover:text-white hover:bg-white/5'
@@ -351,7 +351,7 @@ export default function MainNavigation() {
                               <Link
                                 href={item.link}
                                 onClick={closeAll}
-                                className={`block px-3 py-2.5 text-[14px] text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200 ${focusClasses}`}
+                                className={`block px-3 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200 ${focusClasses}`}
                               >
                                 {item.title}
                               </Link>
@@ -361,7 +361,7 @@ export default function MainNavigation() {
                             <Link
                               href="/equipments"
                               onClick={closeAll}
-                              className={`block px-3 py-2.5 text-[14px] font-semibold text-brand hover:text-white transition-colors duration-200 ${focusClasses}`}
+                              className={`block px-3 py-2.5 text-sm font-semibold text-brand hover:text-white transition-colors duration-200 ${focusClasses}`}
                             >
                               View All Equipment
                             </Link>
@@ -373,7 +373,7 @@ export default function MainNavigation() {
                     <Link
                       href={link.href}
                       onClick={closeAll}
-                      className={`block px-3 py-3 text-[15px] font-medium rounded-lg transition-colors duration-200 ${
+                      className={`block px-3 py-3 text-base font-semibold rounded-lg transition-colors duration-200 ${
                         isActive(link.href)
                           ? 'text-white bg-white/5'
                           : 'text-gray-300 hover:text-white hover:bg-white/5'

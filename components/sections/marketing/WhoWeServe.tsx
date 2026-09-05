@@ -4,100 +4,57 @@ import { useRef, useState, type KeyboardEvent } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'tabler-icons-react';
 import { motion, useReducedMotion } from 'framer-motion';
-import SectionHeading from '@/components/ui/SectionHeading';
-
-interface IndustryLink {
-  href: string;
-  label: string;
-}
 
 interface Industry {
   id: string;
   name: string;
-  descriptor: string;
   summary: string;
   support: string[];
-  link: IndustryLink;
+  href: string;
 }
 
 const industries: Industry[] = [
   {
     id: 'residential',
-    name: 'Residential Buildings',
-    descriptor: 'Apartments · Condominiums · Housing complexes',
-    summary:
-      'Multi-unit housing depends on dependable early detection, working extinguishers, and illuminated escape routes. We supply, install, and maintain the core systems that keep residents protected.',
-    support: [
-      'Fire alarm & detection system installation',
-      'Certified extinguishers & emergency lighting',
-      'Scheduled maintenance & extinguisher refilling',
-    ],
-    link: { href: '/equipments', label: 'Explore fire safety equipment' },
+    name: 'residential buildings',
+    summary: 'Fire protection for apartments, residential developments and shared living spaces.',
+    support: ['Fire extinguishers', 'Detection & alarm systems', 'Emergency lighting'],
+    href: '/equipments',
   },
   {
     id: 'commercial',
-    name: 'Commercial Properties',
-    descriptor: 'Retail spaces · Shopping centers · Commercial buildings',
-    summary:
-      'High occupant loads and complex layouts mean protection must be verified, not assumed. We keep systems compliant through routine inspection and testing, backed by certified equipment and staff training.',
-    support: [
-      'Fire alarm system supply & installation',
-      'Routine inspection & testing for compliance',
-      'Fire safety awareness training for staff',
-    ],
-    link: { href: '/services', label: 'Explore inspection & testing services' },
+    name: 'commercial properties',
+    summary: 'Fire safety for retail spaces, shopping centers and commercial buildings.',
+    support: ['Fire alarm systems', 'Inspection & testing', 'Staff fire safety training'],
+    href: '/services',
   },
   {
     id: 'offices',
-    name: 'Offices & Workspaces',
-    descriptor: 'Corporate offices · Coworking spaces · Business centers',
-    summary:
-      'Workplaces need reliable equipment and people who know how to respond. We pair compliant installations with practical fire safety and first aid training for your team.',
-    support: [
-      'Inspection & testing for businesses and offices',
-      'Fire safety awareness & first aid training',
-      'Extinguisher supply, siting & refilling',
-    ],
-    link: { href: '/services', label: 'Explore our services' },
+    name: 'offices & workspaces',
+    summary: 'Detection, extinguishers and training for offices and coworking environments.',
+    support: ['Detection & alarm systems', 'Extinguisher supply & siting', 'Fire safety training'],
+    href: '/services',
   },
   {
     id: 'industrial',
-    name: 'Warehouses & Industrial',
-    descriptor: 'Storage facilities · Manufacturing plants · Industrial complexes',
-    summary:
-      'Large floor areas concentrate valuable stock and machinery, so coverage and upkeep matter. From hose reels and extinguishers to alarm systems and ongoing maintenance, we keep protection ready.',
-    support: [
-      'Hose reels & extinguishers for large areas',
-      'Alarm & detection device installation',
-      'Ongoing maintenance programs',
-    ],
-    link: { href: '/equipments', label: 'Explore fire safety equipment' },
+    name: 'warehouses & industrial',
+    summary: 'Protection for storage, manufacturing and large-scale industrial facilities.',
+    support: ['Fire hose reels', 'Alarm & detection systems', 'Ongoing maintenance'],
+    href: '/equipments',
   },
   {
     id: 'construction',
-    name: 'Construction Projects',
-    descriptor: 'Building sites · Infrastructure projects · Construction zones',
-    summary:
-      'Sites change quickly, and safety provision needs to keep pace. We equip site teams with the right extinguishers and the practical training to use them when it counts.',
-    support: [
-      'Fire extinguisher supply for site coverage',
-      'Fire safety awareness training for crews',
-      'First aid training for site personnel',
-    ],
-    link: { href: '/services', label: 'Explore training services' },
+    name: 'construction projects',
+    summary: 'Site-ready extinguishers and practical training for construction teams.',
+    support: ['Fire extinguishers', 'Crew fire safety training', 'First aid training'],
+    href: '/services',
   },
   {
     id: 'government',
-    name: 'Government & Public',
-    descriptor: 'Public buildings · Institutions · Government facilities',
-    summary:
-      'Public buildings face strict requirements and heavy daily use. We deliver certified systems and documented servicing schedules that stand up to scrutiny over time.',
-    support: [
-      'Alarm systems & emergency lighting',
-      'Routine inspection & testing',
-      'Long-term maintenance programs',
-    ],
-    link: { href: '/services', label: 'Explore our services' },
+    name: 'government & public',
+    summary: 'Fire protection for public buildings and government facilities.',
+    support: ['Fire alarm systems', 'Emergency lighting', 'Routine inspection & testing'],
+    href: '/services',
   },
 ];
 
@@ -140,17 +97,39 @@ export default function WhoWeServe() {
   };
 
   return (
-    <section className="w-full bg-neutral py-20 sm:py-24 lg:py-32">
+    <section
+      aria-labelledby="industries-heading"
+      className="w-full bg-white border-t border-gray-200 py-20 sm:py-24 lg:py-32"
+    >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="INDUSTRIES WE SERVE"
-          title="Protection designed for your environment."
-          description="Different environments carry different fire risks. Select your type of building to see how Verifsafe adapts equipment, systems, inspection, and training to it."
-          className="mb-14 sm:mb-16"
-        />
+        {/* Intro */}
+        <div className="flex items-center justify-between gap-4">
+          <p className="flex items-center gap-2.5">
+            <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+            <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
+              industries we serve
+            </span>
+          </p>
+          <span
+            aria-hidden="true"
+            className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
+          >
+            VS / IND — 06
+          </span>
+        </div>
 
-        {/* Desktop: industry explorer */}
-        <div className="hidden lg:grid lg:grid-cols-[minmax(0,24rem)_1fr] gap-12 xl:gap-20 items-start">
+        <div className="max-w-3xl">
+          <h2 id="industries-heading" className="text-section-heading mt-6 text-gray-900">
+            Protection designed for your <span className="text-highlight">environment</span>.
+          </h2>
+          <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
+            Different buildings carry different risks. We help identify the right
+            fire protection approach for the people, spaces and operations inside them.
+          </p>
+        </div>
+
+        {/* Desktop: exploratory split */}
+        <div className="mt-14 lg:mt-20 hidden lg:grid lg:grid-cols-[minmax(0,26rem)_1fr] gap-12 xl:gap-20 items-start">
           <div
             role="tablist"
             aria-label="Industries we serve"
@@ -172,8 +151,8 @@ export default function WhoWeServe() {
                     aria-controls="industry-panel"
                     tabIndex={isActive ? 0 : -1}
                     onClick={() => selectIndustry(index)}
-                    className={`group relative w-full flex items-start gap-5 py-5 sm:py-6 px-2 text-left border-b border-gray-200 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828] ${
-                      isActive ? 'bg-[#FAF7F7] text-gray-900' : 'text-gray-500 hover:text-gray-900'
+                    className={`group relative w-full flex items-center gap-5 py-5 sm:py-6 px-2 text-left border-b border-gray-200 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828] motion-reduce:transition-none ${
+                      isActive ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'
                     }`}
                   >
                     <span
@@ -182,23 +161,15 @@ export default function WhoWeServe() {
                         isActive ? 'opacity-100' : 'opacity-0'
                       }`}
                     />
-
                     <span
-                      className={`shrink-0 w-8 pt-0.5 text-sm font-bold tabular-nums transition-colors duration-200 motion-reduce:transition-none ${
+                      aria-hidden="true"
+                      className={`shrink-0 w-8 text-index tabular-nums transition-colors duration-200 motion-reduce:transition-none ${
                         isActive ? 'text-[#D62828]' : 'text-gray-400'
                       }`}
                     >
                       {String(index + 1).padStart(2, '0')}
                     </span>
-
-                    <span className="flex-1 min-w-0">
-                      <span className="block font-semibold tracking-tight">
-                        {industry.name}
-                      </span>
-                      <span className="block mt-1 text-body-sm text-gray-500">
-                        {industry.descriptor}
-                      </span>
-                    </span>
+                    <span className="text-list-title capitalize">{industry.name}</span>
                   </button>
                 </h3>
               );
@@ -209,45 +180,58 @@ export default function WhoWeServe() {
             id="industry-panel"
             role="tabpanel"
             aria-labelledby={`industry-tab-${active.id}`}
-            className="border-t border-gray-200 pt-10 sm:pt-12 min-w-0 lg:min-h-[26rem]"
+            className="border-t border-gray-200 min-w-0"
           >
             <motion.div
               key={active.id}
-              initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
+              initial={{ opacity: reduceMotion ? 1 : 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: reduceMotion ? 0 : 0.35, ease: 'easeOut' }}
+              className="relative pt-10 sm:pt-12 min-h-[26rem] flex flex-col"
             >
-              <div className="flex items-center gap-3 mb-8">
-                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-                <p className="text-label text-gray-500">
-                  {String(activeIndex + 1).padStart(2, '0')} · {active.name.toUpperCase()}
-                </p>
-              </div>
+              {/* Ghost numeral — editorial depth without imagery */}
+              <span
+                aria-hidden="true"
+                className="absolute right-0 top-6 select-none text-[7rem] leading-none font-semibold text-gray-100"
+              >
+                {String(activeIndex + 1).padStart(2, '0')}
+              </span>
 
-              <p className="text-subheading text-gray-600 max-w-2xl">{active.summary}</p>
+              <div className="relative flex flex-1 flex-col">
+                <div className="flex items-center gap-3">
+                  <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                  <p className="text-label tabular-nums text-gray-500">
+                    {String(activeIndex + 1).padStart(2, '0')} / 06
+                  </p>
+                </div>
 
-              <div className="mt-10 max-w-xl">
-                <p className="text-label text-gray-500 mb-4">WHAT WE CAN SUPPORT</p>
-                <ul>
+                <h3 className="text-card-title text-gray-900 mt-5 leading-snug capitalize">
+                  {active.name}
+                </h3>
+                <p className="text-body text-gray-600 mt-3 max-w-xl">{active.summary}</p>
+
+                <ul
+                  className="mt-8 max-w-xl"
+                  role="list"
+                  aria-label={`${active.name} support points`}
+                >
                   {active.support.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-3 py-3 border-b border-gray-200 text-body text-gray-700"
+                      className="flex items-start gap-3 py-3 border-t border-gray-200 text-body-sm text-gray-700"
                     >
-                      <span
-                        aria-hidden="true"
-                        className="shrink-0 mt-2.5 h-px w-4 bg-[#D62828]"
-                      />
+                      <span aria-hidden="true" className="shrink-0 mt-2.5 h-px w-4 bg-[#D62828]" />
                       {item}
                     </li>
                   ))}
+                  <li aria-hidden="true" className="border-t border-gray-200" />
                 </ul>
 
                 <Link
-                  href={active.link.href}
-                  className="group inline-flex items-center gap-2 mt-8 text-base font-semibold text-[#D62828] hover:text-[#A91D1D] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
+                  href={active.href}
+                  className="group inline-flex items-center gap-2 mt-8 text-body-sm font-semibold text-[#D62828] hover:text-[#A91D1D] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
                 >
-                  {active.link.label}
+                  explore protection
                   <ArrowRight
                     size={18}
                     strokeWidth={2}
@@ -260,8 +244,8 @@ export default function WhoWeServe() {
           </div>
         </div>
 
-        {/* Mobile: vertical disclosure */}
-        <div className="lg:hidden border-t border-gray-200">
+        {/* Mobile: vertical stacked selector */}
+        <div className="mt-12 lg:hidden border-t border-gray-200">
           {industries.map((industry, index) => {
             const isOpen = index === activeIndex;
 
@@ -273,29 +257,21 @@ export default function WhoWeServe() {
                     aria-expanded={isOpen}
                     aria-controls={`industry-disclosure-panel-${industry.id}`}
                     onClick={() => selectIndustry(index)}
-                    className={`w-full flex items-start gap-4 py-5 pr-1 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828] ${
-                      isOpen ? 'bg-[#FAF7F7]' : ''
-                    }`}
+                    className="w-full flex items-center gap-4 py-5 pr-1 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
                   >
                     <span
                       aria-hidden="true"
-                      className={`shrink-0 w-8 pt-0.5 text-sm font-bold tabular-nums transition-colors duration-200 ${
+                      className={`shrink-0 w-8 text-index tabular-nums transition-colors duration-200 motion-reduce:transition-none ${
                         isOpen ? 'text-[#D62828]' : 'text-gray-400'
                       }`}
                     >
                       {String(index + 1).padStart(2, '0')}
                     </span>
 
-                    <span className="flex-1 min-w-0">
-                      <span className="block text-base sm:text-lg font-semibold tracking-tight text-gray-900">
-                        {industry.name}
-                      </span>
-                      <span className="block mt-1 text-body-sm text-gray-500">
-                        {industry.descriptor}
-                      </span>
+                    <span className="flex-1 min-w-0 text-list-title text-gray-900 capitalize">
+                      {industry.name}
                     </span>
 
-                    {/* Open/close indicator: rotates; not color-only */}
                     <span
                       aria-hidden="true"
                       className={`shrink-0 relative w-5 h-5 mt-0.5 transition-transform duration-200 motion-reduce:transition-none ${
@@ -313,12 +289,11 @@ export default function WhoWeServe() {
                   role="region"
                   aria-labelledby={`industry-disclosure-${industry.id}`}
                   hidden={!isOpen}
-                  className="pl-12 pr-1 pb-6"
+                  className="pb-7 pl-12 pr-1"
                 >
                   <p className="text-body-sm text-gray-600">{industry.summary}</p>
 
-                  <p className="text-label text-gray-500 mt-5 mb-3">WHAT WE CAN SUPPORT</p>
-                  <ul className="space-y-2">
+                  <ul className="mt-4 space-y-2" role="list" aria-label={`${industry.name} support points`}>
                     {industry.support.map((item) => (
                       <li key={item} className="flex items-start gap-2.5 text-body-sm text-gray-700">
                         <span aria-hidden="true" className="shrink-0 mt-2 h-px w-3.5 bg-[#D62828]" />
@@ -328,11 +303,16 @@ export default function WhoWeServe() {
                   </ul>
 
                   <Link
-                    href={industry.link.href}
-                    className="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-[#D62828] hover:text-[#A91D1D] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
+                    href={industry.href}
+                    className="inline-flex items-center gap-2 mt-5 text-body-sm font-semibold text-[#D62828] hover:text-[#A91D1D] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
                   >
-                    {industry.link.label}
-                    <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
+                    explore protection
+                    <ArrowRight
+                      size={16}
+                      strokeWidth={2}
+                      aria-hidden="true"
+                      className="transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none"
+                    />
                   </Link>
                 </div>
               </div>

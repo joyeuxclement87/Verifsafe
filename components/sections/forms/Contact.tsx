@@ -164,7 +164,7 @@ export default function Contact() {
 
                     <div className="flex-1 min-w-0">
                       <p className="text-label text-gray-400 mb-1">{card.label}</p>
-                      <p className="text-card-title text-base text-gray-900 truncate">{card.value}</p>
+                      <p className="text-list-title text-gray-900 truncate">{card.value}</p>
                     </div>
 
                     {card.href && (
@@ -321,8 +321,8 @@ export default function Contact() {
                   animate={{ opacity: 1, y: 0 }}
                   className="rounded-md border border-red-200 bg-red-50 p-4"
                 >
-                  <p className="text-sm font-semibold text-red-700">Your message could not be sent</p>
-                  <p className="mt-1 text-sm text-red-600">{error}</p>
+                  <p className="text-body-sm font-semibold text-red-700">Your message could not be sent</p>
+                  <p className="mt-1 text-body-sm text-red-600">{error}</p>
                 </motion.div>
               )}
 
@@ -332,8 +332,8 @@ export default function Contact() {
                   animate={{ opacity: 1, y: 0 }}
                   className="rounded-md border border-emerald-200 bg-emerald-50 p-4"
                 >
-                  <p className="text-sm font-semibold text-emerald-700">Thank you for your message</p>
-                  <p className="mt-1 text-sm text-emerald-600">Our team will review your request and get back to you shortly.</p>
+                  <p className="text-body-sm font-semibold text-emerald-700">Thank you for your message</p>
+                  <p className="mt-1 text-body-sm text-emerald-600">Our team will review your request and get back to you shortly.</p>
                 </motion.div>
               )}
             </form>

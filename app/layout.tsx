@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import ConditionalLayout from "@/components/layout/ConditionalLayout";
 import "./globals.css";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -18,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className={`h-full antialiased ${jakarta.variable}`}>
       <body className="min-h-full flex flex-col">
         <ConditionalLayout>
           {children}

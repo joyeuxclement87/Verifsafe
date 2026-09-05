@@ -117,10 +117,10 @@ export default function FireHoseReelsPage() {
                     transition={{ delay: i * 0.1 }}
                     className="flex gap-6"
                   >
-                    <span className="text-base font-bold text-gray-400 tabular-nums">{item.step}</span>
+                    <span className="text-index text-gray-400 tabular-nums">{item.step}</span>
                     <div>
                       <h4 className="text-card-title text-gray-900 mb-2">{item.title}</h4>
-                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{item.text}</p>
+                      <p className="text-body text-gray-600">{item.text}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -149,7 +149,7 @@ export default function FireHoseReelsPage() {
                 className="absolute -bottom-6 -right-6 bg-white p-6 rounded-md border border-gray-200 z-20"
               >
                 <p className="text-card-title font-bold text-[#D62828]">30M</p>
-                <p className="text-xs text-gray-500 font-bold capitalize tracking-widest mt-1">Maximum Coverage</p>
+                <p className="text-xs text-gray-500 font-semibold capitalize tracking-widest mt-1">Maximum Coverage</p>
               </motion.div>
             </motion.div>
           </div>
@@ -197,7 +197,7 @@ export default function FireHoseReelsPage() {
                 </p>
 
                 <div className="mt-auto bg-gray-50 p-5 rounded-md border border-gray-100  group-hover:border-[#D62828]/10 transition-all duration-300">
-                  <p className="text-xs text-gray-500 leading-relaxed">
+                  <p className="text-body-sm text-gray-500">
                     <span className="text-label text-gray-900 block mb-2">Best for</span>
                     {type.bestFor}
                   </p>
@@ -235,7 +235,7 @@ export default function FireHoseReelsPage() {
                 <div className="w-10 h-10 rounded-lg bg-[#D62828]/10 flex items-center justify-center text-[#D62828] group-hover:bg-[#D62828] group-hover:text-white transition-all duration-300 shrink-0 mb-4">
                   {item.icon}
                 </div>
-                <h4 className="text-card-title text-base text-gray-900 mb-2">{item.title}</h4>
+                <h4 className="text-list-title text-gray-900 mb-2">{item.title}</h4>
                 <p className="text-body-sm text-gray-500 leading-normal">{item.description}</p>
               </motion.div>
             ))}
@@ -342,7 +342,7 @@ export default function FireHoseReelsPage() {
                   <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
                     <Plus size={16} />
                   </div>
-                  <p className="text-sm font-bold capitalize tracking-widest">And many more options available...</p>
+                  <p className="text-body-sm font-semibold capitalize tracking-widest">And many more options available...</p>
                 </div>
               </div>
             </div>

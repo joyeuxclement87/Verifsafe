@@ -192,10 +192,10 @@ export default function FireExtinguishersPage() {
                     transition={{ delay: i * 0.1 }}
                     className="flex gap-6"
                   >
-                    <span className="text-base font-bold text-gray-400 tabular-nums">{item.step}</span>
+                    <span className="text-index text-gray-400 tabular-nums">{item.step}</span>
                     <div>
                       <h4 className="text-card-title text-gray-900 mb-2">{item.title}</h4>
-                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{item.text}</p>
+                      <p className="text-body text-gray-600">{item.text}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -224,7 +224,7 @@ export default function FireExtinguishersPage() {
                 className="absolute -bottom-6 -left-6 bg-white p-6 rounded-md border border-gray-200 z-20"
               >
                 <p className="text-card-title font-bold text-[#D62828]">6KG</p>
-                <p className="text-xs text-gray-500 font-bold capitalize tracking-widest mt-1">Standard Unit</p>
+                <p className="text-xs text-gray-500 font-semibold capitalize tracking-widest mt-1">Standard Unit</p>
               </motion.div>
             </motion.div>
           </div>
@@ -264,12 +264,12 @@ export default function FireExtinguishersPage() {
                   <div className="flex items-center justify-center text-gray-400 shrink-0"><type.icon size={24} /></div>
                   <div className="flex-1">
                     <h3 className="text-card-title text-gray-900">{type.title}</h3>
-                    <p className="text-xs font-bold text-[#D62828] capitalize tracking-wider mt-1">Classes: {type.classes}</p>
+                    <p className="text-xs font-semibold text-[#D62828] capitalize tracking-wider mt-1">Classes: {type.classes}</p>
                   </div>
                 </div>
                 <p className="text-body text-gray-600 mb-6">{type.desc}</p>
                 <div className="mt-auto bg-neutral p-4 rounded-md border border-line">
-                  <p className="text-xs text-gray-500"><span className="text-label text-gray-900 block mb-1">Best for</span>{type.bestFor}</p>
+                  <p className="text-body-sm text-gray-500"><span className="text-label text-gray-900 block mb-1">Best for</span>{type.bestFor}</p>
                 </div>
               </motion.div>
             ))}
@@ -312,7 +312,7 @@ export default function FireExtinguishersPage() {
                     transition={{ delay: i * 0.1 }}
                     className="group flex items-center gap-6 pb-6 border-b border-gray-100 hover:border-[#D62828]/40 transition-all duration-300"
                   >
-                    <div className="flex items-center justify-center text-gray-400 shrink-0"><span className="text-2xl font-black">{item.class}</span></div>
+                    <div className="flex items-center justify-center text-gray-400 shrink-0"><span className="text-2xl font-extrabold">{item.class}</span></div>
                     <div className="flex flex-col"><span className="text-card-title text-gray-900 duration-300">{item.title}</span><span className="text-body-sm text-gray-400">{item.detail}</span></div>
                   </motion.div>
                 ))}
@@ -351,10 +351,10 @@ export default function FireExtinguishersPage() {
                 </div>
                 <div className="flex-1 space-y-3 mb-6">
                   {sizeCategory.sizes.map((size, i) => (
-                    <div key={i} className="flex items-center gap-3"><div className="w-2 h-2 rounded-full bg-[#D62828]/20 group-hover:bg-[#D62828] transition-colors duration-300" /><span className="text-base text-gray-700 font-medium">{size}</span></div>
+                    <div key={i} className="flex items-center gap-3"><div className="w-2 h-2 rounded-full bg-[#D62828]/20 group-hover:bg-[#D62828] transition-colors duration-300" /><span className="text-body text-gray-700 font-semibold">{size}</span></div>
                   ))}
                 </div>
-                <div className="bg-neutral p-4 rounded-md border border-line"><p className="text-xs text-gray-500"><span className="text-label text-gray-900 block mb-1">Recommended for</span>{sizeCategory.bestFor}</p></div>
+                <div className="bg-neutral p-4 rounded-md border border-line"><p className="text-body-sm text-gray-500"><span className="text-label text-gray-900 block mb-1">Recommended for</span>{sizeCategory.bestFor}</p></div>
               </motion.div>
             ))}
           </div>

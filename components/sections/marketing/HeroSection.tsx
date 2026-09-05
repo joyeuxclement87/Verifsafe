@@ -9,7 +9,8 @@ const slides = [
   {
     id: 1,
     eyebrow: 'fire protection · Rwanda',
-    headline: 'fire protection, verified.',
+    headline: 'Fire protection, verified.',
+    highlight: 'verified',
     headlineTag: 'h1',
     description:
       'Reliable fire safety equipment, installation, inspection and maintenance for buildings across Rwanda.',
@@ -21,7 +22,8 @@ const slides = [
   {
     id: 2,
     eyebrow: 'fire detection systems',
-    headline: 'detect it before it spreads.',
+    headline: 'Detect it before it spreads.',
+    highlight: 'spreads',
     headlineTag: 'h2',
     description:
       'Professional fire detection and alarm systems designed to help buildings respond faster.',
@@ -33,7 +35,8 @@ const slides = [
   {
     id: 3,
     eyebrow: 'inspection · testing · maintenance',
-    headline: 'protection needs to stay ready.',
+    headline: 'Protection needs to stay ready.',
+    highlight: 'ready',
     headlineTag: 'h2',
     description:
       'Inspection, testing and maintenance that keep your fire protection systems prepared when they matter.',
@@ -45,7 +48,8 @@ const slides = [
   {
     id: 4,
     eyebrow: 'complete fire protection',
-    headline: 'from equipment to readiness.',
+    headline: 'From equipment to readiness.',
+    highlight: 'readiness',
     headlineTag: 'h2',
     description:
       'Supply, installation, testing, maintenance and training — handled through one reliable fire-safety partner.',
@@ -58,6 +62,24 @@ const slides = [
 
 const SLIDE_DURATION = 6000;
 const TRANSITION_DURATION = 800;
+
+function renderHeadline(text: string, highlight?: string) {
+  if (!highlight) return text;
+
+  const index = text.toLowerCase().indexOf(highlight.toLowerCase());
+  if (index === -1) return text;
+
+  const before = text.slice(0, index);
+  const after = text.slice(index + highlight.length);
+
+  return (
+    <>
+      {before}
+      <span className="text-highlight-dark">{highlight}</span>
+      {after}
+    </>
+  );
+}
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -181,7 +203,7 @@ export default function HeroSection() {
           <div className="flex flex-col items-start">
             {/* Eyebrow */}
             <p
-              className={`mb-4 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] transition-all ${
+              className={`mb-4 text-xs font-semibold uppercase tracking-[0.2em] transition-all ${
                 isReducedMotion ? 'duration-0' : 'duration-500'
               } ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
               style={{ color: '#E53935' }}
@@ -199,7 +221,7 @@ export default function HeroSection() {
                 style={{ color: '#F4F3EF' }}
                 key={`headline-${currentSlide}`}
               >
-                {slide.headline}
+                {renderHeadline(slide.headline, slide.highlight)}
               </h1>
             ) : (
               <h2
@@ -209,7 +231,7 @@ export default function HeroSection() {
                 style={{ color: '#F4F3EF' }}
                 key={`headline-${currentSlide}`}
               >
-                {slide.headline}
+                {renderHeadline(slide.headline, slide.highlight)}
               </h2>
             )}
 

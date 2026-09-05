@@ -1,105 +1,188 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowRight } from 'tabler-icons-react';
-import SectionHeading from '@/components/ui/SectionHeading';
-import Button from '@/components/ui/Button';
+import { motion, useReducedMotion } from 'framer-motion';
 
-const journey = [
+const steps = [
   {
     number: '01',
     title: 'Assess',
-    description: 'We start by understanding your fire safety needs through site assessment and requirements analysis.',
-    details: 'Site audit · Requirements analysis · Compliance checks',
-    href: '/contact#contact-form'
+    description: 'Understand the building, occupancy, risks and existing protection.',
   },
   {
     number: '02',
-    title: 'Equip',
-    description: 'We supply certified fire protection equipment matched to your building and its fire risk.',
-    details: 'Extinguishers · Alarm systems · Detection devices · Hose reels',
-    href: '/equipments'
+    title: 'Design',
+    description: 'Plan the right fire protection solution for the environment.',
   },
   {
     number: '03',
-    title: 'Install',
-    description: 'We install and configure fire alarm systems, detection devices, and safety equipment to perform when needed.',
-    details: 'Fire alarm systems · Detection devices · Safety equipment',
-    href: '/services'
+    title: 'Equip',
+    description: 'Supply the appropriate fire safety equipment and systems.',
   },
   {
     number: '04',
+    title: 'Install',
+    description: 'Install and configure systems with care and precision.',
+  },
+  {
+    number: '05',
     title: 'Maintain',
-    description: 'We inspect, service, and refill equipment so your protection stays reliable over time.',
-    details: 'Inspections · Servicing · Extinguisher refilling',
-    href: '/services'
-  }
+    description: 'Inspect, test and maintain protection so it stays ready.',
+  },
 ];
 
-export default function FireSafetyApproach() {
-  return (
-    <section id="fire-safety-approach" className="w-full bg-neutral py-20 sm:py-24 lg:py-32 overflow-hidden">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl">
-          {/* Introduction */}
-          <div>
-            <SectionHeading
-              label="HOW WE PROTECT"
-              title="Fire safety is not a one-time installation."
-              description="Real protection comes from planning, the right equipment, professional installation, and consistent maintenance. Verifsafe manages the full journey so your building stays protected long after handover."
-              className="mb-10"
-            />
-          </div>
+const gridLineStyle = {
+  backgroundImage: `
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+  `,
+  backgroundSize: '60px 60px',
+};
 
-          {/* Protection Journey */}
-          <div>
-            <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 border-t border-gray-200">
-              {journey.map((step) => (
-                <li
-                  key={step.number}
-                  className="group relative border-b border-gray-200 transition-colors duration-200 hover:bg-gray-50/80 group-focus-within:bg-gray-50/80"
+export default function FireSafetyApproach() {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <section
+      id="fire-safety-approach"
+      aria-labelledby="process-heading"
+      className="relative w-full overflow-hidden scroll-mt-24"
+      style={{ backgroundColor: '#0B1720' }}
+    >
+      {/* Faint technical blueprint grid */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={gridLineStyle}
+      />
+      {/* Industrial blue wash on the right */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none bg-gradient-to-r from-transparent via-transparent to-[#123B5D]/25"
+      />
+
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-28">
+        {/* Meta row */}
+        <div className="flex items-center justify-between">
+          <span className="flex items-center gap-2.5">
+            <span aria-hidden="true" className="h-px w-6 bg-[#E53935]" />
+            <span className="text-xs font-semibold tracking-[0.2em] text-[#A7B0B5]">
+              how we protect
+            </span>
+          </span>
+          <span
+            aria-hidden="true"
+            className="hidden sm:block text-[10px] font-mono tracking-widest text-white/30"
+          >
+            VS / 05 — 01
+          </span>
+        </div>
+
+        {/* Heading block */}
+        <div className="mt-8 lg:mt-10 max-w-3xl border-b border-white/10 pb-8 lg:pb-10">
+          <h2
+            id="process-heading"
+            className="text-section-heading leading-[1.1] text-[#F4F3EF]"
+          >
+            Protection starts before <span className="text-highlight-dark">installation</span>.
+          </h2>
+          <p className="mt-5 text-subheading text-[#A7B0B5] max-w-2xl">
+            Every building has different risks. We assess the environment, plan the right
+            solution, install it correctly and keep it ready over time.
+          </p>
+        </div>
+
+        {/* Process */}
+        <div className="relative mt-10 lg:mt-12">
+          {/* Vertical timeline rail (mobile / tablet) */}
+          <span
+            aria-hidden="true"
+            className="absolute left-[11px] top-3 bottom-6 w-px bg-white/10 lg:hidden"
+          />
+
+          <ol className="relative grid grid-cols-1 gap-y-10 lg:grid-cols-5 lg:gap-y-0">
+            {steps.map((step, index) => (
+              <motion.li
+                key={step.number}
+                initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{
+                  duration: reduceMotion ? 0 : 0.5,
+                  delay: reduceMotion ? 0 : index * 0.08,
+                  ease: 'easeOut',
+                }}
+                className="group relative flex gap-4 lg:block lg:px-6"
+              >
+                {/* Connecting segment to the next stage (desktop) */}
+                {index < steps.length - 1 && (
+                  <motion.span
+                    aria-hidden="true"
+                    initial={{ scaleX: reduceMotion ? 1 : 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.5,
+                      delay: reduceMotion ? 0 : 0.3 + index * 0.06,
+                      ease: 'easeOut',
+                    }}
+                    className="hidden lg:block absolute top-[11px] left-1/2 right-[-50%] z-0 h-px origin-left"
+                  >
+                    <span className="block h-px bg-white/10 transition-colors duration-200 group-hover:bg-[#E53935] motion-reduce:transition-none" />
+                  </motion.span>
+                )}
+
+                {/* Node */}
+                <span
+                  aria-hidden="true"
+                  className="relative z-10 mt-0.5 lg:mt-0 w-6 h-6 rounded-full border border-white/20 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:border-[#E53935] group-hover:shadow-[0_0_0_4px_rgba(229,57,53,0.15)] motion-reduce:transition-none lg:mx-auto"
+                  style={{ backgroundColor: '#0B1720' }}
                 >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E53935] transition-transform duration-200 group-hover:scale-150 motion-reduce:transition-none" />
+                </span>
+
+                {/* Content */}
+                <div className="min-w-0 flex-1 lg:mt-4 lg:flex-none lg:w-full lg:text-center">
+                  <span className="block text-index tabular-nums text-white/45 transition-colors duration-200 group-hover:text-[#E53935] motion-reduce:transition-none">
+                    {step.number}
+                  </span>
                   <span
                     aria-hidden="true"
-                    className="absolute left-0 inset-y-0 w-0.5 bg-[#D62828] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 motion-reduce:transition-none"
+                    className="mt-1.5 block h-px w-6 bg-[#E53935] origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 motion-reduce:transition-none lg:mx-auto lg:origin-center"
                   />
-                  <Link
-                    href={step.href}
-                    className="block pl-5 sm:pl-8 pr-3 py-8 sm:py-10 rounded-r-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
-                  >
-                    <div className="flex items-start gap-5 sm:gap-8">
-                      <span className="shrink-0 w-10 pt-0.5 text-lg font-bold text-gray-400 tabular-nums transition-colors duration-200 group-hover:text-[#D62828] group-focus-within:text-[#D62828]">
-                        {step.number}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-card-title text-gray-900 mb-1.5">
-                          {step.title}
-                        </h3>
-                        <p className="text-body text-gray-600">{step.description}</p>
-                        <p className="mt-2 text-sm text-gray-400 transition-colors duration-200 group-hover:text-gray-600 group-focus-within:text-gray-600">
-                          {step.details}
-                        </p>
-                      </div>
-                      <ArrowRight
-                        size={18}
-                        strokeWidth={1.5}
-                        aria-hidden="true"
-                        className="shrink-0 mt-1 text-gray-300 transition-all duration-200 group-hover:text-[#D62828] group-focus-within:text-[#D62828] group-hover:translate-x-1 group-focus-within:translate-x-1 motion-reduce:transition-none"
-                      />
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ol>
+                  <h3 className="mt-1.5 text-list-title text-[#F4F3EF]/90 leading-snug transition-colors duration-200 group-hover:text-[#F4F3EF] motion-reduce:transition-none">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-body-sm text-[#A7B0B5] transition-colors duration-200 group-hover:text-[#C7CED3] motion-reduce:transition-none lg:mt-3 lg:max-w-[14rem] lg:mx-auto">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.li>
+            ))}
+          </ol>
 
-            <div className="mt-10 flex justify-start md:justify-end">
-              <Button href="/services" variant="secondary">
-                Explore Our Services
-              </Button>
-            </div>
+          {/* Return path — protection is a continuous cycle */}
+          <div
+            aria-hidden="true"
+            className="relative hidden lg:block mt-14 h-11 pointer-events-none"
+          >
+            {/* Left rise into stage 01 */}
+            <span className="absolute left-[10%] top-0 h-2 w-2 -translate-x-1/2 rotate-45 border-t border-l border-[#E53935]" />
+            <span className="absolute left-[10%] top-2 h-9 w-px bg-white/10" />
+            {/* Horizontal return line */}
+            <span className="absolute left-[10%] right-[10%] top-[43px] h-px bg-white/10" />
+            {/* Right descent from stage 05 */}
+            <span className="absolute right-[10%] top-0 h-9 w-px bg-white/10" />
+            <span className="absolute right-[10%] top-9 h-2 w-2 -translate-x-1/2 rotate-[225deg] border-t border-l border-[#E53935]" />
           </div>
         </div>
       </div>
+
+      {/* Bottom hairline */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{ backgroundColor: 'rgba(167, 176, 181, 0.1)' }}
+      />
     </section>
   );
 }

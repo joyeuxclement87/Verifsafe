@@ -101,7 +101,7 @@ export default function PageLoader() {
                 />
                 {/* Text */}
                 <span
-                  className="text-sm transition-all duration-400"
+                  className="text-body-sm transition-all duration-400"
                   style={{
                     color:   scanPass > i ? '#D1D5DB' : '#374151',
                     opacity: scanPass > i ? 1 : 0.4,
@@ -126,7 +126,7 @@ export default function PageLoader() {
           <div className="h-7 mt-5 flex items-center">
             {showSecured && (
               <span
-                className="text-[11px] tracking-[0.2em] capitalize text-[#D62828] flex items-center gap-2"
+                className="text-xs tracking-[0.2em] capitalize text-[#D62828] flex items-center gap-2"
                 style={{ animation: 'fade-up 0.4s ease-out forwards' }}
               >
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">

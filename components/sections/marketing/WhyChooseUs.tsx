@@ -2,107 +2,119 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 
-const features = [
+const proofPoints = [
   {
     number: '01',
-    label: 'Certified equipment',
+    label: 'Reliable equipment',
     description:
-      'Extinguishers, alarm systems, hose reels, and safety accessories sourced from approved manufacturers and certified to required safety standards.',
+      'Quality fire protection equipment selected for the needs of your building.',
   },
   {
     number: '02',
-    label: 'Expert installation',
+    label: 'Professional installation',
     description:
-      'Licensed technicians install and configure fire alarm systems, detection devices, and safety equipment for reliable performance when it matters.',
+      'Careful installation and setup designed around your building and its systems.',
   },
   {
     number: '03',
-    label: 'Responsive support',
+    label: 'Ongoing maintenance',
     description:
-      'Urgent fire safety issues get attention fast — with 24/7 emergency support and response within 2 hours.',
+      'Regular inspection and servicing to help keep your protection ready.',
   },
   {
     number: '04',
-    label: 'Dependable over time',
+    label: 'One trusted partner',
     description:
-      'Routine inspection, testing, maintenance, and refilling keep your protection compliant and ready year after year.',
+      'Supply, installation, inspection and maintenance under one roof.',
   },
 ];
+
+const gridStyle = {
+  backgroundImage: `
+    linear-gradient(rgba(11,23,32,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,23,32,0.02) 1px, transparent 1px)
+  `,
+  backgroundSize: '60px 60px',
+};
 
 export default function WhyChooseUs() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="w-full bg-ink py-20 sm:py-24 lg:py-32">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,26rem)_1fr] gap-12 lg:gap-16 xl:gap-20 items-start">
-          {/* Intro */}
-          <div className="lg:sticky lg:top-24">
-            <motion.div
-              initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 16 }}
+    <section
+      aria-labelledby="why-heading"
+      className="relative w-full bg-neutral overflow-hidden py-20 sm:py-24 lg:py-32"
+    >
+      {/* Faint technical grid — light version */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-100 pointer-events-none"
+        style={gridStyle}
+      />
+
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Intro */}
+        <div className="flex items-center justify-between gap-4">
+          <p className="flex items-center gap-2.5">
+            <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+            <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
+              why choose us
+            </span>
+          </p>
+          <span
+            aria-hidden="true"
+            className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
+          >
+            VS / CHS — 04
+          </span>
+        </div>
+
+        <div className="max-w-3xl">
+          <h2 id="why-heading" className="text-section-heading mt-6 text-gray-900">
+            Protection you can <span className="text-highlight">depend</span> on.
+          </h2>
+          <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
+            From the equipment we supply to the systems we maintain, we focus on
+            doing the work properly — and keeping protection ready when it matters.
+          </p>
+        </div>
+
+        {/* Proof points — editorial ruled columns */}
+        <ol className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-gray-200 lg:divide-x lg:divide-gray-200">
+          {proofPoints.map((point, index) => (
+            <motion.li
+              key={point.number}
+              initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.5,
+                delay: reduceMotion ? 0 : index * 0.07,
+                ease: 'easeOut',
+              }}
+              className="group border-b border-gray-200 lg:border-b-0"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-                  WHY VERIFSAFE
-                </p>
-              </div>
-
-              <h2 className="text-section-heading text-white">
-                Serious protection, handled end to end.
-              </h2>
-
-              <p className="text-subheading text-gray-400 mt-6">
-                Practical fire protection delivered with certified equipment, skilled execution,
-                and consistent support.
-              </p>
-
-              <div className="mt-10 pt-8 border-t border-white/10">
-                <p className="text-body-sm text-gray-400">
-                  Serving Kigali and the entire Rwanda region.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Differentiators */}
-          <ol className="border-t border-white/10">
-            {features.map((feature, index) => (
-              <motion.li
-                key={feature.number}
-                initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.45, delay: index * 0.06, ease: 'easeOut' }}
-                className="group relative border-b border-white/10 transition-colors duration-200 hover:bg-white/[0.04] motion-reduce:transition-none"
-              >
+              <div className="py-8 sm:py-10 lg:py-12 px-0 sm:px-6 lg:px-8 xl:px-10 first:pl-0">
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 inset-y-0 w-0.5 bg-[#D62828] opacity-0 transition-opacity duration-200 group-hover:opacity-100 motion-reduce:transition-none"
+                  className="block text-index tabular-nums text-gray-400 transition-colors duration-200 group-hover:text-[#D62828] motion-reduce:transition-none"
+                >
+                  {point.number}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="mt-3 block h-px w-6 bg-[#D62828]"
                 />
-
-                <div className="flex items-start gap-6 px-4 sm:px-6 py-7 sm:py-9">
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 w-10 pt-1 text-base font-bold text-white/30 tabular-nums transition-colors duration-200 group-hover:text-[#D62828] motion-reduce:transition-none"
-                  >
-                    {feature.number}
-                  </span>
-
-                  <div>
-                    <h3 className="text-card-title text-white mb-2">{feature.label}</h3>
-                    <p className="text-body text-gray-400 transition-colors duration-200 group-hover:text-gray-300 motion-reduce:transition-none">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.li>
-            ))}
-          </ol>
-        </div>
+                <h3 className="mt-3 text-list-title text-gray-900 leading-snug transition-colors duration-200 group-hover:text-[#A91D1D] motion-reduce:transition-none">
+                  {point.label}
+                </h3>
+                <p className="mt-2 text-body-sm text-gray-600">
+                  {point.description}
+                </p>
+              </div>
+            </motion.li>
+          ))}
+        </ol>
       </div>
     </section>
   );

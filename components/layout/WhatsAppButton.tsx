@@ -21,7 +21,7 @@ export default function WhatsAppButton() {
       <BrandWhatsapp size={28} className="text-white relative z-10" strokeWidth={1.5} />
 
       {/* Tooltip on hover */}
-      <span className="absolute right-full mr-3 px-3 py-1.5 bg-ink text-white text-xs font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-md">
+      <span className="absolute right-full mr-3 px-3 py-1.5 bg-ink text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-md">
         Chat with us
       </span>
     </a>

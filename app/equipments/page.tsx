@@ -234,7 +234,7 @@ export default function EquipmentsPage() {
                     <p className="text-body text-gray-600 flex-grow mb-6">
                       {equipment.description}
                     </p>
-                    <div className="mt-auto flex items-center gap-2 text-[#D62828] font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                    <div className="mt-auto flex items-center gap-2 text-[#D62828] text-body-sm font-semibold group-hover:gap-3 transition-all duration-300">
                       View Solutions
                       <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
                     </div>
@@ -295,7 +295,7 @@ export default function EquipmentsPage() {
                         {benefit.icon}
                       </div>
                       <div>
-                        <p className="text-card-title text-base text-gray-900 mb-1 duration-300">
+                        <p className="text-list-title text-gray-900 mb-1 duration-300">
                           {benefit.title}
                         </p>
                         <p className="text-body-sm text-gray-500">
@@ -416,7 +416,7 @@ export default function EquipmentsPage() {
                 className="group relative bg-white border border-gray-100 rounded-md p-6 hover:border-[#D62828]/40 transition-colors duration-200 overflow-hidden"
                 style={{ borderWidth: '1px' }}
               >
-                <h4 className="text-card-title text-base text-gray-900 mb-4 duration-300">Our Commitment</h4>
+                <h4 className="text-list-title text-gray-900 mb-4 duration-300">Our Commitment</h4>
                 <ul className="space-y-3">
                   {[
                     { step: '01', text: 'Expert Product Selection' },
@@ -431,7 +431,7 @@ export default function EquipmentsPage() {
                       transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
                       className="flex items-center gap-3"
                     >
-                      <span className="w-7 shrink-0 text-base font-bold text-gray-400 tabular-nums">
+                      <span className="w-7 shrink-0 text-index text-gray-400 tabular-nums">
                         {item.step}
                       </span>
                       <span className="text-body-sm text-gray-600">{item.text}</span>
@@ -557,8 +557,8 @@ export default function EquipmentsPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="rounded-xl border border-red-200 bg-red-50 p-4"
                   >
-                    <p className="text-sm font-semibold text-red-700">Your enquiry could not be sent</p>
-                    <p className="mt-1 text-sm text-red-600">{error}</p>
+                    <p className="text-body-sm font-semibold text-red-700">Your enquiry could not be sent</p>
+                    <p className="mt-1 text-body-sm text-red-600">{error}</p>
                   </motion.div>
                 )}
 
@@ -569,8 +569,8 @@ export default function EquipmentsPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="rounded-xl border border-emerald-200 bg-emerald-50 p-4"
                   >
-                    <p className="text-sm font-semibold text-emerald-700">Thank you for your enquiry</p>
-                    <p className="mt-1 text-sm text-emerald-600">Our team will review your request and follow up shortly.</p>
+                    <p className="text-body-sm font-semibold text-emerald-700">Thank you for your enquiry</p>
+                    <p className="mt-1 text-body-sm text-emerald-600">Our team will review your request and follow up shortly.</p>
                   </motion.div>
                 )}
               </form>

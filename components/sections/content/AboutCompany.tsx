@@ -77,7 +77,7 @@ export default function AboutCompany() {
             <ol className="border-t border-white/15">
               {highlights.map((item) => (
                 <li key={item.number} className="flex items-start gap-6 py-6 border-b border-white/15">
-                  <span className="shrink-0 w-10 pt-0.5 text-base font-bold text-white/40 tabular-nums">
+                  <span className="shrink-0 w-10 pt-0.5 text-index text-white/40 tabular-nums">
                     {item.number}
                   </span>
                   <p className="text-body text-gray-200">{item.text}</p>
@@ -88,7 +88,7 @@ export default function AboutCompany() {
             <div className="mt-8">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-2 font-semibold text-white transition-colors duration-200 hover:text-[#D62828] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
+                className="group inline-flex items-center gap-2 text-body-sm font-semibold text-white transition-colors duration-200 hover:text-[#D62828] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
               >
                 Learn More
                 <ArrowRight

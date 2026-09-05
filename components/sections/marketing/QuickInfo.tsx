@@ -74,7 +74,7 @@ export default function QuickInfo() {
                   {renderIcon(item.iconName)}
                 </span>
                 <div>
-                  <div className="text-card-title text-base text-gray-900 mb-1">
+                  <div className="text-list-title text-gray-900 mb-1">
                     {item.label}
                   </div>
                   <div className="text-body-sm text-gray-600">

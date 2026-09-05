@@ -25,7 +25,7 @@ export default function TopBar() {
     >
       <div className="w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Left: Service categories */}
-        <p className="hidden sm:flex items-center gap-1.5 text-[11px] font-medium tracking-wide text-gray-400">
+        <p className="hidden sm:flex items-center gap-1.5 text-xs font-semibold tracking-wide text-gray-400">
           <span className="text-brand">Fire protection</span>
           <span className="text-white/20">·</span>
           <span>Installation</span>
@@ -36,12 +36,12 @@ export default function TopBar() {
         </p>
 
         {/* Mobile: Service tagline */}
-        <p className="sm:hidden text-[10px] font-medium tracking-wide text-gray-400">
+        <p className="sm:hidden text-xs font-semibold tracking-wide text-gray-400">
           Fire protection · Installation
         </p>
 
         {/* Right: Contact details */}
-        <div className="flex items-center gap-3 sm:gap-4 text-[11px] sm:text-xs text-gray-400">
+        <div className="flex items-center gap-3 sm:gap-4 text-xs text-gray-400">
           <a
             href="tel:+250788632620"
             aria-label="Call Verifsafe at +250 788 632 620"

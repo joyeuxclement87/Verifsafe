@@ -56,7 +56,7 @@ export default function IndustrialFireSolutions() {
             <ol className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 md:gap-y-0 border-t border-gray-200 pt-10 md:pt-12">
               {solutions.map((item) => (
                 <li key={item.number}>
-                  <span className="block text-base font-bold text-gray-400 tabular-nums mb-4">
+                  <span className="block text-index text-gray-400 tabular-nums mb-4">
                     {item.number}
                   </span>
                   <h3 className="text-card-title text-gray-900 mb-2">{item.title}</h3>

@@ -216,7 +216,7 @@ export default function GalleryPage() {
                   setActiveCategory(category);
                   setIsFilterOpen(false);
                 }}
-                className={`px-6 py-2.5 rounded-[10px] text-btn text-sm sm:text-base transition-colors duration-300 border w-full md:w-auto ${
+                className={`px-6 py-2.5 rounded-[10px] text-btn transition-colors duration-300 border w-full md:w-auto ${
                   activeCategory === category
                     ? 'bg-[#D62828] text-white border-[#D62828]'
                     : 'bg-white text-gray-600 border-gray-200 hover:border-[#D62828] hover:text-[#D62828]'
@@ -232,7 +232,7 @@ export default function GalleryPage() {
           {isLoading ? (
             <div className="w-full py-20 flex flex-col items-center justify-center">
               <div className="w-12 h-12 border-4 border-[#D62828]/20 border-t-[#D62828] rounded-full animate-spin mb-4" />
-              <p className="text-gray-500 text-lg">
+              <p className="text-gray-500 text-body">
                 Loading projects...
               </p>
             </div>
@@ -272,7 +272,7 @@ export default function GalleryPage() {
 
           {!isLoading && filteredItems.length === 0 && (
             <div className="w-full py-20 text-center">
-              <p className="text-gray-500 text-lg">
+              <p className="text-gray-500 text-body">
                 No projects found for this category.
               </p>
             </div>
@@ -301,7 +301,7 @@ export default function GalleryPage() {
                 <Image src={filteredItems[currentImageIndex].image} alt={filteredItems[currentImageIndex].title} fill className="object-contain" sizes="100vw" priority />
                 <div className="absolute bottom-0 inset-x-0 p-6 bg-linear-to-t from-black/90 to-transparent text-center">
                    <h3 className="text-card-title text-white mb-2 tracking-wide">{filteredItems[currentImageIndex].title}</h3>
-                   <p className="text-gray-300 text-body-sm font-medium capitalize tracking-wider">{filteredItems[currentImageIndex].label}</p>
+                   <p className="text-gray-300 text-body-sm font-semibold capitalize tracking-wider">{filteredItems[currentImageIndex].label}</p>
                 </div>
               </motion.div>
             </div>

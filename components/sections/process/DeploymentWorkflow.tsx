@@ -84,7 +84,7 @@ export default function DeploymentWorkflow() {
             >
               <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-12">
                 <div className="flex items-start gap-6 lg:w-56 shrink-0">
-                  <span className="shrink-0 w-10 pt-0.5 text-base font-bold text-white/40 tabular-nums transition-colors duration-200 group-hover:text-[#D62828] motion-reduce:transition-none">
+                  <span className="shrink-0 w-10 pt-0.5 text-index text-white/40 tabular-nums transition-colors duration-200 group-hover:text-[#D62828] motion-reduce:transition-none">
                     {step.number}
                   </span>
                   <h3 className="text-card-title text-white transition-colors duration-200 motion-reduce:transition-none">
@@ -93,13 +93,13 @@ export default function DeploymentWorkflow() {
                 </div>
 
                 <div className="flex-1">
-                  <p className="text-gray-400 text-base leading-relaxed max-w-lg">
-                    {step.description}
-                  </p>
+                    <p className="text-body text-gray-400 max-w-lg">
+                      {step.description}
+                    </p>
 
-                  <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-                    {step.details.map((detail, detailIndex) => (
-                      <li key={detailIndex} className="text-xs text-gray-500 group-hover:text-gray-300 transition-colors duration-200 motion-reduce:transition-none">
+                    <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                      {step.details.map((detail, detailIndex) => (
+                        <li key={detailIndex} className="text-body-sm text-gray-500 group-hover:text-gray-300 transition-colors duration-200 motion-reduce:transition-none">
                         {detail}
                       </li>
                     ))}

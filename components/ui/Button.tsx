@@ -9,7 +9,7 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
 
 const sizeClasses: Record<ButtonSize, string> = {
   sm: 'h-10 px-4 text-sm',
-  md: 'h-12 px-6 text-[15px]',
+  md: 'h-12 px-6 text-base',
   lg: 'h-[50px] px-6 text-base',
 };
 

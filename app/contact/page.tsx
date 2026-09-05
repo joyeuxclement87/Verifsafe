@@ -98,7 +98,7 @@ export default function ContactPage() {
                 className="border-t border-gray-200 pt-8"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <span className="shrink-0 w-8 text-base font-bold text-gray-400 tabular-nums">
+                  <span className="shrink-0 w-8 text-index text-gray-400 tabular-nums">
                     {item.number}
                   </span>
                   <span className="shrink-0">{item.icon}</span>
@@ -143,7 +143,7 @@ export default function ContactPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
               <Link
                 href="/equipments"
-                className="inline-flex items-center justify-center gap-3 px-8 py-3 text-white font-medium text-base rounded-md border border-white/30 hover:border-[#D62828] hover:text-white transition-colors duration-200 group"
+                className="inline-flex items-center justify-center gap-3 px-8 py-3 text-white text-body-sm font-semibold rounded-md border border-white/30 hover:border-[#D62828] hover:text-white transition-colors duration-200 group"
                 style={{ borderWidth: '1px' }}
               >
                 Explore Equipment
@@ -157,9 +157,9 @@ export default function ContactPage() {
               transition={{ delay: 0.6, duration: 0.5 }}
               className="text-center mt-8"
             >
-              <p className="text-gray-300 text-sm">
-                Response within 2 hours • 24/7 Emergency Support Available
-              </p>
+                <p className="text-gray-300 text-body-sm">
+                  Response within 2 hours • 24/7 Emergency Support Available
+                </p>
             </motion.div>
           </motion.div>
         </div>

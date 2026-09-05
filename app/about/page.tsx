@@ -133,9 +133,9 @@ export default function AboutPage() {
               </h2>
 
               <div className="space-y-4">
-                <p className="text-subheading text-gray-700">
-                  <strong className="text-gray-900 font-bold">VERIFSAFE</strong> was established to provide fire protection solutions which help prevent risks and improve safety in everyday environments.
-                </p>
+                  <p className="text-subheading text-gray-700">
+                    <strong className="text-gray-900 font-semibold">VERIFSAFE</strong> was established to provide fire protection solutions which help prevent risks and improve safety in everyday environments.
+                  </p>
                 <p className="text-body text-gray-600">
                   We focus on delivering reliable equipment and services that support businesses and homes when safety matters most. Our dedicated team ensures that your environments are protected by top-tier systems, installed and maintained to the highest standards.
                 </p>
@@ -148,7 +148,7 @@ export default function AboutPage() {
                     className="flex items-center gap-3 py-3 border-b border-gray-200"
                   >
                     <CircleCheck size={18} className="text-[#D62828] shrink-0" />
-                    <span className="text-body text-gray-700 font-medium">{item}</span>
+                      <span className="text-body text-gray-700 font-semibold">{item}</span>
                   </div>
                 ))}
               </div>
@@ -248,9 +248,9 @@ export default function AboutPage() {
             ].map((value) => (
               <li key={value.id} className="border-t border-gray-200 py-8">
                 <div className="flex items-start gap-6">
-                  <span className="shrink-0 w-10 pt-0.5 text-base font-bold text-gray-400 tabular-nums">
-                    {value.id}
-                  </span>
+                    <span className="shrink-0 w-10 pt-0.5 text-index text-gray-400 tabular-nums">
+                      {value.id}
+                    </span>
                   <div className="flex items-start gap-3">
                     <value.icon size={24} className="text-[#D62828] mt-0.5 shrink-0" strokeWidth={1.5} />
                     <h3 className="text-card-title text-gray-900">{value.title}</h3>
@@ -300,7 +300,7 @@ export default function AboutPage() {
                       {renderIcon(feature.iconName)}
                     </span>
                     <div>
-                      <p className="text-card-title text-base text-gray-900 mb-1">
+                      <p className="text-list-title text-gray-900 mb-1">
                         {feature.label}
                       </p>
                       <p className="text-body-sm text-gray-500">
@@ -345,7 +345,7 @@ export default function AboutPage() {
                 <p className="text-section-heading text-[#D62828] mb-3 tabular-nums">
                   {metric.value}
                 </p>
-                <p className="text-card-title text-base text-gray-900 mb-2">{metric.label}</p>
+                <p className="text-list-title text-gray-900 mb-2">{metric.label}</p>
                 <p className="text-body-sm text-gray-600">{metric.description}</p>
               </div>
             ))}
