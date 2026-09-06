@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Button from '@/components/ui/Button';
-import { ChevronLeft, ChevronRight, PlayerPause, PlayerPlay } from 'tabler-icons-react';
+import { ChevronLeft, ChevronRight, PlayerPause, PlayerPlay, ArrowUpRight, Search, BellRinging, CalendarEvent, Phone } from 'tabler-icons-react';
 
 const slides = [
   {
@@ -14,8 +15,8 @@ const slides = [
     headlineTag: 'h1',
     description:
       'Reliable fire safety equipment, installation, inspection and maintenance for buildings across Rwanda.',
-    cta: { label: 'Request a quote', href: '/contact#contact-form' },
-    secondaryCta: { label: 'Explore solutions', href: '/equipments' },
+    cta: { label: 'Request a quote', href: '/contact#contact-form', style: 'primary', icon: <ArrowUpRight size={18} strokeWidth={2} /> },
+    secondaryCta: { label: 'Explore solutions', href: '/equipments', icon: <Search size={18} strokeWidth={2} /> },
     image: '/hero2.jpg',
     alt: 'Fire safety equipment and protection systems installed in a commercial building in Rwanda',
   },
@@ -27,7 +28,7 @@ const slides = [
     headlineTag: 'h2',
     description:
       'Professional fire detection and alarm systems designed to help buildings respond faster.',
-    cta: { label: 'Explore fire alarm systems', href: '/equipments/fire-alarm-systems' },
+    cta: { label: 'Explore fire alarm systems', href: '/equipments/fire-alarm-systems', style: 'primary', icon: <BellRinging size={18} strokeWidth={2} /> },
     secondaryCta: null,
     image: '/alarms.png',
     alt: 'Fire alarm control panel and detection system installed in a building',
@@ -40,7 +41,7 @@ const slides = [
     headlineTag: 'h2',
     description:
       'Inspection, testing and maintenance that keep your fire protection systems prepared when they matter.',
-    cta: { label: 'Book an inspection', href: '/contact#contact-form' },
+    cta: { label: 'Book an inspection', href: '/contact#contact-form', style: 'primary', icon: <CalendarEvent size={18} strokeWidth={2} /> },
     secondaryCta: null,
     image: '/fire training 2.jpg',
     alt: 'Fire safety technician inspecting and testing fire protection equipment',
@@ -53,7 +54,7 @@ const slides = [
     headlineTag: 'h2',
     description:
       'Supply, installation, testing, maintenance and training — handled through one reliable fire-safety partner.',
-    cta: { label: 'Talk to our team', href: '/contact#contact-form' },
+    cta: { label: 'Talk to our team', href: '/contact#contact-form', style: 'ghost', icon: <Phone size={18} strokeWidth={2} /> },
     secondaryCta: null,
     image: '/hero-3.webp',
     alt: 'Professional fire protection installation with multiple safety systems in a building',
@@ -89,6 +90,13 @@ export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
+  const heroParallax = useTransform(scrollYProgress, [0, 1], [0, '14%']);
+  const heroFade = useTransform(scrollYProgress, [0, 0.8], [1, 0.15]);
 
   // Check reduced motion preference
   useEffect(() => {
@@ -196,7 +204,10 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        style={isReducedMotion ? undefined : { y: heroParallax, opacity: heroFade }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[520px] lg:min-h-[700px] pt-14 pb-8 sm:pt-20 sm:pb-10 lg:py-0">
 
           {/* Left: Text content */}
@@ -255,9 +266,14 @@ export default function HeroSection() {
             >
               <Button
                 href={slide.cta.href}
-                variant="primary"
+                variant={slide.cta.style === 'ghost' ? 'secondary' : 'primary'}
                 size="lg"
-                className="w-full sm:w-auto sm:self-auto !rounded-lg !h-12 !px-7 !bg-[#E53935] hover:!bg-[#C62828] !shadow-[0_10px_24px_-10px_rgba(229,57,53,0.5)]"
+                icon={slide.cta.icon}
+                className={`w-full sm:w-auto sm:self-auto !rounded-lg ${
+                  slide.cta.style === 'ghost'
+                    ? '!bg-transparent !border-white/25 !text-[#F4F3EF] hover:!border-white/60 hover:!bg-white/5 !shadow-none'
+                    : '!h-12 !px-7 !bg-[#E53935] hover:!bg-[#C62828] !shadow-[0_10px_24px_-10px_rgba(229,57,53,0.5)]'
+                }`}
               >
                 {slide.cta.label}
               </Button>
@@ -266,6 +282,7 @@ export default function HeroSection() {
                   href={slide.secondaryCta.href}
                   variant="secondary"
                   size="lg"
+                  icon={slide.secondaryCta.icon}
                   className="w-full sm:w-auto sm:self-auto !rounded-lg !bg-transparent !border-white/25 !text-[#F4F3EF] hover:!border-white/60 hover:!bg-white/5 !shadow-none"
                 >
                   {slide.secondaryCta.label}
@@ -388,7 +405,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-      </div>
+      </motion.div>
 
       {/* Bottom accent line */}
       <div className="absolute bottom-0 left-0 right-0 h-px" style={{ backgroundColor: 'rgba(167, 176, 181, 0.1)' }} />

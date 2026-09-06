@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone, Mail, Clock, MapPin, ArrowRight } from 'tabler-icons-react';
+import { Phone, Mail, Clock, MapPin, ArrowRight, Send } from 'tabler-icons-react';
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
 
@@ -310,6 +310,7 @@ export default function Contact() {
                 type="submit"
                 loading={isSubmitting}
                 disabled={isSubmitting}
+                icon={<Send size={18} strokeWidth={2} />}
                 className="w-full"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}

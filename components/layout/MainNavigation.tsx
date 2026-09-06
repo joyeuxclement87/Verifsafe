@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, Menu, X } from 'tabler-icons-react';
+import { ChevronDown, ChevronRight, Menu, X, ArrowUpRight } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
 
 const equipmentItems = [
@@ -44,8 +44,8 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/equipments', label: 'Equipment', hasDropdown: true },
-  { href: '/about', label: 'Industries' },
-  { href: '/gallery', label: 'About' },
+  { href: '/about', label: 'About' },
+  { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' }
 ];
 
@@ -153,20 +153,43 @@ export default function MainNavigation() {
     }
   };
 
-  const handleDropdownBlur = (e: React.FocusEvent) => {
+  const handleNavBlur = (e: React.FocusEvent) => {
     if (!e.currentTarget.contains(e.relatedTarget as Node)) {
       setActiveDropdown(null);
     }
   };
 
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setActiveDropdown(null), 150);
+  };
+
+  const cancelClose = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
+
   return (
     <nav
       ref={navRef}
       aria-label="Main navigation"
+      onBlur={handleNavBlur}
       className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? 'top-0 bg-surface-dark/95 backdrop-blur-md border-b border-white/5'
-          : 'top-10 bg-ink border-b border-white/5'
+        dropdownOpen
+          ? `${isScrolled ? 'top-0' : 'top-10'} bg-surface-dark border-b border-white/5`
+          : isScrolled
+            ? 'top-0 bg-surface-dark/95 backdrop-blur-md border-b border-white/5'
+            : 'top-10 bg-ink border-b border-white/5'
       }`}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-[72px] flex items-center justify-between gap-4 lg:gap-8">
@@ -191,10 +214,10 @@ export default function MainNavigation() {
                   className="relative"
                   onMouseEnter={() => {
                     setOpenPathname(pathname);
+                    cancelClose();
                     setActiveDropdown(link.label);
                   }}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                  onBlur={handleDropdownBlur}
+                  onMouseLeave={scheduleClose}
                 >
                   <button
                     ref={dropdownTriggerRef}
@@ -207,7 +230,7 @@ export default function MainNavigation() {
                     aria-expanded={dropdownOpen === link.label}
                     aria-haspopup="true"
                     aria-controls="equipment-dropdown"
-                    className={`relative inline-flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors duration-200 rounded-md ${
+                    className={`relative inline-flex items-center gap-1 px-3 py-2 text-[13px] font-medium transition-colors duration-200 rounded-md ${
                       isActive(link.href)
                         ? 'text-white bg-white/5'
                         : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -220,49 +243,12 @@ export default function MainNavigation() {
                       className={`transition-transform duration-200 ${dropdownOpen === link.label ? 'rotate-180' : ''}`}
                     />
                   </button>
-
-                  {dropdownOpen === link.label && (
-                    <div id="equipment-dropdown" className="nav-dropdown-enter absolute left-0 top-full pt-2">
-                      <div
-                        ref={dropdownPanelRef}
-                        onKeyDown={handleDropdownKeyDown}
-                        className="w-[36rem] max-w-[calc(100vw-2rem)] rounded-xl border border-white/10 bg-surface-dark p-5 shadow-2xl shadow-black/40"
-                      >
-                        <div className="grid grid-cols-2 gap-x-5 gap-y-1">
-                          {equipmentItems.map((item) => (
-                            <Link
-                              key={item.link}
-                              href={item.link}
-                              onClick={closeAll}
-                              className={`group -mx-2 rounded-lg px-2 py-2.5 hover:bg-white/5 transition-colors duration-150 ${focusClasses}`}
-                            >
-                              <span className="block text-sm font-semibold text-gray-100 group-hover:text-white transition-colors duration-150">
-                                {item.title}
-                              </span>
-                              <span className="mt-0.5 block text-xs leading-relaxed text-gray-500">
-                                {item.description}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-                        <div className="mt-4 border-t border-white/10 pt-4">
-                          <Link
-                            href="/equipments"
-                            onClick={closeAll}
-                            className={`inline-flex items-center text-sm font-semibold text-brand hover:text-white transition-colors duration-150 ${focusClasses}`}
-                          >
-                            View All Equipment
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               ) : (
                 <Link
                   href={link.href}
                   onClick={closeAll}
-                  className={`relative inline-block px-3 py-2 text-sm font-semibold transition-colors duration-200 rounded-md ${
+                  className={`relative inline-block px-3 py-2 text-[13px] font-medium transition-colors duration-200 rounded-md ${
                     isActive(link.href)
                       ? 'text-white bg-white/5'
                       : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -283,7 +269,14 @@ export default function MainNavigation() {
               href="/contact#contact-form"
               size="sm"
               variant="primary"
-              icon={null}
+              icon={
+                <ArrowUpRight
+                  size={15}
+                  strokeWidth={2}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
+                />
+              }
+              className="!h-10 !rounded-lg !bg-[#E53935] hover:!bg-[#C62828] !shadow-[0_4px_14px_-6px_rgba(229,57,53,0.55)] hover:!shadow-[0_10px_22px_-8px_rgba(229,57,53,0.65)]"
             >
               Request a Quote
             </Button>
@@ -311,6 +304,66 @@ export default function MainNavigation() {
         </div>
       </div>
 
+      {/* Equipment mega dropdown — contiguous sheet under the navbar (desktop only) */}
+      {dropdownOpen === 'Equipment' && (
+        <div
+          id="equipment-dropdown"
+          className="nav-dropdown-enter hidden lg:block absolute top-full left-0 right-0 bg-surface-dark shadow-[0_24px_48px_-24px_rgba(0,0,0,0.5)]"
+          onMouseEnter={cancelClose}
+          onMouseLeave={scheduleClose}
+          onKeyDown={handleDropdownKeyDown}
+        >
+          <div ref={dropdownPanelRef} className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span aria-hidden="true" className="h-px w-6 bg-[#D62828]" />
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">Equipment &amp; Systems</p>
+              </div>
+              <p className="hidden xl:block text-xs text-gray-500">
+                Certified to international standards — sourced, installed and maintained by VerifSafe.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-x-8 gap-y-0.5 px-3 pt-2.5 pb-0">
+              {equipmentItems.map((item) => (
+                <Link
+                  key={item.link}
+                  href={item.link}
+                  onClick={closeAll}
+                  className={`group relative rounded-lg px-3.5 py-2.5 flex flex-col transition-colors duration-150 hover:bg-white/5 ${focusClasses}`}
+                >
+                  <span className="flex items-center gap-1.5 text-sm font-medium text-gray-100 group-hover:text-white transition-colors duration-150">
+                    {item.title}
+                    <ChevronRight
+                      size={13}
+                      strokeWidth={2.5}
+                      className="text-brand -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-150"
+                    />
+                  </span>
+                  <span className="mt-0.5 text-xs leading-relaxed text-gray-500 group-hover:text-gray-400 transition-colors duration-150">
+                    {item.description}
+                  </span>
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-1.5 flex items-center justify-between border-t border-white/10 px-3 py-3.5">
+              <Link
+                href="/equipments"
+                onClick={closeAll}
+                className={`inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:text-white transition-colors duration-150 ${focusClasses}`}
+              >
+                View all equipment
+                <ChevronRight size={14} strokeWidth={2} />
+              </Link>
+              <p className="hidden md:block text-xs text-gray-500">
+                Every system backed by inspection and maintenance plans.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div
@@ -331,7 +384,7 @@ export default function MainNavigation() {
                         }}
                         aria-expanded={dropdownOpen === link.label}
                         aria-controls="mobile-equipment-menu"
-                        className={`w-full flex items-center justify-between px-3 py-3 text-base font-semibold rounded-lg transition-colors duration-200 ${
+                        className={`w-full flex items-center justify-between px-3 py-3 text-sm font-medium rounded-lg transition-colors duration-200 ${
                           dropdownOpen === link.label
                             ? 'text-white bg-white/5'
                             : 'text-gray-300 hover:text-white hover:bg-white/5'
@@ -373,7 +426,7 @@ export default function MainNavigation() {
                     <Link
                       href={link.href}
                       onClick={closeAll}
-                      className={`block px-3 py-3 text-base font-semibold rounded-lg transition-colors duration-200 ${
+                      className={`block px-3 py-3 text-sm font-medium rounded-lg transition-colors duration-200 ${
                         isActive(link.href)
                           ? 'text-white bg-white/5'
                           : 'text-gray-300 hover:text-white hover:bg-white/5'
@@ -391,8 +444,14 @@ export default function MainNavigation() {
               <Button
                 href="/contact#contact-form"
                 onClick={closeAll}
-                icon={null}
-                className="w-full justify-center"
+                icon={
+                <ArrowUpRight
+                  size={18}
+                  strokeWidth={2}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
+                />
+              }
+                className="w-full justify-center !rounded-lg !bg-[#E53935] hover:!bg-[#C62828] !shadow-[0_4px_14px_-6px_rgba(229,57,53,0.55)] hover:!shadow-[0_10px_22px_-8px_rgba(229,57,53,0.65)]"
               >
                 Request a Quote
               </Button>

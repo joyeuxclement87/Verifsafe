@@ -1,6 +1,6 @@
 'use client';
 
-import { Flame, Tool, Bolt, Walk } from 'tabler-icons-react';
+import { Flame, Tool, Bolt, Walk, Calendar } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
 
 export default function FireSafetyTraining() {
@@ -84,7 +84,7 @@ export default function FireSafetyTraining() {
         </p>
 
         <div>
-          <Button href="/contact#contact-form">
+          <Button href="/contact#contact-form" icon={<Calendar size={18} strokeWidth={2} />}>
             Book Training Session
           </Button>
         </div>

@@ -1,8 +1,23 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
-const steps = [
+interface ProcessStep {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface FireSafetyApproachProps {
+  steps?: ProcessStep[];
+  eyebrow?: string;
+  code?: string;
+  heading?: ReactNode;
+  description?: string;
+}
+
+const homepageSteps: ProcessStep[] = [
   {
     number: '01',
     title: 'Assess',
@@ -30,6 +45,12 @@ const steps = [
   },
 ];
 
+const homepageHeading = (
+  <>
+    Protection starts before <span className="text-highlight-dark">installation</span>.
+  </>
+);
+
 const gridLineStyle = {
   backgroundImage: `
     linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
@@ -38,7 +59,13 @@ const gridLineStyle = {
   backgroundSize: '60px 60px',
 };
 
-export default function FireSafetyApproach() {
+export default function FireSafetyApproach({
+  steps = homepageSteps,
+  eyebrow = 'how we protect',
+  code = 'VS / PRC — 05',
+  heading = homepageHeading,
+  description = 'Every building has different risks. We assess the environment, plan the right solution, install it correctly and keep it ready over time.',
+}: FireSafetyApproachProps) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -66,14 +93,14 @@ export default function FireSafetyApproach() {
           <span className="flex items-center gap-2.5">
             <span aria-hidden="true" className="h-px w-6 bg-[#E53935]" />
             <span className="text-xs font-semibold tracking-[0.2em] text-[#A7B0B5]">
-              how we protect
+              {eyebrow}
             </span>
           </span>
           <span
             aria-hidden="true"
             className="hidden sm:block text-[10px] font-mono tracking-widest text-white/30"
           >
-            VS / 05 — 01
+            {code}
           </span>
         </div>
 
@@ -83,11 +110,10 @@ export default function FireSafetyApproach() {
             id="process-heading"
             className="text-section-heading leading-[1.1] text-[#F4F3EF]"
           >
-            Protection starts before <span className="text-highlight-dark">installation</span>.
+            {heading}
           </h2>
           <p className="mt-5 text-subheading text-[#A7B0B5] max-w-2xl">
-            Every building has different risks. We assess the environment, plan the right
-            solution, install it correctly and keep it ready over time.
+            {description}
           </p>
         </div>
 

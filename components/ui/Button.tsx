@@ -8,16 +8,16 @@ export type ButtonVariant = 'primary' | 'secondary' | 'dark' | 'text';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'h-10 px-4 text-sm',
-  md: 'h-12 px-6 text-base',
-  lg: 'h-[50px] px-6 text-base',
+  sm: 'h-9 px-3.5 text-[13px]',
+  md: 'h-11 px-5 text-sm',
+  lg: 'h-[47px] px-6 text-sm',
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
     'bg-brand text-white shadow-[0_1px_2px_rgba(17,17,17,0.12)] hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-[0_6px_16px_-6px_rgba(17,17,17,0.30)] active:translate-y-0 active:shadow-[0_1px_2px_rgba(17,17,17,0.12)]',
   secondary:
-    'bg-white text-ink border border-brand hover:-translate-y-px hover:border-brand-dark hover:bg-paper hover:shadow-[0_4px_12px_-4px_rgba(17,17,17,0.15)] active:translate-y-0 active:shadow-none',
+    'bg-white text-ink border border-brand hover:-translate-y-0.5 hover:border-brand-dark hover:bg-paper hover:shadow-[0_4px_12px_-4px_rgba(17,17,17,0.15)] active:translate-y-0 active:shadow-none',
   dark:
     'bg-surface-dark text-white border border-transparent shadow-[0_1px_2px_rgba(17,17,17,0.16)] hover:-translate-y-0.5 hover:bg-surface-soft hover:border-brand/50 hover:shadow-[0_6px_16px_-6px_rgba(17,17,17,0.32)] active:translate-y-0 active:shadow-[0_1px_2px_rgba(17,17,17,0.16)]',
   text: 'relative pb-1 text-ink',
@@ -54,7 +54,7 @@ export default function Button({
   const iconSize = isText ? 16 : 18;
 
   const classes = [
-    'group inline-flex items-center justify-center gap-2.5 rounded-[10px] font-semibold tracking-[0.01em] transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:pointer-events-none disabled:opacity-55 disabled:shadow-none disabled:translate-y-0 motion-reduce:transition-none',
+    'group inline-flex items-center justify-center gap-2.5 rounded-[10px] font-medium tracking-[0.01em] transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:pointer-events-none disabled:opacity-55 disabled:shadow-none disabled:translate-y-0 motion-reduce:transition-none',
     isText ? '' : sizeClasses[size],
     isText
       ? ''

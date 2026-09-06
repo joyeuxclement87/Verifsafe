@@ -7,6 +7,7 @@ import WhoWeServe from '@/components/sections/marketing/WhoWeServe';
 import OurEquipment from '@/components/sections/content/OurEquipment';
 import OurServices from '@/components/sections/content/OurServices';
 import FAQSection from '@/components/sections/content/FAQSection';
+import { faqs } from '@/components/sections/content/faqData';
 import ProtectionCTA from '@/components/sections/marketing/ProtectionCTA';
 
 export const metadata: Metadata = {
@@ -26,21 +27,36 @@ export const metadata: Metadata = {
 export default function Home() {
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'VerifSafe',
-    description:
-      'Fire safety equipment, installation, inspection, and maintenance services across Rwanda.',
-    url: 'https://verifsafe.com',
-    areaServed: {
-      '@type': 'Country',
-      name: 'Rwanda',
-    },
-    serviceType: [
-      'Fire Protection',
-      'Fire Safety Equipment',
-      'Fire Alarm Installation',
-      'Fire Safety Inspection',
-      'Fire Extinguisher Services',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        name: 'VerifSafe',
+        description:
+          'Fire safety equipment, installation, inspection, and maintenance services across Rwanda.',
+        url: 'https://verifsafe.com',
+        areaServed: {
+          '@type': 'Country',
+          name: 'Rwanda',
+        },
+        serviceType: [
+          'Fire Protection',
+          'Fire Safety Equipment',
+          'Fire Alarm Installation',
+          'Fire Safety Inspection',
+          'Fire Extinguisher Services',
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      },
     ],
   };
 

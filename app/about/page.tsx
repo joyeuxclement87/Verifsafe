@@ -1,6 +1,6 @@
 'use client';
 
-import { Target, Eye, HeartHandshake, CircleCheck, Star, Settings, Shield } from 'tabler-icons-react';
+import { Target, Eye, HeartHandshake, CircleCheck, Star, Settings, Shield, PhoneCall, ArrowUpRight } from 'tabler-icons-react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
@@ -384,11 +384,27 @@ export default function AboutPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 mb-8">
-              <Button href="/contact#contact-form" variant="primary">
+              <Button
+                href="/contact#contact-form"
+                variant="secondary"
+                icon={<PhoneCall size={18} strokeWidth={2} />}
+                className="!rounded-lg !bg-transparent !border-white/25 !text-[#F4F3EF] hover:!border-white/60 hover:!bg-white/5 !shadow-none"
+              >
                 Contact Us
               </Button>
 
-              <Button href="/contact#contact-form" variant="secondary">
+              <Button
+                href="/contact#contact-form"
+                variant="primary"
+                icon={
+                  <ArrowUpRight
+                    size={18}
+                    strokeWidth={2}
+                    className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
+                  />
+                }
+                className="!rounded-lg !bg-[#E53935] hover:!bg-[#C62828] !shadow-[0_10px_24px_-10px_rgba(229,57,53,0.5)]"
+              >
                 Request a Quote
               </Button>
             </div>

@@ -23,7 +23,8 @@ import {
   ClipboardCheck,
   Check,
   Plus,
-  Star
+  Star,
+  ArrowUpRight
 } from 'tabler-icons-react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
@@ -448,7 +449,18 @@ export default function FireSafetyAccessoriesPage() {
             <p className="text-subheading text-gray-300 max-w-2xl mx-auto mb-8">
               Contact our experts for the right safety accessories and professional equipment installation.
             </p>
-            <Button href="/contact#contact-form" variant="primary">
+            <Button
+            href="/contact#contact-form"
+            variant="primary"
+            icon={
+              <ArrowUpRight
+                size={18}
+                strokeWidth={2}
+                className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
+              />
+            }
+            className="!rounded-lg !bg-[#E53935] hover:!bg-[#C62828] !shadow-[0_10px_24px_-10px_rgba(229,57,53,0.5)]"
+          >
               Request Quote
             </Button>
           </motion.div>

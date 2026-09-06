@@ -1,6 +1,7 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 
 const proofPoints = [
   {
@@ -39,17 +40,24 @@ const gridStyle = {
 
 export default function WhyChooseUs() {
   const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+  const gridY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%']);
 
   return (
     <section
+      ref={sectionRef}
       aria-labelledby="why-heading"
       className="relative w-full bg-neutral overflow-hidden py-20 sm:py-24 lg:py-32"
     >
-      {/* Faint technical grid — light version */}
-      <div
+      {/* Faint technical grid — light version, subtle parallax */}
+      <motion.div
         aria-hidden="true"
-        className="absolute inset-0 opacity-100 pointer-events-none"
-        style={gridStyle}
+        className="absolute -inset-y-24 inset-x-0 pointer-events-none"
+        style={reduceMotion ? undefined : { y: gridY, ...gridStyle }}
       />
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

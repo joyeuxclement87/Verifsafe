@@ -21,6 +21,18 @@ Avoid interfaces that look obviously AI-generated, generic, templated, or copied
 
 ---
 
+# Tech Stack Decision
+
+Sanity is no longer used. Supabase is the data and backend platform going forward.
+
+All new data storage, forms, API routes, and content management must use Supabase (Postgres, Auth, Storage, RLS) instead of Sanity.
+
+Existing Sanity dependencies, schema, and code should be removed and replaced with Supabase equivalents over time.
+
+New code must never introduce new Sanity usage or depend on Sanity.
+
+---
+
 # 1. Core Working Principles
 
 Before making changes:
