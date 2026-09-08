@@ -2,16 +2,16 @@ import type { Metadata } from 'next';
 import { FireHoseReelsGuide } from './guide';
 
 export const metadata: Metadata = {
-  title: 'Fire Hose Reels — Equipment Guide',
+  title: 'Fire Hose Reels in Rwanda',
   description:
-    'Explore fire hose reel solutions that draw on the building water supply for accessible fire protection in suitable environments across Rwanda.',
+    'Explore fire hose reels supplied by VerifSafe for commercial and industrial fire protection needs in Rwanda.',
   alternates: {
     canonical: '/equipments/fire-hose-reels',
   },
   openGraph: {
-    title: 'Fire Hose Reels — Equipment Guide',
+    title: 'Fire Hose Reels in Rwanda | VerifSafe',
     description:
-      'Explore fire hose reel solutions that draw on the building water supply for accessible fire protection in suitable environments across Rwanda.',
+      'Explore fire hose reels supplied by VerifSafe for commercial and industrial fire protection needs in Rwanda.',
     url: '/equipments/fire-hose-reels',
     type: 'website',
     siteName: 'VerifSafe',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Fire Hose Reels — Equipment Guide',
+  name: 'Fire Hose Reels in Rwanda',
   description:
     'Explore fire hose reel solutions that draw on the building water supply for accessible fire protection in suitable environments across Rwanda.',
   url: 'https://verifsafe.com/equipments/fire-hose-reels',

@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
 interface ProcessStep {
   number: string;
@@ -30,13 +31,13 @@ const homepageSteps: ProcessStep[] = [
   },
   {
     number: '03',
-    title: 'Equip',
-    description: 'Supply the appropriate fire safety equipment and systems.',
+    title: 'Install',
+    description: 'Install and configure systems with care and precision.',
   },
   {
     number: '04',
-    title: 'Install',
-    description: 'Install and configure systems with care and precision.',
+    title: 'Test',
+    description: 'Verify systems function correctly when installed.',
   },
   {
     number: '05',
@@ -88,34 +89,43 @@ export default function FireSafetyApproach({
       />
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-28">
-        {/* Meta row */}
-        <div className="flex items-center justify-between">
-          <span className="flex items-center gap-2.5">
-            <span aria-hidden="true" className="h-px w-6 bg-[#E53935]" />
-            <span className="text-xs font-semibold tracking-[0.2em] text-[#A7B0B5]">
-              {eyebrow}
-            </span>
-          </span>
-          <span
-            aria-hidden="true"
-            className="hidden sm:block text-[10px] font-mono tracking-widest text-white/30"
-          >
-            {code}
-          </span>
-        </div>
+        <RevealGroup
+          stagger={0.08}
+          delayChildren={0.05}
+        >
+          {/* Meta row */}
+          <RevealItem variant="up-sm">
+            <div className="flex items-center justify-between">
+              <span className="flex items-center gap-2.5">
+                <span aria-hidden="true" className="h-px w-6 bg-[#E53935]" />
+                <span className="text-xs font-semibold tracking-[0.2em] text-[#A7B0B5]">
+                  {eyebrow}
+                </span>
+              </span>
+              <span
+                aria-hidden="true"
+                className="hidden sm:block text-[10px] font-mono tracking-widest text-white/30"
+              >
+                {code}
+              </span>
+            </div>
+          </RevealItem>
 
-        {/* Heading block */}
-        <div className="mt-8 lg:mt-10 max-w-3xl border-b border-white/10 pb-8 lg:pb-10">
-          <h2
-            id="process-heading"
-            className="text-section-heading leading-[1.1] text-[#F4F3EF]"
-          >
-            {heading}
-          </h2>
-          <p className="mt-5 text-subheading text-[#A7B0B5] max-w-2xl">
-            {description}
-          </p>
-        </div>
+          {/* Heading block */}
+          <RevealItem>
+            <div className="mt-8 lg:mt-10 max-w-3xl border-b border-white/10 pb-8 lg:pb-10">
+              <h2
+                id="process-heading"
+                className="text-section-heading leading-[1.1] text-[#F4F3EF]"
+              >
+                {heading}
+              </h2>
+              <p className="mt-5 text-subheading text-[#A7B0B5] max-w-2xl">
+                {description}
+              </p>
+            </div>
+          </RevealItem>
+        </RevealGroup>
 
         {/* Process */}
         <div className="relative mt-10 lg:mt-12">

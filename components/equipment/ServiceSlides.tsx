@@ -153,14 +153,19 @@ export function ServiceSlides({
               aria-label={`Show image ${slideIndex + 1} of ${slides.length}`}
               aria-current={slideIndex === index}
               onClick={() => setIndex(slideIndex)}
-              className={`h-1.5 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none ${
-                slideIndex === index
-                  ? 'w-6 bg-[#D62828]'
-                  : dark
-                    ? 'w-1.5 bg-white/25 hover:bg-white/50'
-                    : 'w-1.5 bg-gray-300 hover:bg-gray-400'
-              }`}
-            />
+              className="group grid place-items-center h-6 px-1 focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              <span
+                aria-hidden="true"
+                className={`block h-1.5 rounded-full transition-all duration-300 motion-reduce:transition-none ${
+                  slideIndex === index
+                    ? 'w-6 bg-[#D62828]'
+                    : dark
+                      ? 'w-1.5 bg-white/25 group-hover:bg-white/50'
+                      : 'w-1.5 bg-gray-300 group-hover:bg-gray-400'
+                }`}
+              />
+            </button>
           ))}
           <span
             aria-hidden="true"

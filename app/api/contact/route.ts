@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { name, email, phone, service, message } = body
 
-    if (!name || !email || !service || !message) {
+    if (!name || !service || !message) {
       return NextResponse.json(
         { message: 'Please fill in all required fields.' },
         { status: 400 }
@@ -68,9 +68,10 @@ export async function POST(request: Request) {
     }
 
     if (!process.env.SANITY_API_WRITE_TOKEN) {
+      console.error('Contact submission failed: SANITY_API_WRITE_TOKEN is not configured.')
       return NextResponse.json(
         {
-          message: 'Sanity write access is not configured yet. Please complete the setup in the local environment file.',
+          message: 'We are unable to process enquiries at the moment. Please try again later.',
         },
         { status: 500 }
       )
@@ -118,17 +119,18 @@ export async function POST(request: Request) {
         : undefined
 
     if (message?.includes('project user not found') || message?.includes('Unauthorized')) {
+      console.error('Contact submission failed: invalid Sanity write token.')
       return NextResponse.json(
         {
           message:
-            'The Sanity write token is invalid for this project. Create a new write token for project obv9kyik in Sanity and update SANITY_API_WRITE_TOKEN in your local environment file.',
+            'We are unable to process enquiries at the moment. Please try again later.',
         },
         { status: 500 }
       )
     }
 
     return NextResponse.json(
-      { message: 'Something went wrong while saving the message.' },
+      { message: 'We are unable to process enquiries at the moment. Please try again later.' },
       { status: 500 }
     )
   }

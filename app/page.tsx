@@ -9,15 +9,20 @@ import OurServices from '@/components/sections/content/OurServices';
 import FAQSection from '@/components/sections/content/FAQSection';
 import { faqs } from '@/components/sections/content/faqData';
 import ProtectionCTA from '@/components/sections/marketing/ProtectionCTA';
+import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Fire Protection & Safety Equipment in Rwanda | VerifSafe',
+  title: 'Fire Safety Equipment & Services in Rwanda | VerifSafe',
   description:
     'VerifSafe provides fire safety equipment, fire alarm systems, installation, inspection, maintenance and fire protection services across Rwanda.',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Fire Protection & Safety Equipment in Rwanda | VerifSafe',
+    title: 'Fire Safety Equipment & Services in Rwanda | VerifSafe',
     description:
       'VerifSafe provides fire safety equipment, fire alarm systems, installation, inspection, maintenance and fire protection services across Rwanda.',
+    url: '/',
     type: 'website',
     locale: 'en_US',
     siteName: 'VerifSafe',
@@ -30,14 +35,29 @@ export default function Home() {
     '@graph': [
       {
         '@type': 'Organization',
-        name: 'VerifSafe',
+        name: site.name,
+        url: site.url,
+        logo: `${site.url}/logo.png`,
+        email: site.email,
+        telephone: site.phones.map((phone) => phone.tel),
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: site.address.street,
+          addressLocality: site.address.locality,
+          addressCountry: 'RW',
+        },
         description:
           'Fire safety equipment, installation, inspection, and maintenance services across Rwanda.',
-        url: 'https://verifsafe.com',
         areaServed: {
           '@type': 'Country',
-          name: 'Rwanda',
+          name: site.address.country,
         },
+        sameAs: [
+          site.social.facebook,
+          site.social.x,
+          site.social.instagram,
+          site.social.tiktok,
+        ],
         serviceType: [
           'Fire Protection',
           'Fire Safety Equipment',
@@ -45,6 +65,18 @@ export default function Home() {
           'Fire Safety Inspection',
           'Fire Extinguisher Services',
         ],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${site.url}/#website`,
+        url: site.url,
+        name: site.name,
+        publisher: {
+          '@type': 'Organization',
+          '@id': `${site.url}/#organization`,
+          name: site.name,
+          url: site.url,
+        },
       },
       {
         '@type': 'FAQPage',

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
 const solutions = [
   {
@@ -26,13 +26,7 @@ export default function IndustrialFireSolutions() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start mb-14 sm:mb-16">
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="lg:col-span-5"
-          >
+          <Reveal className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-5">
               <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
@@ -50,20 +44,24 @@ export default function IndustrialFireSolutions() {
               Precision engineering and proven reliability for industrial and commercial buildings
               where a failure is not an option.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="lg:col-span-7">
-            <ol className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 md:gap-y-0 border-t border-gray-200 pt-10 md:pt-12">
+            <RevealGroup
+              as="ol"
+              stagger={0.08}
+              className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 md:gap-y-0 border-t border-gray-200 pt-10 md:pt-12"
+            >
               {solutions.map((item) => (
-                <li key={item.number}>
+                <RevealItem key={item.number} as="li">
                   <span className="block text-index text-gray-400 tabular-nums mb-4">
                     {item.number}
                   </span>
                   <h3 className="text-card-title text-gray-900 mb-2">{item.title}</h3>
                   <p className="text-body text-gray-600">{item.description}</p>
-                </li>
+                </RevealItem>
               ))}
-            </ol>
+            </RevealGroup>
           </div>
         </div>
       </div>

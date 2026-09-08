@@ -1,14 +1,14 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { ShieldCheck, Tools, ClipboardCheck, Refresh } from 'tabler-icons-react';
 
 const assurances = [
   {
     number: '01',
-    title: 'Certified equipment',
+    title: 'Reliable equipment',
     description:
-      'Reliable fire-safety equipment selected for professional applications.',
+      'Fire-safety equipment selected for professional applications.',
     Icon: ShieldCheck,
   },
   {
@@ -35,8 +35,6 @@ const assurances = [
 ];
 
 export default function AssuranceStrip() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <section
       aria-labelledby="assurance-heading"
@@ -46,13 +44,7 @@ export default function AssuranceStrip() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Intro */}
-          <motion.div
-            initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: reduceMotion ? 0 : 0.6, ease: 'easeOut' }}
-            className="lg:col-span-5"
-          >
+          <Reveal className="lg:col-span-5">
             <div className="flex items-center justify-between gap-4">
               <span className="flex items-center gap-2.5">
                 <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
@@ -78,23 +70,17 @@ export default function AssuranceStrip() {
               Four disciplines applied consistently across every fire
               protection system — from supply to ongoing maintenance.
             </p>
-          </motion.div>
+          </Reveal>
 
           {/* Items */}
-          <ol className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:col-span-7">
-            {assurances.map((item, index) => (
-              <motion.li
-                key={item.number}
-                initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.5,
-                  delay: reduceMotion ? 0 : 0.1 + index * 0.07,
-                  ease: 'easeOut',
-                }}
-                className="group"
-              >
+          <RevealGroup
+            as="ol"
+            stagger={0.07}
+            delayChildren={0.1}
+            className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:col-span-7"
+          >
+            {assurances.map((item) => (
+              <RevealItem key={item.number} as="li" variant="up-sm" className="group">
                 <div className="flex items-center gap-3">
                   <item.Icon
                     size={22}
@@ -112,9 +98,9 @@ export default function AssuranceStrip() {
                 <p className="mt-2 text-body-sm text-gray-600">
                   {item.description}
                 </p>
-              </motion.li>
+              </RevealItem>
             ))}
-          </ol>
+          </RevealGroup>
         </div>
       </div>
     </section>

@@ -13,6 +13,9 @@ import {
   BrandTiktok,
 } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
+import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
+import { equipmentCategories } from '@/lib/equipment';
+import { site } from '@/lib/site';
 
 const companyLinks = [
   { label: 'About', href: '/about' },
@@ -29,30 +32,28 @@ const serviceLinks = [
   { label: 'Training', href: '/services' },
 ];
 
-const equipmentLinks = [
-  { label: 'Fire Extinguishers', href: '/equipments/fire-extinguishers' },
-  { label: 'Fire Alarm Systems', href: '/equipments/fire-alarm-systems' },
-  { label: 'Fire Hose Reels', href: '/equipments/fire-hose-reels' },
-  { label: 'Emergency Lighting', href: '/equipments/emergency-lights' },
-];
+const equipmentLinks = equipmentCategories.map((category) => ({
+  label: category.title,
+  href: category.href,
+}));
 
 const contactDetails = [
   {
     label: 'Location',
-    value: 'Kigali, Rwanda',
+    value: site.address.country,
     href: null as string | null,
     Icon: MapPin,
   },
-  {
+  ...site.phones.map((phone) => ({
     label: 'Phone',
-    value: '+250 788 632 620',
-    href: 'tel:+250788632620',
+    value: phone.display,
+    href: `tel:${phone.tel}`,
     Icon: Phone,
-  },
+  })),
   {
     label: 'Email',
-    value: 'info@verifsafe.com',
-    href: 'mailto:info@verifsafe.com',
+    value: site.email,
+    href: `mailto:${site.email}`,
     Icon: Mail,
   },
 ];
@@ -119,9 +120,14 @@ export default function Footer() {
 
       {/* Main body */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 lg:pt-24 pb-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.7fr_1fr_1.15fr_1.25fr_1.25fr] gap-x-8 gap-y-12 border-t border-white/10 pt-12 lg:pt-14">
+        <RevealGroup
+          as="div"
+          stagger={0.08}
+          delayChildren={0.05}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.7fr_1fr_1.15fr_1.25fr_1.25fr] gap-x-8 gap-y-12 border-t border-white/10 pt-12 lg:pt-14"
+        >
           {/* Brand statement */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <RevealItem variant="up-sm" className="sm:col-span-2 lg:col-span-1">
             <Link href="/" aria-label="VerifSafe — Home" className="inline-block">
               <Image
                 src="/logo.png"
@@ -157,10 +163,11 @@ export default function Footer() {
             >
               Request a Quote
             </Button>
-          </div>
+          </RevealItem>
 
           {/* Company */}
-          <nav aria-labelledby="footer-company-title">
+          <RevealItem as="div">
+            <nav aria-labelledby="footer-company-title">
             <h2
               id="footer-company-title"
               className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A7B0B5] mb-6"
@@ -180,9 +187,11 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
+          </RevealItem>
 
           {/* Services */}
-          <nav aria-labelledby="footer-services-title">
+          <RevealItem as="div">
+            <nav aria-labelledby="footer-services-title">
             <h2
               id="footer-services-title"
               className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A7B0B5] mb-6"
@@ -202,9 +211,11 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
+          </RevealItem>
 
           {/* Equipment */}
-          <nav aria-labelledby="footer-equipment-title">
+          <RevealItem as="div">
+            <nav aria-labelledby="footer-equipment-title">
             <h2
               id="footer-equipment-title"
               className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A7B0B5] mb-6"
@@ -224,9 +235,10 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
+          </RevealItem>
 
           {/* Contact */}
-          <div>
+          <RevealItem as="div">
             <h2
               id="footer-contact-title"
               className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A7B0B5] mb-6"
@@ -236,7 +248,7 @@ export default function Footer() {
             <address className="not-italic">
               <ul className="space-y-5" role="list">
                 {contactDetails.map(({ label, value, href, Icon }) => (
-                  <li key={label} className="flex items-start gap-3">
+                  <li key={value} className="flex items-start gap-3">
                     <Icon
                       size={16}
                       strokeWidth={1.5}
@@ -262,31 +274,38 @@ export default function Footer() {
                 ))}
               </ul>
             </address>
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-5">
-          <p className="text-body-sm text-white/30 text-center sm:text-left">
-            © {currentYear} VerifSafe. All rights reserved.
-          </p>
+        <RevealGroup
+          stagger={0.08}
+          className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-5"
+        >
+          <RevealItem variant="up-sm">
+            <p className="text-body-sm text-white/30 text-center sm:text-left">
+              © {currentYear} VerifSafe. All rights reserved.
+            </p>
+          </RevealItem>
 
-          <ul className="flex items-center gap-3" role="list">
-            {socialLinks.map(({ href, label, Icon }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#A7B0B5] hover:border-[#E53935] hover:text-white transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E53935]"
-                >
-                  <Icon size={16} strokeWidth={1.5} aria-hidden="true" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <RevealItem variant="up-sm">
+            <ul className="flex items-center gap-3" role="list">
+              {socialLinks.map(({ href, label, Icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#A7B0B5] hover:border-[#E53935] hover:text-white transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E53935]"
+                  >
+                    <Icon size={16} strokeWidth={1.5} aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </RevealItem>
+        </RevealGroup>
       </div>
     </footer>
   );

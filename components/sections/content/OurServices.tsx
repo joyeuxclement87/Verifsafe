@@ -4,57 +4,34 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'tabler-icons-react';
+import { services as allServices } from '@/lib/services';
+import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
-const services = [
-  {
-    number: '01',
-    title: 'Fire equipment supply',
-    description: 'Extinguishers, fire safety equipment and essential protection systems.',
-    href: '/equipments',
-    image: '/service-1.png',
-    alt: 'Fire safety equipment and extinguishers',
-  },
-  {
-    number: '02',
-    title: 'Installation',
-    description: 'Professional installation of fire alarms, detection systems and safety equipment.',
-    href: '/services',
-    image: '/service-2.png',
-    alt: 'Technician installing fire alarm and detection equipment',
-  },
-  {
-    number: '03',
-    title: 'Inspection & testing',
-    description: 'Checks that help identify faults, gaps and areas requiring attention.',
-    href: '/services',
-    image: '/service-3.png',
-    alt: 'Fire safety technician inspecting fire protection equipment',
-  },
-  {
-    number: '04',
-    title: 'Maintenance',
-    description: 'Scheduled servicing to keep fire protection systems working as intended.',
-    href: '/services',
-    image: '/service-5.png',
-    alt: 'Technician servicing fire protection equipment',
-  },
-  {
-    number: '05',
-    title: 'Extinguisher refilling',
-    description: 'Refilling and servicing to help keep extinguishers ready for use.',
-    href: '/services',
-    image: '/refile.jpeg',
-    alt: 'Fire extinguisher being refilled and serviced',
-  },
-  {
-    number: '06',
-    title: 'Fire safety training',
-    description: 'Practical training that helps teams understand prevention, response and evacuation.',
-    href: '/services',
-    image: '/fire training 2.jpg',
-    alt: 'Fire safety training session for a team',
-  },
-];
+const homeServiceDescriptions: Record<string, string> = {
+  'equipment-supply':
+    'Extinguishers, fire safety equipment and essential protection systems.',
+  installation:
+    'Professional installation of fire alarms, detection systems and safety equipment.',
+  'inspection-testing':
+    'Checks that help identify faults, gaps and areas requiring attention.',
+  maintenance:
+    'Scheduled servicing to keep fire protection systems working as intended.',
+  refilling:
+    'Refilling and servicing to help keep extinguishers ready for use.',
+  'fire-safety-training':
+    'Practical training that helps teams understand prevention, response and evacuation.',
+};
+
+const services = allServices
+  .filter((service) => homeServiceDescriptions[service.id])
+  .map((service, index) => ({
+    number: String(index + 1).padStart(2, '0'),
+    title: service.title,
+    description: homeServiceDescriptions[service.id],
+    href: service.id === 'equipment-supply' ? '/equipments' : '/services',
+    image: service.image,
+    alt: service.imageAlt,
+  }));
 
 const TOTAL = services.length;
 
@@ -175,32 +152,38 @@ export default function OurServices() {
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-3xl">
-          <div className="flex items-center justify-between gap-4">
-            <p className="flex items-center gap-2.5">
-              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-              <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
-                what we do
+        <RevealGroup stagger={0.08} delayChildren={0.05} className="max-w-3xl">
+          <RevealItem variant="up-sm">
+            <div className="flex items-center justify-between gap-4">
+              <p className="flex items-center gap-2.5">
+                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
+                  what we do
+                </span>
+              </p>
+              <span
+                aria-hidden="true"
+                className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
+              >
+                VS / SVC — 06
               </span>
-            </p>
-            <span
-              aria-hidden="true"
-              className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
+            </div>
+          </RevealItem>
+          <RevealItem>
+            <h2
+              id="services-heading"
+              className="text-section-heading mt-6 text-gray-900"
             >
-              VS / SVC — 06
-            </span>
-          </div>
-          <h2
-            id="services-heading"
-            className="text-section-heading mt-6 text-gray-900"
-          >
-            Fire protection built around your <span className="text-highlight">building</span>.
-          </h2>
-          <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
-            From equipment supply to installation, inspection and ongoing
-            maintenance, we help keep your building prepared.
-          </p>
-        </div>
+              Fire protection built around your <span className="text-highlight">building</span>.
+            </h2>
+          </RevealItem>
+          <RevealItem variant="up-sm">
+            <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
+              From equipment supply to installation, inspection and ongoing
+              maintenance, we help keep your building prepared.
+            </p>
+          </RevealItem>
+        </RevealGroup>
 
         {/* Carousel */}
         <div className="mt-12 lg:mt-16">
@@ -310,7 +293,7 @@ export default function OurServices() {
         </div>
 
         {/* CTA */}
-        <div className="mt-10 sm:mt-12">
+        <Reveal variant="up-sm" delay={0.05} className="mt-10 sm:mt-12">
           <Link
             href="/services"
             aria-label="View all services"
@@ -324,7 +307,7 @@ export default function OurServices() {
               className="transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
             />
           </Link>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ import TopBar from './TopBar';
 import MainNavigation from './MainNavigation';
 import Footer from './Footer';
 import PageLoader from './PageLoader';
+import PageTransition from './PageTransition';
 import WhatsAppButton from './WhatsAppButton';
 
 export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
@@ -99,6 +100,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
   return (
     <>
       <PageLoader />
+      <PageTransition />
       <TopBar />
       <MainNavigation />
       <div className="pt-[104px] lg:pt-[112px] flex-1">

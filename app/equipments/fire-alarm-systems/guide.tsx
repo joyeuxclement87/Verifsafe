@@ -8,6 +8,7 @@ import {
   useScroll,
   useTransform,
 } from 'framer-motion';
+import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import {
   ArrowUpRight,
   ArrowRight,
@@ -24,6 +25,7 @@ import {
   BuildingWarehouse,
 } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
+import RelatedEquipment from '@/components/equipment/RelatedEquipment';
 import { ServiceSlides, installationSlides, maintenanceSlides } from '@/components/equipment/ServiceSlides';
 
 /* ─── Data ──────────────────────────────────────────────────────────────── */
@@ -284,14 +286,18 @@ export function FireAlarmSystemsGuide() {
               aria-hidden="true"
               className="absolute right-0 top-8 text-[10px] font-mono tracking-wider opacity-40 text-[#A7B0B5]"
             >
-              01 / 08
+              02 / 06
             </span>
 
             <div>
+              <RevealGroup stagger={0.08} delayChildren={0.05}>
+              <RevealItem variant="up-sm">
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#E53935]">
                 fire alarm systems
               </p>
+              </RevealItem>
 
+              <RevealItem>
               <h1
                 id="fas-hero-h1"
                 className="text-hero-heading leading-[1.05] text-[#F4F3EF] max-w-xl"
@@ -299,12 +305,16 @@ export function FireAlarmSystemsGuide() {
                 early detection starts with the right{' '}
                 <span className="text-highlight-dark">system</span>.
               </h1>
+              </RevealItem>
 
+              <RevealItem variant="up-sm">
               <p className="text-subheading mt-5 max-w-xl text-[#A7B0B5] leading-relaxed">
                 Explore fire alarm solutions designed to help detect fire risks early
                 and support safer building environments.
               </p>
+              </RevealItem>
 
+              <RevealItem variant="up-sm">
               <div className="mt-8 w-full sm:w-auto flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                 <Button
                   href="/contact#contact-form"
@@ -331,6 +341,8 @@ export function FireAlarmSystemsGuide() {
                   Explore Equipment
                 </Button>
               </div>
+              </RevealItem>
+              </RevealGroup>
             </div>
 
             {/* System image */}
@@ -1023,32 +1035,31 @@ export function FireAlarmSystemsGuide() {
         </div>
       </section>
 
+      {/* ── Related equipment ────────────────────────────────────── */}
+      <RelatedEquipment excludeId="fire-alarm-systems" />
+
       {/* ── Final CTA ────────────────────────────────────────────── */}
       <section
         aria-labelledby="fas-cta-heading"
         className="relative w-full overflow-hidden"
-        style={{ backgroundColor: '#1a2332' }}
       >
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
-
-        <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-px bg-white/[0.04]" />
-        <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.04]" />
-        <div aria-hidden="true" className="absolute top-0 bottom-0 left-[20%] w-px bg-white/[0.04]" />
-        <div aria-hidden="true" className="absolute top-0 bottom-0 right-[20%] w-px bg-white/[0.04]" />
-
-        <div
-          aria-hidden="true"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.04] pointer-events-none"
-          style={{ background: 'radial-gradient(circle, #E53935 0%, transparent 70%)' }}
-        />
+        <div className="absolute inset-0">
+          <Image
+            src="/fire-alarm-chain.png"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(135deg, rgba(67, 3, 3, 0.92) 0%, rgba(72, 7, 7, 0.70) 20%, rgba(31,10,10,0.95) 100%)',
+            }}
+          />
+        </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
           <div className="max-w-3xl">
@@ -1064,7 +1075,7 @@ export function FireAlarmSystemsGuide() {
               <span className="text-highlight-dark">building</span>.
             </h2>
 
-            <p className="text-subheading text-[#A7B0B5] mt-5 max-w-xl">
+            <p className="text-subheading text-white mt-5 max-w-xl">
               Tell us about your building and fire-safety requirements so we can help you
               determine the appropriate next step.
             </p>
@@ -1086,7 +1097,7 @@ export function FireAlarmSystemsGuide() {
                 Request a Quote
               </Button>
               <Button
-                href="/contact#contact-form"
+                href="/contact"
                 variant="secondary"
                 size="lg"
                 icon={<Phone size={18} strokeWidth={2} />}
@@ -1096,7 +1107,7 @@ export function FireAlarmSystemsGuide() {
               </Button>
             </div>
 
-            <p className="text-body-sm text-[#7A7A74] mt-6">
+            <p className="text-body-sm text-white mt-6">
               From supply and installation to inspection, testing and maintenance, we help
               buildings stay protected.
             </p>

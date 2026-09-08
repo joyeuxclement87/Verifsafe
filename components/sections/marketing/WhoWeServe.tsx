@@ -4,6 +4,7 @@ import { useRef, useState, type KeyboardEvent } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'tabler-icons-react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
 interface Industry {
   id: string;
@@ -103,30 +104,36 @@ export default function WhoWeServe() {
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Intro */}
-        <div className="flex items-center justify-between gap-4">
-          <p className="flex items-center gap-2.5">
-            <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-            <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
-              industries we serve
-            </span>
-          </p>
-          <span
-            aria-hidden="true"
-            className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
-          >
-            VS / IND — 06
-          </span>
-        </div>
+        <RevealGroup stagger={0.08} delayChildren={0.05}>
+          <RevealItem variant="up-sm">
+            <div className="flex items-center justify-between gap-4">
+              <p className="flex items-center gap-2.5">
+                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
+                  industries we serve
+                </span>
+              </p>
+              <span
+                aria-hidden="true"
+                className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
+              >
+                VS / IND — 06
+              </span>
+            </div>
+          </RevealItem>
 
-        <div className="max-w-3xl">
-          <h2 id="industries-heading" className="text-section-heading mt-6 text-gray-900">
-            Protection designed for your <span className="text-highlight">environment</span>.
-          </h2>
-          <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
-            Different buildings carry different risks. We help identify the right
-            fire protection approach for the people, spaces and operations inside them.
-          </p>
-        </div>
+          <RevealItem>
+            <div className="max-w-3xl">
+              <h2 id="industries-heading" className="text-section-heading mt-6 text-gray-900">
+                Protection designed for your <span className="text-highlight">environment</span>.
+              </h2>
+              <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
+                Different buildings carry different risks. We help identify the right
+                fire protection approach for the people, spaces and operations inside them.
+              </p>
+            </div>
+          </RevealItem>
+        </RevealGroup>
 
         {/* Desktop: exploratory split */}
         <div className="mt-14 lg:mt-20 hidden lg:grid lg:grid-cols-[minmax(0,26rem)_1fr] gap-12 xl:gap-20 items-start">

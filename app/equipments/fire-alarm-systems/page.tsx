@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import { FireAlarmSystemsGuide } from './guide';
 
 export const metadata: Metadata = {
-  title: 'Fire Alarm Systems — Equipment Guide',
+  title: 'Fire Alarm Systems in Rwanda',
   description:
     'Explore fire alarm solutions designed to help detect fire risks early and support safer building environments in Rwanda.',
   alternates: {
     canonical: '/equipments/fire-alarm-systems',
   },
   openGraph: {
-    title: 'Fire Alarm Systems — Equipment Guide',
+    title: 'Fire Alarm Systems in Rwanda | VerifSafe',
     description:
       'Explore fire alarm solutions designed to help detect fire risks early and support safer building environments in Rwanda.',
     url: '/equipments/fire-alarm-systems',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Fire Alarm Systems — Equipment Guide',
+  name: 'Fire Alarm Systems in Rwanda',
   description:
     'Explore fire alarm solutions designed to help detect fire risks early and support safer building environments in Rwanda.',
   url: 'https://verifsafe.com/equipments/fire-alarm-systems',

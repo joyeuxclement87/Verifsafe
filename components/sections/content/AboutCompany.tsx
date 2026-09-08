@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'tabler-icons-react';
-import { motion } from 'framer-motion';
+import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
 const highlights = [
   {
@@ -38,13 +38,7 @@ export default function AboutCompany() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="flex flex-col justify-center"
-          >
+          <Reveal className="flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-5">
               <span aria-hidden="true" className="h-px w-8 bg-white/60" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
@@ -65,25 +59,24 @@ export default function AboutCompany() {
               VERIFSAFE supplies, installs, and maintains fire protection systems that keep
               buildings and people safe when emergencies occur.
             </p>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-            className="flex flex-col justify-center"
-          >
-            <ol className="border-t border-white/15">
+          <Reveal delay={0.1} className="flex flex-col justify-center">
+            <RevealGroup as="ol" className="border-t border-white/15">
               {highlights.map((item) => (
-                <li key={item.number} className="flex items-start gap-6 py-6 border-b border-white/15">
+                <RevealItem
+                  key={item.number}
+                  as="li"
+                  variant="up-sm"
+                  className="flex items-start gap-6 py-6 border-b border-white/15"
+                >
                   <span className="shrink-0 w-10 pt-0.5 text-index text-white/40 tabular-nums">
                     {item.number}
                   </span>
                   <p className="text-body text-gray-200">{item.text}</p>
-                </li>
+                </RevealItem>
               ))}
-            </ol>
+            </RevealGroup>
 
             <div className="mt-8">
               <Link
@@ -99,7 +92,7 @@ export default function AboutCompany() {
                 />
               </Link>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

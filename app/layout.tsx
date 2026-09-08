@@ -11,7 +11,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Fire Protection & Safety Equipment in Rwanda | VerifSafe",
+    default: "Fire Safety Equipment & Services in Rwanda | VerifSafe",
     template: "%s | VerifSafe",
   },
   description:

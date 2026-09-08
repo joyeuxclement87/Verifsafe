@@ -1,94 +1,92 @@
+export type ServiceCtaKind = 'enquiry' | 'navigation';
+
 export interface Service {
   id: string;
-  image: string;
+  number: string;
   title: string;
   description: string;
-  features: string[];
+  points: string[];
+  image: string;
+  imageAlt: string;
+  cta: { label: string; href: string; kind: ServiceCtaKind };
 }
 
-export interface ServiceCategory {
-  id: string;
-  label: string;
-  description: string;
-  services: Service[];
-}
-
-export const serviceCategories: ServiceCategory[] = [
+export const services: Service[] = [
   {
-    id: 'supply',
-    label: 'Equipment Supply',
-    description: 'Certified fire safety equipment delivered ready to protect.',
-    services: [
-      {
-        id: 'equipment-supply',
-        image: '/service-1.png',
-        title: 'Fire Equipment Supply',
-        description: 'Providing certified fire safety equipment for reliable protection in different environments.',
-        features: ['Extinguishers', 'Alarms', 'Hose reels', 'Safety accessories']
-      },
-      {
-        id: 'refilling',
-        image: '/refile.jpeg',
-        title: 'Fire Extinguisher Refilling',
-        description: 'Refilling and servicing extinguishers to keep them ready and effective for emergency use.',
-        features: ['Quick service', 'Reliable', 'Essential for safety']
-      }
-    ]
+    id: 'equipment-supply',
+    number: '01',
+    title: 'Equipment Supply',
+    description:
+      'From extinguishers and alarms to hose reels and safety accessories, we supply fire protection equipment for different environments.',
+    points: ['Extinguishers', 'Fire alarm systems', 'Fire hose reels', 'Safety accessories'],
+    image: '/service-1.png',
+    imageAlt: 'Fire safety equipment and extinguishers',
+    cta: { label: 'Explore equipment', href: '/equipments', kind: 'navigation' },
   },
   {
     id: 'installation',
-    label: 'Installation & Maintenance',
-    description: 'Expert setup and upkeep that keeps systems dependable for years.',
-    services: [
-      {
-        id: 'installation',
-        image: '/service-2.png',
-        title: 'Installation Services',
-        description: 'Professional installation of fire protection systems to ensure proper setup and performance.',
-        features: ['Fire alarm systems', 'Detection devices', 'Safety equipment']
-      },
-      {
-        id: 'maintenance',
-        image: '/service-5.png',
-        title: 'Maintenance Services',
-        description: 'Ongoing maintenance to ensure fire protection systems remain reliable over time.',
-        features: ['Prevents failure', 'Regular servicing', 'System reliability']
-      }
-    ]
+    number: '02',
+    title: 'Installation',
+    description:
+      'Professional installation of fire alarm systems, detection devices and safety equipment, configured around your building.',
+    points: ['Fire alarm systems', 'Detection devices', 'Safety equipment'],
+    image: '/service-2.png',
+    imageAlt: 'Technician installing fire alarm and detection equipment',
+    cta: { label: 'Discuss your project', href: '/contact#contact-form', kind: 'enquiry' },
   },
   {
-    id: 'inspection',
-    label: 'Inspection & Testing',
-    description: 'Routine checks that verify your systems perform when it matters most.',
-    services: [
-      {
-        id: 'inspection-testing',
-        image: '/service-3.png',
-        title: 'Inspection & Testing',
-        description: 'Routine inspection and testing to ensure fire safety systems function correctly and meet required standards.',
-        features: ['Businesses', 'Offices', 'Compliance checks']
-      }
-    ]
+    id: 'inspection-testing',
+    number: '03',
+    title: 'Inspection & Testing',
+    description:
+      'Routine inspection and testing that helps identify faults, gaps and areas requiring attention in your fire safety systems.',
+    points: ['Identifies faults & gaps', 'Routine testing', 'Verified performance'],
+    image: '/service-3.png',
+    imageAlt: 'Fire safety technician inspecting fire protection equipment',
+    cta: { label: 'Request an inspection', href: '/contact#contact-form', kind: 'enquiry' },
   },
   {
-    id: 'training',
-    label: 'Fire Safety Training',
-    description: 'Practical skills that prepare your people to respond with confidence.',
-    services: [
-      {
-        id: 'awareness-training',
-        image: '/fire training 2.jpg',
-        title: 'Fire Safety Awareness Training',
-        description: 'Training programs which educate individuals and teams on fire prevention, emergency response, and proper use of fire safety equipment.',
-        features: ['Staff training', 'Organizations', 'Workplaces']
-      },
-      {
-        id: 'first-aid',
-        image: '/first aid.png',
-        title: 'First Aid Training',
-        description: 'Basic first aid training which equips individuals with the skills to respond quickly and effectively during emergencies.',
-        features: ['Emergency response', 'Workplace safety', 'Life-saving skills']
-      }
-    ]
-  }
+    id: 'maintenance',
+    number: '04',
+    title: 'Maintenance',
+    description:
+      'Ongoing servicing that keeps fire protection systems working as intended and reliable over time.',
+    points: ['Regular servicing', 'System reliability', 'Prevents failure'],
+    image: '/service-5.png',
+    imageAlt: 'Technician servicing fire protection equipment',
+    cta: { label: 'Request a quote', href: '/contact#contact-form', kind: 'enquiry' },
+  },
+  {
+    id: 'refilling',
+    number: '05',
+    title: 'Extinguisher Refilling',
+    description:
+      'Refilling and servicing fire extinguishers to keep them ready and effective for emergency use.',
+    points: ['Quick service', 'Ready for use', 'Emergency readiness'],
+    image: '/refile.jpeg',
+    imageAlt: 'Fire extinguisher being refilled and serviced',
+    cta: { label: 'Request a quote', href: '/contact#contact-form', kind: 'enquiry' },
+  },
+  {
+    id: 'fire-safety-training',
+    number: '06',
+    title: 'Fire Safety Training',
+    description:
+      'Practical training that helps teams identify fire risks, use extinguishers correctly and respond in an emergency.',
+    points: ['Fire risk identification', 'Correct extinguisher use', 'Emergency response'],
+    image: '/fire training 2.jpg',
+    imageAlt: 'Fire safety training session for a team',
+    cta: { label: 'Book training', href: '/contact#contact-form', kind: 'enquiry' },
+  },
+  {
+    id: 'first-aid-training',
+    number: '07',
+    title: 'First Aid Training',
+    description:
+      'Basic first aid training that equips individuals with the skills to respond quickly and effectively during emergencies.',
+    points: ['Emergency response', 'Workplace safety', 'Life-saving skills'],
+    image: '/first aid.png',
+    imageAlt: 'First aid training session',
+    cta: { label: 'Request a quote', href: '/contact#contact-form', kind: 'enquiry' },
+  },
 ];

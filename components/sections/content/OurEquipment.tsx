@@ -3,50 +3,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'tabler-icons-react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
+import { equipmentCategories } from '@/lib/equipment';
 
-const equipment = [
-  {
-    number: '01',
-    title: 'Fire extinguishers',
-    description:
-      'Portable protection for a range of fire risks — from offices and kitchens to industrial environments.',
-    href: '/equipments/fire-extinguishers',
-    image: '/equipment-1.png',
-    alt: 'Fire extinguishers for commercial fire protection',
-  },
-  {
-    number: '02',
-    title: 'Fire alarm systems',
-    description:
-      'Detection and alarm solutions designed to help buildings identify and respond to fire quickly.',
-    href: '/equipments/fire-alarm-systems',
-    image: '/equipment-2.png',
-    alt: 'Fire alarm control panel and detection system',
-  },
-  {
-    number: '03',
-    title: 'Fire hose reels',
-    description:
-      'Accessible firefighting equipment for suitable building environments and first-response use.',
-    href: '/equipments/fire-hose-reels',
-    image: '/equipment-3.png',
-    alt: 'Fire hose reel mounted for emergency use',
-  },
-  {
-    number: '04',
-    title: 'Emergency lights & exit signs',
-    description:
-      'Clear, reliable emergency guidance that works when normal lighting fails.',
-    href: '/equipments/emergency-lights',
-    image: '/equipment-4.png',
-    alt: 'Emergency exit light and signage',
-  },
-];
+const equipment = equipmentCategories
+  .filter((category) => category.cardDescription && category.cardImage && category.cardAlt)
+  .map((category, index) => ({
+    number: String(index + 1).padStart(2, '0'),
+    title: category.title,
+    description: category.cardDescription as string,
+    href: category.href,
+    image: category.cardImage as string,
+    alt: category.cardAlt as string,
+  }));
 
 export default function OurEquipment() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <section
       aria-labelledby="equipment-heading"
@@ -55,48 +26,44 @@ export default function OurEquipment() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Intro */}
-        <div className="max-w-3xl">
-          <div className="flex items-center justify-between gap-4">
-            <p className="flex items-center gap-2.5">
-              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-              <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
-                equipment
+        <RevealGroup stagger={0.08} delayChildren={0.05} className="max-w-3xl">
+          <RevealItem variant="up-sm">
+            <div className="flex items-center justify-between gap-4">
+              <p className="flex items-center gap-2.5">
+                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
+                  equipment
+                </span>
+              </p>
+              <span
+                aria-hidden="true"
+                className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
+              >
+                VS / EQ — 04
               </span>
+            </div>
+          </RevealItem>
+          <RevealItem>
+            <h2 id="equipment-heading" className="text-section-heading mt-6 text-gray-900">
+              The right <span className="text-highlight">equipment</span>. ready when it matters.
+            </h2>
+          </RevealItem>
+          <RevealItem variant="up-sm">
+            <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
+              From portable extinguishers to fire detection and emergency systems,
+              we supply equipment for different building needs.
             </p>
-            <span
-              aria-hidden="true"
-              className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
-            >
-              VS / EQ — 04
-            </span>
-          </div>
-          <h2 id="equipment-heading" className="text-section-heading mt-6 text-gray-900">
-            The right <span className="text-highlight">equipment</span>. ready when it matters.
-          </h2>
-          <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
-            From portable extinguishers to fire detection and emergency systems,
-            we supply equipment for different building needs.
-          </p>
-        </div>
+          </RevealItem>
+        </RevealGroup>
 
         {/* Cards */}
-        <ol
+        <RevealGroup
+          as="ol"
+          stagger={0.07}
           className="mt-12 lg:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6"
-          aria-label="Equipment categories"
         >
           {equipment.map((item, index) => (
-            <motion.li
-              key={item.number}
-              initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.5,
-                delay: reduceMotion ? 0 : index * 0.07,
-                ease: 'easeOut',
-              }}
-              className="flex"
-            >
+            <RevealItem key={item.number} as="li" className="flex">
               <Link
                 href={item.href}
                 aria-label={`${item.title} — ${item.description}`}
@@ -154,12 +121,12 @@ export default function OurEquipment() {
                   </span>
                 </div>
               </Link>
-            </motion.li>
+            </RevealItem>
           ))}
-        </ol>
+        </RevealGroup>
 
         {/* Section CTA */}
-        <div className="mt-12 lg:mt-16">
+        <Reveal variant="up-sm" delay={0.1} className="mt-12 lg:mt-16">
           <Link
             href="/equipments"
             aria-label="View all equipment"
@@ -173,7 +140,7 @@ export default function OurEquipment() {
               className="transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
             />
           </Link>
-        </div>
+        </Reveal>
 
       </div>
     </section>

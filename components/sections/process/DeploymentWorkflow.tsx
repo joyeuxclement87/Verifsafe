@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
 export default function DeploymentWorkflow() {
   const steps = [
@@ -49,37 +49,34 @@ export default function DeploymentWorkflow() {
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mb-14 sm:mb-16"
-        >
-          <div className="flex items-center gap-3 mb-5">
-            <span aria-hidden="true" className="h-px w-8 bg-white/60" />
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-              Our Process
+        <RevealGroup stagger={0.08} delayChildren={0.05} className="mb-14 sm:mb-16">
+          <RevealItem variant="up-sm">
+            <div className="flex items-center gap-3 mb-5">
+              <span aria-hidden="true" className="h-px w-8 bg-white/60" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+                Our Process
+              </p>
+            </div>
+          </RevealItem>
+
+          <RevealItem>
+            <h2 className="text-section-heading  text-white">
+              How We Work
+            </h2>
+          </RevealItem>
+
+          <RevealItem variant="up-sm">
+            <p className="text-subheading text-gray-400 mt-6 max-w-2xl">
+              A meticulous 5-step process ensuring total structural protection and compliance.
             </p>
-          </div>
+          </RevealItem>
+        </RevealGroup>
 
-          <h2 className="text-section-heading  text-white">
-            How We Work
-          </h2>
-
-          <p className="text-subheading text-gray-400 mt-6 max-w-2xl">
-            A meticulous 5-step process ensuring total structural protection and compliance.
-          </p>
-        </motion.div>
-
-        <ol className="border-t border-white/15">
+        <RevealGroup as="ol" stagger={0.05} className="border-t border-white/15">
           {steps.map((step, index) => (
-            <motion.li
+            <RevealItem
               key={index}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05, ease: 'easeOut' }}
+              as="li"
               className="group border-b border-white/15 py-8 sm:py-9"
             >
               <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-12">
@@ -106,9 +103,9 @@ export default function DeploymentWorkflow() {
                   </ul>
                 </div>
               </div>
-            </motion.li>
+            </RevealItem>
           ))}
-        </ol>
+        </RevealGroup>
       </div>
     </section>
   );

@@ -1,44 +1,18 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, ChevronRight, Menu, X, ArrowUpRight } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
+import { equipmentCategories } from '@/lib/equipment';
 
-const equipmentItems = [
-  {
-    title: 'Fire Extinguishers',
-    description: 'Certified portable suppression for specific classes of fire.',
-    link: '/equipments/fire-extinguishers'
-  },
-  {
-    title: 'Fire Alarm Systems',
-    description: 'Networked sensors and control panels for early warning and evacuation.',
-    link: '/equipments/fire-alarm-systems'
-  },
-  {
-    title: 'Fire Hose Reels',
-    description: 'High-pressure water delivery for commercial and industrial sites.',
-    link: '/equipments/fire-hose-reels'
-  },
-  {
-    title: 'Fire Detection Devices',
-    description: 'Precision smoke, heat, and flame sensors for the earliest detection.',
-    link: '/equipments/fire-detection-devices'
-  },
-  {
-    title: 'Emergency Lights & Exit Signs',
-    description: 'Backup illumination and exit signage for safe evacuation.',
-    link: '/equipments/emergency-lights'
-  },
-  {
-    title: 'Fire Safety Accessories',
-    description: 'Cabinets, blankets, and signage to support safety infrastructure.',
-    link: '/equipments/fire-safety-accessories'
-  }
-];
+const equipmentItems = equipmentCategories.map((category) => ({
+  title: category.title,
+  description: category.blurb,
+  link: category.href,
+}));
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -320,7 +294,7 @@ export default function MainNavigation() {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">Equipment &amp; Systems</p>
               </div>
               <p className="hidden xl:block text-xs text-gray-500">
-                Certified to international standards — sourced, installed and maintained by VerifSafe.
+                Sourced, installed and maintained by VerifSafe.
               </p>
             </div>
 

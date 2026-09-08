@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import { FireExtinguishersGuide } from './guide';
 
 export const metadata: Metadata = {
-  title: 'Fire Extinguishers — Equipment Guide',
+  title: 'Fire Extinguishers in Rwanda',
   description:
     'Explore fire extinguisher types supplied by VerifSafe for different fire risks, building environments and protection needs in Rwanda.',
   alternates: {
     canonical: '/equipments/fire-extinguishers',
   },
   openGraph: {
-    title: 'Fire Extinguishers — Equipment Guide',
+    title: 'Fire Extinguishers in Rwanda | VerifSafe',
     description:
       'Explore fire extinguisher types supplied by VerifSafe for different fire risks, building environments and protection needs in Rwanda.',
     url: '/equipments/fire-extinguishers',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Fire Extinguishers — Equipment Guide',
+  name: 'Fire Extinguishers in Rwanda',
   description:
     'Explore fire extinguisher types supplied by VerifSafe for different fire risks, building environments and protection needs in Rwanda.',
   url: 'https://verifsafe.com/equipments/fire-extinguishers',

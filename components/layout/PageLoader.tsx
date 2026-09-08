@@ -1,141 +1,97 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useReducedMotion } from 'framer-motion';
 
-const SCAN_DURATION  = 0.8;
-const SCAN_COUNT     = 3;
-const SCANS_TOTAL_MS = SCAN_DURATION * SCAN_COUNT * 1000; // 2400ms
+/*
+ * Session mechanism for the initial loader.
+ *
+ * loaderSeen lives at module scope: it survives client-side route changes
+ * (so internal navigation never re-shows the loader) but resets on any full
+ * page load (refresh, new tab, direct URL), which is exactly when a branded
+ * intro is appropriate.
+ */
+let loaderSeen = false;
 
-const MESSAGES = [
-  'Securing your spaces',
-  'Protecting lives',
-  'Emergency systems ready',
-];
+const FILL_MS = 900;
+const FADE_MS = 450;
+const MAX_MS = 2400;
 
 export default function PageLoader() {
-  const [scanPass, setScanPass]       = useState(0);
-  const [showSecured, setShowSecured] = useState(false);
-  const [phase, setPhase]             = useState<'scan' | 'fadeout' | 'done'>('scan');
+  const reduceMotion = useReducedMotion();
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return !loaderSeen;
+  });
+  const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    const scanTick = setInterval(() => {
-      setScanPass(p => {
-        if (p + 1 >= SCAN_COUNT) { clearInterval(scanTick); return SCAN_COUNT; }
-        return p + 1;
-      });
-    }, SCAN_DURATION * 1000);
+    loaderSeen = true;
 
-    const t1 = setTimeout(() => setShowSecured(true), SCANS_TOTAL_MS + 250);
-    const t2 = setTimeout(() => setPhase('fadeout'),  SCANS_TOTAL_MS + 1100);
-    const t3 = setTimeout(() => setPhase('done'),     SCANS_TOTAL_MS + 1650);
+    if (!visible || reduceMotion) return;
+
+    const fade = setTimeout(() => setFading(true), FILL_MS);
+    const done = setTimeout(() => setVisible(false), FILL_MS + FADE_MS);
+    const guard = setTimeout(() => setVisible(false), MAX_MS);
 
     return () => {
-      clearInterval(scanTick);
-      clearTimeout(t1); clearTimeout(t2); clearTimeout(t3);
+      clearTimeout(fade);
+      clearTimeout(done);
+      clearTimeout(guard);
     };
-  }, []);
+  }, [reduceMotion, visible]);
 
-  if (phase === 'done') return null;
+  if (!visible) return null;
+  if (reduceMotion) return null;
 
   return (
     <>
       <style>{`
-        @keyframes scan-line {
-          from { transform: translateY(-100%); }
-          to   { transform: translateY(260px); }
+        @keyframes vf-fill {
+          from { transform: scaleX(0); }
+          to   { transform: scaleX(1); }
         }
-        @keyframes fade-up {
-          from { opacity: 0; transform: translateY(6px); }
-          to   { opacity: 1; transform: translateY(0);   }
-        }
-        @keyframes bar-grow {
-          from { width: 0; }
-          to   { width: 100%; }
+        @keyframes vf-sweep {
+          0%   { transform: translateX(-140%); }
+          100% { transform: translateX(420%); }
         }
       `}</style>
 
       <div
         className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-ink"
-        style={{ transition: 'opacity 0.5s ease', opacity: phase === 'fadeout' ? 0 : 1, pointerEvents: phase === 'fadeout' ? 'none' : 'all' }}
+        style={{
+          transition: 'opacity 0.45s ease',
+          opacity: fading ? 0 : 1,
+          pointerEvents: fading ? 'none' : 'auto',
+        }}
       >
-        {/* ── Centre group ── */}
-        <div className="relative flex flex-col items-center" style={{ width: 280 }}>
+        {/* Brand mark */}
+        <div className="hero-enter">
+          <Image
+            src="/logo.png"
+            alt="VerifSafe"
+            width={210}
+            height={72}
+            priority
+            className="object-contain"
+          />
+        </div>
 
-          {/* Scan line — clips within this container */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 10 }}>
-            {scanPass < SCAN_COUNT && (
-              <div
-                key={scanPass}
-                className="absolute left-0 right-0"
-                style={{
-                  height: '1px',
-                  background: 'linear-gradient(90deg, transparent, #D62828 40%, #D62828 60%, transparent)',
-                  opacity: 0.7,
-                  animation: `scan-line ${SCAN_DURATION}s ease-in-out forwards`,
-                }}
-              />
-            )}
-          </div>
-
-          {/* Logo */}
-          <div className="mb-8">
-            <Image
-              src="/logo.png"
-              alt="Verifsafe"
-              width={160}
-              height={60}
-              className="object-contain"
-              priority
-            />
-          </div>
-
-          {/* Message lines */}
-          <div className="flex flex-col gap-3 w-full mb-8">
-            {MESSAGES.map((msg, i) => (
-              <div key={i} className="flex items-center gap-3">
-                {/* Dot */}
-                <div
-                  className="w-1 h-1 rounded-full shrink-0 transition-all duration-400"
-                  style={{ background: scanPass > i ? '#D62828' : 'rgba(229,57,53,0.2)' }}
-                />
-                {/* Text */}
-                <span
-                  className="text-body-sm transition-all duration-400"
-                  style={{
-                    color:   scanPass > i ? '#D1D5DB' : '#374151',
-                    opacity: scanPass > i ? 1 : 0.4,
-                    animation: scanPass > i ? 'fade-up 0.35s ease-out forwards' : 'none',
-                  }}
-                >
-                  {msg}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Progress bar */}
-          <div className="w-full h-px bg-white/5 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-[#D62828] rounded-full transition-all duration-700 ease-out"
-              style={{ width: `${(scanPass / SCAN_COUNT) * 100}%` }}
-            />
-          </div>
-
-          {/* Secured line */}
-          <div className="h-7 mt-5 flex items-center">
-            {showSecured && (
-              <span
-                className="text-xs tracking-[0.2em] capitalize text-[#D62828] flex items-center gap-2"
-                style={{ animation: 'fade-up 0.4s ease-out forwards' }}
-              >
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                  <path d="M1.5 5L4 7.5L8.5 2.5" stroke="#D62828" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                System Secured
-              </span>
-            )}
-          </div>
+        {/* Progress line — red accent reveals left to right */}
+        <div
+          className="relative mt-9 w-56 sm:w-64 h-px overflow-hidden bg-white/10"
+          role="progressbar"
+          aria-label="Loading VerifSafe"
+        >
+          <div
+            className="absolute inset-0 origin-left bg-[#D62828]"
+            style={{ animation: `vf-fill ${FILL_MS}ms ease-out forwards` }}
+          />
+          <div
+            className="absolute top-0 bottom-0 w-1/5 bg-linear-to-r from-transparent via-white/50 to-transparent"
+            style={{ animation: `vf-sweep ${FILL_MS}ms ease-in-out forwards` }}
+          />
         </div>
       </div>
     </>

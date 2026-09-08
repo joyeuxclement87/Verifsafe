@@ -8,19 +8,14 @@ import {
   useScroll,
   useTransform,
 } from 'framer-motion';
+import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import {
   ArrowUpRight,
   ArrowRight,
   Phone,
-  Droplet,
-  Bell,
-  Flame,
-  Bulb,
-  BuildingSkyscraper,
-  BuildingWarehouse,
-  Building,
 } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
+import RelatedEquipment from '@/components/equipment/RelatedEquipment';
 import {
   ServiceSlides,
   installationSlides,
@@ -33,7 +28,7 @@ interface FhrApplication {
   number: string;
   title: string;
   text: string;
-  icon: typeof BuildingSkyscraper;
+  detail: string;
 }
 
 const fhrApplications: FhrApplication[] = [
@@ -41,53 +36,19 @@ const fhrApplications: FhrApplication[] = [
     number: '01',
     title: 'Commercial',
     text: 'Standard commercial buildings and multi-story offices.',
-    icon: BuildingSkyscraper,
+    detail: 'Corridors, lobbies and common areas where occupants gather or move between floors.',
   },
   {
     number: '02',
     title: 'Industrial',
     text: 'Industrial workshops and areas with complex layouts.',
-    icon: BuildingWarehouse,
+    detail: 'Workshop floors and storage zones where water needs to reach further than a portable unit.',
   },
   {
     number: '03',
     title: 'Public & high-traffic',
     text: 'High-traffic public areas requiring rapid, simple operation.',
-    icon: Building,
-  },
-];
-
-interface RelatedEquipment {
-  icon: typeof Droplet;
-  title: string;
-  text: string;
-  href: string;
-}
-
-const relatedEquipment: RelatedEquipment[] = [
-  {
-    icon: Droplet,
-    title: 'Fire Extinguishers',
-    text: 'Portable protection for a range of fire risks.',
-    href: '/equipments/fire-extinguishers',
-  },
-  {
-    icon: Bell,
-    title: 'Fire Alarm Systems',
-    text: 'Detection and alarm solutions for buildings.',
-    href: '/equipments/fire-alarm-systems',
-  },
-  {
-    icon: Flame,
-    title: 'Fire Detection Devices',
-    text: 'Devices that help identify fire risks early.',
-    href: '/equipments/fire-detection-devices',
-  },
-  {
-    icon: Bulb,
-    title: 'Emergency Lights & Exit Signs',
-    text: 'Guidance that works when normal lighting fails.',
-    href: '/equipments/emergency-lights',
+    detail: 'Entrances, stairwells and thoroughfares where anyone should be able to respond without training.',
   },
 ];
 
@@ -139,14 +100,18 @@ export function FireHoseReelsGuide() {
               aria-hidden="true"
               className="absolute right-0 top-8 text-[10px] font-mono tracking-wider opacity-40 text-[#A7B0B5]"
             >
-              01 / 08
+              03 / 06
             </span>
 
             <div>
+              <RevealGroup stagger={0.08} delayChildren={0.05}>
+              <RevealItem variant="up-sm">
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#E53935]">
                 fire hose reels
               </p>
+              </RevealItem>
 
+              <RevealItem>
               <h1
                 id="fhr-hero-h1"
                 className="text-hero-heading leading-[1.05] text-[#F4F3EF] max-w-xl"
@@ -154,13 +119,17 @@ export function FireHoseReelsGuide() {
                 accessible fire protection, built into the{' '}
                 <span className="text-highlight-dark">space</span>.
               </h1>
+              </RevealItem>
 
+              <RevealItem variant="up-sm">
               <p className="text-subheading mt-5 max-w-xl text-[#A7B0B5] leading-relaxed">
                 Explore fire hose reel solutions that draw on the building&apos;s water
                 supply to provide a continuous flow of water for larger fires in suitable
                 environments.
               </p>
+              </RevealItem>
 
+              <RevealItem variant="up-sm">
               <div className="mt-8 w-full sm:w-auto flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                 <Button
                   href="/contact#contact-form"
@@ -187,6 +156,8 @@ export function FireHoseReelsGuide() {
                   Explore Equipment
                 </Button>
               </div>
+              </RevealItem>
+              </RevealGroup>
             </div>
 
             {/* Reel image */}
@@ -247,40 +218,33 @@ export function FireHoseReelsGuide() {
                 larger fires in suitable environments.
               </p>
 
-              <div className="mt-10 border-t border-gray-200">
+              <p className="text-body-sm text-gray-500 mt-5 max-w-lg leading-relaxed">
+                It is the first water-based response within reach of occupants — simple
+                to operate, permanently connected, and ready for use the moment it is
+                needed.
+              </p>
+
+              <ul
+                className="mt-8 max-w-lg"
+                role="list"
+                aria-label="What defines a fire hose reel"
+              >
                 {[
-                  {
-                    step: '01',
-                    title: 'Accessibility',
-                    text: 'Located in high-visibility areas to ensure immediate access during an emergency.',
-                  },
-                  {
-                    step: '02',
-                    title: 'Continuous supply',
-                    text: "Connected to the building's water supply, a hose reel provides a continuous flow of water for larger fires.",
-                  },
-                  {
-                    step: '03',
-                    title: 'Simple operation',
-                    text: 'Intuitive operation that requires minimal training for building occupants.',
-                  },
+                  { label: 'Fixed and permanently connected', note: 'to the water supply' },
+                  { label: 'First-response operation', note: 'with minimal training' },
+                  { label: 'Continuous flow', note: 'for larger fires' },
                 ].map((item) => (
-                  <div
-                    key={item.step}
-                    className="flex items-start gap-5 sm:gap-6 py-5 sm:py-6 border-b border-gray-200"
+                  <li
+                    key={item.label}
+                    className="flex items-baseline gap-3 py-3 border-b border-gray-200 text-body text-gray-700"
                   >
-                    <span className="text-label tabular-nums text-[#D62828] shrink-0 pt-1">
-                      {item.step}
-                    </span>
-                    <div>
-                      <h3 className="text-card-title text-gray-900">{item.title}</h3>
-                      <p className="text-body-sm text-gray-600 mt-1 leading-relaxed max-w-prose">
-                        {item.text}
-                      </p>
-                    </div>
-                  </div>
+                    <span aria-hidden="true" className="shrink-0 self-center h-px w-4 bg-[#D62828]" />
+                    <span className="font-medium">{item.label}</span>
+                    <span className="text-body-sm text-gray-500">— {item.note}</span>
+                  </li>
                 ))}
-              </div>
+                <li aria-hidden="true" className="border-b border-gray-200" />
+              </ul>
             </motion.div>
 
             <motion.div
@@ -290,22 +254,89 @@ export function FireHoseReelsGuide() {
               transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
               className="relative"
             >
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-black/10 bg-gray-100">
+              <div className="relative aspect-[4/4] rounded-lg overflow-hidden border border-black/10 bg-gray-100">
                 <Image
                   src="/fire-hose-guide.png"
-                  alt="Fire hose reel installation for emergency and commercial use"
+                  alt="Installed fire hose reel with its key parts labelled"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
+                {[
+                  { left: '10%', top: '18%', label: 'right' },
+                  { left: '50%', top: '58%', label: 'right' },
+                  { left: '50%', top: '12%', label: 'left' },
+                  { left: '88%', top: '40%', label: 'left' },
+                ].map((m, i) => (
+                  <span
+                    key={i}
+                    aria-hidden="true"
+                    className="absolute -translate-x-1/2 -translate-y-1/2"
+                    style={{ left: `calc(${m.left} - 1.75px)`, top: `calc(${m.top} - 1.75px)` }}
+                  >
+                    <span
+                      className={`absolute top-1/2 -translate-y-1/2 ${
+                        m.label === 'right' ? 'left-4' : 'right-4'
+                      } text-[10px] font-mono tracking-widest text-white/90 bg-[#0B1720]/80 backdrop-blur px-1.5 py-0.5 rounded pointer-events-none`}
+                    >
+                      0{i + 1}
+                    </span>
+                    <span className="block w-3.5 h-3.5 rounded-full bg-[#D62828] ring-4 ring-white/90 shadow" />
+                  </span>
+                ))}
               </div>
-              <p className="text-[10px] font-mono tracking-widest text-gray-400 mt-3 pl-0.5 uppercase">
-                installed fire hose reel
-              </p>
             </motion.div>
           </div>
         </div>
       </section>
+
+      {/* ── Overview parts legend ────────────────────────────────── */}
+      <div className="relative w-full overflow-hidden bg-cta-red">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+          }}
+        />
+        <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-px bg-white/[0.08]" />
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.08]"
+        />
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14">
+          <div className="flex items-center gap-3 mb-8">
+            <span aria-hidden="true" className="h-px w-8 bg-white/70" />
+            <p className="text-xs font-semibold tracking-[0.2em] text-[#F4F3EF]">
+              the parts at a glance
+            </p>
+          </div>
+
+          <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8">
+            {[
+              { n: '01', title: 'Hose', text: 'The flexible hose drawn out for use at the fire.' },
+              { n: '02', title: 'Reel drum', text: 'Holds the hose coiled and ready to run free.' },
+              { n: '03', title: 'Valve', text: 'Opens the flow of water from the supply.' },
+              { n: '04', title: 'Wall mounting', text: 'Fixed to the building and connected to its water supply.' },
+            ].map((part) => (
+              <div key={part.n} className="border-t border-white/20 pt-4">
+                <dt className="flex items-baseline gap-3">
+                  <span className="text-[10px] font-mono tabular-nums text-[#FF5252]">
+                    {part.n}
+                  </span>
+                  <span className="text-card-title text-[#F4F3EF]">{part.title}</span>
+                </dt>
+                <dd className="text-body-sm text-[#F4F3EF]/80 mt-1.5 leading-relaxed max-w-[30ch]">
+                  {part.text}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
 
       {/* ── Equipment focus ──────────────────────────────────────── */}
       <section
@@ -534,6 +565,14 @@ export function FireHoseReelsGuide() {
               <p className="text-body text-gray-600 mt-4 max-w-sm">
                 These are the environments the project&apos;s hose reel solutions cover.
               </p>
+
+              <div className="mt-8 border-t border-gray-200 pt-5">
+                <p className="text-body-sm text-gray-500 max-w-sm leading-relaxed">
+                  During survey and supply, VerifSafe matches each environment with a
+                  reel that is positioned, sized and installed for how the space is
+                  actually used.
+                </p>
+              </div>
             </motion.div>
 
             <div>
@@ -544,23 +583,23 @@ export function FireHoseReelsGuide() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5, delay: index * 0.06, ease: 'easeOut' }}
-                  className="py-7 sm:py-8 border-b border-gray-200 flex items-start gap-4 sm:gap-6"
+                  className="group py-7 sm:py-8 border-b border-gray-200"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 mt-0.5 w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-gray-900 text-white flex items-center justify-center"
-                  >
-                    <application.icon size={24} strokeWidth={1.8} />
-                  </span>
-                  <div className="flex-1">
+                  <div>
                     <div className="flex items-baseline gap-3">
                       <span className="text-label tabular-nums text-[#D62828]">
                         {application.number}
                       </span>
-                      <h3 className="text-card-title text-gray-900">{application.title}</h3>
+                      <h3 className="text-card-title text-gray-900 transition-colors duration-200 group-hover:text-[#D62828] motion-reduce:transition-none">
+                        {application.title}
+                      </h3>
                     </div>
                     <p className="text-body-sm text-gray-600 mt-1.5 leading-relaxed max-w-prose">
                       {application.text}
+                    </p>
+                    <p className="flex items-start gap-2.5 text-body-sm text-gray-500 mt-2 leading-relaxed max-w-prose">
+                      <span aria-hidden="true" className="shrink-0 mt-[0.65rem] h-px w-4 bg-[#D62828]" />
+                      {application.detail}
                     </p>
                   </div>
                 </motion.div>
@@ -694,97 +733,30 @@ export function FireHoseReelsGuide() {
       </section>
 
       {/* ── Related equipment ────────────────────────────────────── */}
-      <section
-        aria-labelledby="fhr-related-heading"
-        className="w-full bg-neutral border-t border-gray-200 py-20 sm:py-24 lg:py-28"
-      >
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
-            <p className="flex items-center gap-2.5">
-              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-              <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
-                keep exploring
-              </span>
-            </p>
-            <span
-              aria-hidden="true"
-              className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
-            >
-              VS / NAV — 05
-            </span>
-          </div>
-
-          <div className="max-w-3xl mt-6">
-            <h2 id="fhr-related-heading" className="text-section-heading text-gray-900">
-              explore more fire protection <span className="text-highlight">equipment</span>.
-            </h2>
-          </div>
-
-          <div className="mt-10 border-t border-gray-200">
-            {relatedEquipment.map((item, index) => (
-              <motion.a
-                key={item.title}
-                href={item.href}
-                initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: index * 0.05, ease: 'easeOut' }}
-                className="group flex items-center gap-4 sm:gap-6 py-6 sm:py-7 border-b border-gray-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D62828]"
-              >
-                <span
-                  aria-hidden="true"
-                  className="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-white border border-gray-200 text-gray-900 flex items-center justify-center group-hover:border-[#D62828] group-hover:text-[#D62828] transition-colors duration-200 motion-reduce:transition-none"
-                >
-                  <item.icon size={22} strokeWidth={1.8} />
-                </span>
-                <span className="flex-1">
-                  <span className="block">
-                    <h3 className="text-card-title text-gray-900 group-hover:text-[#D62828] transition-colors duration-200 motion-reduce:transition-none">
-                      {item.title}
-                    </h3>
-                  </span>
-                  <span className="block text-body-sm text-gray-600 mt-0.5 leading-relaxed">
-                    {item.text}
-                  </span>
-                </span>
-                <ArrowRight
-                  size={20}
-                  strokeWidth={2}
-                  aria-hidden="true"
-                  className="shrink-0 text-gray-400 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-[#D62828] motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
-                />
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <RelatedEquipment excludeId="fire-hose-reels" />
 
       {/* ── Final CTA ──────────────────────────────────────────── */}
       <section
         aria-labelledby="fhr-cta-heading"
         className="relative w-full overflow-hidden"
-        style={{ backgroundColor: '#1a2332' }}
       >
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
-
-        <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-px bg-white/[0.04]" />
-        <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.04]" />
-        <div aria-hidden="true" className="absolute top-0 bottom-0 left-[20%] w-px bg-white/[0.04]" />
-        <div aria-hidden="true" className="absolute top-0 bottom-0 right-[20%] w-px bg-white/[0.04]" />
-
-        <div
-          aria-hidden="true"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.04] pointer-events-none"
-          style={{ background: 'radial-gradient(circle, #E53935 0%, transparent 70%)' }}
-        />
+        <div className="absolute inset-0">
+          <Image
+            src="/fire-hose-guide.png"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(135deg, rgba(67, 3, 3, 0.92) 0%, rgba(72, 7, 7, 0.70) 20%, rgba(31,10,10,0.95) 100%)',
+            }}
+          />
+        </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
           <div className="max-w-3xl">
@@ -800,7 +772,7 @@ export function FireHoseReelsGuide() {
               <span className="text-highlight-dark">building</span>.
             </h2>
 
-            <p className="text-subheading text-[#A7B0B5] mt-5 max-w-xl">
+            <p className="text-subheading text-white mt-5 max-w-xl">
               Tell us about your building and fire-safety requirements so we can help you
               determine the appropriate equipment and next step.
             </p>
@@ -822,7 +794,7 @@ export function FireHoseReelsGuide() {
                 Request a Quote
               </Button>
               <Button
-                href="/contact#contact-form"
+                href="/contact"
                 variant="secondary"
                 size="lg"
                 icon={<Phone size={18} strokeWidth={2} />}
@@ -832,7 +804,7 @@ export function FireHoseReelsGuide() {
               </Button>
             </div>
 
-            <p className="text-body-sm text-[#7A7A74] mt-6">
+            <p className="text-body-sm text-white mt-6">
               From supply and installation to inspection, testing and maintenance, we help
               buildings stay protected.
             </p>

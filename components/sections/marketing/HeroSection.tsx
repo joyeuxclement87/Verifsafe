@@ -15,7 +15,7 @@ const slides = [
     headlineTag: 'h1',
     description:
       'Reliable fire safety equipment, installation, inspection and maintenance for buildings across Rwanda.',
-    cta: { label: 'Request a quote', href: '/contact#contact-form', style: 'primary', icon: <ArrowUpRight size={18} strokeWidth={2} /> },
+    cta: { label: 'Request a Quote', href: '/contact#contact-form', style: 'primary', icon: <ArrowUpRight size={18} strokeWidth={2} /> },
     secondaryCta: { label: 'Explore solutions', href: '/equipments', icon: <Search size={18} strokeWidth={2} /> },
     image: '/hero2.jpg',
     alt: 'Fire safety equipment and protection systems installed in a commercial building in Rwanda',

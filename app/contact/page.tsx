@@ -1,167 +1,321 @@
-'use client';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import ContactForm from '@/components/sections/forms/Contact';
+import { Phone, Mail, Clock, MapPin, ArrowUpRight } from 'tabler-icons-react';
+import Button from '@/components/ui/Button';
+import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
+import { site } from '@/lib/site';
 
-import Contact from '@/components/sections/forms/Contact';
-import { Flame, ShieldCheck, Clock, ArrowRight } from 'tabler-icons-react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Contact VerifSafe | Fire Safety Equipment & Services Rwanda',
+  },
+  description:
+    'Contact VerifSafe for fire safety equipment, installation, inspection and maintenance services in Rwanda. Request a quote or speak with our team in Kigali.',
+  alternates: {
+    canonical: 'https://verifsafe.com/contact',
+  },
+  openGraph: {
+    title: 'Contact VerifSafe | Fire Safety Equipment & Services Rwanda',
+    description:
+      'Get in touch with VerifSafe for fire safety equipment, services and professional support in Rwanda.',
+    url: 'https://verifsafe.com/contact',
+    siteName: 'VerifSafe',
+    type: 'website',
+  },
+};
+
+const contactDetails = [
+  {
+    icon: Phone,
+    label: 'Phone',
+    phones: site.phones.map((phone) => ({
+      value: phone.display,
+      href: `tel:${phone.tel}`,
+    })),
+  },
+  {
+    icon: Mail,
+    label: 'Email',
+    value: site.email,
+    href: `mailto:${site.email}`,
+  },
+  {
+    icon: MapPin,
+    label: 'Location',
+    value: site.address.country,
+    href: site.address.mapsUrl,
+  },
+  {
+    icon: Clock,
+    label: 'Working Hours',
+    value: site.hours,
+    href: null,
+  },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/logo.png`,
+  email: site.email,
+  telephone: site.phones.map((phone) => phone.tel),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.locality,
+    addressCountry: 'RW',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+  ],
+  areaServed: {
+    '@type': 'Country',
+    name: site.address.country,
+  },
+  sameAs: [
+    site.social.facebook,
+    site.social.x,
+    site.social.instagram,
+    site.social.tiktok,
+  ],
+};
 
 export default function ContactPage() {
-  const helpItems = [
-    {
-      number: '01',
-      icon: <ShieldCheck size={44} className="text-[#D62828]" strokeWidth={1} />,
-      title: 'Equipment & Supply',
-      desc: 'Get the right fire safety equipment for your facility — extinguishers, alarms, hose reels, and more.',
-    },
-    {
-      number: '02',
-      icon: <Flame size={44} className="text-[#D62828]" strokeWidth={1} />,
-      title: 'Installation & Inspection',
-      desc: 'Professional installation and routine inspection of fire systems to ensure compliance and performance.',
-    },
-    {
-      number: '03',
-      icon: <Clock size={44} className="text-[#D62828]" strokeWidth={1} />,
-      title: 'Fast Response',
-      desc: 'We respond to all inquiries within 2 business hours and offer 24/7 emergency support when needed.',
-    },
-  ];
-
   return (
     <main className="w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
 
-      {/* ─── HERO SECTION ─────────────────────────────────────── */}
-      <section className="relative w-full h-96 sm:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden mt-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url("/cont.jpeg")`,
-            backgroundAttachment: 'fixed',
-          }}
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/90 to-ink/80" />
+      {/* ── Hero ─────────────────────────────────────────────────── */}
+      <section
+        aria-labelledby="contact-hero-h1"
+        className="relative w-full overflow-hidden"
+        style={{ backgroundColor: '#0B1720' }}
+      >
+        <div className="absolute inset-0 bg-[#0B1720]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1720]/95 via-[#0B1720]/80 to-[#123B5D]/40" />
 
-        {/* Background Glow Effects */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-24 sm:pb-20">
+          <RevealGroup stagger={0.08} delayChildren={0.05} className="max-w-2xl">
+            <RevealItem variant="up-sm">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#E53935]">
+                contact verifsafe
+              </p>
+            </RevealItem>
 
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center text-center"
-          >
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span aria-hidden="true" className="h-px w-8 bg-white/60" />
-              <p className="text-label text-white/60">Get in Touch</p>
-              <span aria-hidden="true" className="h-px w-8 bg-white/60" />
-            </div>
+            <RevealItem>
+              <h1
+                id="contact-hero-h1"
+                className="text-hero-heading leading-[1.05] text-[#F4F3EF]"
+              >
+                let&apos;s talk about your <span className="text-highlight-dark">fire safety needs</span>.
+              </h1>
+            </RevealItem>
 
-            <h1 className="text-page-heading  text-white mb-4 tracking-wider">
-              Let&apos;s Talk Fire Safety
-            </h1>
-
-            <p className="text-subheading text-gray-200 max-w-2xl">
-              Reach out to our team for inquiries, quotations, or support on fire protection solutions.
-            </p>
-          </motion.div>
+            <RevealItem variant="up-sm">
+              <p className="text-subheading mt-5 max-w-xl text-[#A7B0B5] leading-relaxed">
+                Tell us what you need for your building, workplace or project and our team
+                can help you identify the right equipment, services or safety solutions.
+              </p>
+            </RevealItem>
+          </RevealGroup>
         </div>
+
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 right-0 h-px"
+          style={{ backgroundColor: 'rgba(167, 176, 181, 0.1)' }}
+        />
       </section>
 
-      {/* ─── HOW WE CAN HELP ──────────────────────────────────── */}
-      <section className="relative w-full bg-white py-20 sm:py-24 lg:py-32 overflow-hidden">
+      {/* ── Form + Contact Info ──────────────────────────────────── */}
+      <section
+        id="contact-form"
+        aria-labelledby="contact-form-heading"
+        className="w-full bg-neutral border-t border-gray-200 py-20 sm:py-24 lg:py-32"
+      >
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,22rem)] gap-12 lg:gap-16 items-start">
 
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-              <p className="text-label text-gray-500">How We Can Help</p>
-              <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-            </div>
-            <h2 className="text-section-heading  text-gray-900 mb-6 capitalize">
-              We&apos;re Here to Assist
-            </h2>
-            <p className="text-subheading text-gray-600 max-w-2xl mx-auto">
-              Whether you need equipment, installation, or consultation, our team is ready to guide you with the right fire safety solution.
-            </p>
-          </motion.div>
+            {/* Form */}
+            <div>
+              <RevealGroup stagger={0.08} delayChildren={0.05}>
+                <RevealItem variant="up-sm">
+                  <div className="flex items-center justify-between gap-4 mb-6">
+                    <p className="flex items-center gap-2.5">
+                      <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                      <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
+                        request a quote
+                      </span>
+                    </p>
+                    <span
+                      aria-hidden="true"
+                      className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
+                    >
+                      VS / CNT — 01
+                    </span>
+                  </div>
+                </RevealItem>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8">
-            {helpItems.map((item, i) => (
-              <div
-                key={i}
-                className="border-t border-gray-200 pt-8"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <span className="shrink-0 w-8 text-index text-gray-400 tabular-nums">
-                    {item.number}
-                  </span>
-                  <span className="shrink-0">{item.icon}</span>
-                </div>
-                <h3 className="text-card-title text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-body text-gray-600">
-                  {item.desc}
-                </p>
+                <RevealItem>
+                  <h2 id="contact-form-heading" className="text-section-heading text-gray-900">
+                    share a few details and we&apos;ll <span className="text-highlight">get back to you</span>.
+                  </h2>
+                </RevealItem>
+
+                <RevealItem variant="up-sm">
+                  <p className="text-body text-gray-600 mt-3 max-w-lg">
+                    Tell us about your building or project and the type of support you need.
+                  </p>
+                </RevealItem>
+              </RevealGroup>
+
+              <div className="mt-8">
+                <ContactForm />
               </div>
-            ))}
+            </div>
+
+            {/* Contact Info */}
+            <Reveal delay={0.08} className="lg:sticky lg:top-24">
+              <div className="flex items-center gap-2.5 mb-6">
+                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
+                  contact details
+                </span>
+              </div>
+
+              <h3 className="text-card-title text-gray-900 mb-2">
+                prefer to reach us directly?
+              </h3>
+
+              <p className="text-body-sm text-gray-500 mb-8 leading-relaxed">
+                Use any of these channels — we&apos;re ready to help.
+              </p>
+
+              <div className="border-t border-gray-200">
+                {contactDetails.map((item) => {
+                  const Icon = item.icon;
+                  const Wrapper: 'a' | 'div' = item.href ? 'a' : 'div';
+                  const wrapperProps = item.href
+                    ? { href: item.href, target: item.href.startsWith('http') ? '_blank' : undefined, rel: item.href.startsWith('http') ? 'noopener noreferrer' : undefined }
+                    : {};
+
+                  return (
+                    <Wrapper
+                      key={item.label}
+                      {...wrapperProps}
+                      className="group flex items-start gap-4 py-4 border-b border-gray-200 transition-colors duration-200 hover:bg-gray-50/50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D62828]"
+                    >
+                      <span className="shrink-0 mt-0.5">
+                        <Icon size={18} strokeWidth={1.5} className="text-[#D62828]" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-label text-gray-400 mb-1">{item.label}</p>
+                        {item.phones ? (
+                          <div className="space-y-1">
+                            {item.phones.map((line) => (
+                              <a
+                                key={line.value}
+                                href={line.href}
+                                className="block text-list-title text-gray-900 transition-colors duration-200 hover:text-[#D62828] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D62828]"
+                              >
+                                {line.value}
+                              </a>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-list-title text-gray-900 group-hover:text-[#D62828] transition-colors duration-200">
+                            {item.value}
+                          </p>
+                        )}
+                      </div>
+                    </Wrapper>
+                  );
+                })}
+              </div>
+            </Reveal>
+
           </div>
         </div>
       </section>
 
-      {/* ─── CONTACT FORM SECTION ─────────────────────────────── */}
-      <Contact />
+      {/* ── Final CTA ────────────────────────────────────────────── */}
+      <section
+        aria-labelledby="contact-cta-heading"
+        className="relative w-full overflow-hidden"
+      >
+        <div className="absolute inset-0">
+          <Image
+            src="/cont.jpeg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(135deg, rgba(67, 3, 3, 0.92) 0%, rgba(72, 7, 7, 0.70) 20%, rgba(31,10,10,0.95) 100%)',
+            }}
+          />
+        </div>
 
-      {/* ─── BOTTOM CTA ──────────────────────────────────────── */}
-      <section className="w-full py-20 sm:py-24 lg:py-28 relative overflow-hidden bg-ink">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url("/cont.jpeg")` }}
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-ink/90 via-ink/80 to-ink/70" />
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
+          <RevealGroup stagger={0.08} delayChildren={0.05} className="max-w-3xl">
+            <RevealItem variant="up-sm">
+              <p className="flex items-center gap-3 mb-5">
+                <span aria-hidden="true" className="h-px w-8 bg-[#E53935]" />
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A7B0B5]">
+                  need help deciding?
+                </span>
+              </p>
+            </RevealItem>
 
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto"
-          >
-            <h2 className="text-section-heading  text-white mb-6">
-              Don&apos;t Wait For The Emergency.
-            </h2>
-            <p className="text-subheading text-gray-200 mb-10 max-w-2xl">
-              Get your facility assessed by certified professionals. We&apos;ll respond within 2 hours.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-              <Link
-                href="/equipments"
-                className="inline-flex items-center justify-center gap-3 px-8 py-3 text-white text-body-sm font-semibold rounded-md border border-white/30 hover:border-[#D62828] hover:text-white transition-colors duration-200 group"
-                style={{ borderWidth: '1px' }}
-              >
-                Explore Equipment
-                <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="text-center mt-8"
-            >
-                <p className="text-gray-300 text-body-sm">
-                  Response within 2 hours • 24/7 Emergency Support Available
-                </p>
-            </motion.div>
-          </motion.div>
+            <RevealItem>
+              <h2 id="contact-cta-heading" className="text-section-heading text-white">
+                not sure what you <span className="text-highlight-dark">need</span>?
+              </h2>
+            </RevealItem>
+
+            <RevealItem variant="up-sm">
+              <p className="text-subheading text-white mt-5 max-w-xl">
+                Tell us about your building, project or safety concern and we&apos;ll help
+                you work out where to start.
+              </p>
+            </RevealItem>
+
+            <RevealItem variant="up-sm">
+              <div className="mt-8">
+                <Button
+                  href="#contact-form"
+                  variant="primary"
+                  size="lg"
+                  icon={
+                    <ArrowUpRight
+                      size={18}
+                      strokeWidth={2}
+                      className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
+                    />
+                  }
+                  className="!rounded-lg !h-12 !px-7 !bg-[#E53935] hover:!bg-[#C62828] !shadow-[0_10px_24px_-10px_rgba(229,57,53,0.5)] font-semibold"
+                >
+                  request a quote
+                </Button>
+              </div>
+            </RevealItem>
+          </RevealGroup>
         </div>
       </section>
 

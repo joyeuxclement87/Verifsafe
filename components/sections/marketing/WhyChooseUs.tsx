@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
 const proofPoints = [
   {
@@ -62,44 +63,48 @@ export default function WhyChooseUs() {
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Intro */}
-        <div className="flex items-center justify-between gap-4">
-          <p className="flex items-center gap-2.5">
-            <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-            <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
-              why choose us
-            </span>
-          </p>
-          <span
-            aria-hidden="true"
-            className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
-          >
-            VS / CHS — 04
-          </span>
-        </div>
+        <RevealGroup stagger={0.08} delayChildren={0.05}>
+          <RevealItem variant="up-sm">
+            <div className="flex items-center justify-between gap-4">
+              <p className="flex items-center gap-2.5">
+                <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                <span className="text-xs font-semibold tracking-[0.2em] text-[#5F5F5A]">
+                  why choose us
+                </span>
+              </p>
+              <span
+                aria-hidden="true"
+                className="hidden sm:block text-[10px] font-mono tracking-widest text-gray-400"
+              >
+                VS / CHS — 04
+              </span>
+            </div>
+          </RevealItem>
 
-        <div className="max-w-3xl">
-          <h2 id="why-heading" className="text-section-heading mt-6 text-gray-900">
-            Protection you can <span className="text-highlight">depend</span> on.
-          </h2>
-          <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
-            From the equipment we supply to the systems we maintain, we focus on
-            doing the work properly — and keeping protection ready when it matters.
-          </p>
-        </div>
+          <RevealItem>
+            <div className="max-w-3xl">
+              <h2 id="why-heading" className="text-section-heading mt-6 text-gray-900">
+                Protection you can <span className="text-highlight">depend</span> on.
+              </h2>
+              <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
+                From the equipment we supply to the systems we maintain, we focus on
+                doing the work properly — and keeping protection ready when it matters.
+              </p>
+            </div>
+          </RevealItem>
+        </RevealGroup>
 
         {/* Proof points — editorial ruled columns */}
-        <ol className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-gray-200 lg:divide-x lg:divide-gray-200">
-          {proofPoints.map((point, index) => (
-            <motion.li
+        <RevealGroup
+          as="ol"
+          stagger={0.07}
+          className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-gray-200 lg:divide-x lg:divide-gray-200"
+        >
+          {proofPoints.map((point) => (
+            <RevealItem
               key={point.number}
-              initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.5,
-                delay: reduceMotion ? 0 : index * 0.07,
-                ease: 'easeOut',
-              }}
+              as="li"
+              variant="up-sm"
               className="group border-b border-gray-200 lg:border-b-0"
             >
               <div className="py-8 sm:py-10 lg:py-12 px-0 sm:px-6 lg:px-8 xl:px-10 first:pl-0">
@@ -120,9 +125,9 @@ export default function WhyChooseUs() {
                   {point.description}
                 </p>
               </div>
-            </motion.li>
+            </RevealItem>
           ))}
-        </ol>
+        </RevealGroup>
       </div>
     </section>
   );

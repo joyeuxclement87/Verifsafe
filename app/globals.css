@@ -181,6 +181,18 @@ body {
   letter-spacing: 0.02em;
 }
 
+/* ─── CTA Background ────────────────────────────────────────────────────────
+   Dark red-to-black gradient used on CTA sections and highlight bands.
+   ──────────────────────────────────────────────────────────────────────── */
+.bg-cta-red {
+  background-image: linear-gradient(
+    135deg,
+    #8b1414 0%,
+    #5f0e0e 50%,
+    #1f0a0a 100%
+  );
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

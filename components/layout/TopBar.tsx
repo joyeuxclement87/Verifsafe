@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { Phone, Mail, MapPin } from 'tabler-icons-react';
+import { site } from '@/lib/site';
+
+const topBarPhone = site.phones[1];
 
 export default function TopBar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,27 +46,27 @@ export default function TopBar() {
         {/* Right: Contact details */}
         <div className="flex items-center gap-3 sm:gap-4 text-xs text-gray-400">
           <a
-            href="tel:+250788632620"
-            aria-label="Call Verifsafe at +250 788 632 620"
+            href={`tel:${topBarPhone.tel}`}
+            aria-label={`Call VerifSafe at ${topBarPhone.display}`}
             className={`hidden sm:flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 hover:text-white ${focusClasses}`}
           >
             <Phone size={12} strokeWidth={1.5} className="text-brand" />
-            +250 788 632 620
+            {topBarPhone.display}
           </a>
           <span className="hidden sm:block h-3 w-px bg-white/10 shrink-0" aria-hidden="true" />
           <a
-            href="mailto:info@verifsafe.com"
-            aria-label="Email Verifsafe at info@verifsafe.com"
+            href={`mailto:${site.email}`}
+            aria-label={`Email VerifSafe at ${site.email}`}
             className={`flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 hover:text-white ${focusClasses}`}
           >
             <Mail size={12} strokeWidth={1.5} className="shrink-0" />
-            <span className="hidden sm:inline">info@verifsafe.com</span>
+            <span className="hidden sm:inline">{site.email}</span>
             <span className="sm:hidden">Email</span>
           </a>
           <span className="h-3 w-px bg-white/10 shrink-0" aria-hidden="true" />
           <span className="flex items-center gap-1.5 whitespace-nowrap">
             <MapPin size={12} strokeWidth={1.5} />
-            Kigali
+            {site.address.street}
           </span>
         </div>
       </div>
