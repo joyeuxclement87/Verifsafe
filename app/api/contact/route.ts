@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
-import { createClient } from 'next-sanity'
-import { apiVersion, dataset, projectId } from '@/sanity/env'
+import { createEnquiry } from '@/lib/data/enquiries'
 
 async function sendTelegramAlert(payload: {
   name: string
@@ -67,67 +66,29 @@ export async function POST(request: Request) {
       )
     }
 
-    if (!process.env.SANITY_API_WRITE_TOKEN) {
-      console.error('Contact submission failed: SANITY_API_WRITE_TOKEN is not configured.')
-      return NextResponse.json(
-        {
-          message: 'We are unable to process enquiries at the moment. Please try again later.',
-        },
-        { status: 500 }
-      )
-    }
-
-    const client = createClient({
-      projectId,
-      dataset,
-      apiVersion,
-      useCdn: false,
-      token: process.env.SANITY_API_WRITE_TOKEN,
-    })
-
-    const doc = await client.create({
-      _type: 'contactMessage',
-      name,
-      email,
-      phone: phone || '',
-      service,
-      message,
-      status: 'new',
-      submittedAt: new Date().toISOString(),
-      source: 'website',
+    const enquiry = await createEnquiry({
+      name: String(name).trim(),
+      email: email ? String(email).trim() : undefined,
+      phone: phone ? String(phone).trim() : undefined,
+      service: String(service).trim(),
+      message: String(message).trim(),
     })
 
     try {
       await sendTelegramAlert({
-        name,
-        email,
-        phone: phone || '',
-        service,
-        message,
+        name: enquiry.name,
+        email: enquiry.email || '',
+        phone: enquiry.phone || '',
+        service: enquiry.service || '',
+        message: enquiry.message,
       })
     } catch (telegramError) {
       console.error('Telegram notification failed:', telegramError)
     }
 
-    return NextResponse.json({ success: true, data: doc }, { status: 201 })
+    return NextResponse.json({ success: true, data: enquiry }, { status: 201 })
   } catch (error: unknown) {
     console.error('Contact submission error:', error)
-
-    const message =
-      error && typeof error === 'object' && 'details' in error && error.details && typeof error.details === 'object'
-        ? (error.details as { description?: string }).description || (error.details as { type?: string }).type
-        : undefined
-
-    if (message?.includes('project user not found') || message?.includes('Unauthorized')) {
-      console.error('Contact submission failed: invalid Sanity write token.')
-      return NextResponse.json(
-        {
-          message:
-            'We are unable to process enquiries at the moment. Please try again later.',
-        },
-        { status: 500 }
-      )
-    }
 
     return NextResponse.json(
       { message: 'We are unable to process enquiries at the moment. Please try again later.' },

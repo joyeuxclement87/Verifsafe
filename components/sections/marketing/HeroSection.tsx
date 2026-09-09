@@ -64,6 +64,22 @@ const slides = [
 const SLIDE_DURATION = 6000;
 const TRANSITION_DURATION = 800;
 
+/**
+ * A slide's image is only mounted once it has been visited or is the next
+ * slide to play. Slide 0 (the LCP image) and slide 1 mount immediately;
+ * later slides mount as the slideshow advances, so a slow first load never
+ * has to wait for every hero image at once.
+ */
+function slideMountSet(current: number, count: number): Set<number> {
+  const mounted = new Set<number>([0, 1]);
+  if (current >= 2) {
+    for (let i = 2; i <= current; i += 1) mounted.add(i);
+  }
+  mounted.add(current);
+  mounted.add((current + 1) % count);
+  return mounted;
+}
+
 function renderHeadline(text: string, highlight?: string) {
   if (!highlight) return text;
 
@@ -176,6 +192,7 @@ export default function HeroSection() {
 
   const slide = slides[currentSlide];
   const progress = ((currentSlide + 1) / slides.length) * 100;
+  const mountedSlides = slideMountSet(currentSlide, slides.length);
 
   return (
     <section
@@ -312,26 +329,31 @@ export default function HeroSection() {
 
             {/* Current slide image in the visual area */}
             <div className="relative w-full h-full rounded-xl overflow-hidden">
-              {slides.map((s, index) => (
-                <div
-                  key={s.id}
-                  className={`absolute inset-0 transition-opacity ${
-                    isReducedMotion ? 'duration-0' : `duration-[${TRANSITION_DURATION}ms]`
-                  } ease-in-out`}
-                  style={{ opacity: index === currentSlide ? 1 : 0 }}
-                  aria-hidden={true}
-                >
-                  <Image
-                    src={s.image}
-                    alt={s.alt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority={index === 0}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+              {slides.map((s, index) =>
+                mountedSlides.has(index) ? (
+                  <div
+                    key={s.id}
+                    className={`absolute inset-0 transition-opacity ${
+                      isReducedMotion ? 'duration-0' : `duration-[${TRANSITION_DURATION}ms]`
+                    } ease-in-out`}
+                    style={{ opacity: index === currentSlide ? 1 : 0 }}
+                    aria-hidden={true}
+                  >
+                    <Image
+                      src={s.image}
+                      alt={s.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority={index === 0}
+                      fetchPriority={index === 0 ? 'high' : 'auto'}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div key={s.id} className="absolute inset-0" aria-hidden={true} />
+                )
+              )}
               {/* Image overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1720]/40 via-transparent to-transparent" />
             </div>

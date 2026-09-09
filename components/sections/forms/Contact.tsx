@@ -82,8 +82,12 @@ export default function ContactForm() {
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
-    } catch {
-      setError('Something went wrong while sending your enquiry. Please try again in a moment.');
+    } catch (err) {
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : 'Something went wrong while sending your enquiry. Please try again in a moment.'
+      );
     } finally {
       setIsSubmitting(false);
     }

@@ -267,8 +267,7 @@ export default function EquipmentsContent() {
                       alt={category.imageAlt}
                       fill
                       sizes="(max-width: 1024px) 92vw, 58vw"
-                      priority={index === 0}
-                      loading={index === 0 ? 'eager' : 'lazy'}
+                      loading="lazy"
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />

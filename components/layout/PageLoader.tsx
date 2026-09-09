@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { useReducedMotion } from 'framer-motion';
 
@@ -18,8 +18,20 @@ const FILL_MS = 900;
 const FADE_MS = 450;
 const MAX_MS = 2400;
 
+/* Tracks when the page's resources have fully loaded (window "load"). */
+function subscribeReady(callback: () => void) {
+  window.addEventListener('load', callback);
+  return () => window.removeEventListener('load', callback);
+}
+function getReadySnapshot() {
+  return document.readyState === 'complete';
+}
+
 export default function PageLoader() {
   const reduceMotion = useReducedMotion();
+  // Once the page has loaded we no longer need to hold the branded intro for
+  // its full duration — it fades out shortly before the normal fill completes.
+  const ready = useSyncExternalStore(subscribeReady, getReadySnapshot, () => false);
   const [visible, setVisible] = useState(() => {
     if (typeof window === 'undefined') return true;
     return !loaderSeen;
@@ -31,8 +43,9 @@ export default function PageLoader() {
 
     if (!visible || reduceMotion) return;
 
-    const fade = setTimeout(() => setFading(true), FILL_MS);
-    const done = setTimeout(() => setVisible(false), FILL_MS + FADE_MS);
+    const holdMs = ready ? 400 : FILL_MS;
+    const fade = setTimeout(() => setFading(true), holdMs);
+    const done = setTimeout(() => setVisible(false), holdMs + FADE_MS);
     const guard = setTimeout(() => setVisible(false), MAX_MS);
 
     return () => {
@@ -40,7 +53,7 @@ export default function PageLoader() {
       clearTimeout(done);
       clearTimeout(guard);
     };
-  }, [reduceMotion, visible]);
+  }, [reduceMotion, visible, ready]);
 
   if (!visible) return null;
   if (reduceMotion) return null;

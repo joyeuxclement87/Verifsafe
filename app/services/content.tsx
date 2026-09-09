@@ -399,8 +399,7 @@ export default function ServicesContent() {
                         alt={activeService.imageAlt}
                         fill
                         sizes="(max-width: 1280px) 30vw, 304px"
-                        priority={activeIndex === 0}
-                        loading={activeIndex === 0 ? 'eager' : 'lazy'}
+                        loading="lazy"
                         className="object-cover"
                       />
                     </div>

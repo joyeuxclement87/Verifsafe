@@ -1,33 +1,30 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { X, ChevronLeft, ChevronRight, ArrowUpRight } from 'tabler-icons-react';
-import { client } from '@/sanity/lib/client';
-import { urlFor } from '@/sanity/lib/image';
+import { useCallback, useState, useRef, useEffect } from 'react';
+import { X, ChevronLeft, ChevronRight, ArrowUpRight, AlertTriangle, Refresh } from 'tabler-icons-react';
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
-type GalleryItem = {
+export type GalleryItem = {
   id: string;
   title: string;
   label: string;
   category: string;
   image: string;
+  imageWidth?: number | null;
+  imageHeight?: number | null;
 };
 
-type SanityGalleryItem = {
-  _id: string;
-  title: string;
-  label: string;
-  category: string;
-  image?: { asset: { _ref: string } } | null;
-};
-
-export default function GalleryShowcase() {
-  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export default function GalleryShowcase({
+  initialItems,
+  fetchFailed = false,
+}: {
+  initialItems: GalleryItem[];
+  fetchFailed?: boolean;
+}) {
+  const [galleryItems] = useState<GalleryItem[]>(initialItems);
   const [activeCategory, setActiveCategory] = useState('All');
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
 
@@ -75,40 +72,13 @@ export default function GalleryShowcase() {
   }, [filteredItems.length]);
 
   useEffect(() => {
-    async function fetchGallery() {
-      try {
-        const query = `*[_type == "gallery"] | order(_createdAt desc) {
-          _id,
-          title,
-          label,
-          category,
-          image
-        }`;
-        const data = await client.fetch(query);
-
-        const formattedData = (data as SanityGalleryItem[]).map((item) => ({
-          id: item._id,
-          title: item.title,
-          label: item.label,
-          category: item.category,
-          image: item.image ? urlFor(item.image).url() : '/equipment-1.png',
-        }));
-
-        setGalleryItems(formattedData);
-
-        const cats = Array.from(
-          new Set(formattedData.map((item) => item.category))
-        ).sort();
-        setAvailableCategories(cats);
-      } catch (error) {
-        console.error('Error fetching gallery items:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchGallery();
-  }, []);
+    const cats = Array.from(
+      new Set(galleryItems.map((item) => item.category))
+    )
+      .filter(Boolean)
+      .sort();
+    setAvailableCategories(cats);
+  }, [galleryItems]);
 
   useEffect(() => {
     if (!lightboxOpen) return;
@@ -144,6 +114,8 @@ export default function GalleryShowcase() {
     touchStartRef.current = 0;
     touchEndRef.current = 0;
   };
+
+  const isEmptyState = !fetchFailed && galleryItems.length === 0;
 
   return (
     <main className="w-full">
@@ -211,7 +183,7 @@ export default function GalleryShowcase() {
       <section className="w-full bg-paper py-16 sm:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter — only shown when categories exist */}
-          {!isLoading && availableCategories.length > 0 && (
+          {!fetchFailed && availableCategories.length > 0 && (
             <motion.div
               initial={{ opacity: reduceMotion ? 1 : 0 }}
               whileInView={{ opacity: 1 }}
@@ -244,16 +216,46 @@ export default function GalleryShowcase() {
             </motion.div>
           )}
 
-          {/* Loading State */}
-          {isLoading && (
-            <div className="w-full py-24 flex flex-col items-center justify-center">
-              <div className="w-10 h-10 border-[3px] border-ink/10 border-t-brand rounded-full animate-spin mb-4" />
-              <p className="text-muted text-body-sm">Loading projects...</p>
+          {/* Error State */}
+          {fetchFailed && (
+            <div className="flex w-full flex-col items-center gap-4 py-20 text-center">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white text-muted">
+                <AlertTriangle size={24} aria-hidden="true" />
+              </span>
+              <div className="space-y-2">
+                <h2 className="text-[1.125rem] font-semibold tracking-tight text-ink">
+                  We couldn&apos;t load our projects
+                </h2>
+                <p className="mx-auto max-w-md text-body text-muted">
+                  Something went wrong while fetching the gallery. This is usually
+                  temporary — please try again, or contact us directly if it keeps happening.
+                </p>
+              </div>
+              <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+                <Button
+                  onClick={() => window.location.reload()}
+                  icon={<Refresh size={16} aria-hidden="true" />}
+                >
+                  Try again
+                </Button>
+                <Button variant="secondary" href="/contact">
+                  Contact us
+                </Button>
+              </div>
             </div>
           )}
 
           {/* Empty State */}
-          {!isLoading && filteredItems.length === 0 && (
+          {isEmptyState && (
+            <div className="w-full py-24 text-center">
+              <p className="text-muted text-body">
+                projects will appear here soon.
+              </p>
+            </div>
+          )}
+
+          {/* Filtered empty state */}
+          {!fetchFailed && galleryItems.length > 0 && filteredItems.length === 0 && (
             <div className="w-full py-24 text-center">
               <p className="text-muted text-body">
                 No projects found for this category.
@@ -262,7 +264,7 @@ export default function GalleryShowcase() {
           )}
 
           {/* Masonry Grid */}
-          {!isLoading && filteredItems.length > 0 && (
+          {!fetchFailed && filteredItems.length > 0 && (
             <motion.div
               layout
               className="columns-1 sm:columns-2 lg:columns-3 gap-5 sm:gap-6"
@@ -285,9 +287,9 @@ export default function GalleryShowcase() {
                     <div className="relative w-full bg-neutral overflow-hidden">
                       <Image
                         src={item.image}
-                        alt={item.title}
-                        width={800}
-                        height={600}
+                        alt={item.label || item.title}
+                        width={item.imageWidth ?? 800}
+                        height={item.imageHeight ?? 600}
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
                         loading={index < 3 ? 'eager' : 'lazy'}
@@ -384,7 +386,6 @@ export default function GalleryShowcase() {
                   height={1000}
                   className="w-full h-auto max-h-[80vh] object-contain"
                   sizes="100vw"
-                  priority
                 />
               </motion.div>
 

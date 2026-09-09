@@ -8,10 +8,11 @@ Verifsafe is a modern, professional website for a fire safety solutions company.
 - Dedicated equipment and service sections for fire protection products and support
 - Unified enquiry forms that work consistently across the main website pages
 - Server-side contact handling with validation and professional success/error feedback
-- Contact messages stored in Sanity for easy follow-up and management
+- Enquiries stored in Supabase with row-level security
 - Telegram notifications for new website enquiries
 - WhatsApp quick-contact button for fast customer communication
-- Sanity Studio for editing content and managing submissions
+- Gallery content managed in Supabase (Storage + Postgres) with short-window caching
+- Separate admin panel (port 3001) for enquiries, gallery, and media management
 - Vercel-ready deployment setup with environment-based configuration
 
 ## 🛠️ Tech Stack
@@ -20,9 +21,14 @@ Verifsafe is a modern, professional website for a fire safety solutions company.
 - React 19
 - TypeScript
 - Tailwind CSS
-- Sanity CMS and Studio
+- Supabase (Postgres + Auth + Storage + RLS)
+- Sanity CMS and Studio (existing content, kept during migration)
 - next-sanity
 - ESLint
+
+> The admin panel lives in `admin/` and is a separate Next.js app running on
+> port `3001`. It shares the same Supabase project and is protected by
+> Supabase Auth with `is_admin()` RLS policies.
 
 ## 🚀 Getting Started
 
@@ -58,9 +64,14 @@ Verifsafe is a modern, professional website for a fire safety solutions company.
 | NEXT_PUBLIC_SANITY_PROJECT_ID | Your Sanity project ID |
 | NEXT_PUBLIC_SANITY_DATASET | Your Sanity dataset name |
 | NEXT_PUBLIC_SANITY_API_VERSION | Sanity API version |
-| SANITY_API_WRITE_TOKEN | Sanity write token for contact submissions |
+| NEXT_PUBLIC_SUPABASE_URL | Supabase project URL |
+| NEXT_PUBLIC_SUPABASE_ANON_KEY | Supabase anon key (public, RLS-enforced) |
+| SUPABASE_SERVICE_ROLE_KEY | Supabase service role key (server-only) |
 | TELEGRAM_BOT_TOKEN | Telegram bot token for notifications |
 | TELEGRAM_CHAT_ID | Telegram chat ID for receiving alerts |
+
+> See [docs/supabase.md](docs/supabase.md) for the full Supabase setup: schema,
+> migrations, security policies and how the future admin panel connects.
 
 ### Run locally
 
@@ -81,25 +92,53 @@ npm start
 
 ```text
 app/                 # App router pages and API routes
+admin/               # Separate Next.js admin panel (port 3001)
 components/          # Reusable sections and layout components
+lib/                 # Domain data, equipment/service catalog, site config
+lib/data/            # Supabase data-access layer (gallery, enquiries)
+lib/supabase/        # Supabase client wiring (browser/server/admin/storage)
 sanity/              # Sanity schema, client setup, and Studio config
-public/              # Static assets and images
+supabase/migrations/ # Version-controlled Supabase SQL migrations
 types/               # Shared TypeScript types
+docs/                # Architecture documentation (Supabase)
 ```
 
 ## 🧠 Content Management
 
-Sanity Studio is available at:
+### Admin panel
+
+The admin panel is a separate Next.js app on port `3001`:
+
+```bash
+cd admin
+npm install
+cp .env.example .env.local   # same Supabase project as the website
+npm run dev
+```
+
+Sign in with a Supabase Auth user that has `app_metadata.is_admin = "true"
+(see [docs/supabase.md](docs/supabase.md#security-model-row-level-security)).
+
+The panel manages:
+
+- **Enquiries** — inbox, search/filter, status workflow and internal notes
+- **Gallery** — upload, edit, publish and reorder projects shown on the website
+- **Media** — every uploaded file across Supabase Storage and its usage status
+
+### Sanity Studio
 
 ```text
 /studio
 ```
 
-Use it to manage:
+Use it to manage existing CMS content:
 
-- gallery items
-- contact messages
 - site content and structured content models
+
+Galleries are now managed in Supabase via the admin panel (see above).
+Enquiries are stored in Supabase (see [docs/supabase.md](docs/supabase.md)); the Sanity
+`contactMessage` schema is no longer written by the website and is kept only for
+existing records.
 
 ## 🌐 Deployment
 
