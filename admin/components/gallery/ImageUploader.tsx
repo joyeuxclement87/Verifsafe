@@ -38,21 +38,34 @@ async function uploadWithProgress(
       }
 
       let effectiveStatus = xhr.status
+      let serverMessage = ''
       try {
         const body = JSON.parse(xhr.responseText || '{}')
-        if (typeof body.statusCode === 'number') {
-          effectiveStatus = body.statusCode
+        const parsed = Number(body.statusCode)
+        if (Number.isFinite(parsed)) {
+          effectiveStatus = parsed
+        }
+        if (typeof body.message === 'string') {
+          serverMessage = body.message
         }
       } catch {
         // Non-JSON error body — fall back to the HTTP status.
       }
 
-      if (effectiveStatus === 401 || effectiveStatus === 403) {
+      const isForbidden =
+        effectiveStatus === 401 ||
+        effectiveStatus === 403 ||
+        /row-level security policy/i.test(serverMessage) ||
+        serverMessage.includes('AccessDenied')
+
+      if (isForbidden) {
         reject(
           new Error(
             'Upload is not allowed. Check that you are signed in with an admin account.'
           )
         )
+      } else if (serverMessage) {
+        reject(new Error(`Upload failed (HTTP ${xhr.status}). ${serverMessage}`))
       } else {
         reject(new Error(`Upload failed (HTTP ${xhr.status}). Please try again.`))
       }
