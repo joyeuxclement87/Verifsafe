@@ -108,8 +108,9 @@ authenticated admin (see security below).
 RLS is enabled on both tables. Access is controlled by two helpers defined in
 `20260908000001_create_shared_helpers.sql`:
 
-- `public.is_admin()` — true when the JWT claims `app_metadata.is_admin = "true"`.
-  This is how the admin panel gains management rights without the service role key.
+- `public.is_admin()` — true for any authenticated user (`role = 'authenticated'`).
+  Admin authorization is conferred purely by signing in; no per-user metadata to
+  maintain. Anonymous visitors have `role = 'anon'` and stay locked out.
 - `public.set_updated_at()` — keeps `updated_at` current.
 
 | Data          | Anonymous visitors                                  | Admins (`is_admin()`)                    |
@@ -180,10 +181,10 @@ project:
 Admin panel (admin/, port 3001) ──► Supabase ──► RLS (is_admin() via authenticated JWT)
 ```
 
-Admins authenticate against Supabase Auth; the `is_admin()` policy runs on their JWT.
-The public website keeps using the anon key and stays completely unchanged. Storage
-object policies and table policies are scoped to `is_admin()`. In the dashboard,
-give the admin user `app_metadata.is_admin: "true"`.
+Admins authenticate against Supabase Auth; the `is_admin()` policy returns true for
+any signed-in user. The public website keeps using the anon key and stays completely
+unchanged. Storage object policies and table policies are scoped to `is_admin()`;
+there is no per-user role to configure.
 
 The panel protects its routes with a proxy (`admin/proxy.ts`) and every page calls
 `requireAdmin()`. All mutations go through server actions in `admin/lib/actions.ts`,

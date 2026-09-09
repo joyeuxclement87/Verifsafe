@@ -116,7 +116,8 @@ cp .env.example .env.local   # same Supabase project as the website
 npm run dev
 ```
 
-Sign in with a Supabase Auth user that has `app_metadata.is_admin = "true"
+Sign in with any Supabase Auth user — every authenticated user is treated
+as an admin via `is_admin()`
 (see [docs/supabase.md](docs/supabase.md#security-model-row-level-security)).
 
 The panel manages:

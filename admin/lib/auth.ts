@@ -14,27 +14,14 @@ export async function getSession() {
 }
 
 /**
- * True when the signed-in user's JWT claims app_metadata.is_admin.
- * Accepts boolean or the string form GoTrue can emit in some flows.
- */
-export function isAdminUser(user: { app_metadata?: Record<string, unknown> } | null): boolean {
-  return user?.app_metadata?.is_admin === true || user?.app_metadata?.is_admin === 'true'
-}
-
-/**
- * Server Component guard that redirects unauthenticated visitors to /login
- * and non-admin accounts away from protected pages. Returns the signed-in
- * user for authenticated pages.
+ * Server Component guard that redirects unauthenticated visitors to
+ * /login. Returns the signed-in user for authenticated pages.
  */
 export async function requireAdmin() {
   const { user } = await getSession()
 
   if (!user) {
     redirect('/login')
-  }
-
-  if (!isAdminUser(user)) {
-    redirect('/login?error=not-admin')
   }
 
   return { user }

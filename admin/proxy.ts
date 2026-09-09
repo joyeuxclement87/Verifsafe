@@ -57,9 +57,6 @@ export default async function proxy(request: NextRequest) {
   )
   const isLoginPage = pathname === '/login'
 
-  const isAdmin =
-    user?.app_metadata?.is_admin === true || user?.app_metadata?.is_admin === 'true'
-
   if (!user && isProtected) {
     const redirectUrl = request.nextUrl.clone()
     redirectUrl.pathname = '/login'
@@ -67,14 +64,7 @@ export default async function proxy(request: NextRequest) {
     return NextResponse.redirect(redirectUrl)
   }
 
-  if (user && !isAdmin && isProtected) {
-    const redirectUrl = request.nextUrl.clone()
-    redirectUrl.pathname = '/login'
-    redirectUrl.searchParams.set('error', 'not-admin')
-    return NextResponse.redirect(redirectUrl)
-  }
-
-  if (user && isAdmin && isLoginPage) {
+  if (user && isLoginPage) {
     const redirectUrl = request.nextUrl.clone()
     redirectUrl.pathname = '/dashboard'
     redirectUrl.search = ''

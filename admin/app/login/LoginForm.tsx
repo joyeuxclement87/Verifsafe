@@ -10,16 +10,11 @@ function LoginFormInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const redirectTo = searchParams.get('redirectTo') || '/dashboard'
-  const authError = searchParams.get('error')
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [error, setError] = useState(
-    authError === 'not-admin'
-      ? 'This account is not an admin. Ask the site owner to grant admin access.'
-      : ''
-  )
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -28,24 +23,13 @@ function LoginFormInner() {
 
     const supabase = createClient()
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email: email.trim(),
       password,
     })
 
     if (error) {
       setError('Invalid email or password. Please try again.')
-      setIsSubmitting(false)
-      return
-    }
-
-    const isAdmin =
-      data.user?.app_metadata?.is_admin === true ||
-      data.user?.app_metadata?.is_admin === 'true'
-
-    if (!isAdmin) {
-      await supabase.auth.signOut()
-      setError('This account is not an admin. Ask the site owner to grant admin access.')
       setIsSubmitting(false)
       return
     }
