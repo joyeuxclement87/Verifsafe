@@ -97,6 +97,15 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
     );
   }
 
+  const isAdmin = pathname.startsWith('/admin');
+
+  if (isAdmin) {
+    // Admin world provides its own chrome (AdminShell + Sidebar via
+    // app/admin/(admin)/layout.tsx, standalone login got its own shell).
+    // No public chrome — this is the authenticated back-office surface.
+    return <>{children}</>;
+  }
+
   return (
     <>
       <PageLoader />
