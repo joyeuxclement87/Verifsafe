@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowUpRight, ArrowRight } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
 import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
+import CtaBackground from '@/components/sections/marketing/CtaBackground';
 
 const blueGridStyle = {
   backgroundImage:
@@ -443,51 +444,36 @@ export function AboutContent() {
       <section
         aria-labelledby="about-cta-heading"
         className="relative w-full overflow-hidden"
+        style={{ backgroundColor: '#1a2332' }}
       >
-        <div className="absolute inset-0">
-          <Image
-            src="/cta.jpg"
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(135deg, rgba(67, 3, 3, 0.92) 0%, rgba(72, 7, 7, 0.70) 20%, rgba(31,10,10,0.95) 100%)',
-            }}
-          />
-        </div>
+        <CtaBackground />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-28 lg:py-40">
           <RevealGroup stagger={0.08} delayChildren={0.05} className="max-w-3xl">
             <RevealItem variant="up-sm">
-              <p className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3">
                 <span aria-hidden="true" className="h-px w-8 bg-[#E53935]" />
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A7B0B5]">
                   work with verifsafe
                 </span>
-              </p>
+              </div>
             </RevealItem>
 
             <RevealItem>
-              <h2 id="about-cta-heading" className="text-section-heading text-white">
+              <h2 id="about-cta-heading" className="text-section-heading text-[#F4F3EF] mt-6">
                 let&apos;s make your <span className="text-highlight-dark">space safer</span>.
               </h2>
             </RevealItem>
 
             <RevealItem variant="up-sm">
-              <p className="text-subheading text-white mt-5 max-w-xl">
+              <p className="text-subheading text-[#A7B0B5] mt-5 max-w-xl leading-relaxed">
                 Whether you need equipment, installation, maintenance or guidance, tell us
                 what you are working on and we&apos;ll help you find the right place to start.
               </p>
             </RevealItem>
 
             <RevealItem variant="up-sm">
-              <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
                 <Button
                   href="/contact#contact-form"
                   variant="primary"

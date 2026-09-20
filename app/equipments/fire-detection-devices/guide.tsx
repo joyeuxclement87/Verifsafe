@@ -9,6 +9,7 @@ import {
   useTransform,
 } from 'framer-motion';
 import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
+import CtaBackground from '@/components/sections/marketing/CtaBackground';
 import {
   ArrowUpRight,
   ArrowRight,
@@ -520,45 +521,30 @@ export function FireDetectionDevicesGuide() {
       <section
         aria-labelledby="fdd-cta-heading"
         className="relative w-full overflow-hidden"
+        style={{ backgroundColor: '#1a2332' }}
       >
-        <div className="absolute inset-0">
-          <Image
-            src="/fire-detection-guide.png"
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(135deg, rgba(67, 3, 3, 0.92) 0%, rgba(72, 7, 7, 0.70) 20%, rgba(31,10,10,0.95) 100%)',
-            }}
-          />
-        </div>
+        <CtaBackground />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
-          <div className="max-w-3xl">
-            <p className="flex items-center gap-3 mb-5">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-28 lg:py-40">
+          <div className="max-w-3xl text-left">
+            <div className="flex items-center gap-3">
               <span aria-hidden="true" className="h-px w-8 bg-[#E53935]" />
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A7B0B5]">
                 not sure what you need?
               </span>
-            </p>
+            </div>
 
-            <h2 id="fdd-cta-heading" className="text-section-heading text-white">
+            <h2 id="fdd-cta-heading" className="text-section-heading text-[#F4F3EF] mt-6">
               let&apos;s find the right detection{' '}
               <span className="text-highlight-dark">solution</span> for your building.
             </h2>
 
-            <p className="text-subheading text-white mt-5 max-w-xl">
+            <p className="text-subheading text-[#A7B0B5] mt-5 max-w-xl leading-relaxed">
               Tell us about your building and fire-safety requirements and our team can
               help you identify the appropriate equipment.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
               <Button
                 href="/contact#contact-form"
                 variant="primary"
