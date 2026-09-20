@@ -105,6 +105,18 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-[#0B1720]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1720]/95 via-[#0B1720]/80 to-[#123B5D]/40" />
 
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px',
+          }}
+        />
+
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-24 sm:pb-20">
           <RevealGroup stagger={0.08} delayChildren={0.05} className="max-w-2xl">
             <RevealItem variant="up-sm">

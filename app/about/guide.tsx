@@ -101,15 +101,8 @@ export function AboutContent() {
         className="relative w-full overflow-hidden"
         style={{ backgroundColor: '#0B1720' }}
       >
-        <Image
-          src="/about-company.png"
-          alt=""
-          fill
-          className="object-cover opacity-25"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1720]/95 via-[#0B1720]/80 to-[#123B5D]/60" />
+        <div className="absolute inset-0 bg-[#0B1720]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1720]/95 via-[#0B1720]/80 to-[#123B5D]/40" />
 
         <div
           aria-hidden="true"
