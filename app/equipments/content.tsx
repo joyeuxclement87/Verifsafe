@@ -16,6 +16,7 @@ import {
 } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
 import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
+import CtaBackground from '@/components/sections/marketing/CtaBackground';
 import { equipmentCategories, type EquipmentCategory } from '@/lib/equipment';
 
 const blueGridStyle = {
@@ -314,27 +315,11 @@ export default function EquipmentsContent() {
 
       {/* ── CTA between content ──────────────────────────────────── */}
       <section
-        className="relative w-full overflow-hidden bg-cta-red"
+        className="relative w-full overflow-hidden"
+        style={{ backgroundColor: '#1a2332' }}
         aria-labelledby="equipment-cta-heading"
       >
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(ellipse 70% 55% at 50% 45%, rgba(30,41,59,0.55) 0%, rgba(26,35,50,0) 70%)',
-          }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={blueGridStyle}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute top-0 left-0 right-0 h-px"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
-        />
+        <CtaBackground />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-28">
           <RevealGroup stagger={0.08} delayChildren={0.05} className="max-w-3xl">

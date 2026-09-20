@@ -6,6 +6,7 @@ import { X, ChevronLeft, ChevronRight, ArrowUpRight, AlertTriangle, Refresh } fr
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
+import CtaBackground from '@/components/sections/marketing/CtaBackground';
 
 export type GalleryItem = {
   id: string;
@@ -416,24 +417,12 @@ export default function GalleryShowcase({
       </AnimatePresence>
 
       {/* CTA */}
-      <section className="relative w-full overflow-hidden bg-cta-red" aria-labelledby="gallery-cta-heading">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-            opacity: 0.04,
-          }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute top-0 left-0 right-0 h-px"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
-        />
+      <section
+        className="relative w-full overflow-hidden"
+        style={{ backgroundColor: '#1a2332' }}
+        aria-labelledby="gallery-cta-heading"
+      >
+        <CtaBackground />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-28 lg:py-36">
           <RevealGroup stagger={0.08} delayChildren={0.05} className="max-w-3xl">

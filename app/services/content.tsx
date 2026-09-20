@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef, useState, type KeyboardEvent } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -103,41 +103,10 @@ function CtaLink({ service }: { service: Service }) {
   );
 }
 
-function ServicePanelContent({ service }: { service: Service }) {
-  return (
-    <>
-      <p className="text-body text-gray-600 mt-3 max-w-xl">{service.description}</p>
-
-      <ul
-        className="mt-8 max-w-xl"
-        role="list"
-        aria-label={`${service.title} inclusions`}
-      >
-        {service.points.map((item) => (
-          <li
-            key={item}
-            className="flex items-start gap-3 py-3 border-t border-gray-200 text-body-sm text-gray-700"
-          >
-            <span aria-hidden="true" className="shrink-0 mt-2.5 h-px w-4 bg-[#D62828]" />
-            {item}
-          </li>
-        ))}
-        <li aria-hidden="true" className="border-t border-gray-200" />
-      </ul>
-
-      <CtaLink service={service} />
-    </>
-  );
-}
-
 export default function ServicesContent() {
   const reduceMotion = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
   const whyRef = useRef<HTMLElement>(null);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const activeService = services[activeIndex];
 
   const { scrollYProgress: heroProgress } = useScroll({
     target: heroRef,
@@ -151,40 +120,6 @@ export default function ServicesContent() {
     offset: ['start end', 'end start'],
   });
   const whyGridY = useTransform(whyProgress, [0, 1], ['-6%', '6%']);
-
-  const selectService = useCallback((index: number) => {
-    setActiveIndex(index);
-  }, []);
-
-  const handleTabKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLDivElement>) => {
-      let nextIndex: number | null = null;
-
-      switch (event.key) {
-        case 'ArrowDown':
-        case 'ArrowRight':
-          nextIndex = (activeIndex + 1) % services.length;
-          break;
-        case 'ArrowUp':
-        case 'ArrowLeft':
-          nextIndex = (activeIndex - 1 + services.length) % services.length;
-          break;
-        case 'Home':
-          nextIndex = 0;
-          break;
-        case 'End':
-          nextIndex = services.length - 1;
-          break;
-        default:
-          return;
-      }
-
-      event.preventDefault();
-      selectService(nextIndex);
-      tabRefs.current[nextIndex]?.focus();
-    },
-    [activeIndex, selectService]
-  );
 
   return (
     <main className="w-full">
@@ -260,7 +195,7 @@ export default function ServicesContent() {
                     Request a Quote
                   </Button>
                   <Button
-                    href="#services"
+                    href="#services-catalogue"
                     variant="secondary"
                     size="lg"
                     icon={<ArrowRight size={18} strokeWidth={2} />}
@@ -282,13 +217,40 @@ export default function ServicesContent() {
         />
       </section>
 
-      {/* ── Service directory ────────────────────────────────────── */}
-      <section
-        aria-labelledby="services-heading"
-        className="w-full bg-white border-t border-gray-200 py-20 sm:py-24 lg:py-32"
+      {/* ── Service navigation ───────────────────────────────────── */}
+      <nav
+        aria-label="Service navigation"
+        className="w-full sticky top-0 z-30 border-b border-gray-200 bg-white/95 backdrop-blur"
       >
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Intro */}
+          <ul className="flex gap-7 overflow-x-auto py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden touch-auto">
+            {services.map((service) => (
+              <li key={service.id} className="shrink-0">
+                <a
+                  href={`#${service.id}`}
+                  className="group inline-flex items-center gap-2 py-1 text-body-sm font-semibold text-gray-500 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="text-index tabular-nums text-gray-400 transition-colors group-hover:text-[#D62828]"
+                  >
+                    {service.number}
+                  </span>
+                  <span className="whitespace-nowrap">{service.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+
+      {/* ── Catalogue intro ──────────────────────────────────────── */}
+      <section
+        id="services-catalogue"
+        aria-labelledby="services-heading"
+        className="w-full bg-white py-16 sm:py-20 lg:py-24 scroll-mt-20"
+      >
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4">
             <p className="flex items-center gap-2.5">
               <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
@@ -304,8 +266,8 @@ export default function ServicesContent() {
             </span>
           </div>
 
-          <div className="max-w-3xl">
-            <h2 id="services-heading" className="text-section-heading mt-6 text-gray-900">
+          <div className="max-w-3xl mt-6">
+            <h2 id="services-heading" className="text-section-heading text-gray-900">
               Seven services, one <span className="text-highlight">partner</span>.
             </h2>
             <p className="text-subheading mt-5 text-gray-600 max-w-2xl">
@@ -313,167 +275,93 @@ export default function ServicesContent() {
               help keep buildings prepared.
             </p>
           </div>
-
-          {/* Desktop: exploratory split */}
-          <div className="mt-14 lg:mt-20 hidden lg:grid lg:grid-cols-[minmax(0,20rem)_1fr] gap-12 xl:gap-16 items-start">
-            <div
-              role="tablist"
-              aria-label="Our services"
-              onKeyDown={handleTabKeyDown}
-              className="border-t border-gray-200 lg:sticky lg:top-24"
-            >
-              {services.map((service, index) => {
-                const isActive = index === activeIndex;
-
-                return (
-                  <h3 key={service.id}>
-                    <button
-                      ref={(el) => {
-                        tabRefs.current[index] = el;
-                      }}
-                      role="tab"
-                      id={`service-tab-${service.id}`}
-                      aria-selected={isActive}
-                      aria-controls="services-panel"
-                      tabIndex={isActive ? 0 : -1}
-                      onClick={() => selectService(index)}
-                      className={`group relative w-full flex items-center gap-5 py-5 sm:py-6 px-2 text-left border-b border-gray-200 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828] motion-reduce:transition-none ${
-                        isActive ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'
-                      }`}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className={`absolute left-0 inset-y-0 w-0.5 bg-[#D62828] transition-opacity duration-200 motion-reduce:transition-none ${
-                          isActive ? 'opacity-100' : 'opacity-0'
-                        }`}
-                      />
-                      <span
-                        aria-hidden="true"
-                        className={`shrink-0 w-8 text-index tabular-nums transition-colors duration-200 motion-reduce:transition-none ${
-                          isActive ? 'text-[#D62828]' : 'text-gray-400'
-                        }`}
-                      >
-                        {service.number}
-                      </span>
-                      <span className="text-list-title">{service.title}</span>
-                    </button>
-                  </h3>
-                );
-              })}
-            </div>
-
-            <div
-              id="services-panel"
-              role="tabpanel"
-              aria-labelledby={`service-tab-${activeService.id}`}
-              className="border-t border-gray-200 min-w-0"
-            >
-              <motion.div
-                key={activeService.id}
-                initial={{ opacity: reduceMotion ? 1 : 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: reduceMotion ? 0 : 0.35, ease: 'easeOut' }}
-                className="relative pt-10 sm:pt-12"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,19rem)] gap-10 lg:gap-12 lg:items-stretch">
-                  <div className="relative flex flex-1 flex-col">
-                    <div className="flex items-center gap-3">
-                      <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
-                      <p className="text-label tabular-nums text-gray-500">
-                        {activeService.number} / 07
-                      </p>
-                    </div>
-
-                    <h3 className="text-card-title text-gray-900 mt-5 leading-snug">
-                      {activeService.title}
-                    </h3>
-
-                    <ServicePanelContent service={activeService} />
-                  </div>
-
-                  {/* Visual */}
-                  <div className="hidden lg:block relative">
-                    <div className="relative w-full h-full min-h-[24rem] rounded-lg overflow-hidden border border-black/10 bg-gray-100">
-                      <Image
-                        src={activeService.image}
-                        alt={activeService.imageAlt}
-                        fill
-                        sizes="(max-width: 1280px) 30vw, 304px"
-                        loading="lazy"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Mobile: vertical stacked selector */}
-          <div className="mt-12 lg:hidden border-t border-gray-200">
-            {services.map((service, index) => {
-              const isOpen = index === activeIndex;
-
-              return (
-                <div key={service.id} className="border-b border-gray-200">
-                  <h3>
-                    <button
-                      id={`service-disclosure-${service.id}`}
-                      aria-expanded={isOpen}
-                      aria-controls={`service-disclosure-panel-${service.id}`}
-                      onClick={() => selectService(index)}
-                      className="w-full flex items-center gap-4 py-5 pr-1 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D62828]"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className={`shrink-0 w-8 text-index tabular-nums transition-colors duration-200 motion-reduce:transition-none ${
-                          isOpen ? 'text-[#D62828]' : 'text-gray-400'
-                        }`}
-                      >
-                        {service.number}
-                      </span>
-
-                      <span className="flex-1 min-w-0 text-list-title text-gray-900">
-                        {service.title}
-                      </span>
-
-                      <span
-                        aria-hidden="true"
-                        className={`shrink-0 relative w-5 h-5 mt-0.5 transition-transform duration-200 motion-reduce:transition-none ${
-                          isOpen ? 'rotate-45' : ''
-                        }`}
-                      >
-                        <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-gray-400" />
-                        <span className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-gray-400" />
-                      </span>
-                    </button>
-                  </h3>
-
-                  <div
-                    id={`service-disclosure-panel-${service.id}`}
-                    role="region"
-                    aria-labelledby={`service-disclosure-${service.id}`}
-                    hidden={!isOpen}
-                    className="pb-7 pl-12 pr-1"
-                  >
-                    <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-gray-100">
-                      <Image
-                        src={service.image}
-                        alt={service.imageAlt}
-                        fill
-                        sizes="100vw"
-                        loading="lazy"
-                        className="object-cover"
-                      />
-                    </div>
-                    <ServicePanelContent service={service} />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </section>
+
+      {/* ── Service sections ─────────────────────────────────────── */}
+      {services.map((service, index) => {
+        const reversed = index % 2 === 1;
+        const sectionBg = reversed ? 'bg-neutral' : 'bg-white';
+
+        return (
+          <section
+            key={service.id}
+            id={service.id}
+            aria-labelledby={`${service.id}-heading`}
+            className={`relative w-full overflow-hidden scroll-mt-20 ${sectionBg} ${
+              index === 0 ? 'border-t border-gray-200' : ''
+            } py-20 sm:py-24 lg:py-28`}
+          >
+            {reversed && (
+              <motion.div
+                aria-hidden="true"
+                className="absolute -inset-y-24 inset-x-0 pointer-events-none"
+                style={paperGridStyle}
+              />
+            )}
+
+            <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                {/* Image */}
+                <Reveal
+                  className={`relative lg:col-span-7 ${reversed ? 'lg:order-2' : ''}`}
+                >
+                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden border border-black/10 bg-gray-100">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      sizes="(max-width: 1024px) 92vw, 58vw"
+                      priority={index === 0}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
+                  </div>
+                </Reveal>
+
+                {/* Panel */}
+                <Reveal
+                  className={`lg:col-span-5 ${reversed ? 'lg:order-1' : ''}`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-index tabular-nums text-[#D62828]">
+                      {service.number}
+                    </span>
+                    <span aria-hidden="true" className="h-px w-8 bg-[#D62828]" />
+                  </div>
+
+                  <h2
+                    id={`${service.id}-heading`}
+                    className="text-section-heading text-gray-900 mt-4"
+                  >
+                    {service.title}
+                  </h2>
+
+                  <p className="text-body text-gray-600 mt-4 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  <ul className="mt-6" role="list" aria-label={`${service.title} inclusions`}>
+                    {service.points.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-center gap-3 py-3 border-t border-gray-200"
+                      >
+                        <span aria-hidden="true" className="h-px w-4 shrink-0 bg-[#D62828]" />
+                        <span className="text-body-sm text-gray-700 font-medium">{point}</span>
+                      </li>
+                    ))}
+                    <li aria-hidden="true" className="border-t border-gray-200" />
+                  </ul>
+
+                  <CtaLink service={service} />
+                </Reveal>
+              </div>
+            </div>
+          </section>
+        );
+      })}
 
       {/* ── Process ───────────────────────────────────────────────── */}
       <FireSafetyApproach
