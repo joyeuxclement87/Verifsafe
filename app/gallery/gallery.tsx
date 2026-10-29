@@ -27,7 +27,11 @@ export default function GalleryShowcase({
 }) {
   const [galleryItems] = useState<GalleryItem[]>(initialItems);
   const [activeCategory, setActiveCategory] = useState('All');
-  const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+  const availableCategories = Array.from(
+    new Set(galleryItems.map((item) => item.category))
+  )
+    .filter(Boolean)
+    .sort();
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -71,15 +75,6 @@ export default function GalleryShowcase({
       prev === 0 ? filteredItems.length - 1 : prev - 1
     );
   }, [filteredItems.length]);
-
-  useEffect(() => {
-    const cats = Array.from(
-      new Set(galleryItems.map((item) => item.category))
-    )
-      .filter(Boolean)
-      .sort();
-    setAvailableCategories(cats);
-  }, [galleryItems]);
 
   useEffect(() => {
     if (!lightboxOpen) return;
