@@ -4,13 +4,10 @@ import {
   Circle,
   Document,
   Font,
-  G,
   Image,
   Line,
   Page,
   Path,
-  Polygon,
-  Rect,
   Svg,
   Text,
   View,
@@ -56,13 +53,12 @@ const MUTED_LIGHT = '#9E9B93'
 const LINE_COLOR = '#E2DFD7'
 const LEDGER_BG = '#FAF9F5'
 const RED = '#E53A34'
-const RED_SOFT = '#FCEBEA'
 
 const root = process.cwd()
 const fontDir = path.join(root, 'assets', 'fonts')
 const oakesFontPath = path.join(fontDir, 'OakesGrotesk-Regular.ttf')
 const oakesBoldFontPath = path.join(fontDir, 'OakesGrotesk-Bold.ttf')
-const displayFontPath = path.join(fontDir, 'RobotoCondensed-Display.ttf')
+const displayFontPath = path.join(fontDir, 'Anton.woff2')
 const logoPath = path.join(root, 'public', 'certificates', 'verifsafe-logo.png')
 
 let fontsRegistered = false
@@ -81,8 +77,10 @@ function registerFonts() {
     ],
   })
 
+  // Distinctive condensed display face for the certificate wordmark and
+  // recipient name (unique Anton variable face).
   Font.register({
-    family: 'OakesDisplay',
+    family: 'Anton',
     fonts: [{ src: displayFontPath, fontWeight: 400 }],
   })
 }
@@ -345,32 +343,6 @@ function RichDescriptionLine({
 }
 
 /**
- * Vector VerifSafe Shield Emblem used on the dark authority spine.
- */
-function ShieldEmblem() {
-  return (
-    <Svg style={{ width: 34, height: 37 }} viewBox="0 0 100 108">
-      <Path
-        d="M50 4 C33 15 16 19 6 21 L6 52 C6 76 24 94 50 104 C76 94 94 76 94 52 L94 21 C84 19 67 15 50 4 Z"
-        fill={RED}
-      />
-      <Path
-        d="M50 15 C36 23 23 26 16 28 L16 51 C16 70 30 85 50 93 C70 85 84 70 84 51 L84 28 C77 26 64 23 50 15 Z"
-        fill={SPINE_BG}
-      />
-      <Path
-        d="M50 23 L52.5 29.5 L59 32 L52.5 34.5 L50 41 L47.5 34.5 L41 32 L47.5 29.5 Z"
-        fill="#FFFFFF"
-      />
-      <Path
-        d="M47 42 L31 58 L46 73 L56 63 L69 76 L76 69 L56 49 L46 59 L43 56 L54 45 Z"
-        fill="#FFFFFF"
-      />
-    </Svg>
-  )
-}
-
-/**
  * Subtle guilloche watermark behind the main stage text.
  */
 function GuillocheWatermark() {
@@ -405,90 +377,6 @@ function GuillocheWatermark() {
         strokeWidth={1.1}
       />
     </Svg>
-  )
-}
-
-/**
- * Vector Official Institutional Seal rendered in the attestation footer.
- */
-function OfficialVectorSeal({ issueYear }: { issueYear: string }) {
-  return (
-    <View style={{ width: 84, height: 84, alignItems: 'center', justifyContent: 'center' }}>
-      <Svg style={{ width: 84, height: 84 }} viewBox="0 0 120 120">
-        {/* Outer crimson ring */}
-        <Circle
-          cx="60"
-          cy="60"
-          r="55"
-          fill="#FFFFFF"
-          stroke={RED}
-          strokeWidth="2.2"
-        />
-        {/* Dashed precision ring */}
-        <Circle
-          cx="60"
-          cy="60"
-          r="49"
-          fill="none"
-          stroke={INK}
-          strokeWidth="0.9"
-          strokeDasharray="2.5 2.5"
-        />
-        {/* Top banner pill */}
-        <Rect x="22" y="15" width="76" height="13" rx="6.5" fill="#FFFFFF" stroke={RED} strokeWidth="0.9" />
-        {/* Inner crimson tint circle */}
-        <Circle
-          cx="60"
-          cy="60"
-          r="29"
-          fill={RED_SOFT}
-          stroke={RED}
-          strokeWidth="1.1"
-        />
-        {/* Center mini shield */}
-        <Path
-          d="M60 37 C52.5 41 46 43 42 44 L42 57 C42 67 49.5 74.5 60 79 C70.5 74.5 78 67 78 57 L78 44 C74 43 67.5 41 60 37 Z"
-          fill={RED}
-        />
-        <Path
-          d="M57.5 61 L50.5 54 L53.5 51 L57.5 55 L67 45.5 L70 48.5 Z"
-          fill="#FFFFFF"
-        />
-        {/* Side diamonds */}
-        <Polygon points="18,60 21,57 24,60 21,63" fill={RED} />
-        <Polygon points="96,60 99,57 102,60 99,63" fill={RED} />
-        {/* Bottom dark pill */}
-        <G>
-          <Rect x="24" y="91" width="72" height="14" rx="2.5" fill={INK} />
-        </G>
-        <Text
-          x="60"
-          y="23.5"
-          textAnchor="middle"
-          style={{
-            fontFamily: 'Oakes',
-            fontWeight: 700,
-            fontSize: 5.7,
-            fill: INK,
-          }}
-        >
-          VERIFSAFE SEAL
-        </Text>
-        <Text
-          x="60"
-          y="100"
-          textAnchor="middle"
-          style={{
-            fontFamily: 'Oakes',
-            fontWeight: 700,
-            fontSize: 6,
-            fill: '#FFFFFF',
-          }}
-        >
-          {`VERIFIED · ${issueYear}`}
-        </Text>
-      </Svg>
-    </View>
   )
 }
 
@@ -564,9 +452,6 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
     ? formatCertificateDateLong(data.expiryDate)
     : 'No Expiry'
   const durationFormatted = formatDuration(data.durationValue, data.durationUnit)
-  const issueYear = /^\d{4}/.test(data.issueDate)
-    ? data.issueDate.slice(0, 4)
-    : String(new Date().getUTCFullYear())
 
   const certIdSpineSize = fitSingleLineSize(
     data.certificateNumber,
@@ -676,18 +561,15 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
         {/* LEFT AUTHORITY SPINE CONTENT                                     */}
         {/* ================================================================ */}
 
-        {/* Brand Shield & Identity */}
+        {/* Brand wordmark & identity */}
         <View
           style={{
             position: 'absolute',
             left: CARD_LEFT + 22,
             top: CARD_TOP + 24,
             width: SPINE_WIDTH - 44,
-            flexDirection: 'row',
-            alignItems: 'center',
           }}
         >
-          <ShieldEmblem />
           <View style={{ marginLeft: 10 }}>
             <Text
               style={{
@@ -763,7 +645,7 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
               <Text
                 key={`spine-course-${index}`}
                 style={{
-                  fontFamily: 'OakesDisplay',
+                  fontFamily: 'Anton',
                   fontSize: spineCourseFit.fontSizePt,
                   lineHeight: 1.08,
                   color: index === 0 ? '#FFFFFF' : RED,
@@ -1012,7 +894,7 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
         >
           <Text
             style={{
-              fontFamily: 'OakesDisplay',
+              fontFamily: 'Anton',
               fontSize: 36,
               lineHeight: 1.12,
               color: INK,
@@ -1051,7 +933,7 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
             <Text
               key={`recipient-${index}`}
               style={{
-                fontFamily: 'OakesDisplay',
+                fontFamily: 'Anton',
                 fontSize: nameFit.fontSizePt,
                 lineHeight: 1.05,
                 color: INK,
@@ -1245,17 +1127,6 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
             >
               Lead Training Assessor · VerifSafe
             </Text>
-          </View>
-
-          {/* Center Vector Security Seal */}
-          <View
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: 2,
-            }}
-          >
-            <OfficialVectorSeal issueYear={issueYear} />
           </View>
 
           {/* Right Signatory: Authorized Signature */}
