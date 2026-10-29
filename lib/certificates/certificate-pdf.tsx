@@ -1,3 +1,4 @@
+import fs from 'node:fs'
 import path from 'node:path'
 import React from 'react'
 import {
@@ -611,6 +612,8 @@ export interface CertificatePdfData {
 function CertificateDocument({ data }: { data: CertificatePdfData }) {
   registerFonts()
 
+  const whiteLogoBuffer = fs.readFileSync(whiteLogoPath)
+
   const verificationUrl = certificateVerificationUrl(data.certificateNumber)
   const verificationBaseDisplay = getVerificationBaseUrl().replace(/^https?:\/\//i, '')
   const qr = createQrVector(verificationUrl)
@@ -754,7 +757,7 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
         >
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
           <Image
-            src={whiteLogoPath}
+            src={whiteLogoBuffer}
             style={{
               width: 138,
               height: 41,
