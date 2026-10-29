@@ -5,7 +5,10 @@ import type {
   CertificateEvent,
   CertificateEffectiveStatus,
   CertificateVerification,
+  SavedTrainer,
+  SavedTrainingCourse,
 } from '@/types/supabase'
+import { CERTIFICATE_COURSES } from '@/lib/certificates/constants'
 import { getCertificateEffectiveStatus, todayIsoDate } from '@/lib/certificates/format'
 
 export const CERTIFICATE_PAGE_SIZE = 15
@@ -334,4 +337,39 @@ export async function getCertificateVerification(
 
   const rows = (data ?? []) as CertificateVerification[]
   return rows[0] ?? null
+}
+
+/** Returns saved training courses from Supabase, falling back to preset defaults. */
+export async function getSavedTrainingCourses(): Promise<SavedTrainingCourse[]> {
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('training_courses')
+    .select('id,key,code,name,created_at,updated_at')
+    .order('name', { ascending: true })
+
+  if (error || !data || data.length === 0) {
+    return CERTIFICATE_COURSES.map((c) => ({
+      id: c.key,
+      key: c.key,
+      code: c.code,
+      name: c.name,
+    }))
+  }
+
+  return data as SavedTrainingCourse[]
+}
+
+/** Returns saved trainers from Supabase. */
+export async function getSavedTrainers(): Promise<SavedTrainer[]> {
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('trainers')
+    .select('id,name,created_at,updated_at')
+    .order('name', { ascending: true })
+
+  if (error || !data) {
+    return []
+  }
+
+  return data as SavedTrainer[]
 }

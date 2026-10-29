@@ -5,9 +5,18 @@ import { getSession } from '@/lib/admin/auth'
 import { createClient } from '@/lib/supabase/server'
 import { recordCertificateEvent } from '@/lib/certificates/audit'
 import {
+  notifyCertificateIssued,
+  notifyCertificateRevoked,
+  notifyCertificateUpdated,
+  notifyCourseChanged,
+  notifyTrainerChanged,
+} from '@/lib/notifications/telegram'
+import {
   CERTIFICATE_COURSES,
   CUSTOM_COURSE_KEY,
+  CUSTOM_COURSE_NAME_MAX,
   findCourse,
+  INSTRUCTOR_NAME_MAX,
 } from '@/lib/certificates/constants'
 import {
   getCertificateById,
@@ -18,7 +27,11 @@ import {
   validateRevocationReason,
   type CertificateFormInput,
 } from '@/lib/certificates/validation'
-import type { Certificate } from '@/types/supabase'
+import type {
+  Certificate,
+  SavedTrainer,
+  SavedTrainingCourse,
+} from '@/types/supabase'
 
 export interface CertificateActionResult {
   success: boolean
@@ -41,6 +54,48 @@ function databaseError(context: string): CertificateActionResult {
   }
 }
 
+function cleanText(value: string): string {
+  return value.replace(/\s+/g, ' ').trim()
+}
+
+function suggestCourseCode(name: string): string {
+  const words = name
+    .trim()
+    .split(/\s+/)
+    .filter((w) => w.length > 0 && !['and', 'of', 'the', 'in', 'for', '&'].includes(w.toLowerCase()))
+  if (words.length === 0) return 'TRN'
+  if (words.length === 1) {
+    const letters = words[0].replace(/[^a-zA-Z]/g, '').toUpperCase()
+    return (letters.slice(0, 3) || 'TRN').padEnd(2, 'X')
+  }
+  return words
+    .slice(0, 3)
+    .map((w) => w.replace(/[^a-zA-Z]/g, '')[0] ?? '')
+    .join('')
+    .toUpperCase()
+    .padEnd(2, 'T')
+}
+
+async function ensureTrainerSaved(instructorName: string) {
+  const cleaned = cleanText(instructorName)
+  if (cleaned.length < 2 || cleaned.length > INSTRUCTOR_NAME_MAX) return
+  try {
+    const supabase = await createClient()
+    const { data: existing } = await supabase
+      .from('trainers')
+      .select('id')
+      .ilike('name', cleaned)
+      .limit(1)
+      .maybeSingle()
+
+    if (!existing) {
+      await supabase.from('trainers').insert({ name: cleaned })
+    }
+  } catch {
+    // Non-blocking convenience save
+  }
+}
+
 /** Issues a certificate with an atomic, permanent number. */
 export async function createCertificate(
   input: CertificateFormInput
@@ -48,7 +103,31 @@ export async function createCertificate(
   const { user } = await getSession()
   if (!user) return unauthorized()
 
-  const validated = validateCertificateInput(input, { mode: 'create' })
+  const supabase = await createClient()
+
+  // Resolve course name & code from saved training_courses if not explicitly provided
+  let resolvedCourseCode = input.courseCode
+  let resolvedCourseName = input.customCourseName
+  if (input.courseKey && input.courseKey !== CUSTOM_COURSE_KEY) {
+    const { data: dbCourse } = await supabase
+      .from('training_courses')
+      .select('code,name')
+      .eq('key', input.courseKey)
+      .maybeSingle()
+    if (dbCourse) {
+      resolvedCourseCode = resolvedCourseCode || (dbCourse.code as string)
+      resolvedCourseName = resolvedCourseName?.trim() || (dbCourse.name as string)
+    }
+  }
+
+  const validated = validateCertificateInput(
+    {
+      ...input,
+      courseCode: resolvedCourseCode,
+      customCourseName: resolvedCourseName,
+    },
+    { mode: 'create' }
+  )
   if (!validated.ok) {
     return {
       success: false,
@@ -74,7 +153,6 @@ export async function createCertificate(
     }
   }
 
-  const supabase = await createClient()
   const issueYear = Number(data.issueDate.slice(0, 4))
   const { data: numberData, error: numberError } = await supabase.rpc(
     'next_certificate_number',
@@ -132,6 +210,8 @@ export async function createCertificate(
     return databaseError('The certificate could not be issued.')
   }
 
+  await ensureTrainerSaved(data.instructorName)
+
   try {
     await recordCertificateEvent({
       certificateId: inserted.id,
@@ -145,12 +225,18 @@ export async function createCertificate(
       },
     })
   } catch (error) {
-    // The certificate is already issued. A missing audit entry is logged for
-    // operators but must not cause the admin to retry and create a duplicate.
     console.error(error)
   }
 
+  await notifyCertificateIssued({
+    certificateNumber,
+    recipientName: data.recipientName,
+    courseName: data.courseName,
+    actorEmail: user.email ?? null,
+  })
+
   revalidatePath('/admin/certificates')
+  revalidatePath('/admin/certificates/new')
   revalidatePath('/admin/dashboard')
 
   return {
@@ -162,7 +248,7 @@ export async function createCertificate(
   }
 }
 
-/** Corrects editable details. Number, course and issue date are permanent. */
+/** Corrects editable details including the printed training name. Number and issue date are permanent. */
 export async function updateCertificate(
   id: string,
   input: CertificateFormInput
@@ -178,20 +264,17 @@ export async function updateCertificate(
     return { success: false, error: 'Revoked certificates are read-only.' }
   }
 
-  // Course identity is locked after issuance. Resolve it from the stored row so
-  // validation always checks the certificate that actually exists, even for
-  // older records whose course_key was empty.
   const presetCourse =
     findCourse(existing.course_key) ??
     CERTIFICATE_COURSES.find((course) => course.name === existing.course_name)
-  const courseKey = presetCourse?.key ?? CUSTOM_COURSE_KEY
+  const courseKey = existing.course_key || presetCourse?.key || CUSTOM_COURSE_KEY
 
   const validated = validateCertificateInput(
     {
       ...input,
-      // These fields are fixed after issuance and are never taken from the form.
       courseKey,
-      customCourseName: existing.course_name,
+      courseCode: existing.course_code,
+      customCourseName: input.customCourseName?.trim() || existing.course_name,
       issueDate: existing.issue_date,
     },
     { mode: 'edit' }
@@ -208,6 +291,7 @@ export async function updateCertificate(
   const data = validated.data
   const updates = {
     recipient_name: data.recipientName,
+    course_name: data.courseName,
     training_date: data.trainingDate,
     duration_value: data.durationValue,
     duration_unit: data.durationUnit,
@@ -243,6 +327,8 @@ export async function updateCertificate(
     return databaseError('The certificate changes could not be saved.')
   }
 
+  await ensureTrainerSaved(data.instructorName)
+
   try {
     await recordCertificateEvent({
       certificateId: id,
@@ -254,6 +340,13 @@ export async function updateCertificate(
   } catch (error) {
     console.error(error)
   }
+
+  await notifyCertificateUpdated({
+    certificateNumber: existing.certificate_number,
+    recipientName: data.recipientName,
+    changes,
+    actorEmail: user.email ?? null,
+  })
 
   revalidatePath('/admin/certificates')
   revalidatePath(`/admin/certificates/${id}`)
@@ -300,8 +393,6 @@ export async function revokeCertificate(
       updated_by: user.id,
     })
     .eq('id', id)
-    // Only one concurrent revocation can win; the loser must not overwrite
-    // the recorded reason.
     .eq('status', 'active')
     .select('id')
     .maybeSingle()
@@ -327,6 +418,13 @@ export async function revokeCertificate(
     console.error(error)
   }
 
+  await notifyCertificateRevoked({
+    certificateNumber: existing.certificate_number,
+    recipientName: existing.recipient_name,
+    reason: validatedReason.reason,
+    actorEmail: user.email ?? null,
+  })
+
   revalidatePath('/admin/certificates')
   revalidatePath(`/admin/certificates/${id}`)
   revalidatePath(`/verify/${existing.certificate_number}`)
@@ -338,4 +436,244 @@ export async function revokeCertificate(
       certificate_number: existing.certificate_number,
     },
   }
+}
+
+/* ─── Saved Trainings & Saved Trainers Actions ──────────────────────────── */
+
+export async function saveTrainingCourseAction(input: {
+  id?: string
+  name: string
+  code?: string
+}): Promise<{
+  success: boolean
+  error?: string
+  course?: SavedTrainingCourse
+}> {
+  const { user } = await getSession()
+  if (!user) return { success: false, error: 'Not authorized.' }
+
+  const name = cleanText(input.name ?? '')
+  if (name.length < 2 || name.length > CUSTOM_COURSE_NAME_MAX) {
+    return {
+      success: false,
+      error: `Training name must be between 2 and ${CUSTOM_COURSE_NAME_MAX} characters.`,
+    }
+  }
+
+  const rawCode = cleanText(input.code ?? '').toUpperCase().replace(/[^A-Z]/g, '')
+  const code =
+    rawCode.length >= 2 && rawCode.length <= 4 ? rawCode : suggestCourseCode(name)
+
+  const supabase = await createClient()
+
+  if (input.id) {
+    const { data: before } = await supabase
+      .from('training_courses')
+      .select('id,key,code,name')
+      .eq('id', input.id)
+      .maybeSingle()
+
+    const { data, error } = await supabase
+      .from('training_courses')
+      .update({ name, code })
+      .eq('id', input.id)
+      .select('id,key,code,name')
+      .single()
+
+    if (error || !data) {
+      return { success: false, error: 'Could not update training name.' }
+    }
+
+    if (!before || before.name !== data.name || before.code !== data.code) {
+      await notifyCourseChanged({
+        courseName: data.name as string,
+        courseCode: data.code as string,
+        previousName: (before?.name as string) ?? null,
+        action: 'updated',
+        actorEmail: user.email ?? null,
+      })
+    }
+
+    revalidatePath('/admin/certificates')
+    revalidatePath('/admin/certificates/new')
+    return { success: true, course: data as SavedTrainingCourse }
+  }
+
+  const baseKey = name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 48)
+  const key = `${baseKey || 'training'}-${Date.now().toString(36).slice(-4)}`
+
+  const { data, error } = await supabase
+    .from('training_courses')
+    .insert({ key, code, name })
+    .select('id,key,code,name')
+    .single()
+
+  if (error || !data) {
+    return { success: false, error: 'Could not save new training course.' }
+  }
+
+  await notifyCourseChanged({
+    courseName: data.name as string,
+    courseCode: data.code as string,
+    action: 'added',
+    actorEmail: user.email ?? null,
+  })
+
+  revalidatePath('/admin/certificates')
+  revalidatePath('/admin/certificates/new')
+  return { success: true, course: data as SavedTrainingCourse }
+}
+
+export async function deleteTrainingCourseAction(id: string): Promise<{
+  success: boolean
+  error?: string
+}> {
+  const { user } = await getSession()
+  if (!user) return { success: false, error: 'Not authorized.' }
+
+  const supabase = await createClient()
+  const { data: existing } = await supabase
+    .from('training_courses')
+    .select('name,code')
+    .eq('id', id)
+    .maybeSingle()
+
+  const { error } = await supabase.from('training_courses').delete().eq('id', id)
+  if (error) {
+    return { success: false, error: 'Could not remove training course.' }
+  }
+
+  if (existing) {
+    await notifyCourseChanged({
+      courseName: existing.name as string,
+      courseCode: existing.code as string,
+      action: 'removed',
+      actorEmail: user.email ?? null,
+    })
+  }
+
+  revalidatePath('/admin/certificates')
+  revalidatePath('/admin/certificates/new')
+  return { success: true }
+}
+
+export async function saveTrainerAction(input: {
+  id?: string
+  name: string
+}): Promise<{
+  success: boolean
+  error?: string
+  trainer?: SavedTrainer
+}> {
+  const { user } = await getSession()
+  if (!user) return { success: false, error: 'Not authorized.' }
+
+  const name = cleanText(input.name ?? '')
+  if (name.length < 2 || name.length > INSTRUCTOR_NAME_MAX) {
+    return {
+      success: false,
+      error: `Trainer name must be between 2 and ${INSTRUCTOR_NAME_MAX} characters.`,
+    }
+  }
+
+  const supabase = await createClient()
+
+  if (input.id) {
+    const { data: before } = await supabase
+      .from('trainers')
+      .select('id,name')
+      .eq('id', input.id)
+      .maybeSingle()
+
+    const { data, error } = await supabase
+      .from('trainers')
+      .update({ name })
+      .eq('id', input.id)
+      .select('id,name')
+      .single()
+
+    if (error || !data) {
+      return { success: false, error: 'Could not update trainer name.' }
+    }
+
+    if (!before || before.name !== data.name) {
+      await notifyTrainerChanged({
+        trainerName: data.name as string,
+        previousName: (before?.name as string) ?? null,
+        action: 'updated',
+        actorEmail: user.email ?? null,
+      })
+    }
+
+    revalidatePath('/admin/certificates')
+    revalidatePath('/admin/certificates/new')
+    return { success: true, trainer: data as SavedTrainer }
+  }
+
+  const { data: existing } = await supabase
+    .from('trainers')
+    .select('id,name')
+    .ilike('name', name)
+    .limit(1)
+    .maybeSingle()
+
+  if (existing) {
+    return { success: true, trainer: existing as SavedTrainer }
+  }
+
+  const { data, error } = await supabase
+    .from('trainers')
+    .insert({ name })
+    .select('id,name')
+    .single()
+
+  if (error || !data) {
+    return { success: false, error: 'Could not save trainer.' }
+  }
+
+  await notifyTrainerChanged({
+    trainerName: data.name as string,
+    action: 'added',
+    actorEmail: user.email ?? null,
+  })
+
+  revalidatePath('/admin/certificates')
+  revalidatePath('/admin/certificates/new')
+  return { success: true, trainer: data as SavedTrainer }
+}
+
+export async function deleteTrainerAction(id: string): Promise<{
+  success: boolean
+  error?: string
+}> {
+  const { user } = await getSession()
+  if (!user) return { success: false, error: 'Not authorized.' }
+
+  const supabase = await createClient()
+  const { data: existing } = await supabase
+    .from('trainers')
+    .select('name')
+    .eq('id', id)
+    .maybeSingle()
+
+  const { error } = await supabase.from('trainers').delete().eq('id', id)
+  if (error) {
+    return { success: false, error: 'Could not remove saved trainer.' }
+  }
+
+  if (existing) {
+    await notifyTrainerChanged({
+      trainerName: existing.name as string,
+      action: 'removed',
+      actorEmail: user.email ?? null,
+    })
+  }
+
+  revalidatePath('/admin/certificates')
+  revalidatePath('/admin/certificates/new')
+  return { success: true }
 }

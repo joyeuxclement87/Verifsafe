@@ -1,58 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createEnquiry } from '@/lib/data/enquiries'
-
-async function sendTelegramAlert(payload: {
-  name: string
-  email: string
-  phone: string
-  service: string
-  message: string
-}) {
-  const botToken = process.env.TELEGRAM_BOT_TOKEN
-  const chatId = process.env.TELEGRAM_CHAT_ID
-
-  if (!botToken || !chatId) {
-    return null
-  }
-
-  const timestamp = new Date().toLocaleString('en-GB', {
-    dateStyle: 'medium',
-    timeStyle: 'short',
-  })
-
-  const text = [
-    '📩 New Website Enquiry',
-    '',
-    `Client: ${payload.name}`,
-    `Email: ${payload.email}`,
-    `Phone: ${payload.phone || 'N/A'}`,
-    `Service: ${payload.service}`,
-    '',
-    'Message:',
-    payload.message,
-    '',
-    `Received: ${timestamp}`,
-  ].join('\n')
-
-  const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text,
-      disable_web_page_preview: true,
-    }),
-  })
-
-  if (!response.ok) {
-    const errorText = await response.text()
-    throw new Error(`Telegram send failed: ${errorText}`)
-  }
-
-  return true
-}
+import { sendEnquiryTelegramAlert } from '@/lib/notifications/telegram'
 
 export async function POST(request: Request) {
   try {
@@ -75,7 +23,7 @@ export async function POST(request: Request) {
     })
 
     try {
-      await sendTelegramAlert({
+      await sendEnquiryTelegramAlert({
         name: enquiry.name,
         email: enquiry.email || '',
         phone: enquiry.phone || '',

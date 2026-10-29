@@ -18,6 +18,7 @@ import { todayIsoDate } from '@/lib/certificates/format'
 export interface CertificateFormInput {
   recipientName: string
   courseKey: string
+  courseCode?: string
   customCourseName?: string
   trainingDate: string
   durationValue: number | string
@@ -90,17 +91,25 @@ export function validateCertificateInput(
   const courseKey = input.courseKey?.trim() ?? ''
   const isCustomCourse = courseKey === CUSTOM_COURSE_KEY
   const presetCourse = findCourse(courseKey)
+  const explicitName = cleanText(input.customCourseName ?? '')
+  const explicitCode = cleanText(input.courseCode ?? '').toUpperCase()
 
   let courseName = ''
   let courseCode = ''
-  if (isCustomCourse) {
-    courseName = cleanText(input.customCourseName ?? '')
-    courseCode = CUSTOM_COURSE_CODE
+  if (explicitName.length > 0) {
+    courseName = explicitName
+    courseCode = /^[A-Z]{2,4}$/.test(explicitCode)
+      ? explicitCode
+      : isCustomCourse
+        ? CUSTOM_COURSE_CODE
+        : (presetCourse?.code ?? CUSTOM_COURSE_CODE)
     if (courseName.length < 2) {
       errors.customCourseName = 'Enter the training course name.'
     } else if (courseName.length > CUSTOM_COURSE_NAME_MAX) {
       errors.customCourseName = `Course name must be ${CUSTOM_COURSE_NAME_MAX} characters or fewer.`
     }
+  } else if (isCustomCourse) {
+    errors.customCourseName = 'Enter the training course name.'
   } else if (presetCourse) {
     courseName = presetCourse.name
     courseCode = presetCourse.code

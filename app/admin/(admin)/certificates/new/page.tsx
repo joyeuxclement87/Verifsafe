@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'tabler-icons-react'
 import { requireAdmin } from '@/lib/admin/auth'
+import {
+  getSavedTrainers,
+  getSavedTrainingCourses,
+} from '@/lib/certificates/queries'
 import { CertificateForm } from '@/components/admin/certificates/CertificateForm'
 
 export const dynamic = 'force-dynamic'
@@ -11,6 +15,10 @@ export const metadata = {
 
 export default async function NewCertificatePage() {
   await requireAdmin()
+  const [savedCourses, savedTrainers] = await Promise.all([
+    getSavedTrainingCourses(),
+    getSavedTrainers(),
+  ])
 
   return (
     <div className="space-y-6">
@@ -44,7 +52,11 @@ export default async function NewCertificatePage() {
         </div>
       </header>
 
-      <CertificateForm mode="create" />
+      <CertificateForm
+        mode="create"
+        savedCourses={savedCourses}
+        savedTrainers={savedTrainers}
+      />
     </div>
   )
 }

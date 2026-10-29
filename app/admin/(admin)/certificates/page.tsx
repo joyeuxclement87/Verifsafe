@@ -12,6 +12,7 @@ import { requireAdmin } from '@/lib/admin/auth'
 import {
   getCertificates,
   getCertificateStats,
+  getSavedTrainingCourses,
 } from '@/lib/certificates/queries'
 import {
   formatCertificateDateLong,
@@ -58,7 +59,7 @@ export default async function CertificatesPage({
   const requestedPage = Number.parseInt(readParam('page') ?? '1', 10)
   const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1
 
-  const [result, stats] = await Promise.all([
+  const [result, stats, savedCourses] = await Promise.all([
     getCertificates({
       search,
       course,
@@ -68,6 +69,7 @@ export default async function CertificatesPage({
       page,
     }),
     getCertificateStats(),
+    getSavedTrainingCourses(),
   ])
 
   // A stale or hand-edited page number should land on real records, not an
@@ -88,6 +90,7 @@ export default async function CertificatesPage({
   const courseNames = Array.from(
     new Set([
       ...CERTIFICATE_COURSES.map((course) => course.name),
+      ...savedCourses.map((course) => course.name),
       ...stats.courses.map((item) => item.courseName),
     ])
   ).sort((a, b) => a.localeCompare(b))

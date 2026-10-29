@@ -2,7 +2,11 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'tabler-icons-react'
 import { requireAdmin } from '@/lib/admin/auth'
-import { getCertificateById } from '@/lib/certificates/queries'
+import {
+  getCertificateById,
+  getSavedTrainers,
+  getSavedTrainingCourses,
+} from '@/lib/certificates/queries'
 import { CertificateForm } from '@/components/admin/certificates/CertificateForm'
 import { CertificateStatusBadge } from '@/components/admin/ui/Badge'
 import Button from '@/components/admin/ui/Button'
@@ -20,7 +24,11 @@ export default async function EditCertificatePage({
 }) {
   await requireAdmin()
   const { id } = await params
-  const certificate = await getCertificateById(id)
+  const [certificate, savedCourses, savedTrainers] = await Promise.all([
+    getCertificateById(id),
+    getSavedTrainingCourses(),
+    getSavedTrainers(),
+  ])
 
   if (!certificate) notFound()
 
@@ -106,8 +114,8 @@ export default async function EditCertificatePage({
               Edit certificate
             </h1>
             <p className="mt-1 max-w-2xl text-sm text-muted">
-              Correct recipient, training or wording details. The certificate
-              number, course and issue date stay fixed.
+              Correct recipient, training name or wording details. The
+              certificate number and issue date stay fixed.
             </p>
           </div>
           <CertificateStatusBadge
@@ -119,6 +127,8 @@ export default async function EditCertificatePage({
 
       <CertificateForm
         mode="edit"
+        savedCourses={savedCourses}
+        savedTrainers={savedTrainers}
         initial={{
           id: certificate.id,
           certificateNumber: certificate.certificate_number,

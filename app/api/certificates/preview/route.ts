@@ -45,13 +45,13 @@ export async function POST(request: Request) {
   }
 
   const courseKey = storedCourseKey || String(form.get('courseKey') ?? '')
-  const isCustomCourse = courseKey === 'other'
+  const submittedCourseName = String(form.get('customCourseName') ?? '').trim()
 
   const preview = buildCertificatePreviewData({
     recipientName: String(form.get('recipientName') ?? ''),
     courseKey,
-    customCourseName:
-      storedCourseName || String(form.get('customCourseName') ?? '') || undefined,
+    courseCode: String(form.get('courseCode') ?? '') || undefined,
+    customCourseName: submittedCourseName || storedCourseName || undefined,
     trainingDate: String(form.get('trainingDate') ?? ''),
     durationValue: String(form.get('durationValue') ?? ''),
     durationUnit: String(form.get('durationUnit') ?? ''),
@@ -61,10 +61,6 @@ export async function POST(request: Request) {
     expiryDate: String(form.get('expiryDate') ?? '') || null,
     certificateNumber: storedNumber,
   })
-
-  if (!isCustomCourse && storedCourseName) {
-    preview.courseName = storedCourseName
-  }
 
   try {
     const buffer = await renderCertificatePdf(preview)

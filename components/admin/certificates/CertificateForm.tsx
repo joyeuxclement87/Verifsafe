@@ -6,25 +6,35 @@ import Link from 'next/link'
 import {
   ArrowLeft,
   ArrowUpRight,
+  Bookmark,
   Check,
   Download,
   Loader2,
+  Pencil,
+  Plus,
   Refresh,
+  Trash,
   Wand,
+  X,
 } from 'tabler-icons-react'
 import {
   buildDefaultDescription,
-  COURSE_OPTIONS,
+  CERTIFICATE_COURSES,
+  CUSTOM_COURSE_CODE,
   CUSTOM_COURSE_KEY,
   DESCRIPTION_MAX,
-  findCourse,
 } from '@/lib/certificates/constants'
 import { todayIsoDate } from '@/lib/certificates/format'
 import {
   createCertificate,
+  deleteTrainerAction,
+  deleteTrainingCourseAction,
+  saveTrainerAction,
+  saveTrainingCourseAction,
   updateCertificate,
   type CertificateActionResult,
 } from '@/lib/certificates/actions'
+import type { SavedTrainer, SavedTrainingCourse } from '@/types/supabase'
 import { Field, Input, Select, Textarea } from '@/components/admin/ui/Field'
 import Button from '@/components/admin/ui/Button'
 import { Spinner } from '@/components/admin/ui/Spinner'
@@ -47,6 +57,7 @@ export interface CertificateFormInitial {
 interface FormState {
   recipientName: string
   courseKey: string
+  courseCode: string
   customCourseName: string
   trainingDate: string
   durationValue: string
@@ -57,19 +68,34 @@ interface FormState {
   expiryDate: string
 }
 
-function courseNameFor(courseKey: string, customCourseName: string): string {
-  if (courseKey === CUSTOM_COURSE_KEY) return customCourseName.trim()
-  return findCourse(courseKey)?.name ?? ''
+const DEFAULT_COURSES: SavedTrainingCourse[] = CERTIFICATE_COURSES.map((c) => ({
+  id: c.key,
+  key: c.key,
+  code: c.code,
+  name: c.name,
+}))
+
+function findSavedCourse(
+  courses: SavedTrainingCourse[],
+  courseKey: string
+): SavedTrainingCourse | undefined {
+  return courses.find((c) => c.key === courseKey)
 }
 
-function buildInitialState(initial?: CertificateFormInitial): FormState {
+function buildInitialState(
+  courses: SavedTrainingCourse[],
+  trainers: SavedTrainer[],
+  initial?: CertificateFormInitial
+): FormState {
   const today = todayIsoDate()
   if (initial) {
-    const isCustom = initial.courseKey === CUSTOM_COURSE_KEY || initial.courseKey === ''
+    const matched = findSavedCourse(courses, initial.courseKey)
+    const isCustom = !matched || initial.courseKey === CUSTOM_COURSE_KEY
     return {
       recipientName: initial.recipientName,
       courseKey: isCustom ? CUSTOM_COURSE_KEY : initial.courseKey,
-      customCourseName: isCustom ? initial.courseName : '',
+      courseCode: matched?.code ?? CUSTOM_COURSE_CODE,
+      customCourseName: initial.courseName,
       trainingDate: initial.trainingDate,
       durationValue: String(initial.durationValue),
       durationUnit: initial.durationUnit,
@@ -80,17 +106,18 @@ function buildInitialState(initial?: CertificateFormInitial): FormState {
     }
   }
 
-  const firstCourse = COURSE_OPTIONS[0]?.value ?? ''
-  const firstName = courseNameFor(firstCourse, '')
+  const firstCourse = courses[0] ?? DEFAULT_COURSES[0]
+  const firstTrainer = trainers[0]?.name ?? ''
   return {
     recipientName: '',
-    courseKey: firstCourse,
-    customCourseName: '',
+    courseKey: firstCourse.key,
+    courseCode: firstCourse.code,
+    customCourseName: firstCourse.name,
     trainingDate: today,
     durationValue: '8',
     durationUnit: 'hours',
-    instructorName: '',
-    description: firstName ? buildDefaultDescription(firstName) : '',
+    instructorName: firstTrainer,
+    description: firstCourse.name ? buildDefaultDescription(firstCourse.name) : '',
     issueDate: today,
     expiryDate: '',
   }
@@ -99,14 +126,29 @@ function buildInitialState(initial?: CertificateFormInitial): FormState {
 export function CertificateForm({
   mode,
   initial,
+  savedCourses: initialCourses,
+  savedTrainers: initialTrainers,
 }: {
   mode: 'create' | 'edit'
   initial?: CertificateFormInitial
+  savedCourses?: SavedTrainingCourse[]
+  savedTrainers?: SavedTrainer[]
 }) {
   const router = useRouter()
-  const [form, setForm] = useState<FormState>(() => buildInitialState(initial))
-  // Tracks whether the admin has taken ownership of the description. While it
-  // is untouched, changing the course keeps the suggested wording in sync.
+  const [courses, setCourses] = useState<SavedTrainingCourse[]>(() =>
+    initialCourses && initialCourses.length > 0 ? initialCourses : DEFAULT_COURSES
+  )
+  const [trainers, setTrainers] = useState<SavedTrainer[]>(
+    () => initialTrainers ?? []
+  )
+  const [form, setForm] = useState<FormState>(() =>
+    buildInitialState(
+      initialCourses && initialCourses.length > 0 ? initialCourses : DEFAULT_COURSES,
+      initialTrainers ?? [],
+      initial
+    )
+  )
+
   const [descriptionTouched, setDescriptionTouched] = useState(() => Boolean(initial))
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   const [formError, setFormError] = useState<string | null>(null)
@@ -119,18 +161,39 @@ export function CertificateForm({
   })
   const baseId = useId()
 
+  // Inline Training Names editor state
+  const [manageCoursesOpen, setManageCoursesOpen] = useState(false)
+  const [editingCourseId, setEditingCourseId] = useState<string | null>(null)
+  const [editingCourseName, setEditingCourseName] = useState('')
+  const [editingCourseCode, setEditingCourseCode] = useState('')
+  const [newCourseName, setNewCourseName] = useState('')
+  const [newCourseCode, setNewCourseCode] = useState('')
+  const [courseManagerBusy, setCourseManagerBusy] = useState(false)
+  const [courseManagerNotice, setCourseManagerNotice] = useState<string | null>(null)
+
+  // Inline Saved Trainers editor state
+  const [manageTrainersOpen, setManageTrainersOpen] = useState(false)
+  const [editingTrainerId, setEditingTrainerId] = useState<string | null>(null)
+  const [editingTrainerName, setEditingTrainerName] = useState('')
+  const [trainerBusy, setTrainerBusy] = useState(false)
+  const [trainerNotice, setTrainerNotice] = useState<string | null>(null)
+
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [previewLoading, setPreviewLoading] = useState(true)
   const [previewError, setPreviewError] = useState<string | null>(null)
   const latestPreviewUrl = useRef<string | null>(null)
 
-  const lockedCourse = mode === 'edit'
+  const lockedCourseCode = mode === 'edit'
   const lockedIssueDate = mode === 'edit'
   const today = todayIsoDate()
-  const currentCourseName = courseNameFor(form.courseKey, form.customCourseName)
+  const currentCourseName = form.customCourseName.trim()
   const suggestedDescription = currentCourseName
     ? buildDefaultDescription(currentCourseName)
     : ''
+
+  const isCurrentTrainerSaved = trainers.some(
+    (t) => t.name.toLowerCase() === form.instructorName.trim().toLowerCase()
+  )
 
   useEffect(() => {
     const controller = new AbortController()
@@ -141,6 +204,7 @@ export function CertificateForm({
       const body = new FormData()
       body.set('recipientName', form.recipientName)
       body.set('courseKey', form.courseKey)
+      body.set('courseCode', form.courseCode)
       body.set('customCourseName', form.customCourseName)
       body.set('trainingDate', form.trainingDate)
       body.set('durationValue', form.durationValue)
@@ -201,20 +265,30 @@ export function CertificateForm({
   }
 
   function handleCourseChange(nextCourseKey: string) {
+    const matched = findSavedCourse(courses, nextCourseKey)
     setForm((previous) => {
-      const nextName = courseNameFor(nextCourseKey, previous.customCourseName)
+      const nextName =
+        nextCourseKey === CUSTOM_COURSE_KEY
+          ? previous.customCourseName
+          : (matched?.name ?? previous.customCourseName)
+      const nextCode =
+        nextCourseKey === CUSTOM_COURSE_KEY
+          ? CUSTOM_COURSE_CODE
+          : (matched?.code ?? CUSTOM_COURSE_CODE)
       return {
         ...previous,
         courseKey: nextCourseKey,
+        courseCode: nextCode,
+        customCourseName: nextName,
         description:
-          !descriptionTouched && nextName
-            ? buildDefaultDescription(nextName)
+          !descriptionTouched && nextName.trim()
+            ? buildDefaultDescription(nextName.trim())
             : previous.description,
       }
     })
   }
 
-  function handleCustomCourseChange(value: string) {
+  function handleTrainingNameChange(value: string) {
     setForm((previous) => ({
       ...previous,
       customCourseName: value,
@@ -226,6 +300,147 @@ export function CertificateForm({
     }))
   }
 
+  async function handleSaveCourseRename(course: SavedTrainingCourse) {
+    if (!editingCourseName.trim()) return
+    setCourseManagerBusy(true)
+    setCourseManagerNotice(null)
+    const res = await saveTrainingCourseAction({
+      id: course.id,
+      name: editingCourseName,
+      code: editingCourseCode,
+    })
+    setCourseManagerBusy(false)
+
+    if (!res.success || !res.course) {
+      setCourseManagerNotice(res.error ?? 'Could not update training name.')
+      return
+    }
+
+    const updated = res.course
+    setCourses((prev) =>
+      prev.map((c) => (c.id === updated.id ? updated : c))
+    )
+    if (form.courseKey === updated.key) {
+      setForm((prev) => ({
+        ...prev,
+        courseCode: updated.code,
+        customCourseName: updated.name,
+        description: descriptionTouched
+          ? prev.description
+          : buildDefaultDescription(updated.name),
+      }))
+    }
+    setEditingCourseId(null)
+    setCourseManagerNotice(`Updated "${updated.name}".`)
+  }
+
+  async function handleAddCourse() {
+    if (!newCourseName.trim()) return
+    setCourseManagerBusy(true)
+    setCourseManagerNotice(null)
+    const res = await saveTrainingCourseAction({
+      name: newCourseName,
+      code: newCourseCode,
+    })
+    setCourseManagerBusy(false)
+
+    if (!res.success || !res.course) {
+      setCourseManagerNotice(res.error ?? 'Could not add training course.')
+      return
+    }
+
+    const created = res.course
+    setCourses((prev) => [...prev, created])
+    setNewCourseName('')
+    setNewCourseCode('')
+    setForm((prev) => ({
+      ...prev,
+      courseKey: created.key,
+      courseCode: created.code,
+      customCourseName: created.name,
+      description: descriptionTouched
+        ? prev.description
+        : buildDefaultDescription(created.name),
+    }))
+    setCourseManagerNotice(`Added "${created.name}".`)
+  }
+
+  async function handleDeleteCourse(course: SavedTrainingCourse) {
+    setCourseManagerBusy(true)
+    setCourseManagerNotice(null)
+    const res = await deleteTrainingCourseAction(course.id)
+    setCourseManagerBusy(false)
+
+    if (!res.success) {
+      setCourseManagerNotice(res.error ?? 'Could not remove training course.')
+      return
+    }
+
+    setCourses((prev) => prev.filter((c) => c.id !== course.id))
+    setCourseManagerNotice(`Removed "${course.name}".`)
+  }
+
+  async function handleQuickSaveCurrentTrainer() {
+    const trimmed = form.instructorName.trim()
+    if (trimmed.length < 2) return
+    setTrainerBusy(true)
+    setTrainerNotice(null)
+    const res = await saveTrainerAction({ name: trimmed })
+    setTrainerBusy(false)
+
+    if (!res.success || !res.trainer) {
+      setTrainerNotice(res.error ?? 'Could not save trainer.')
+      return
+    }
+
+    const saved = res.trainer
+    setTrainers((prev) => {
+      if (prev.some((t) => t.id === saved.id)) return prev
+      return [...prev, saved].sort((a, b) => a.name.localeCompare(b.name))
+    })
+    setTrainerNotice(`Saved "${saved.name}" to trainers.`)
+  }
+
+  async function handleSaveTrainerRename(trainer: SavedTrainer) {
+    if (!editingTrainerName.trim()) return
+    setTrainerBusy(true)
+    setTrainerNotice(null)
+    const res = await saveTrainerAction({
+      id: trainer.id,
+      name: editingTrainerName,
+    })
+    setTrainerBusy(false)
+
+    if (!res.success || !res.trainer) {
+      setTrainerNotice(res.error ?? 'Could not update trainer.')
+      return
+    }
+
+    const updated = res.trainer
+    setTrainers((prev) =>
+      prev.map((t) => (t.id === updated.id ? updated : t))
+    )
+    if (form.instructorName.trim().toLowerCase() === trainer.name.toLowerCase()) {
+      setForm((prev) => ({ ...prev, instructorName: updated.name }))
+    }
+    setEditingTrainerId(null)
+    setTrainerNotice(`Updated trainer "${updated.name}".`)
+  }
+
+  async function handleDeleteTrainer(trainer: SavedTrainer) {
+    setTrainerBusy(true)
+    setTrainerNotice(null)
+    const res = await deleteTrainerAction(trainer.id)
+    setTrainerBusy(false)
+
+    if (!res.success) {
+      setTrainerNotice(res.error ?? 'Could not remove trainer.')
+      return
+    }
+
+    setTrainers((prev) => prev.filter((t) => t.id !== trainer.id))
+  }
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setFormError(null)
@@ -234,6 +449,7 @@ export function CertificateForm({
     const input = {
       recipientName: form.recipientName,
       courseKey: form.courseKey,
+      courseCode: form.courseCode,
       customCourseName: form.customCourseName,
       trainingDate: form.trainingDate,
       durationValue: form.durationValue,
@@ -296,8 +512,12 @@ export function CertificateForm({
 
           <section className="space-y-5 px-5 py-6 sm:px-6">
             <div>
-              <h2 className="text-sm font-semibold tracking-tight text-ink">Recipient & course</h2>
-              <p className="mt-0.5 text-xs text-muted">Who completed the training and what they completed.</p>
+              <h2 className="text-sm font-semibold tracking-tight text-ink">
+                Recipient & training
+              </h2>
+              <p className="mt-0.5 text-xs text-muted">
+                Who completed the training and what they completed.
+              </p>
             </div>
 
             <Field
@@ -308,41 +528,69 @@ export function CertificateForm({
             >
               <Input
                 value={form.recipientName}
-                onChange={(event) => updateField('recipientName', event.target.value)}
+                onChange={(event) =>
+                  updateField('recipientName', event.target.value)
+                }
                 placeholder="e.g. Joyeux Clement Tuyishimire"
                 autoComplete="name"
                 maxLength={120}
                 required
                 aria-invalid={Boolean(fieldErrors.recipientName)}
-                aria-describedby={fieldErrors.recipientName ? `${baseId}-recipient` : undefined}
+                aria-describedby={
+                  fieldErrors.recipientName ? `${baseId}-recipient` : undefined
+                }
                 className={fieldErrors.recipientName ? 'border-brand' : ''}
               />
             </Field>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field
-                label="Training course"
-                required
-                hint={lockedCourse ? 'Course is fixed after issuance.' : undefined}
-                error={fieldErrors.courseKey}
-                errorId={`${baseId}-course`}
-              >
+              <div>
+                <div className="mb-1.5 flex items-center justify-between gap-2">
+                  <label
+                    htmlFor={`${baseId}-course-select`}
+                    className="block text-xs font-semibold text-ink"
+                  >
+                    Training preset <span className="text-brand">*</span>
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setManageCoursesOpen((v) => !v)}
+                    className="inline-flex items-center gap-1 text-[11px] font-semibold text-ink-soft transition-colors hover:text-brand"
+                  >
+                    <Pencil size={11} />
+                    {manageCoursesOpen ? 'Done editing' : 'Edit training names'}
+                  </button>
+                </div>
                 <Select
+                  id={`${baseId}-course-select`}
                   value={form.courseKey}
                   onChange={(event) => handleCourseChange(event.target.value)}
-                  disabled={lockedCourse}
+                  disabled={lockedCourseCode}
                   required
                   aria-invalid={Boolean(fieldErrors.courseKey)}
-                  aria-describedby={fieldErrors.courseKey ? `${baseId}-course` : undefined}
-                  className={lockedCourse ? 'cursor-not-allowed bg-neutral' : ''}
+                  aria-describedby={
+                    fieldErrors.courseKey ? `${baseId}-course` : undefined
+                  }
+                  className={
+                    lockedCourseCode ? 'cursor-not-allowed bg-neutral' : ''
+                  }
                 >
-                  {COURSE_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
+                  {courses.map((course) => (
+                    <option key={course.key} value={course.key}>
+                      {course.name} ({course.code})
                     </option>
                   ))}
+                  <option value={CUSTOM_COURSE_KEY}>
+                    Other training (custom)
+                  </option>
                 </Select>
-              </Field>
+                {lockedCourseCode && (
+                  <p className="mt-1 text-[11px] text-muted">
+                    Course code ({form.courseCode}) is fixed after issuance. You can
+                    still edit the printed training name below.
+                  </p>
+                )}
+              </div>
 
               <Field
                 label="Training date"
@@ -353,49 +601,201 @@ export function CertificateForm({
                 <Input
                   type="date"
                   value={form.trainingDate}
-                  onChange={(event) => updateField('trainingDate', event.target.value)}
+                  onChange={(event) =>
+                    updateField('trainingDate', event.target.value)
+                  }
                   max={form.issueDate || today}
                   required
                   aria-invalid={Boolean(fieldErrors.trainingDate)}
-                  aria-describedby={fieldErrors.trainingDate ? `${baseId}-training-date` : undefined}
+                  aria-describedby={
+                    fieldErrors.trainingDate
+                      ? `${baseId}-training-date`
+                      : undefined
+                  }
                   className={fieldErrors.trainingDate ? 'border-brand' : ''}
                 />
               </Field>
             </div>
 
-            {form.courseKey === CUSTOM_COURSE_KEY && (
-              <Field
-                label="Course name"
-                required
-                hint={
-                  lockedCourse
-                    ? 'Course is fixed after issuance.'
-                    : 'Shown on the certificate as the course label.'
-                }
-                error={fieldErrors.customCourseName}
-                errorId={`${baseId}-custom-course`}
-              >
-                <Input
-                  value={form.customCourseName}
-                  onChange={(event) => handleCustomCourseChange(event.target.value)}
-                  placeholder="e.g. Emergency Preparedness"
-                  maxLength={90}
-                  disabled={lockedCourse}
-                  required
-                  aria-invalid={Boolean(fieldErrors.customCourseName)}
-                  aria-describedby={
-                    fieldErrors.customCourseName ? `${baseId}-custom-course` : undefined
-                  }
-                  className={
-                    lockedCourse
-                      ? 'cursor-not-allowed bg-neutral'
-                      : fieldErrors.customCourseName
-                        ? 'border-brand'
-                        : ''
-                  }
-                />
-              </Field>
+            {/* Inline Training Names Manager */}
+            {manageCoursesOpen && (
+              <div className="rounded-lg border border-line bg-paper p-4 space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div>
+                    <p className="text-xs font-semibold text-ink">
+                      Saved training names
+                    </p>
+                    <p className="text-[11px] text-muted">
+                      Rename any training or add a new training to the dropdown list.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setManageCoursesOpen(false)}
+                    className="rounded p-1 text-muted hover:bg-white hover:text-ink"
+                    aria-label="Close training names editor"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+
+                {courseManagerNotice && (
+                  <p className="text-[11px] font-medium text-emerald-700">
+                    {courseManagerNotice}
+                  </p>
+                )}
+
+                <ul className="divide-y divide-line rounded-md border border-line bg-white">
+                  {courses.map((course) => {
+                    const isEditing = editingCourseId === course.id
+                    return (
+                      <li
+                        key={course.id}
+                        className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 text-xs"
+                      >
+                        {isEditing ? (
+                          <div className="flex flex-1 flex-wrap items-center gap-2">
+                            <input
+                              type="text"
+                              value={editingCourseName}
+                              onChange={(e) => setEditingCourseName(e.target.value)}
+                              maxLength={90}
+                              className="min-w-[10rem] flex-1 rounded border border-line px-2 py-1 text-xs text-ink focus:border-ink focus:outline-none"
+                              placeholder="Training name"
+                            />
+                            <input
+                              type="text"
+                              value={editingCourseCode}
+                              onChange={(e) =>
+                                setEditingCourseCode(
+                                  e.target.value
+                                    .toUpperCase()
+                                    .replace(/[^A-Z]/g, '')
+                                    .slice(0, 4)
+                                )
+                              }
+                              maxLength={4}
+                              className="w-16 rounded border border-line px-2 py-1 font-mono text-xs uppercase text-ink focus:border-ink focus:outline-none"
+                              placeholder="Code"
+                            />
+                            <button
+                              type="button"
+                              disabled={courseManagerBusy}
+                              onClick={() => handleSaveCourseRename(course)}
+                              className="rounded bg-ink px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-brand"
+                            >
+                              Save
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setEditingCourseId(null)}
+                              className="px-1.5 py-1 text-[11px] text-muted hover:text-ink"
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="flex items-center gap-2">
+                              <span className="rounded border border-line bg-paper px-1.5 py-0.5 font-mono text-[10px] font-semibold text-ink-soft">
+                                {course.code}
+                              </span>
+                              <span className="font-medium text-ink">
+                                {course.name}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setEditingCourseId(course.id)
+                                  setEditingCourseName(course.name)
+                                  setEditingCourseCode(course.code)
+                                }}
+                                className="inline-flex items-center gap-1 text-[11px] font-semibold text-ink-soft hover:text-brand"
+                              >
+                                <Pencil size={11} />
+                                Edit
+                              </button>
+                              {courses.length > 1 && (
+                                <button
+                                  type="button"
+                                  disabled={courseManagerBusy}
+                                  onClick={() => handleDeleteCourse(course)}
+                                  className="text-muted hover:text-red-600"
+                                  title={`Remove ${course.name}`}
+                                >
+                                  <Trash size={12} />
+                                </button>
+                              )}
+                            </div>
+                          </>
+                        )}
+                      </li>
+                    )
+                  })}
+                </ul>
+
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <input
+                    type="text"
+                    value={newCourseName}
+                    onChange={(e) => setNewCourseName(e.target.value)}
+                    placeholder="Add new training name (e.g. Working at Heights)…"
+                    maxLength={90}
+                    className="min-w-[12rem] flex-1 rounded-md border border-line bg-white px-2.5 py-1.5 text-xs text-ink placeholder:text-muted focus:border-ink focus:outline-none"
+                  />
+                  <input
+                    type="text"
+                    value={newCourseCode}
+                    onChange={(e) =>
+                      setNewCourseCode(
+                        e.target.value
+                          .toUpperCase()
+                          .replace(/[^A-Z]/g, '')
+                          .slice(0, 4)
+                      )
+                    }
+                    placeholder="Code (e.g. WAH)"
+                    maxLength={4}
+                    className="w-28 rounded-md border border-line bg-white px-2.5 py-1.5 font-mono text-xs uppercase text-ink placeholder:font-sans placeholder:normal-case placeholder:text-muted focus:border-ink focus:outline-none"
+                  />
+                  <button
+                    type="button"
+                    disabled={courseManagerBusy || newCourseName.trim().length < 2}
+                    onClick={handleAddCourse}
+                    className="inline-flex items-center gap-1 rounded-md bg-ink px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-brand disabled:opacity-50"
+                  >
+                    <Plus size={13} />
+                    Add training
+                  </button>
+                </div>
+              </div>
             )}
+
+            {/* Always-editable Printed Training Name */}
+            <Field
+              label="Training name printed on certificate"
+              required
+              hint="You can edit how the training title appears on this certificate."
+              error={fieldErrors.customCourseName}
+              errorId={`${baseId}-custom-course`}
+            >
+              <Input
+                value={form.customCourseName}
+                onChange={(event) => handleTrainingNameChange(event.target.value)}
+                placeholder="e.g. First Aid Training"
+                maxLength={90}
+                required
+                aria-invalid={Boolean(fieldErrors.customCourseName)}
+                aria-describedby={
+                  fieldErrors.customCourseName
+                    ? `${baseId}-custom-course`
+                    : undefined
+                }
+                className={fieldErrors.customCourseName ? 'border-brand' : ''}
+              />
+            </Field>
 
             <div className="grid gap-5 sm:grid-cols-2">
               <Field
@@ -413,7 +813,9 @@ export function CertificateForm({
                       step={1}
                       inputMode="numeric"
                       value={form.durationValue}
-                      onChange={(event) => updateField('durationValue', event.target.value)}
+                      onChange={(event) =>
+                        updateField('durationValue', event.target.value)
+                      }
                       required
                       aria-invalid={Boolean(fieldErrors.durationValue)}
                       aria-describedby={
@@ -426,7 +828,9 @@ export function CertificateForm({
                   </div>
                   <Select
                     value={form.durationUnit}
-                    onChange={(event) => updateField('durationUnit', event.target.value)}
+                    onChange={(event) =>
+                      updateField('durationUnit', event.target.value)
+                    }
                     aria-label="Duration unit"
                     required
                     className="min-w-0 flex-1"
@@ -439,31 +843,197 @@ export function CertificateForm({
                 </div>
               </Field>
 
-              <Field
-                label="Trainer / instructor"
-                required
-                error={fieldErrors.instructorName}
-                errorId={`${baseId}-instructor`}
-              >
-                <Input
-                  value={form.instructorName}
-                  onChange={(event) => updateField('instructorName', event.target.value)}
-                  placeholder="e.g. Cyuzuzo Christian"
-                  maxLength={120}
-                  required
-                  aria-invalid={Boolean(fieldErrors.instructorName)}
-                  aria-describedby={
-                    fieldErrors.instructorName ? `${baseId}-instructor` : undefined
-                  }
-                  className={fieldErrors.instructorName ? 'border-brand' : ''}
-                />
-              </Field>
+              {/* Trainer / Instructor with Save Trainer & Saved Trainers chips */}
+              <div>
+                <div className="mb-1.5 flex items-center justify-between gap-2">
+                  <label
+                    htmlFor={`${baseId}-instructor-input`}
+                    className="block text-xs font-semibold text-ink"
+                  >
+                    Trainer / instructor <span className="text-brand">*</span>
+                  </label>
+                  {trainers.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setManageTrainersOpen((v) => !v)}
+                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-ink-soft transition-colors hover:text-brand"
+                    >
+                      <Pencil size={11} />
+                      {manageTrainersOpen ? 'Done' : 'Edit trainers'}
+                    </button>
+                  )}
+                </div>
+
+                <div className="flex gap-2">
+                  <Input
+                    id={`${baseId}-instructor-input`}
+                    value={form.instructorName}
+                    onChange={(event) =>
+                      updateField('instructorName', event.target.value)
+                    }
+                    placeholder="e.g. Cyuzuzo Christian"
+                    maxLength={120}
+                    required
+                    aria-invalid={Boolean(fieldErrors.instructorName)}
+                    aria-describedby={
+                      fieldErrors.instructorName
+                        ? `${baseId}-instructor`
+                        : undefined
+                    }
+                    className={fieldErrors.instructorName ? 'border-brand' : ''}
+                  />
+                  {form.instructorName.trim().length >= 2 &&
+                    !isCurrentTrainerSaved && (
+                      <button
+                        type="button"
+                        disabled={trainerBusy}
+                        onClick={handleQuickSaveCurrentTrainer}
+                        className="inline-flex shrink-0 items-center gap-1 rounded-md border border-line bg-paper px-2.5 py-2 text-xs font-semibold text-ink transition-colors hover:border-ink hover:bg-white disabled:opacity-50"
+                        title="Save this trainer for future certificates"
+                      >
+                        <Bookmark size={13} className="text-brand" />
+                        Save trainer
+                      </button>
+                    )}
+                </div>
+
+                {fieldErrors.instructorName && (
+                  <p
+                    id={`${baseId}-instructor`}
+                    className="mt-1 text-xs text-brand"
+                  >
+                    {fieldErrors.instructorName}
+                  </p>
+                )}
+
+                {trainerNotice && (
+                  <p className="mt-1 text-[11px] font-medium text-emerald-700">
+                    {trainerNotice}
+                  </p>
+                )}
+
+                {/* Saved trainer quick-select pills */}
+                {trainers.length > 0 && !manageTrainersOpen && (
+                  <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                    <span className="text-[10px] font-semibold tracking-wider text-muted uppercase">
+                      Saved:
+                    </span>
+                    {trainers.map((t) => {
+                      const active =
+                        form.instructorName.trim().toLowerCase() ===
+                        t.name.toLowerCase()
+                      return (
+                        <button
+                          key={t.id}
+                          type="button"
+                          onClick={() => updateField('instructorName', t.name)}
+                          className={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors ${
+                            active
+                              ? 'border-ink bg-ink text-white'
+                              : 'border-line bg-paper text-ink-soft hover:border-ink/40 hover:text-ink'
+                          }`}
+                        >
+                          {t.name}
+                        </button>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* Inline Saved Trainers Editor */}
+            {manageTrainersOpen && (
+              <div className="rounded-lg border border-line bg-paper p-4 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <p className="text-xs font-semibold text-ink">
+                    Manage saved trainers
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setManageTrainersOpen(false)}
+                    className="rounded p-1 text-muted hover:bg-white hover:text-ink"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+                <ul className="divide-y divide-line rounded-md border border-line bg-white">
+                  {trainers.map((trainer) => {
+                    const isEditing = editingTrainerId === trainer.id
+                    return (
+                      <li
+                        key={trainer.id}
+                        className="flex items-center justify-between gap-2 px-3 py-2 text-xs"
+                      >
+                        {isEditing ? (
+                          <div className="flex flex-1 items-center gap-2">
+                            <input
+                              type="text"
+                              value={editingTrainerName}
+                              onChange={(e) =>
+                                setEditingTrainerName(e.target.value)
+                              }
+                              maxLength={120}
+                              className="flex-1 rounded border border-line px-2 py-1 text-xs text-ink focus:border-ink focus:outline-none"
+                            />
+                            <button
+                              type="button"
+                              disabled={trainerBusy}
+                              onClick={() => handleSaveTrainerRename(trainer)}
+                              className="rounded bg-ink px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-brand"
+                            >
+                              Save
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setEditingTrainerId(null)}
+                              className="px-1.5 py-1 text-[11px] text-muted hover:text-ink"
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        ) : (
+                          <>
+                            <span className="font-medium text-ink">
+                              {trainer.name}
+                            </span>
+                            <div className="flex items-center gap-2">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setEditingTrainerId(trainer.id)
+                                  setEditingTrainerName(trainer.name)
+                                }}
+                                className="inline-flex items-center gap-1 text-[11px] font-semibold text-ink-soft hover:text-brand"
+                              >
+                                <Pencil size={11} />
+                                Rename
+                              </button>
+                              <button
+                                type="button"
+                                disabled={trainerBusy}
+                                onClick={() => handleDeleteTrainer(trainer)}
+                                className="text-muted hover:text-red-600"
+                                title={`Remove ${trainer.name}`}
+                              >
+                                <Trash size={12} />
+                              </button>
+                            </div>
+                          </>
+                        )}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )}
           </section>
 
           <section className="space-y-5 border-t border-line px-5 py-6 sm:px-6">
             <div>
-              <h2 className="text-sm font-semibold tracking-tight text-ink">Certificate copy</h2>
+              <h2 className="text-sm font-semibold tracking-tight text-ink">
+                Certificate copy
+              </h2>
               <p className="mt-0.5 text-xs text-muted">
                 The completion statement is printed below the recipient&apos;s name.
               </p>
@@ -479,7 +1049,9 @@ export function CertificateForm({
               <Textarea
                 rows={4}
                 value={form.description}
-                onChange={(event) => updateField('description', event.target.value)}
+                onChange={(event) =>
+                  updateField('description', event.target.value)
+                }
                 maxLength={DESCRIPTION_MAX}
                 required
                 aria-invalid={Boolean(fieldErrors.description)}
@@ -511,14 +1083,20 @@ export function CertificateForm({
               <Field
                 label="Issue date"
                 required
-                hint={lockedIssueDate ? 'Issue date is permanent once a certificate is issued.' : 'Printed certificate numbers use this year.'}
+                hint={
+                  lockedIssueDate
+                    ? 'Issue date is permanent once a certificate is issued.'
+                    : 'Printed certificate numbers use this year.'
+                }
                 error={fieldErrors.issueDate}
                 errorId={`${baseId}-issue-date`}
               >
                 <Input
                   type="date"
                   value={form.issueDate}
-                  onChange={(event) => updateField('issueDate', event.target.value)}
+                  onChange={(event) =>
+                    updateField('issueDate', event.target.value)
+                  }
                   max={today}
                   disabled={lockedIssueDate}
                   required
@@ -526,7 +1104,13 @@ export function CertificateForm({
                   aria-describedby={
                     fieldErrors.issueDate ? `${baseId}-issue-date` : undefined
                   }
-                  className={lockedIssueDate ? 'cursor-not-allowed bg-neutral' : fieldErrors.issueDate ? 'border-brand' : ''}
+                  className={
+                    lockedIssueDate
+                      ? 'cursor-not-allowed bg-neutral'
+                      : fieldErrors.issueDate
+                        ? 'border-brand'
+                        : ''
+                  }
                 />
               </Field>
 
@@ -540,7 +1124,9 @@ export function CertificateForm({
                   type="date"
                   value={form.expiryDate}
                   min={form.issueDate || undefined}
-                  onChange={(event) => updateField('expiryDate', event.target.value)}
+                  onChange={(event) =>
+                    updateField('expiryDate', event.target.value)
+                  }
                   aria-invalid={Boolean(fieldErrors.expiryDate)}
                   aria-describedby={
                     fieldErrors.expiryDate ? `${baseId}-expiry-date` : undefined
@@ -553,7 +1139,11 @@ export function CertificateForm({
 
           <div className="flex flex-col-reverse gap-3 border-t border-line bg-paper px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <Link
-              href={mode === 'edit' && initial ? `/admin/certificates/${initial.id}` : '/admin/certificates'}
+              href={
+                mode === 'edit' && initial
+                  ? `/admin/certificates/${initial.id}`
+                  : '/admin/certificates'
+              }
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted transition-colors hover:text-ink"
             >
               <ArrowLeft size={13} />

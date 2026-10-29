@@ -142,6 +142,22 @@ export interface CertificateEvent {
   created_at: string
 }
 
+export interface SavedTrainingCourse {
+  id: string
+  key: string
+  code: string
+  name: string
+  created_at?: string
+  updated_at?: string
+}
+
+export interface SavedTrainer {
+  id: string
+  name: string
+  created_at?: string
+  updated_at?: string
+}
+
 /** The only certificate fields exposed by verify_certificate(). */
 export interface CertificateVerification {
   certificate_number: string

@@ -14,6 +14,7 @@ import type { CertificatePdfData } from '@/lib/certificates/certificate-pdf'
 export interface CertificatePreviewInput {
   recipientName?: string
   courseKey?: string
+  courseCode?: string
   customCourseName?: string
   trainingDate?: string
   durationValue?: number | string
@@ -51,10 +52,16 @@ export function buildCertificatePreviewData(
   const preset = findCourse(courseKey)
 
   const courseName =
-    (isCustom ? input.customCourseName?.trim() : preset?.name) ||
+    input.customCourseName?.trim() ||
     preset?.name ||
     'Training Course'
-  const courseCode = isCustom ? CUSTOM_COURSE_CODE : (preset?.code ?? CUSTOM_COURSE_CODE)
+  const explicitCode = input.courseCode?.trim().toUpperCase()
+  const courseCode =
+    explicitCode && /^[A-Z]{2,4}$/.test(explicitCode)
+      ? explicitCode
+      : isCustom
+        ? CUSTOM_COURSE_CODE
+        : (preset?.code ?? CUSTOM_COURSE_CODE)
 
   const trainingDate = isIsoDate(input.trainingDate) ? input.trainingDate : today
   const issueDate = isIsoDate(input.issueDate) ? input.issueDate : today
