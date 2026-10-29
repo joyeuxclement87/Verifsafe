@@ -124,7 +124,7 @@ export function GalleryForm({
       )}
 
       {!initial && (
-        <Field label="Image" hint="Required. The image is optimised automatically.">
+        <Field label="Image" hint="The uploaded image is optimised and converted to WebP automatically." required>
           <ImageUploader
             onUploaded={(path, meta) => {
               setUploadedPath(path)
@@ -139,7 +139,7 @@ export function GalleryForm({
       )}
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Title" hint="Shown on the public gallery.">
+        <Field label="Title" hint="Shown on the public gallery." required>
           <Input
             value={form.title}
             onChange={(e) => setField('title', e.target.value)}
@@ -198,7 +198,7 @@ export function GalleryForm({
         </Field>
 
         <Field label="Visibility">
-          <label className="flex cursor-pointer items-center gap-3 rounded-md border border-line bg-white px-3 py-2">
+          <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-line bg-paper px-3.5 py-2.5 transition-colors hover:bg-white">
             <input
               type="checkbox"
               checked={form.published}
@@ -208,7 +208,7 @@ export function GalleryForm({
             <span className="text-sm font-medium text-ink">
               Published
               <span className="ml-1.5 text-xs font-normal text-muted">
-                Visible on the public website
+                · Visible on the public website
               </span>
             </span>
           </label>

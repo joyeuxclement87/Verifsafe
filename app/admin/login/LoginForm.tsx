@@ -2,6 +2,7 @@
 
 import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { ArrowRight } from 'tabler-icons-react'
 import { createClient } from '@/lib/supabase/client'
 import { Spinner } from '@/components/admin/ui/Spinner'
 import { Field, Input } from '@/components/admin/ui/Field'
@@ -29,7 +30,7 @@ function LoginFormInner() {
     })
 
     if (error) {
-      setError('Invalid email or password. Please try again.')
+      setError('Invalid email or password. Please check your credentials and try again.')
       setIsSubmitting(false)
       return
     }
@@ -39,8 +40,8 @@ function LoginFormInner() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <Field label="Email">
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <Field label="Email address" required>
         <Input
           type="email"
           value={email}
@@ -51,30 +52,45 @@ function LoginFormInner() {
         />
       </Field>
 
-      <Field label="Password">
+      <Field label="Password" required>
         <Input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           autoComplete="current-password"
-          placeholder="Your password"
+          placeholder="Enter your password"
         />
       </Field>
 
       {error && (
-        <p role="alert" className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+        <div
+          role="alert"
+          className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-xs font-medium text-red-700"
+        >
           {error}
-        </p>
+        </div>
       )}
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-brand text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:opacity-60"
+        className="group flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-brand px-5 text-sm font-semibold text-white shadow-[0_4px_14px_-6px_rgba(214,40,40,0.55)] transition-all duration-150 hover:bg-brand-dark hover:shadow-[0_8px_20px_-8px_rgba(214,40,40,0.65)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:opacity-60"
       >
-        {isSubmitting && <Spinner />}
-        {isSubmitting ? 'Signing in…' : 'Sign in'}
+        {isSubmitting ? (
+          <>
+            <Spinner />
+            <span>Signing in…</span>
+          </>
+        ) : (
+          <>
+            <span>Sign in to dashboard</span>
+            <ArrowRight
+              size={16}
+              className="transition-transform duration-150 group-hover:translate-x-0.5"
+            />
+          </>
+        )}
       </button>
     </form>
   )

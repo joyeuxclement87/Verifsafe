@@ -29,29 +29,41 @@ export default async function GalleryDetailPage({
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center gap-3">
-        <Link
-          href="/admin/gallery"
-          className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-line bg-white text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
-          aria-label="Back to gallery"
-        >
-          <ArrowLeft size={16} />
-        </Link>
-        <div className="min-w-0 flex-1">
-          <h1 className="truncate text-xl font-semibold tracking-tight text-ink">{item.title}</h1>
-          <div className="mt-0.5 flex items-center gap-2">
-            <p className="text-sm text-muted">{item.category || 'Uncategorised'}</p>
-            <PublishBadge published={item.published} />
+      <header className="flex flex-wrap items-start justify-between gap-4 border-b border-line pb-6">
+        <div className="flex min-w-0 flex-1 items-start gap-3.5">
+          <Link
+            href="/admin/gallery"
+            className="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-white text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
+            aria-label="Back to gallery"
+          >
+            <ArrowLeft size={16} />
+          </Link>
+          <div className="min-w-0 flex-1">
+            <div className="mb-1.5 flex items-center gap-2">
+              <span aria-hidden="true" className="h-px w-5 bg-brand" />
+              <span className="text-[11px] font-semibold tracking-[0.18em] text-muted uppercase">
+                Edit Project
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="truncate text-2xl font-semibold tracking-tight text-ink">
+                {item.title}
+              </h1>
+              <PublishBadge published={item.published} />
+            </div>
+            <p className="mt-1 text-xs text-muted">
+              {item.category || 'Uncategorised'} · Display order #{item.sort_order}
+            </p>
           </div>
         </div>
         <DeleteGalleryButton id={item.id} />
-      </div>
+      </header>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,24rem)_1fr] lg:items-start">
         {/* Image + replacement */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           <div className="overflow-hidden rounded-lg border border-line bg-white">
-            <div className="aspect-[4/3]">
+            <div className="aspect-[4/3] bg-neutral">
               <Image
                 src={getPublicStorageUrl('gallery', item.image_path)}
                 alt={item.alt_text || item.title}
@@ -61,24 +73,24 @@ export default async function GalleryDetailPage({
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="space-y-1.5 border-t border-line px-4 py-3 text-xs text-muted">
-              <p>{item.image_path}</p>
+            <div className="space-y-1 border-t border-line bg-paper px-4 py-3 text-xs text-muted">
+              <p className="truncate font-mono text-[11px] text-ink-soft">{item.image_path}</p>
               <p>
                 {formatDimensions(item.image_width, item.image_height)}
-                {item.image_format && ` · ${item.image_format.replace('image/', '')}`}
+                {item.image_format && ` · ${item.image_format.replace('image/', '').toUpperCase()}`}
                 {item.image_file_size && ` · ${formatBytes(item.image_file_size)}`}
               </p>
             </div>
           </div>
 
-          <Card title="Replace image">
+          <Card title="Replace image" description="Upload a new photo to replace the current asset.">
             <ImageReplacer id={item.id} />
           </Card>
         </div>
 
         {/* Details */}
         <div>
-          <Card title="Project details">
+          <Card title="Project details" description="Information displayed on the public gallery.">
             <GalleryEditForm
               id={item.id}
               title={item.title}

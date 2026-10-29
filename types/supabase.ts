@@ -95,3 +95,62 @@ export interface MediaItem {
   uploaded_by: string | null
   created_at: string
 }
+
+/* ─── Certificates ──────────────────────────────────────────────────────── */
+
+export type CertificateStatus = 'active' | 'revoked'
+
+/** Status shown publicly; expiry is calculated from expiry_date. */
+export type CertificateEffectiveStatus = 'valid' | 'expired' | 'revoked'
+
+export type CertificateEventType = 'issued' | 'updated' | 'revoked' | 'downloaded'
+
+export interface Certificate {
+  id: string
+  certificate_number: string
+  course_code: string
+  course_key: string
+  course_name: string
+  recipient_name: string
+  training_date: string
+  duration_value: number
+  duration_unit: 'hours' | 'days' | 'weeks' | 'months'
+  instructor_name: string
+  description: string
+  issue_date: string
+  expiry_date: string | null
+  status: CertificateStatus
+  revocation_reason: string | null
+  revoked_at: string | null
+  revoked_by: string | null
+  pdf_storage_path: string | null
+  idempotency_key: string | null
+  created_by: string | null
+  updated_by: string | null
+  created_at: string
+  updated_at: string
+}
+
+export interface CertificateEvent {
+  id: string
+  certificate_id: string
+  event_type: CertificateEventType
+  actor_id: string | null
+  actor_email: string | null
+  reason: string | null
+  changes: Record<string, unknown>
+  created_at: string
+}
+
+/** The only certificate fields exposed by verify_certificate(). */
+export interface CertificateVerification {
+  certificate_number: string
+  recipient_name: string
+  course_name: string
+  training_date: string
+  duration_value: number
+  duration_unit: 'hours' | 'days' | 'weeks' | 'months'
+  issue_date: string
+  expiry_date: string | null
+  status: CertificateEffectiveStatus
+}

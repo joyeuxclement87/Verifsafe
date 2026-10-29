@@ -16,6 +16,7 @@ import { NextResponse, type NextRequest } from 'next/server'
 const protectedRoutes = [
   '/admin/dashboard',
   '/admin/enquiries',
+  '/admin/certificates',
   '/admin/gallery',
   '/admin/media',
   '/admin/settings',
