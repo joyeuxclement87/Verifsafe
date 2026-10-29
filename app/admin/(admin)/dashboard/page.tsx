@@ -3,9 +3,15 @@ import Image from 'next/image'
 import { ArrowRight, Plus } from 'tabler-icons-react'
 import { getStatusCounts, getEnquiries } from '@/lib/admin/enquiries'
 import { getGalleryItems, GALLERY_BUCKET } from '@/lib/admin/gallery'
+import { getRecentCertificates, getCertificateStats } from '@/lib/certificates/queries'
+import { formatCertificateDateLong } from '@/lib/certificates/format'
 import { getPublicStorageUrl } from '@/lib/supabase/storage'
 import { formatShortDate } from '@/lib/admin/format'
-import { StatusBadge, PublishBadge } from '@/components/admin/ui/Badge'
+import {
+  StatusBadge,
+  PublishBadge,
+  CertificateStatusBadge,
+} from '@/components/admin/ui/Badge'
 import { Card } from '@/components/admin/ui/Card'
 import { EmptyState } from '@/components/admin/ui/EmptyState'
 import Button from '@/components/admin/ui/Button'
@@ -51,9 +57,19 @@ function SectionHeader({
 
 export default async function DashboardPage() {
   await requireAdmin()
-  const { counts, total, hasAny } = await getStatusCounts()
-  const recentEnquiries = await getEnquiries({ limit: 6 })
-  const recentGallery = await getGalleryItems()
+  const [
+    { counts, total, hasAny },
+    recentEnquiries,
+    recentGallery,
+    recentCertificates,
+    certificateStats,
+  ] = await Promise.all([
+    getStatusCounts(),
+    getEnquiries({ limit: 5 }),
+    getGalleryItems(),
+    getRecentCertificates(5),
+    getCertificateStats(),
+  ])
 
   const publishedCount = recentGallery.filter((item) => item.published).length
 
@@ -63,7 +79,7 @@ export default async function DashboardPage() {
       value: total,
       href: '/admin/enquiries',
       accent: false,
-      meta: 'All time',
+      meta: `${counts.in_progress + counts.contacted} active`,
     },
     {
       label: 'New / unread',
@@ -73,11 +89,11 @@ export default async function DashboardPage() {
       meta: counts.new > 0 ? 'Needs attention' : 'Inbox clear',
     },
     {
-      label: 'In progress',
-      value: counts.in_progress + counts.contacted,
-      href: '/admin/enquiries?status=in_progress',
+      label: 'Issued certificates',
+      value: certificateStats.total,
+      href: '/admin/certificates',
       accent: false,
-      meta: `${counts.contacted} contacted · ${counts.in_progress} active`,
+      meta: `${certificateStats.active} valid · ${certificateStats.thisMonth} this month`,
     },
     {
       label: 'Published projects',
@@ -108,12 +124,13 @@ export default async function DashboardPage() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5">
-          <Button variant="secondary" href="/admin/enquiries">
-            View enquiries
-          </Button>
-          <Button href="/admin/gallery/new">
+          <Button variant="secondary" href="/admin/gallery/new">
             <Plus size={15} />
             New project
+          </Button>
+          <Button href="/admin/certificates/new">
+            <Plus size={15} />
+            Issue certificate
           </Button>
         </div>
       </header>
@@ -252,6 +269,55 @@ export default async function DashboardPage() {
           )}
         </section>
       </div>
+
+      {/* Recent certificates */}
+      <section>
+        <SectionHeader
+          eyebrow="Credential Register"
+          title="Recent certificates"
+          href="/admin/certificates"
+          linkLabel="View register"
+        />
+        {recentCertificates.length === 0 ? (
+          <EmptyState
+            title="No certificates issued yet"
+            description="Issue a training certificate to generate a permanent ID, QR verification link and downloadable PDF."
+            action={<Button href="/admin/certificates/new">Issue certificate</Button>}
+          />
+        ) : (
+          <Card noPadding className="overflow-hidden">
+            <ul className="divide-y divide-line">
+              {recentCertificates.map((certificate) => (
+                <li key={certificate.id}>
+                  <Link
+                    href={`/admin/certificates/${certificate.id}`}
+                    className="group flex items-center justify-between gap-4 px-5 py-3.5 transition-colors hover:bg-paper"
+                  >
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2.5">
+                        <p className="truncate text-sm font-semibold text-ink transition-colors group-hover:text-brand">
+                          {certificate.recipient_name}
+                        </p>
+                        <span className="font-mono text-[11px] text-muted">
+                          {certificate.certificate_number}
+                        </span>
+                      </div>
+                      <p className="mt-0.5 truncate text-xs text-muted">
+                        {certificate.course_name} · Issued{' '}
+                        {formatCertificateDateLong(certificate.issue_date)}
+                      </p>
+                    </div>
+                    <CertificateStatusBadge
+                      status={certificate.status}
+                      expiryDate={certificate.expiry_date}
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        )}
+      </section>
     </div>
   )
 }

@@ -23,6 +23,7 @@ import {
   formatCertificateDateLong,
   formatDuration,
 } from '@/lib/certificates/format'
+import { createQrVector } from '@/lib/certificates/qr'
 import { CertificateStatusBadge } from '@/components/admin/ui/Badge'
 import Button from '@/components/admin/ui/Button'
 import { CopyVerificationLink } from '@/components/admin/certificates/CopyVerificationLink'
@@ -84,6 +85,7 @@ export default async function CertificateDetailPage({
   if (!certificate) notFound()
 
   const verificationUrl = certificateVerificationUrl(certificate.certificate_number)
+  const qr = createQrVector(verificationUrl)
   const pdfHref = `/api/certificates/${certificate.id}/pdf`
   const isRevoked = certificate.status === 'revoked'
 
@@ -367,10 +369,22 @@ export default async function CertificateDetailPage({
               <p className="text-admin-label">Public verification</p>
             </header>
             <div className="px-4 py-4">
-              <p className="text-xs leading-relaxed text-muted">
-                The QR on the certificate opens this public record. It never
-                exposes admin notes or audit data.
-              </p>
+              <div className="flex items-start gap-3.5">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded border border-line bg-white p-1.5">
+                  <svg
+                    viewBox={`0 0 ${qr.size} ${qr.size}`}
+                    className="h-full w-full text-ink"
+                    role="img"
+                    aria-label={`Verification QR code for ${certificate.certificate_number}`}
+                  >
+                    <path d={qr.path} fill="currentColor" />
+                  </svg>
+                </div>
+                <p className="text-xs leading-relaxed text-muted">
+                  The QR on the certificate opens this permanent public record.
+                  It never exposes admin notes or audit data.
+                </p>
+              </div>
               <div className="mt-3 flex items-start gap-2">
                 <code className="min-w-0 flex-1 truncate rounded border border-line bg-paper px-2 py-1.5 font-mono text-[10px] text-ink-soft">
                   {verificationUrl}
@@ -378,12 +392,12 @@ export default async function CertificateDetailPage({
                 <CopyVerificationLink url={verificationUrl} />
               </div>
               <a
-                href={verificationUrl}
+                href={`/verify/${encodeURIComponent(certificate.certificate_number)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-ink-soft transition-colors hover:text-brand"
               >
-                Open public page
+                Open public verification page
                 <ExternalLink size={12} />
               </a>
             </div>

@@ -58,6 +58,7 @@ export async function POST(request: Request) {
     instructorName: String(form.get('instructorName') ?? ''),
     description: String(form.get('description') ?? ''),
     issueDate: storedIssueDate || String(form.get('issueDate') ?? ''),
+    expiryDate: String(form.get('expiryDate') ?? '') || null,
     certificateNumber: storedNumber,
   })
 

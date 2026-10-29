@@ -21,6 +21,7 @@ const companyLinks = [
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Equipment', href: '/equipments' },
+  { label: 'Verify Certificate', href: '/verify' },
   { label: 'Contact', href: '/contact' },
 ];
 

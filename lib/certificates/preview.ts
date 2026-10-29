@@ -21,6 +21,7 @@ export interface CertificatePreviewInput {
   instructorName?: string
   description?: string
   issueDate?: string
+  expiryDate?: string | null
   /** Resolved from the stored certificate when previewing an edit. */
   certificateNumber?: string
 }
@@ -57,6 +58,7 @@ export function buildCertificatePreviewData(
 
   const trainingDate = isIsoDate(input.trainingDate) ? input.trainingDate : today
   const issueDate = isIsoDate(input.issueDate) ? input.issueDate : today
+  const expiryDate = isIsoDate(input.expiryDate) ? input.expiryDate : null
   const issueYear = Number(issueDate.slice(0, 4))
   const year = Number.isFinite(issueYear) ? issueYear : new Date().getUTCFullYear()
 
@@ -89,6 +91,6 @@ export function buildCertificatePreviewData(
     instructorName: input.instructorName?.trim() || 'Instructor Name',
     description,
     issueDate,
-    expiryDate: null,
+    expiryDate,
   }
 }

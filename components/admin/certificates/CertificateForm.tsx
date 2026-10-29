@@ -148,6 +148,7 @@ export function CertificateForm({
       body.set('instructorName', form.instructorName)
       body.set('description', form.description)
       body.set('issueDate', form.issueDate)
+      body.set('expiryDate', form.expiryDate)
       if (mode === 'edit' && initial) {
         body.set('certificateId', initial.id)
       }
