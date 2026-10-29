@@ -4,10 +4,12 @@ import {
   Circle,
   Document,
   Font,
+  G,
   Image,
   Line,
   Page,
   Path,
+  Rect,
   Svg,
   Text,
   View,
@@ -30,36 +32,55 @@ import { site } from '@/lib/site'
 /**
  * Server-rendered VerifSafe Certificate PDF (A4 Landscape: 841.89 × 595.28 pt).
  *
- * Designed as an authoritative Swiss-architectural safety credential:
- * - Left dark obsidian authority spine with vector shield emblem, course
- *   classification, and high-contrast QR public verification module.
- * - Right archival ivory/white credential stage with formal typography,
- *   structured specification ledger, vector security seal, and dual attestation.
+ * Minimal, editorial, Swiss-aligned credential with subtle guilloche &
+ * geometric pattern work:
+ * - Typography:
+ *   - Playfair Display (high-contrast editorial serif for titles & recipient)
+ *   - Plus Jakarta Sans (clean geometric sans for body & micro-labels)
+ *   - Space Grotesk (technical precision font for IDs, dates & specifications)
+ * - Layout:
+ *   - Left obsidian spine with subtle architectural lattice pattern, white
+ *     VerifSafe logo variant, programme classification, and QR verification.
+ *   - Right paper stage with fine security border, guilloche wave pattern,
+ *     hairline specification ledger, and open center space for the official
+ *     VerifSafe stamp between the dual signature blocks.
  */
 
 const PAGE_WIDTH = 841.89
 const PAGE_HEIGHT = 595.28
 
-// Color palette
-const PAPER_BG = '#F4F1EA'
-const CARD_BG = '#FFFFFF'
-const SPINE_BG = '#0F0F11'
-const SPINE_SURFACE = '#16161A'
-const SPINE_BORDER = '#292930'
-const INK = '#0F0F11'
-const INK_SOFT = '#27272B'
-const MUTED = '#66645E'
-const MUTED_LIGHT = '#9E9B93'
-const LINE_COLOR = '#E2DFD7'
-const LEDGER_BG = '#FAF9F5'
+// Palette
+const OUTER_BG = '#F3F1EC'
+const STAGE_BG = '#FFFFFF'
+const SPINE_BG = '#0D0E11'
+const SPINE_RULE = '#23252C'
+const INK = '#0F1014'
+const INK_BODY = '#2B2D33'
+const MUTED = '#6E6D68'
+const SPINE_MUTED = '#8E9099'
+const HAIRLINE = '#E4E1D9'
 const RED = '#E53A34'
 
 const root = process.cwd()
 const fontDir = path.join(root, 'assets', 'fonts')
-const oakesFontPath = path.join(fontDir, 'OakesGrotesk-Regular.ttf')
-const oakesBoldFontPath = path.join(fontDir, 'OakesGrotesk-Bold.ttf')
-const displayFontPath = path.join(fontDir, 'Anton.woff2')
-const logoPath = path.join(root, 'public', 'certificates', 'verifsafe-logo.png')
+
+const playfairRegularPath = path.join(fontDir, 'PlayfairDisplay-Regular.ttf')
+const playfairMediumPath = path.join(fontDir, 'PlayfairDisplay-Medium.ttf')
+const playfairSemiBoldPath = path.join(fontDir, 'PlayfairDisplay-SemiBold.ttf')
+const playfairBoldPath = path.join(fontDir, 'PlayfairDisplay-Bold.ttf')
+const playfairItalicPath = path.join(fontDir, 'PlayfairDisplay-Italic.ttf')
+
+const jakartaRegularPath = path.join(fontDir, 'PlusJakartaSans-Regular.ttf')
+const jakartaMediumPath = path.join(fontDir, 'PlusJakartaSans-Medium.ttf')
+const jakartaSemiBoldPath = path.join(fontDir, 'PlusJakartaSans-SemiBold.ttf')
+const jakartaBoldPath = path.join(fontDir, 'PlusJakartaSans-Bold.ttf')
+
+const spaceRegularPath = path.join(fontDir, 'SpaceGrotesk-Regular.ttf')
+const spaceMediumPath = path.join(fontDir, 'SpaceGrotesk-Medium.ttf')
+const spaceSemiBoldPath = path.join(fontDir, 'SpaceGrotesk-SemiBold.ttf')
+const spaceBoldPath = path.join(fontDir, 'SpaceGrotesk-Bold.ttf')
+
+const whiteLogoPath = path.join(root, 'public', 'logo2.png')
 
 let fontsRegistered = false
 
@@ -68,42 +89,64 @@ function registerFonts() {
   fontsRegistered = true
 
   Font.register({
-    family: 'Oakes',
+    family: 'Playfair',
     fonts: [
-      { src: path.join(fontDir, 'OakesGrotesk-Regular.ttf'), fontWeight: 400 },
-      { src: path.join(fontDir, 'OakesGrotesk-Medium.ttf'), fontWeight: 500 },
-      { src: path.join(fontDir, 'OakesGrotesk-SemiBold.ttf'), fontWeight: 600 },
-      { src: path.join(fontDir, 'OakesGrotesk-Bold.ttf'), fontWeight: 700 },
+      { src: playfairRegularPath, fontWeight: 400 },
+      { src: playfairMediumPath, fontWeight: 500 },
+      { src: playfairSemiBoldPath, fontWeight: 600 },
+      { src: playfairBoldPath, fontWeight: 700 },
+      { src: playfairItalicPath, fontWeight: 400, fontStyle: 'italic' },
     ],
   })
 
-  // Distinctive condensed display face for the certificate wordmark and
-  // recipient name (unique Anton variable face).
   Font.register({
-    family: 'Anton',
-    fonts: [{ src: displayFontPath, fontWeight: 400 }],
+    family: 'Jakarta',
+    fonts: [
+      { src: jakartaRegularPath, fontWeight: 400 },
+      { src: jakartaMediumPath, fontWeight: 500 },
+      { src: jakartaSemiBoldPath, fontWeight: 600 },
+      { src: jakartaBoldPath, fontWeight: 700 },
+    ],
+  })
+
+  Font.register({
+    family: 'Space',
+    fonts: [
+      { src: spaceRegularPath, fontWeight: 400 },
+      { src: spaceMediumPath, fontWeight: 500 },
+      { src: spaceSemiBoldPath, fontWeight: 600 },
+      { src: spaceBoldPath, fontWeight: 700 },
+    ],
   })
 }
 
-const regularFont = (() => {
+const playfairBoldFont = (() => {
   try {
-    return openSync(oakesFontPath)
+    return openSync(playfairBoldPath)
   } catch {
     return null
   }
 })()
 
-const boldFont = (() => {
+const playfairSemiBoldFont = (() => {
   try {
-    return openSync(oakesBoldFontPath)
+    return openSync(playfairSemiBoldPath)
   } catch {
     return null
   }
 })()
 
-const displayFont = (() => {
+const jakartaRegularFont = (() => {
   try {
-    return openSync(displayFontPath)
+    return openSync(jakartaRegularPath)
+  } catch {
+    return null
+  }
+})()
+
+const spaceSemiBoldFont = (() => {
+  try {
+    return openSync(spaceSemiBoldPath)
   } catch {
     return null
   }
@@ -118,16 +161,20 @@ function measureText(
   return (font.layout(text).advanceWidth / font.unitsPerEm) * sizePt
 }
 
-function measureOakes(text: string, sizePt: number): number {
-  return measureText(text, sizePt, regularFont)
+function measurePlayfairBold(text: string, sizePt: number): number {
+  return measureText(text, sizePt, playfairBoldFont)
 }
 
-function measureOakesBold(text: string, sizePt: number): number {
-  return measureText(text, sizePt, boldFont ?? regularFont)
+function measurePlayfairSemiBold(text: string, sizePt: number): number {
+  return measureText(text, sizePt, playfairSemiBoldFont ?? playfairBoldFont)
 }
 
-function measureDisplay(text: string, sizePt: number): number {
-  return measureText(text, sizePt, displayFont)
+function measureJakarta(text: string, sizePt: number): number {
+  return measureText(text, sizePt, jakartaRegularFont)
+}
+
+function measureSpace(text: string, sizePt: number): number {
+  return measureText(text, sizePt, spaceSemiBoldFont)
 }
 
 function escapeRegExp(value: string): string {
@@ -206,8 +253,8 @@ function splitNameIntoTwoLines(
   for (let index = 1; index < words.length; index += 1) {
     const first = words.slice(0, index).join(' ')
     const second = words.slice(index).join(' ')
-    const firstWidth = measureDisplay(first, sizePt)
-    const secondWidth = measureDisplay(second, sizePt)
+    const firstWidth = measurePlayfairBold(first, sizePt)
+    const secondWidth = measurePlayfairBold(second, sizePt)
     if (firstWidth > maxWidthPt || secondWidth > maxWidthPt) continue
     const widest = Math.max(firstWidth, secondWidth)
     if (!best || widest < best.widest) {
@@ -223,71 +270,80 @@ interface FittedBlock {
   lineHeightPt: number
 }
 
-function fitRecipientName(name: string): FittedBlock {
-  const maxWidthPt = 512
+function toTitleCaseName(raw: string): string {
+  return raw
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ')
+}
 
-  for (let size = 35; size >= 22; size -= 0.5) {
-    if (measureDisplay(name, size) <= maxWidthPt) {
-      return { fontSizePt: size, lines: [name], lineHeightPt: size * 1.05 }
+function fitRecipientName(name: string): FittedBlock {
+  const maxWidthPt = 492
+
+  for (let size = 31; size >= 20; size -= 0.5) {
+    if (measurePlayfairBold(name, size) <= maxWidthPt) {
+      return { fontSizePt: size, lines: [name], lineHeightPt: size * 1.12 }
     }
   }
 
-  for (let size = 25; size >= 17; size -= 0.5) {
+  for (let size = 23; size >= 16; size -= 0.5) {
     const split = splitNameIntoTwoLines(name, size, maxWidthPt)
     if (!split) continue
     return {
       fontSizePt: size,
       lines: [split.first, split.second],
-      lineHeightPt: size * 1.04,
+      lineHeightPt: size * 1.12,
     }
   }
 
-  const fallbackLines = wrapText(name, maxWidthPt, 16, measureDisplay).slice(0, 2)
+  const fallbackLines = wrapText(name, maxWidthPt, 15.5, measurePlayfairBold).slice(0, 2)
   return {
-    fontSizePt: 16,
+    fontSizePt: 15.5,
     lines: fallbackLines,
-    lineHeightPt: 16 * 1.05,
+    lineHeightPt: 15.5 * 1.12,
   }
 }
 
 function fitDescription(description: string): FittedBlock {
-  const maxWidthPt = 508
+  const maxWidthPt = 488
 
-  for (let size = 10.6; size >= 8.8; size -= 0.2) {
-    const lines = wrapText(description, maxWidthPt, size, measureOakes)
+  for (let size = 10.2; size >= 8.6; size -= 0.2) {
+    const lines = wrapText(description, maxWidthPt, size, measureJakarta)
     if (lines.length <= 3) {
-      return { fontSizePt: size, lines, lineHeightPt: size * 1.42 }
+      return { fontSizePt: size, lines, lineHeightPt: size * 1.52 }
     }
   }
 
-  const lines = wrapText(description, maxWidthPt, 8.6, measureOakes).slice(0, 4)
+  const lines = wrapText(description, maxWidthPt, 8.4, measureJakarta).slice(0, 4)
   return {
-    fontSizePt: 8.6,
+    fontSizePt: 8.4,
     lines,
-    lineHeightPt: 8.6 * 1.35,
+    lineHeightPt: 8.4 * 1.45,
   }
 }
 
-function splitSpineCourseTitle(courseName: string): FittedBlock {
-  const upper = courseName.trim().toUpperCase()
+function fitSpineCourseTitle(courseName: string): FittedBlock {
+  const clean = courseName.trim()
   const maxWidthPt = 172
 
-  for (let size = 19.5; size >= 13.5; size -= 0.5) {
-    const lines = wrapText(upper, maxWidthPt, size, measureDisplay)
+  for (let size = 16.5; size >= 12.5; size -= 0.5) {
+    const lines = wrapText(clean, maxWidthPt, size, measurePlayfairSemiBold)
     if (lines.length <= 3) {
       return {
         fontSizePt: size,
         lines,
-        lineHeightPt: size * 1.08,
+        lineHeightPt: size * 1.22,
       }
     }
   }
 
-  const lines = wrapText(upper, maxWidthPt, 13, measureDisplay).slice(0, 4)
+  const lines = wrapText(clean, maxWidthPt, 12, measurePlayfairSemiBold).slice(0, 4)
   return {
-    fontSizePt: 13,
+    fontSizePt: 12,
     lines,
-    lineHeightPt: 13 * 1.08,
+    lineHeightPt: 12 * 1.2,
   }
 }
 
@@ -305,10 +361,10 @@ function RichDescriptionLine({
     .sort((a, b) => b.length - a.length)
 
   const baseStyle = {
-    fontFamily: 'Oakes',
+    fontFamily: 'Jakarta',
     fontWeight: 400 as const,
     fontSize: fontSizePt,
-    color: INK_SOFT,
+    color: INK_BODY,
   }
 
   if (tokens.length === 0) {
@@ -332,7 +388,7 @@ function RichDescriptionLine({
         return (
           <Text
             key={`${part}-${index}`}
-            style={{ fontFamily: 'Oakes', fontWeight: 600, color: INK }}
+            style={{ fontFamily: 'Jakarta', fontWeight: 600, color: INK }}
           >
             {part}
           </Text>
@@ -343,75 +399,198 @@ function RichDescriptionLine({
 }
 
 /**
- * Subtle guilloche watermark behind the main stage text.
+ * Subtle geometric security lattice & concentric shield arcs on the dark spine.
  */
-function GuillocheWatermark() {
-  const radii = [44, 62, 80, 98, 116, 134, 152]
+function SpinePattern({
+  left,
+  top,
+  width,
+  height,
+}: {
+  left: number
+  top: number
+  width: number
+  height: number
+}) {
+  const step = 28
+  const diagLines: React.ReactElement[] = []
+
+  // Subtle diagonal architectural lattice across the spine
+  for (let y = -width; y < height + width; y += step) {
+    diagLines.push(
+      <Line
+        key={`d1-${y}`}
+        x1={0}
+        y1={y}
+        x2={width}
+        y2={y + width}
+        stroke="#15171E"
+        strokeWidth={0.6}
+      />,
+      <Line
+        key={`d2-${y}`}
+        x1={width}
+        y1={y}
+        x2={0}
+        y2={y + width}
+        stroke="#15171E"
+        strokeWidth={0.6}
+      />
+    )
+  }
+
+  // Concentric security arcs anchored near bottom-right of spine
+  const arcRadii = [48, 68, 88, 108, 128, 148, 168]
+
   return (
     <Svg
       style={{
         position: 'absolute',
-        left: 385,
-        top: 120,
-        width: 310,
-        height: 310,
+        left,
+        top,
+        width,
+        height,
       }}
-      viewBox="0 0 320 320"
+      viewBox={`0 0 ${width} ${height}`}
     >
-      {radii.map((r, idx) => (
+      <G>{diagLines}</G>
+      {arcRadii.map((r, idx) => (
         <Circle
-          key={r}
-          cx="160"
-          cy="160"
+          key={`arc-${r}`}
+          cx={width + 10}
+          cy={height - 40}
           r={r}
           fill="none"
-          stroke={idx % 2 === 0 ? '#F3F0E8' : '#F8ECEB'}
-          strokeWidth={0.85}
-          strokeDasharray={idx % 2 === 0 ? '4 3' : undefined}
+          stroke={idx % 3 === 0 ? '#261719' : '#181A22'}
+          strokeWidth={0.7}
+          strokeDasharray={idx % 2 === 0 ? '3 3' : undefined}
         />
       ))}
-      <Path
-        d="M160 72 C133 89 107 95 92 98 L92 146 C92 183 120 211 160 226 C200 211 228 183 228 146 L228 98 C213 95 187 89 160 72 Z"
-        fill="none"
-        stroke="#F1EEE6"
-        strokeWidth={1.1}
-      />
     </Svg>
   )
 }
 
 /**
- * Corner registration marks inset strictly inside the card so they never
- * approach the page height boundary.
+ * Fine guilloche wave pattern, watermark shield & ornamental architectural
+ * frame on the right white credential stage.
  */
-function CornerMarks() {
-  const boxW = PAGE_WIDTH - 44 // 797.89
-  const boxH = PAGE_HEIGHT - 44 // 551.28
-  const len = 11
+function StagePattern({
+  left,
+  top,
+  width,
+  height,
+}: {
+  left: number
+  top: number
+  width: number
+  height: number
+}) {
+  // Flowing guilloche wave paths in the upper-right and lower-left background
+  const topWaves: React.ReactElement[] = []
+  for (let i = 0; i < 14; i += 1) {
+    const offset = i * 6.5
+    const yStart = -10 + offset * 0.7
+    const yEnd = 195 + offset * 1.15
+    const xStart = width - 250 - offset * 1.3
+    topWaves.push(
+      <Path
+        key={`tw-${i}`}
+        d={`M ${xStart} ${yStart} C ${xStart + 90} ${yStart + 95}, ${width - 110} ${yEnd - 80}, ${width + 10} ${yEnd}`}
+        fill="none"
+        stroke={i % 4 === 0 ? '#F9E6E5' : '#F3F0E8'}
+        strokeWidth={0.65}
+      />
+    )
+  }
+
+  // Concentric geometric guilloche rosette watermark in the right stage center
+  const rosetteRadii = [36, 50, 64, 78, 92, 106, 120, 134]
+  const cx = width - 145
+  const cy = height / 2 + 8
+
+  // Fine inner border inset by 12pt
+  const inset = 12
+  const innerW = width - inset * 2
+  const innerH = height - inset * 2
+  const cornerSize = 14
 
   return (
     <Svg
       style={{
         position: 'absolute',
-        left: 22,
-        top: 22,
-        width: boxW,
-        height: boxH,
+        left,
+        top,
+        width,
+        height,
       }}
-      viewBox={`0 0 ${boxW} ${boxH}`}
+      viewBox={`0 0 ${width} ${height}`}
     >
-      {/* Top-left (over dark spine) */}
-      <Line x1={0} y1={0} x2={len} y2={0} stroke={RED} strokeWidth={2} />
-      <Line x1={0} y1={0} x2={0} y2={len} stroke={RED} strokeWidth={2} />
-      {/* Bottom-left (over dark spine) */}
-      <Line x1={0} y1={boxH} x2={len} y2={boxH} stroke={RED} strokeWidth={2} />
-      <Line x1={0} y1={boxH - len} x2={0} y2={boxH} stroke={RED} strokeWidth={2} />
-      {/* Top-right */}
-      <Line x1={boxW - len} y1={0} x2={boxW} y2={0} stroke={RED} strokeWidth={2} />
-      <Line x1={boxW} y1={0} x2={boxW} y2={len} stroke={RED} strokeWidth={2} />
-      {/* Bottom-right */}
-      <Line x1={boxW - len} y1={boxH} x2={boxW} y2={boxH} stroke={RED} strokeWidth={2} />
-      <Line x1={boxW} y1={boxH - len} x2={boxW} y2={boxH} stroke={RED} strokeWidth={2} />
+      {/* Flowing guilloche waves */}
+      <G>{topWaves}</G>
+
+      {/* Subtle geometric rosette & shield watermark */}
+      <G>
+        {rosetteRadii.map((r, idx) => (
+          <Circle
+            key={`ros-${r}`}
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="none"
+            stroke={idx % 2 === 0 ? '#F4F1EA' : '#F9ECEB'}
+            strokeWidth={0.65}
+            strokeDasharray={idx % 2 === 1 ? '3 2.5' : undefined}
+          />
+        ))}
+        {/* Faint VerifSafe shield contour inside the rosette */}
+        <Path
+          d={`M ${cx} ${cy - 54} C ${cx - 17} ${cy - 43} ${cx - 34} ${cy - 39} ${cx - 44} ${cy - 37} L ${cx - 44} ${cy - 6} C ${cx - 44} ${cy + 18} ${cx - 26} ${cy + 36} ${cx} ${cy + 46} C ${cx + 26} ${cy + 36} ${cx + 44} ${cy + 18} ${cx + 44} ${cy - 6} L ${cx + 44} ${cy - 37} C ${cx + 34} ${cy - 39} ${cx + 17} ${cy - 43} ${cx} ${cy - 54} Z`}
+          fill="none"
+          stroke="#F1EDE4"
+          strokeWidth={0.9}
+        />
+      </G>
+
+      {/* Architectural inner security border */}
+      <Rect
+        x={inset}
+        y={inset}
+        width={innerW}
+        height={innerH}
+        fill="none"
+        stroke="#ECE9E1"
+        strokeWidth={0.75}
+      />
+
+      {/* Top-right ornamental corner fret */}
+      <Path
+        d={`M ${width - inset - cornerSize} ${inset} L ${width - inset} ${inset} L ${width - inset} ${inset + cornerSize}`}
+        fill="none"
+        stroke={RED}
+        strokeWidth={1.2}
+      />
+      <Rect
+        x={width - inset - 5}
+        y={inset + 2}
+        width={3}
+        height={3}
+        fill={RED}
+      />
+
+      {/* Bottom-right ornamental corner fret */}
+      <Path
+        d={`M ${width - inset - cornerSize} ${height - inset} L ${width - inset} ${height - inset} L ${width - inset} ${height - inset - cornerSize}`}
+        fill="none"
+        stroke={RED}
+        strokeWidth={1.2}
+      />
+      <Rect
+        x={width - inset - 5}
+        y={height - inset - 5}
+        width={3}
+        height={3}
+        fill={RED}
+      />
     </Svg>
   )
 }
@@ -436,15 +615,15 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
   const verificationBaseDisplay = getVerificationBaseUrl().replace(/^https?:\/\//i, '')
   const qr = createQrVector(verificationUrl)
 
-  const recipientUpper = (data.recipientName || 'Recipient Name').trim().toUpperCase()
+  const recipientDisplay = toTitleCaseName(data.recipientName || 'Recipient Name')
   const courseName = (data.courseName || 'Safety Training Course').trim()
-  const instructorUpper = (data.instructorName || 'Authorized Trainer').trim().toUpperCase()
+  const instructorDisplay = toTitleCaseName(data.instructorName || 'Authorized Trainer')
 
-  const nameFit = fitRecipientName(recipientUpper)
+  const nameFit = fitRecipientName(recipientDisplay)
   const descriptionText =
     data.description?.trim() || buildDefaultDescription(courseName)
   const descriptionFit = fitDescription(descriptionText)
-  const spineCourseFit = splitSpineCourseTitle(courseName)
+  const spineCourseFit = fitSpineCourseTitle(courseName)
 
   const trainingDateFormatted = formatCertificateDateLong(data.trainingDate)
   const issueDateFormatted = formatCertificateDateLong(data.issueDate)
@@ -455,38 +634,43 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
 
   const certIdSpineSize = fitSingleLineSize(
     data.certificateNumber,
-    9.2,
+    8.8,
     6.8,
-    156,
-    measureOakesBold
+    170,
+    measureSpace
   )
 
   const instructorFontSize = fitSingleLineSize(
-    instructorUpper,
-    10.5,
-    7.5,
-    182,
-    measureOakesBold
+    instructorDisplay,
+    10.2,
+    8,
+    190,
+    measureSpace
   )
 
   const specs = [
     { label: 'TRAINING DATE', value: trainingDateFormatted },
-    { label: 'COURSE DURATION', value: durationFormatted },
-    { label: 'DATE OF ISSUE', value: issueDateFormatted },
-    { label: 'VALIDITY / EXPIRY', value: expiryDateFormatted },
+    { label: 'DURATION', value: durationFormatted },
+    { label: 'ISSUE DATE', value: issueDateFormatted },
+    { label: 'VALID UNTIL', value: expiryDateFormatted },
   ]
 
-  // Layout constants
-  const OUTER_MARGIN = 16
+  // Strict balanced grid coordinates
+  const OUTER_MARGIN = 18
   const CARD_LEFT = OUTER_MARGIN
   const CARD_TOP = OUTER_MARGIN
-  const CARD_WIDTH = PAGE_WIDTH - OUTER_MARGIN * 2 // 809.89
-  const CARD_HEIGHT = PAGE_HEIGHT - OUTER_MARGIN * 2 // 563.28
+  const CARD_WIDTH = PAGE_WIDTH - OUTER_MARGIN * 2 // 805.89
+  const CARD_HEIGHT = PAGE_HEIGHT - OUTER_MARGIN * 2 // 559.28
 
-  const SPINE_WIDTH = 216
-  const STAGE_LEFT = CARD_LEFT + SPINE_WIDTH + 4 // 236
-  const CONTENT_LEFT = 268
-  const CONTENT_WIDTH = 524 // right edge at 792
+  const SPINE_WIDTH = 224
+  const SPINE_PAD_X = 26
+  const SPINE_INNER_LEFT = CARD_LEFT + SPINE_PAD_X // 44
+  const SPINE_INNER_WIDTH = SPINE_WIDTH - SPINE_PAD_X * 2 // 172
+
+  const STAGE_LEFT = CARD_LEFT + SPINE_WIDTH // 242
+  const STAGE_WIDTH = CARD_WIDTH - SPINE_WIDTH // 581.89
+  const CONTENT_LEFT = STAGE_LEFT + 44 // 286
+  const CONTENT_WIDTH = STAGE_WIDTH - 88 // 493.89
 
   return (
     <Document
@@ -499,9 +683,9 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
       <Page
         size="A4"
         orientation="landscape"
-        style={{ backgroundColor: PAPER_BG, padding: 0, margin: 0 }}
+        style={{ backgroundColor: OUTER_BG, padding: 0, margin: 0 }}
       >
-        {/* Main white credential surface */}
+        {/* Main white credential card */}
         <View
           style={{
             position: 'absolute',
@@ -509,29 +693,21 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
             top: CARD_TOP,
             width: CARD_WIDTH,
             height: CARD_HEIGHT,
-            backgroundColor: CARD_BG,
-            borderWidth: 1.2,
-            borderColor: INK,
+            backgroundColor: STAGE_BG,
+            borderWidth: 0.8,
+            borderColor: '#D6D2C8',
           }}
         />
 
-        {/* Subtle inner architectural hairline around the right stage */}
-        <View
-          style={{
-            position: 'absolute',
-            left: STAGE_LEFT + 6,
-            top: CARD_TOP + 6,
-            width: CARD_WIDTH - SPINE_WIDTH - 16,
-            height: CARD_HEIGHT - 12,
-            borderWidth: 0.6,
-            borderColor: LINE_COLOR,
-          }}
+        {/* Right stage guilloche wave & security border pattern */}
+        <StagePattern
+          left={STAGE_LEFT}
+          top={CARD_TOP}
+          width={STAGE_WIDTH}
+          height={CARD_HEIGHT}
         />
 
-        {/* Watermark on the main stage */}
-        <GuillocheWatermark />
-
-        {/* Left dark authority spine */}
+        {/* Left dark minimal spine */}
         <View
           style={{
             position: 'absolute',
@@ -543,101 +719,90 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
           }}
         />
 
-        {/* Vertical crimson divider bar between spine and stage */}
+        {/* Subtle geometric lattice & arc pattern on the dark spine */}
+        <SpinePattern
+          left={CARD_LEFT}
+          top={CARD_TOP}
+          width={SPINE_WIDTH}
+          height={CARD_HEIGHT}
+        />
+
+        {/* Fine crimson accent hairline separating spine and main stage */}
         <View
           style={{
             position: 'absolute',
-            left: CARD_LEFT + SPINE_WIDTH,
+            left: STAGE_LEFT,
             top: CARD_TOP,
-            width: 4,
+            width: 2,
             height: CARD_HEIGHT,
             backgroundColor: RED,
           }}
         />
 
-        <CornerMarks />
-
         {/* ================================================================ */}
-        {/* LEFT AUTHORITY SPINE CONTENT                                     */}
+        {/* LEFT SPINE — WHITE LOGO VARIANT, PROGRAMME & QR VERIFICATION     */}
         {/* ================================================================ */}
 
-        {/* Brand wordmark & identity */}
+        {/* Top: White Logo Variant (`public/logo2.png`) */}
         <View
           style={{
             position: 'absolute',
-            left: CARD_LEFT + 22,
-            top: CARD_TOP + 24,
-            width: SPINE_WIDTH - 44,
+            left: SPINE_INNER_LEFT,
+            top: 46,
+            width: SPINE_INNER_WIDTH,
           }}
         >
-          <View style={{ marginLeft: 10 }}>
-            <Text
-              style={{
-                fontFamily: 'Oakes',
-                fontWeight: 700,
-                fontSize: 13,
-                color: '#FFFFFF',
-                letterSpacing: 1.5,
-              }}
-            >
-              VERIFSAFE
-            </Text>
-            <Text
-              style={{
-                fontFamily: 'Oakes',
-                fontWeight: 600,
-                fontSize: 6.2,
-                color: RED,
-                letterSpacing: 1.3,
-                marginTop: 2,
-              }}
-            >
-              PEACE OF MIND VERIFIED
-            </Text>
-          </View>
+          {/* eslint-disable-next-line jsx-a11y/alt-text */}
+          <Image
+            src={whiteLogoPath}
+            style={{
+              width: 138,
+              height: 41,
+              objectFit: 'contain',
+              objectPosition: 'left center',
+            }}
+          />
         </View>
 
-        {/* Spine top divider */}
+        {/* Horizontal hairline aligned with the right stage header rule (y = 104) */}
         <View
           style={{
             position: 'absolute',
-            left: CARD_LEFT + 22,
-            top: CARD_TOP + 76,
-            width: SPINE_WIDTH - 44,
-            height: 1,
-            backgroundColor: SPINE_BORDER,
-          }}
-        />
-        <View
-          style={{
-            position: 'absolute',
-            left: CARD_LEFT + 22,
-            top: CARD_TOP + 76,
-            width: 28,
-            height: 1.5,
-            backgroundColor: RED,
+            left: SPINE_INNER_LEFT,
+            top: 104,
+            width: SPINE_INNER_WIDTH,
+            height: 0.8,
+            backgroundColor: SPINE_RULE,
           }}
         />
 
-        {/* Certified Programme Classification */}
+        {/* Middle: Certified Programme Classification */}
         <View
           style={{
             position: 'absolute',
-            left: CARD_LEFT + 22,
-            top: CARD_TOP + 92,
-            width: SPINE_WIDTH - 44,
+            left: SPINE_INNER_LEFT,
+            top: 128,
+            width: SPINE_INNER_WIDTH,
           }}
         >
+          <View
+            style={{
+              width: 18,
+              height: 1.5,
+              backgroundColor: RED,
+              marginBottom: 10,
+            }}
+          />
           <Text
             style={{
-              fontFamily: 'Oakes',
+              fontFamily: 'Jakarta',
               fontWeight: 600,
-              fontSize: 6.8,
-              color: MUTED_LIGHT,
+              fontSize: 6.4,
+              color: SPINE_MUTED,
               letterSpacing: 1.8,
             }}
           >
-            CERTIFIED PROGRAMME
+            PROGRAMME
           </Text>
 
           <View style={{ marginTop: 8 }}>
@@ -645,10 +810,11 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
               <Text
                 key={`spine-course-${index}`}
                 style={{
-                  fontFamily: 'Anton',
+                  fontFamily: 'Playfair',
+                  fontWeight: 600,
                   fontSize: spineCourseFit.fontSizePt,
-                  lineHeight: 1.08,
-                  color: index === 0 ? '#FFFFFF' : RED,
+                  lineHeight: 1.22,
+                  color: '#FFFFFF',
                 }}
                 wrap={false}
               >
@@ -659,74 +825,57 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
 
           <Text
             style={{
-              fontFamily: 'Oakes',
+              fontFamily: 'Jakarta',
               fontWeight: 400,
-              fontSize: 7.3,
-              lineHeight: 1.38,
-              color: MUTED_LIGHT,
-              marginTop: 10,
+              fontSize: 7.2,
+              lineHeight: 1.48,
+              color: SPINE_MUTED,
+              marginTop: 12,
             }}
           >
-            Issued under VerifSafe Occupational Safety & Emergency Preparedness
-            Training Standards.
+            Issued in accordance with VerifSafe Occupational Safety & Emergency
+            Readiness Standards.
           </Text>
         </View>
 
-        {/* Public Verification QR Box */}
+        {/* Bottom: Minimal QR Verification Module */}
         <View
           style={{
             position: 'absolute',
-            left: CARD_LEFT + 18,
-            top: CARD_TOP + 248,
-            width: SPINE_WIDTH - 36,
-            height: 294,
-            backgroundColor: SPINE_SURFACE,
-            borderWidth: 1,
-            borderColor: SPINE_BORDER,
-            padding: 12,
+            left: SPINE_INNER_LEFT,
+            top: 318,
+            width: SPINE_INNER_WIDTH,
+            paddingTop: 16,
+            borderTopWidth: 0.8,
+            borderTopColor: SPINE_RULE,
           }}
         >
-          {/* Header with crimson dot */}
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <View
-              style={{
-                width: 5,
-                height: 5,
-                borderRadius: 2.5,
-                backgroundColor: RED,
-                marginRight: 6,
-              }}
-            />
-            <Text
-              style={{
-                fontFamily: 'Oakes',
-                fontWeight: 700,
-                fontSize: 6.8,
-                color: '#FFFFFF',
-                letterSpacing: 1.5,
-              }}
-            >
-              PUBLIC VERIFICATION
-            </Text>
-          </View>
+          <Text
+            style={{
+              fontFamily: 'Jakarta',
+              fontWeight: 600,
+              fontSize: 6.4,
+              color: SPINE_MUTED,
+              letterSpacing: 1.8,
+            }}
+          >
+            PUBLIC VERIFICATION
+          </Text>
 
-          {/* White QR frame with clean quiet zone */}
+          {/* Crisp white QR container left-aligned to the spine grid */}
           <View
             style={{
               marginTop: 10,
-              alignSelf: 'center',
-              width: 126,
-              height: 126,
+              width: 112,
+              height: 112,
               backgroundColor: '#FFFFFF',
-              padding: 9,
-              borderWidth: 1,
-              borderColor: LINE_COLOR,
+              padding: 8,
               alignItems: 'center',
               justifyContent: 'center',
             }}
           >
             <Svg
-              style={{ width: 106, height: 106 }}
+              style={{ width: 96, height: 96 }}
               viewBox={`0 0 ${qr.size} ${qr.size}`}
               preserveAspectRatio="xMidYMid meet"
             >
@@ -734,198 +883,166 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
             </Svg>
           </View>
 
-          {/* Immutable Certificate ID */}
-          <View
-            style={{
-              marginTop: 12,
-              paddingTop: 9,
-              borderTopWidth: 0.8,
-              borderTopColor: SPINE_BORDER,
-            }}
-          >
+          {/* Certificate ID & Verification URL */}
+          <View style={{ marginTop: 14 }}>
             <Text
               style={{
-                fontFamily: 'Oakes',
+                fontFamily: 'Jakarta',
                 fontWeight: 600,
-                fontSize: 6.2,
-                color: MUTED_LIGHT,
-                letterSpacing: 1.4,
+                fontSize: 6,
+                color: SPINE_MUTED,
+                letterSpacing: 1.5,
               }}
             >
               CERTIFICATE ID
             </Text>
             <Text
               style={{
-                fontFamily: 'Oakes',
+                fontFamily: 'Space',
                 fontWeight: 700,
                 fontSize: certIdSpineSize,
                 color: '#FFFFFF',
                 marginTop: 3,
-                letterSpacing: 0.4,
+                letterSpacing: 0.5,
               }}
               wrap={false}
             >
               {data.certificateNumber}
             </Text>
-          </View>
 
-          {/* Permanent Verification Endpoint */}
-          <View style={{ marginTop: 10 }}>
             <Text
               style={{
-                fontFamily: 'Oakes',
-                fontWeight: 600,
-                fontSize: 6,
-                color: MUTED_LIGHT,
-                letterSpacing: 1.2,
-              }}
-            >
-              SCAN QR OR VERIFY AT
-            </Text>
-            <Text
-              style={{
-                fontFamily: 'Oakes',
-                fontWeight: 600,
-                fontSize: 7.4,
+                fontFamily: 'Space',
+                fontWeight: 500,
+                fontSize: 7.2,
                 color: RED,
-                marginTop: 2,
+                marginTop: 8,
               }}
               wrap={false}
             >
               {verificationBaseDisplay}
             </Text>
+            <Text
+              style={{
+                fontFamily: 'Jakarta',
+                fontWeight: 400,
+                fontSize: 6.4,
+                color: SPINE_MUTED,
+                marginTop: 2,
+              }}
+            >
+              Scan QR to verify live status
+            </Text>
           </View>
         </View>
 
         {/* ================================================================ */}
-        {/* RIGHT MAIN CREDENTIAL STAGE                                      */}
+        {/* RIGHT STAGE — MINIMAL, BALANCED EDITORIAL CREDENTIAL             */}
         {/* ================================================================ */}
 
-        {/* Header Row: Credential Metadata (Left) + Official Logo (Right) */}
+        {/* 1. Top Meta Bar (aligned with Left Spine Logo & y=104 divider) */}
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 40,
+            top: 58,
             width: CONTENT_WIDTH,
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
           }}
         >
-          <View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <View
-                style={{
-                  width: 14,
-                  height: 2,
-                  backgroundColor: RED,
-                  marginRight: 7,
-                }}
-              />
-              <Text
-                style={{
-                  fontFamily: 'Oakes',
-                  fontWeight: 700,
-                  fontSize: 7.8,
-                  color: RED,
-                  letterSpacing: 1.3,
-                  marginTop: 4,
-                }}
-              >
-                OFFICIAL TRAINING CREDENTIAL
-              </Text>
-            </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View
+              style={{
+                width: 14,
+                height: 1.5,
+                backgroundColor: RED,
+                marginRight: 8,
+              }}
+            />
             <Text
               style={{
-                fontFamily: 'Oakes',
-                fontWeight: 500,
-                fontSize: 8.2,
-                color: MUTED,
-                marginTop: 4,
+                fontFamily: 'Jakarta',
+                fontWeight: 700,
+                fontSize: 7,
+                color: INK,
+                letterSpacing: 2,
               }}
             >
-              VerifSafe Safety & Emergency Preparedness Register · Kigali, Rwanda
+              OFFICIAL TRAINING CREDENTIAL
             </Text>
           </View>
 
-          {/* Official VerifSafe Logo on crisp white background */}
-          {/* eslint-disable-next-line jsx-a11y/alt-text */}
-          <Image
-            src={logoPath}
+          <Text
             style={{
-              width: 148,
-              height: 48,
-              objectFit: 'contain',
+              fontFamily: 'Space',
+              fontWeight: 500,
+              fontSize: 7.5,
+              color: MUTED,
+              letterSpacing: 0.8,
             }}
-          />
+          >
+            {`NO. ${data.certificateNumber}`}
+          </Text>
         </View>
 
-        {/* Architectural Divider Rule below header */}
+        {/* Horizontal hairline at y = 104 (matches Left Spine hairline) */}
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 98,
+            top: 104,
             width: CONTENT_WIDTH,
-            height: 1,
-            backgroundColor: LINE_COLOR,
-          }}
-        />
-        <View
-          style={{
-            position: 'absolute',
-            left: CONTENT_LEFT,
-            top: 97.5,
-            width: 72,
-            height: 2,
-            backgroundColor: INK,
+            height: 0.8,
+            backgroundColor: HAIRLINE,
           }}
         />
 
-        {/* Primary Display Title */}
+        {/* 2. Title & Italic Preamble */}
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 112,
+            top: 124,
             width: CONTENT_WIDTH,
           }}
         >
           <Text
             style={{
-              fontFamily: 'Anton',
-              fontSize: 36,
-              lineHeight: 1.12,
+              fontFamily: 'Playfair',
+              fontWeight: 700,
+              fontSize: 33,
+              lineHeight: 1.08,
               color: INK,
-              letterSpacing: 0.5,
+              letterSpacing: 0.2,
             }}
             wrap={false}
           >
-            CERTIFICATE OF COMPLETION
+            Certificate of Completion
           </Text>
           <Text
             style={{
-              fontFamily: 'Oakes',
-              fontWeight: 500,
-              fontSize: 7.6,
+              fontFamily: 'Playfair',
+              fontStyle: 'italic',
+              fontWeight: 400,
+              fontSize: 12,
               color: MUTED,
-              letterSpacing: 1.5,
               marginTop: 12,
             }}
           >
-            THIS IS TO CERTIFY THAT
+            This is to certify that
           </Text>
         </View>
 
-        {/* Recipient Name Block */}
+        {/* 3. Recipient Name Stage */}
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 184,
+            top: 196,
             width: CONTENT_WIDTH,
-            height: 64,
+            height: 58,
             justifyContent: 'center',
           }}
         >
@@ -933,11 +1050,11 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
             <Text
               key={`recipient-${index}`}
               style={{
-                fontFamily: 'Anton',
+                fontFamily: 'Playfair',
+                fontWeight: 700,
                 fontSize: nameFit.fontSizePt,
-                lineHeight: 1.05,
+                lineHeight: 1.12,
                 color: INK,
-                letterSpacing: 0.4,
               }}
               wrap={false}
             >
@@ -946,34 +1063,34 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
           ))}
         </View>
 
-        {/* Recipient Baseline Rule with Crimson Accent */}
+        {/* Recipient Baseline Rule with subtle crimson accent */}
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 254,
+            top: 262,
             width: CONTENT_WIDTH,
-            height: 1,
-            backgroundColor: LINE_COLOR,
+            height: 0.8,
+            backgroundColor: HAIRLINE,
           }}
         />
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 253.5,
-            width: 44,
-            height: 2,
+            top: 261.5,
+            width: 36,
+            height: 1.8,
             backgroundColor: RED,
           }}
         />
 
-        {/* Completion Citation Statement */}
+        {/* 4. Completion Citation Statement */}
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 268,
+            top: 278,
             width: CONTENT_WIDTH,
           }}
         >
@@ -996,50 +1113,39 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
           ))}
         </View>
 
-        {/* Structured 4-Column Specification Ledger */}
+        {/* 5. Minimal Architectural Specification Grid */}
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 344,
+            top: 354,
             width: CONTENT_WIDTH,
-            height: 58,
-            backgroundColor: LEDGER_BG,
-            borderWidth: 1,
-            borderColor: LINE_COLOR,
+            height: 54,
+            borderTopWidth: 0.8,
+            borderBottomWidth: 0.8,
+            borderColor: HAIRLINE,
             flexDirection: 'row',
           }}
         >
-          {/* Top solid ink bar across the ledger */}
-          <View
-            style={{
-              position: 'absolute',
-              left: -1,
-              top: -1,
-              width: CONTENT_WIDTH,
-              height: 2,
-              backgroundColor: INK,
-            }}
-          />
           {specs.map((spec, idx) => (
             <View
               key={spec.label}
               style={{
                 flex: 1,
-                paddingHorizontal: 11,
-                paddingVertical: 11,
-                borderRightWidth: idx < specs.length - 1 ? 1 : 0,
-                borderRightColor: LINE_COLOR,
+                paddingLeft: idx === 0 ? 0 : 14,
+                paddingRight: 10,
+                borderRightWidth: idx < specs.length - 1 ? 0.8 : 0,
+                borderRightColor: HAIRLINE,
                 justifyContent: 'center',
               }}
             >
               <Text
                 style={{
-                  fontFamily: 'Oakes',
+                  fontFamily: 'Jakarta',
                   fontWeight: 600,
-                  fontSize: 6.6,
+                  fontSize: 6.2,
                   color: MUTED,
-                  letterSpacing: 1.6,
+                  letterSpacing: 1.5,
                 }}
                 wrap={false}
               >
@@ -1047,14 +1153,14 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
               </Text>
               <Text
                 style={{
-                  fontFamily: 'Oakes',
-                  fontWeight: 700,
+                  fontFamily: 'Space',
+                  fontWeight: 600,
                   fontSize: fitSingleLineSize(
                     spec.value,
-                    9.8,
-                    7.8,
-                    106,
-                    measureOakesBold
+                    9.6,
+                    7.6,
+                    104,
+                    measureSpace
                   ),
                   color: INK,
                   marginTop: 5,
@@ -1067,50 +1173,41 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
           ))}
         </View>
 
-        {/* Attestation, Official Seal & Signatures Row */}
+        {/* 6. Balanced Dual Signatures Row (open center reserved for Official Stamp) */}
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 422,
+            top: 432,
             width: CONTENT_WIDTH,
-            height: 98,
+            height: 82,
             flexDirection: 'row',
             alignItems: 'flex-end',
             justifyContent: 'space-between',
           }}
         >
-          {/* Left Signatory: Trainer / Instructor */}
-          <View style={{ width: 194 }}>
+          {/* Left: Trainer / Instructor */}
+          <View style={{ width: 196 }}>
             <Text
               style={{
-                fontFamily: 'Oakes',
-                fontWeight: 700,
+                fontFamily: 'Space',
+                fontWeight: 600,
                 fontSize: instructorFontSize,
                 color: INK,
-                letterSpacing: 0.3,
-                marginBottom: 7,
+                marginBottom: 8,
               }}
               wrap={false}
             >
-              {instructorUpper}
+              {instructorDisplay}
             </Text>
-            <View style={{ height: 1, backgroundColor: INK, width: '100%' }} />
-            <View
-              style={{
-                height: 2,
-                backgroundColor: RED,
-                width: 28,
-                marginTop: -1.5,
-              }}
-            />
+            <View style={{ height: 0.8, backgroundColor: INK, width: '100%' }} />
             <Text
               style={{
-                fontFamily: 'Oakes',
+                fontFamily: 'Jakarta',
                 fontWeight: 700,
-                fontSize: 7.2,
-                color: INK_SOFT,
-                letterSpacing: 1.3,
+                fontSize: 6.5,
+                color: INK,
+                letterSpacing: 1.5,
                 marginTop: 7,
               }}
             >
@@ -1118,9 +1215,9 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
             </Text>
             <Text
               style={{
-                fontFamily: 'Oakes',
+                fontFamily: 'Jakarta',
                 fontWeight: 400,
-                fontSize: 7,
+                fontSize: 6.8,
                 color: MUTED,
                 marginTop: 2,
               }}
@@ -1129,73 +1226,57 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
             </Text>
           </View>
 
-          {/* Right Signatory: Authorized Signature */}
-          <View style={{ width: 194 }}>
-            {/* Stylized vector signature flourish */}
+          {/* Right: Authorized Signatory */}
+          <View style={{ width: 196 }}>
             <Svg
-              style={{ width: 130, height: 28, marginBottom: 2 }}
-              viewBox="0 0 180 40"
+              style={{ width: 118, height: 24, marginBottom: 4 }}
+              viewBox="0 0 180 38"
             >
               <Path
-                d="M12 28 C28 10, 44 8, 52 24 C58 34, 68 14, 84 16 C96 18, 102 28, 118 20 C134 12, 148 15, 168 11"
+                d="M8 26 C24 8, 38 8, 46 22 C52 31, 64 12, 80 15 C92 17, 98 26, 114 18 C130 10, 144 14, 164 10"
                 fill="none"
                 stroke={INK}
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-              <Path
-                d="M28 32 L154 25"
-                fill="none"
-                stroke={RED}
-                strokeWidth="0.9"
+                strokeWidth="1.5"
                 strokeLinecap="round"
               />
             </Svg>
-            <View style={{ height: 1, backgroundColor: INK, width: '100%' }} />
-            <View
-              style={{
-                height: 2,
-                backgroundColor: RED,
-                width: 28,
-                marginTop: -1.5,
-              }}
-            />
+            <View style={{ height: 0.8, backgroundColor: INK, width: '100%' }} />
             <Text
               style={{
-                fontFamily: 'Oakes',
+                fontFamily: 'Jakarta',
                 fontWeight: 700,
-                fontSize: 7.2,
-                color: INK_SOFT,
-                letterSpacing: 1.3,
+                fontSize: 6.5,
+                color: INK,
+                letterSpacing: 1.5,
                 marginTop: 7,
               }}
             >
-              AUTHORIZED SIGNATURE
+              AUTHORIZED SIGNATORY
             </Text>
             <Text
               style={{
-                fontFamily: 'Oakes',
+                fontFamily: 'Jakarta',
                 fontWeight: 400,
-                fontSize: 7,
+                fontSize: 6.8,
                 color: MUTED,
                 marginTop: 2,
               }}
             >
-              Director of Training & Compliance · VerifSafe
+              Director of Training · VerifSafe
             </Text>
           </View>
         </View>
 
-        {/* Bottom Micro-Security Footer Bar */}
+        {/* 7. Bottom Footer Bar */}
         <View
           style={{
             position: 'absolute',
             left: CONTENT_LEFT,
-            top: 538,
+            top: 534,
             width: CONTENT_WIDTH,
-            paddingTop: 7,
-            borderTopWidth: 0.6,
-            borderTopColor: LINE_COLOR,
+            paddingTop: 8,
+            borderTopWidth: 0.8,
+            borderTopColor: HAIRLINE,
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -1203,27 +1284,27 @@ function CertificateDocument({ data }: { data: CertificatePdfData }) {
         >
           <Text
             style={{
-              fontFamily: 'Oakes',
-              fontWeight: 500,
-              fontSize: 6.2,
+              fontFamily: 'Jakarta',
+              fontWeight: 400,
+              fontSize: 6.5,
               color: MUTED,
-              letterSpacing: 0.6,
+              letterSpacing: 0.3,
             }}
             wrap={false}
           >
-            {`VERIFSAFE RWANDA · ${site.address.street.toUpperCase()}, KIGALI · ${site.email.toUpperCase()}`}
+            {`${site.name} · ${site.address.street}, ${site.address.locality}, ${site.address.country} · ${site.email}`}
           </Text>
           <Text
             style={{
-              fontFamily: 'Oakes',
-              fontWeight: 700,
-              fontSize: 6.2,
+              fontFamily: 'Space',
+              fontWeight: 500,
+              fontSize: 6.5,
               color: INK,
-              letterSpacing: 0.6,
+              letterSpacing: 0.3,
             }}
             wrap={false}
           >
-            {`VERIFY ONLINE: ${verificationBaseDisplay.toUpperCase()}/${data.certificateNumber.toUpperCase()}`}
+            {verificationUrl.replace(/^https?:\/\//i, '')}
           </Text>
         </View>
       </Page>
